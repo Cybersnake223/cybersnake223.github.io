@@ -1,91 +1,626 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abhishek Aryan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { 
-            margin: 0; 
-            overflow: hidden; 
-            font-family: Arial, sans-serif;
-            color: white;
-            text-align: center;
-            background: radial-gradient(circle, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.8) 100%);
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --accent: #7c3aed;
+            --accent2: #06b6d4;
+            --glow: rgba(124, 58, 237, 0.5);
+            --glass-bg: rgba(255,255,255,0.04);
+            --glass-border: rgba(255,255,255,0.1);
         }
-        canvas { 
-            display: block; 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #e2e8f0;
+            background: #020818;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ── Orbs ── */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            pointer-events: none;
+            animation: drift 12s ease-in-out infinite alternate;
+        }
+        .orb1 { width: 520px; height: 520px; background: var(--accent); top: -120px; left: -120px; }
+        .orb2 { width: 420px; height: 420px; background: var(--accent2); bottom: -100px; right: -80px; animation-delay: -4s; }
+        .orb3 { width: 280px; height: 280px; background: #ec4899; top: 40%; left: 55%; animation-delay: -8s; }
+        @keyframes drift {
+            0%   { transform: translate(0,0) scale(1); }
+            100% { transform: translate(40px,30px) scale(1.12); }
+        }
+
+        canvas { position: fixed; top: 0; left: 0; z-index: 0; pointer-events: none; }
+
+        /* ── Nav ── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1.2rem 3rem;
+            background: rgba(2,8,24,0.6);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .nav-logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem; font-weight: 700; color: var(--accent2);
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a {
+            font-size: 0.85rem; font-weight: 500; color: #94a3b8;
+            text-decoration: none; letter-spacing: 0.05em; transition: color 0.25s;
+        }
+        .nav-links a:hover { color: #e2e8f0; }
+
+        /* ── Hero ── */
+        .hero {
+            position: relative; z-index: 10; min-height: 100vh;
+            display: flex; flex-direction: column; justify-content: center;
+            align-items: center; text-align: center; padding: 6rem 2rem 4rem;
+        }
+
+        .badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.4rem 1rem; border-radius: 999px;
+            background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.4);
+            font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+            color: #a78bfa; letter-spacing: 0.08em; margin-bottom: 2rem;
+            animation: fadeDown 0.8s ease both;
+        }
+        .badge::before {
+            content: ''; width: 6px; height: 6px; border-radius: 50%;
+            background: #a78bfa; animation: pulse 1.5s ease infinite;
+        }
+        @keyframes pulse {
+            0%,100% { opacity:1; transform:scale(1); }
+            50%      { opacity:0.4; transform:scale(0.7); }
+        }
+
+        h1 {
+            font-size: clamp(2.8rem,7vw,5.5rem); font-weight: 700;
+            line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.5rem;
+            animation: fadeDown 0.9s ease 0.1s both;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #a78bfa, #06b6d4, #ec4899);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; background-size: 200% 200%;
+            animation: gradientShift 5s ease infinite;
+        }
+        @keyframes gradientShift {
+            0%,100% { background-position: 0% 50%; }
+            50%      { background-position: 100% 50%; }
+        }
+
+        .tagline {
+            font-size: clamp(1rem,2.5vw,1.25rem); color: #94a3b8;
+            font-weight: 300; max-width: 520px; line-height: 1.7;
+            margin-bottom: 1.2rem; animation: fadeDown 1s ease 0.2s both;
+        }
+
+        .typed-line {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.95rem;
+            color: var(--accent2); margin-bottom: 3rem; min-height: 1.4em;
+            animation: fadeDown 1s ease 0.3s both;
+        }
+        .cursor {
+            display: inline-block; width: 2px; height: 1em; background: var(--accent2);
+            margin-left: 2px; vertical-align: text-bottom;
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+        .cta-group {
+            display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+            animation: fadeDown 1s ease 0.4s both;
+        }
+        .btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.75rem 1.8rem; border-radius: 10px; font-size: 0.9rem;
+            font-weight: 600; text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s; cursor: pointer;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), #9333ea);
+            color: #fff; border: none; box-shadow: 0 0 24px var(--glow);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 40px var(--glow); }
+        .btn-ghost {
+            background: var(--glass-bg); color: #e2e8f0;
+            border: 1px solid var(--glass-border); backdrop-filter: blur(8px);
+        }
+        .btn-ghost:hover { transform: translateY(-2px); background: rgba(255,255,255,0.08); }
+
+        .scroll-hint {
+            position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+            z-index: 10; display: flex; flex-direction: column; align-items: center;
+            gap: 0.4rem; opacity: 0.4; font-size: 0.7rem;
+            letter-spacing: 0.1em; color: #94a3b8;
+            animation: fadeDown 1s ease 1.2s both;
+        }
+        .scroll-hint .line {
+            width: 1px; height: 36px;
+            background: linear-gradient(to bottom, transparent, #94a3b8);
+            animation: scrollLine 1.8s ease infinite;
+        }
+        @keyframes scrollLine {
+            0%   { transform:scaleY(0); transform-origin:top; }
+            50%  { transform:scaleY(1); transform-origin:top; }
+            51%  { transform:scaleY(1); transform-origin:bottom; }
+            100% { transform:scaleY(0); transform-origin:bottom; }
+        }
+
+        /* ── Section wrapper ── */
+        .section {
+            position: relative; z-index: 10;
+            max-width: 960px; margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        .section-label {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+            color: var(--accent2); letter-spacing: 0.15em; text-transform: uppercase;
+            text-align: center; margin-bottom: 2.5rem; opacity: 0.8;
+        }
+
+        /* ── Skill Cards ── */
+        .cards-grid {
+            display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+            gap: 1.2rem;
+        }
+        .card {
+            background: var(--glass-bg); border: 1px solid var(--glass-border);
+            backdrop-filter: blur(16px); border-radius: 16px; padding: 1.6rem 1.4rem;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            border-color: rgba(124,58,237,0.5);
+            box-shadow: 0 8px 40px rgba(124,58,237,0.2);
+        }
+        .card-icon { font-size: 1.8rem; margin-bottom: 0.8rem; display: block; }
+        .card-title { font-size: 0.95rem; font-weight: 600; color: #e2e8f0; margin-bottom: 0.4rem; }
+        .card-desc { font-size: 0.78rem; color: #64748b; line-height: 1.5; }
+
+        /* ── GitHub Section ── */
+        .gh-section {
+            position: relative; z-index: 10;
+            max-width: 960px; margin: 0 auto;
+            padding: 2rem 2rem 5rem;
+        }
+
+        .gh-profile-card {
+            background: var(--glass-bg); border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px); border-radius: 20px;
+            padding: 2.4rem; margin-bottom: 2rem;
+            display: flex; align-items: center; gap: 2rem;
+            flex-wrap: wrap;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .gh-profile-card:hover {
+            border-color: rgba(124,58,237,0.4);
+            box-shadow: 0 0 50px rgba(124,58,237,0.12);
+        }
+
+        .gh-avatar-wrap {
+            position: relative; flex-shrink: 0;
+        }
+        .gh-avatar-wrap::before {
+            content: '';
+            position: absolute; inset: -3px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent2), #ec4899);
             z-index: -1;
+            animation: rotateBorder 4s linear infinite;
         }
-        .content {
-            position: relative;
-            z-index: 1;
-            padding: 20vh 2rem;
-            max-width: 800px;
-            margin: 0 auto;
+        @keyframes rotateBorder {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(360deg); }
         }
-        h1 { font-size: 3rem; margin: 0 0 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
-        p { font-size: 1.2rem; margin: 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); }
+        .gh-avatar {
+            width: 100px; height: 100px; border-radius: 50%;
+            border: 3px solid #020818;
+            display: block;
+        }
+
+        .gh-info { flex: 1; min-width: 200px; }
+        .gh-name {
+            font-size: 1.5rem; font-weight: 700; color: #e2e8f0;
+            display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.3rem;
+        }
+        .gh-handle {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;
+            color: var(--accent2); margin-bottom: 0.8rem;
+        }
+        .gh-bio {
+            font-size: 0.88rem; color: #94a3b8; line-height: 1.6;
+            max-width: 480px; margin-bottom: 1rem;
+        }
+        .gh-meta {
+            display: flex; gap: 1.2rem; flex-wrap: wrap;
+        }
+        .gh-meta-item {
+            display: flex; align-items: center; gap: 0.35rem;
+            font-size: 0.8rem; color: #64748b;
+        }
+        .gh-meta-item svg { opacity: 0.7; }
+
+        .gh-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .gh-stat-img {
+            width: 100%; border-radius: 14px;
+            border: 1px solid var(--glass-border);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: block;
+            background: rgba(13,17,23,0.8);
+        }
+        .gh-stat-img:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(124,58,237,0.25);
+        }
+
+        /* Repos */
+        .repos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+        }
+        .repo-card {
+            background: var(--glass-bg); border: 1px solid var(--glass-border);
+            border-radius: 14px; padding: 1.4rem;
+            text-decoration: none; color: inherit;
+            transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+            display: flex; flex-direction: column; gap: 0.5rem;
+        }
+        .repo-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(124,58,237,0.45);
+            box-shadow: 0 8px 30px rgba(124,58,237,0.18);
+        }
+        .repo-top { display: flex; align-items: center; gap: 0.6rem; }
+        .repo-icon { color: var(--accent2); flex-shrink: 0; }
+        .repo-name {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.88rem;
+            font-weight: 700; color: #c4b5fd;
+        }
+        .repo-desc { font-size: 0.78rem; color: #64748b; line-height: 1.5; flex: 1; }
+        .repo-footer {
+            display: flex; align-items: center; gap: 1rem;
+            margin-top: 0.4rem;
+        }
+        .repo-lang {
+            display: flex; align-items: center; gap: 0.4rem;
+            font-size: 0.75rem; color: #94a3b8;
+        }
+        .lang-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+        .gh-cta-wrap {
+            text-align: center; margin-top: 2.5rem;
+        }
+
+        /* ── Socials ── */
+        .socials {
+            position: relative; z-index: 10;
+            display: flex; justify-content: center; gap: 1.2rem;
+            padding-bottom: 4rem; flex-wrap: wrap;
+        }
+        .social-link {
+            display: flex; align-items: center; gap: 0.5rem;
+            padding: 0.55rem 1.1rem; border-radius: 9px;
+            background: var(--glass-bg); border: 1px solid var(--glass-border);
+            color: #94a3b8; text-decoration: none; font-size: 0.82rem; font-weight: 500;
+            transition: color 0.2s, border-color 0.2s, transform 0.2s;
+        }
+        .social-link:hover { color: #e2e8f0; border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
+
+        @keyframes fadeDown {
+            from { opacity:0; transform:translateY(-20px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+
+        .trail-dot { position: fixed; border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); }
     </style>
 </head>
 <body>
+
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
     <canvas id="bg"></canvas>
-    <div class="content">
-        <h1>Hi, Myself Abhishek</h1>
-        <p>Software developer & Linux enthusiast.</p>
+
+    <nav>
+        <span class="nav-logo">~/cybersnake223</span>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#github">GitHub</a></li>
+            <li><a href="https://github.com/cybersnake223" target="_blank">Profile ↗</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="about">
+        <div class="badge">Open to opportunities</div>
+        <h1>Hi, I'm <span class="gradient-text">Abhishek</span></h1>
+        <p class="tagline">Linux enthusiast & software developer crafting elegant systems from the terminal up.</p>
+        <div class="typed-line"><span id="typed"></span><span class="cursor"></span></div>
+        <div class="cta-group">
+            <a href="#github" class="btn btn-primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                View GitHub
+            </a>
+            <a href="mailto:" class="btn btn-ghost">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+                Get in touch
+            </a>
+        </div>
+        <div class="scroll-hint"><span>scroll</span><div class="line"></div></div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section">
+        <p class="section-label">// what I work with</p>
+        <div class="cards-grid">
+            <div class="card">
+                <span class="card-icon">🐧</span>
+                <div class="card-title">Linux & Systems</div>
+                <div class="card-desc">Arch / CachyOS · Hyprland · kernel tuning · dotfile ricing</div>
+            </div>
+            <div class="card">
+                <span class="card-icon">🐳</span>
+                <div class="card-title">DevOps & Docker</div>
+                <div class="card-desc">Container orchestration · self-hosted stacks · CI pipelines</div>
+            </div>
+            <div class="card">
+                <span class="card-icon">📊</span>
+                <div class="card-title">Data Viz</div>
+                <div class="card-desc">Metabase · Apache Superset · dashboards & analytics</div>
+            </div>
+            <div class="card">
+                <span class="card-icon">⚡</span>
+                <div class="card-title">Scripting</div>
+                <div class="card-desc">Bash · Python · shell pipelines · system automation</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub Section -->
+    <section class="gh-section" id="github">
+        <p class="section-label">// github activity</p>
+
+        <!-- Profile Card -->
+        <div class="gh-profile-card">
+            <div class="gh-avatar-wrap">
+                <img
+                    src="https://avatars.githubusercontent.com/u/Cybersnake223?v=4"
+                    onerror="this.src='https://github.com/Cybersnake223.png'"
+                    class="gh-avatar"
+                    alt="Abhishek Aryan avatar"
+                />
+            </div>
+            <div class="gh-info">
+                <div class="gh-name">
+                    Abhishek Aryan
+                    <span style="font-size:0.7rem;background:rgba(124,58,237,0.2);border:1px solid rgba(124,58,237,0.4);color:#a78bfa;padding:0.2rem 0.6rem;border-radius:999px;font-family:'JetBrains Mono',monospace;">@cybersnake223</span>
+                </div>
+                <div class="gh-handle">github.com/Cybersnake223</div>
+                <div class="gh-bio">🐧 Linux Enthusiast who likes to play around with Computers and stuff. Casually scripting for fun. Also does ricing. <br>I use Arch BTW!!!</div>
+                <div class="gh-meta">
+                    <span class="gh-meta-item">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        New Delhi, India
+                    </span>
+                    <span class="gh-meta-item">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        Neovim · Hyprland · Foot
+                    </span>
+                    <span class="gh-meta-item">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        Currently in college
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Cards (GitHub Readme Stats) -->
+        <div class="gh-stats-grid">
+            <img
+                src="https://github-readme-stats.vercel.app/api?username=Cybersnake223&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=a78bfa&icon_color=06b6d4&text_color=94a3b8&rank_icon=github"
+                class="gh-stat-img"
+                alt="GitHub Stats"
+                loading="lazy"
+            />
+            <img
+                src="https://github-readme-stats.vercel.app/api/top-langs/?username=Cybersnake223&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=a78bfa&text_color=94a3b8&langs_count=6"
+                class="gh-stat-img"
+                alt="Top Languages"
+                loading="lazy"
+            />
+        </div>
+
+        <!-- Contribution streak -->
+        <div style="margin-bottom:2rem;">
+            <img
+                src="https://streak-stats.demolab.com?user=Cybersnake223&theme=tokyonight-duo&hide_border=true&background=0d1117&ring=a78bfa&fire=ec4899&currStreakLabel=06b6d4"
+                class="gh-stat-img"
+                alt="GitHub Streak"
+                loading="lazy"
+                style="max-width:600px;display:block;margin:0 auto;"
+            />
+        </div>
+
+        <!-- Featured Repos -->
+        <p class="section-label" style="margin-bottom:1.5rem;">// featured repositories</p>
+        <div class="repos-grid">
+            <a href="https://github.com/Cybersnake223/Hypr" target="_blank" class="repo-card">
+                <div class="repo-top">
+                    <svg class="repo-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3zM3 9h18M9 21V9"/></svg>
+                    <span class="repo-name">Hypr</span>
+                </div>
+                <div class="repo-desc">🐍 Vicious Viper Dotfiles — Hyprland setup with Waybar, Yazi, Foot terminal & custom scripts for screenshots, wallpapers and more.</div>
+                <div class="repo-footer">
+                    <span class="repo-lang">
+                        <span class="lang-dot" style="background:#89e051;"></span>
+                        Shell 70.1%
+                    </span>
+                    <span style="font-size:0.75rem;color:#64748b;">MIT License</span>
+                </div>
+            </a>
+
+            <a href="https://github.com/Cybersnake223/mkgit-gh" target="_blank" class="repo-card">
+                <div class="repo-top">
+                    <svg class="repo-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 012 2v7M11 18H8a2 2 0 01-2-2V9"/></svg>
+                    <span class="repo-name">mkgit-gh</span>
+                </div>
+                <div class="repo-desc">⚡ Bash script that automates GitHub repo creation — initializes with a README and pushes the first commit automatically.</div>
+                <div class="repo-footer">
+                    <span class="repo-lang">
+                        <span class="lang-dot" style="background:#89e051;"></span>
+                        Shell
+                    </span>
+                </div>
+            </a>
+
+            <a href="https://github.com/Cybersnake223" target="_blank" class="repo-card" style="border-style:dashed;justify-content:center;align-items:center;text-align:center;min-height:140px;">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" style="color:#64748b;margin-bottom:0.6rem;"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                <div style="font-size:0.85rem;color:#64748b;">View all repositories →</div>
+            </a>
+        </div>
+
+        <div class="gh-cta-wrap">
+            <a href="https://github.com/Cybersnake223" target="_blank" class="btn btn-primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                Open Full GitHub Profile
+            </a>
+        </div>
+    </section>
+
+    <!-- Socials -->
+    <div class="socials">
+        <a href="https://github.com/cybersnake223" class="social-link" target="_blank">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            GitHub
+        </a>
+        <a href="https://cybersnake223.github.io" class="social-link">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            Website
+        </a>
     </div>
+
     <script>
+    /* ── Particle network ── */
+    (function () {
         const canvas = document.getElementById('bg');
         const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        let W, H, particles = [], mouse = { x: -9999, y: -9999 };
+        const COUNT = 90, CONNECT_DIST = 130, MOUSE_DIST = 160;
 
-        let rotation = 0;
-        let mouseX = 0, mouseY = 0;
-        let isDragging = false;
+        function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
 
-        canvas.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX / window.innerWidth;
-            mouseY = e.clientY / window.innerHeight;
-            if (isDragging) rotation += (e.movementX * 0.01);
-        });
-        canvas.addEventListener('mousedown', () => isDragging = true);
-        canvas.addEventListener('mouseup', () => isDragging = false);
-        canvas.addEventListener('mouseleave', () => isDragging = false);
-
-        function drawShape(x, y, size, rot, hue) {
-            ctx.save();
-            ctx.translate(x, y);
-            ctx.rotate(rot);
-            ctx.fillStyle = `hsl(${hue}, 70%, ${50 + Math.sin(Date.now() * 0.001 + rot) * 20}%)`;
-            ctx.shadowColor = `hsla(${hue}, 70%, 50%, 0.5)`;
-            ctx.shadowBlur = 20;
-            ctx.beginPath();
-            ctx.arc(0, 0, size, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.restore();
+        function Particle() {
+            this.x = Math.random() * W; this.y = Math.random() * H;
+            this.vx = (Math.random()-0.5)*0.4; this.vy = (Math.random()-0.5)*0.4;
+            this.r = Math.random()*1.8+0.6; this.hue = Math.random()*60+240;
         }
+        Particle.prototype.update = function() {
+            this.x += this.vx; this.y += this.vy;
+            if (this.x<0||this.x>W) this.vx*=-1;
+            if (this.y<0||this.y>H) this.vy*=-1;
+            const dx=this.x-mouse.x, dy=this.y-mouse.y, d=Math.sqrt(dx*dx+dy*dy);
+            if (d<MOUSE_DIST) { const f=(MOUSE_DIST-d)/MOUSE_DIST*0.8; this.vx+=(dx/d)*f*0.04; this.vy+=(dy/d)*f*0.04; }
+            const sp=Math.sqrt(this.vx*this.vx+this.vy*this.vy);
+            if (sp>1.2){this.vx/=sp;this.vy/=sp;}
+        };
+        Particle.prototype.draw = function() {
+            ctx.beginPath(); ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+            ctx.fillStyle=`hsla(${this.hue},80%,75%,0.85)`; ctx.fill();
+        };
 
-        function animate() {
-            ctx.fillStyle = 'rgba(0, 10, 30, 0.15)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            rotation += (mouseX - 0.5) * 0.02;
-            const time = Date.now() * 0.001;
-            for (let i = 0; i < 25; i++) {
-                const angle = rotation + i * 0.4 + time * 0.5;
-                const x = (canvas.width / 2) + Math.sin(angle) * (150 + i * 20);
-                const y = (canvas.height / 2) + Math.cos(angle * 0.7 + time * 0.3) * (100 + i * 15);
-                drawShape(x, y, 25 + i * 1.5, rotation * 2 + i * 0.3 + time, (time * 50 + i * 15) % 360);
+        function init() { resize(); particles = Array.from({length:COUNT},()=>new Particle()); }
+        function frame() {
+            ctx.clearRect(0,0,W,H);
+            for(let i=0;i<particles.length;i++){
+                particles[i].update(); particles[i].draw();
+                for(let j=i+1;j<particles.length;j++){
+                    const dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y;
+                    const d=Math.sqrt(dx*dx+dy*dy);
+                    if(d<CONNECT_DIST){
+                        ctx.beginPath(); ctx.moveTo(particles[i].x,particles[i].y);
+                        ctx.lineTo(particles[j].x,particles[j].y);
+                        ctx.strokeStyle=`rgba(139,92,246,${(1-d/CONNECT_DIST)*0.35})`; ctx.lineWidth=0.8; ctx.stroke();
+                    }
+                }
             }
-            requestAnimationFrame(animate);
+            requestAnimationFrame(frame);
         }
-        animate();
+        window.addEventListener('resize',resize);
+        window.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;});
+        window.addEventListener('mouseleave',()=>{mouse.x=-9999;mouse.y=-9999;});
+        init(); frame();
+    })();
 
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+    /* ── Typing effect ── */
+    (function(){
+        const lines=['arch linux  |  hyprland  |  neovim','docker  |  bash  |  self-hosted','metabase  |  superset  |  analytics','open source everything 🚀'];
+        let li=0, ci=0, del=false;
+        const el=document.getElementById('typed');
+        function tick(){
+            const line=lines[li];
+            if(!del){ el.textContent=line.slice(0,++ci); if(ci===line.length){del=true;setTimeout(tick,2200);return;} }
+            else { el.textContent=line.slice(0,--ci); if(ci===0){del=false;li=(li+1)%lines.length;setTimeout(tick,400);return;} }
+            setTimeout(tick,del?35:62);
+        }
+        setTimeout(tick,1200);
+    })();
+
+    /* ── Mouse trail ── */
+    (function(){
+        const dots=[];
+        for(let i=0;i<12;i++){
+            const d=document.createElement('div'); d.className='trail-dot';
+            const s=(12-i)*1.4;
+            d.style.cssText=`width:${s}px;height:${s}px;background:rgba(139,92,246,${0.5-i*0.04});`;
+            document.body.appendChild(d); dots.push({el:d,x:0,y:0});
+        }
+        let mx=0,my=0;
+        window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+        function loop(){
+            let px=mx,py=my;
+            dots.forEach((dot,i)=>{
+                dot.x+=(px-dot.x)*(0.28-i*0.015); dot.y+=(py-dot.y)*(0.28-i*0.015);
+                dot.el.style.left=dot.x+'px'; dot.el.style.top=dot.y+'px';
+                px=dot.x; py=dot.y;
+            });
+            requestAnimationFrame(loop);
+        }
+        loop();
+    })();
+
+    /* ── Card tilt ── */
+    document.querySelectorAll('.card, .repo-card').forEach(card=>{
+        card.addEventListener('mousemove',e=>{
+            const r=card.getBoundingClientRect();
+            const x=(e.clientX-r.left)/r.width-0.5, y=(e.clientY-r.top)/r.height-0.5;
+            card.style.transform=`translateY(-4px) rotateX(${-y*8}deg) rotateY(${x*8}deg)`;
         });
+        card.addEventListener('mouseleave',()=>card.style.transform='');
+    });
     </script>
 </body>
 </html>
