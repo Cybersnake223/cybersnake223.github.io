@@ -4,24 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abhishek Aryan</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        @font-face {
-            font-family: 'JetBrainsMono NF';
-            src: url('https://cdn.jsdelivr.net/gh/ryanoasis/nerd-fonts@master/patched-fonts/JetBrainsMono/Ligatures/Regular/JetBrainsMonoNerdFont-Regular.ttf') format('truetype');
-            font-weight: 400;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'JetBrainsMono NF';
-            src: url('https://cdn.jsdelivr.net/gh/ryanoasis/nerd-fonts@master/patched-fonts/JetBrainsMono/Ligatures/Bold/JetBrainsMonoNerdFont-Bold.ttf') format('truetype');
-            font-weight: 700;
-            font-style: normal;
-            font-display: swap;
-        }
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
@@ -30,7 +18,7 @@
             --glow: rgba(124, 58, 237, 0.5);
             --glass-bg: rgba(255,255,255,0.04);
             --glass-border: rgba(255,255,255,0.1);
-            --mono: 'JetBrainsMono NF', 'JetBrains Mono', monospace;
+            --mono: 'JetBrains Mono', monospace;
         }
 
         html { scroll-behavior: smooth; }
@@ -43,18 +31,23 @@
             overflow-x: hidden;
         }
 
-        /* ── Orbs ── */
         .orb {
             position: fixed;
             border-radius: 50%;
             filter: blur(80px);
             opacity: 0.3;
             pointer-events: none;
-            animation: drift 12s ease-in-out infinite alternate;
+            will-change: transform;
         }
         .orb1 { width: 520px; height: 520px; background: var(--accent); top: -120px; left: -120px; }
-        .orb2 { width: 420px; height: 420px; background: var(--accent2); bottom: -100px; right: -80px; animation-delay: -4s; }
-        .orb3 { width: 280px; height: 280px; background: #ec4899; top: 40%; left: 55%; animation-delay: -8s; }
+        .orb2 { width: 420px; height: 420px; background: var(--accent2); bottom: -100px; right: -80px; }
+        .orb3 { width: 280px; height: 280px; background: #ec4899; top: 40%; left: 55%; }
+
+        @media (prefers-reduced-motion: no-preference) {
+            .orb { animation: drift 12s ease-in-out infinite alternate; }
+            .orb2 { animation-delay: -4s; }
+            .orb3 { animation-delay: -8s; }
+        }
         @keyframes drift {
             0%   { transform: translate(0,0) scale(1); }
             100% { transform: translate(40px,30px) scale(1.12); }
@@ -62,13 +55,13 @@
 
         canvas { position: fixed; top: 0; left: 0; z-index: 0; pointer-events: none; }
 
-        /* ── Nav ── */
         nav {
             position: fixed; top: 0; left: 0; right: 0; z-index: 100;
             display: flex; justify-content: space-between; align-items: center;
             padding: 1.2rem 3rem;
-            background: rgba(2,8,24,0.6);
+            background: rgba(2,8,24,0.75);
             backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--glass-border);
         }
         .nav-logo {
@@ -82,7 +75,6 @@
         }
         .nav-links a:hover { color: #e2e8f0; }
 
-        /* ── Hero ── */
         .hero {
             position: relative; z-index: 10; min-height: 100vh;
             display: flex; flex-direction: column; justify-content: center;
@@ -97,9 +89,12 @@
             color: #a78bfa; letter-spacing: 0.08em; margin-bottom: 2rem;
             animation: fadeDown 0.8s ease both;
         }
-        .badge::before {
-            content: ''; width: 6px; height: 6px; border-radius: 50%;
-            background: #a78bfa; animation: pulse 1.5s ease infinite;
+        .badge-dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: #a78bfa; flex-shrink: 0;
+        }
+        @media (prefers-reduced-motion: no-preference) {
+            .badge-dot { animation: pulse 1.5s ease infinite; }
         }
         @keyframes pulse {
             0%,100% { opacity:1; transform:scale(1); }
@@ -115,7 +110,9 @@
             background: linear-gradient(135deg, #a78bfa, #06b6d4, #ec4899);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             background-clip: text; background-size: 200% 200%;
-            animation: gradientShift 5s ease infinite;
+        }
+        @media (prefers-reduced-motion: no-preference) {
+            .gradient-text { animation: gradientShift 5s ease infinite; }
         }
         @keyframes gradientShift {
             0%,100% { background-position: 0% 50%; }
@@ -157,7 +154,7 @@
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 40px var(--glow); }
         .btn-ghost {
             background: var(--glass-bg); color: #e2e8f0;
-            border: 1px solid var(--glass-border); backdrop-filter: blur(8px);
+            border: 1px solid var(--glass-border);
         }
         .btn-ghost:hover { transform: translateY(-2px); background: rgba(255,255,255,0.08); }
 
@@ -171,7 +168,9 @@
         .scroll-hint .line {
             width: 1px; height: 36px;
             background: linear-gradient(to bottom, transparent, #94a3b8);
-            animation: scrollLine 1.8s ease infinite;
+        }
+        @media (prefers-reduced-motion: no-preference) {
+            .scroll-hint .line { animation: scrollLine 1.8s ease infinite; }
         }
         @keyframes scrollLine {
             0%   { transform:scaleY(0); transform-origin:top; }
@@ -180,7 +179,6 @@
             100% { transform:scaleY(0); transform-origin:bottom; }
         }
 
-        /* ── Section wrapper ── */
         .section {
             position: relative; z-index: 10;
             max-width: 960px; margin: 0 auto;
@@ -192,15 +190,15 @@
             text-align: center; margin-bottom: 2.5rem; opacity: 0.8;
         }
 
-        /* ── Skill Cards ── */
         .cards-grid {
             display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
             gap: 1.2rem;
         }
         .card {
             background: var(--glass-bg); border: 1px solid var(--glass-border);
-            backdrop-filter: blur(16px); border-radius: 16px; padding: 1.6rem 1.4rem;
+            border-radius: 16px; padding: 1.6rem 1.4rem;
             transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+            will-change: transform;
         }
         .card:hover {
             border-color: rgba(124,58,237,0.5);
@@ -210,7 +208,6 @@
         .card-title { font-size: 0.95rem; font-weight: 600; color: #e2e8f0; margin-bottom: 0.4rem; }
         .card-desc { font-size: 0.78rem; color: #64748b; line-height: 1.5; }
 
-        /* ── GitHub Section ── */
         .gh-section {
             position: relative; z-index: 10;
             max-width: 960px; margin: 0 auto;
@@ -219,7 +216,7 @@
 
         .gh-profile-card {
             background: var(--glass-bg); border: 1px solid var(--glass-border);
-            backdrop-filter: blur(20px); border-radius: 20px;
+            border-radius: 20px;
             padding: 2.4rem; margin-bottom: 2rem;
             display: flex; align-items: center; gap: 2rem;
             flex-wrap: wrap;
@@ -239,7 +236,10 @@
             border-radius: 50%;
             background: linear-gradient(135deg, var(--accent), var(--accent2), #ec4899);
             z-index: -1;
-            animation: rotateBorder 4s linear infinite;
+            will-change: transform;
+        }
+        @media (prefers-reduced-motion: no-preference) {
+            .gh-avatar-wrap::before { animation: rotateBorder 4s linear infinite; }
         }
         @keyframes rotateBorder {
             from { transform: rotate(0deg); }
@@ -264,9 +264,7 @@
             font-size: 0.88rem; color: #94a3b8; line-height: 1.6;
             max-width: 480px; margin-bottom: 1rem;
         }
-        .gh-meta {
-            display: flex; gap: 1.2rem; flex-wrap: wrap;
-        }
+        .gh-meta { display: flex; gap: 1.2rem; flex-wrap: wrap; }
         .gh-meta-item {
             display: flex; align-items: center; gap: 0.35rem;
             font-size: 0.8rem; color: #64748b;
@@ -281,18 +279,20 @@
         }
 
         .gh-stat-img {
-            width: 100%; border-radius: 14px;
+            width: 100%;
+            aspect-ratio: 495 / 195;
+            border-radius: 14px;
             border: 1px solid var(--glass-border);
             transition: transform 0.3s, box-shadow 0.3s;
             display: block;
             background: rgba(13,17,23,0.8);
+            will-change: transform;
         }
         .gh-stat-img:hover {
             transform: translateY(-4px);
             box-shadow: 0 12px 40px rgba(124,58,237,0.25);
         }
 
-        /* Repos */
         .repos-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -304,6 +304,7 @@
             text-decoration: none; color: inherit;
             transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
             display: flex; flex-direction: column; gap: 0.5rem;
+            will-change: transform;
         }
         .repo-card:hover {
             transform: translateY(-4px);
@@ -327,11 +328,8 @@
         }
         .lang-dot { width: 10px; height: 10px; border-radius: 50%; }
 
-        .gh-cta-wrap {
-            text-align: center; margin-top: 2.5rem;
-        }
+        .gh-cta-wrap { text-align: center; margin-top: 2.5rem; }
 
-        /* ── Socials ── */
         .socials {
             position: relative; z-index: 10;
             display: flex; justify-content: center; gap: 1.2rem;
@@ -351,7 +349,12 @@
             to   { opacity:1; transform:translateY(0); }
         }
 
-        .trail-dot { position: fixed; border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); }
+        /* Trail only on non-touch devices */
+        .trail-dot {
+            position: fixed; border-radius: 50%; pointer-events: none;
+            z-index: 9999; transform: translate(-50%,-50%);
+            will-change: transform;
+        }
     </style>
 </head>
 <body>
@@ -366,23 +369,23 @@
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#github">GitHub</a></li>
-            <li><a href="https://github.com/cybersnake223" target="_blank">Profile ↗</a></li>
+            <li><a href="https://github.com/cybersnake223" target="_blank" rel="noopener">Profile ↗</a></li>
         </ul>
     </nav>
 
     <!-- Hero -->
     <section class="hero" id="about">
-        <div class="badge">Open to opportunities</div>
+        <div class="badge"><span class="badge-dot"></span>Open to opportunities</div>
         <h1>Hi, I'm <span class="gradient-text">Abhishek</span> <br><span style="font-size:clamp(1.4rem,3.5vw,2.2rem);font-weight:250;color:#94a3b8;">aka <span class="gradient-text" style="font-weight:900;">Cybersnake</span></span></h1>
         <p class="tagline">Linux enthusiast &amp; software developer crafting elegant systems from the terminal up.</p>
         <div class="typed-line"><span id="typed"></span><span class="cursor"></span></div>
         <div class="cta-group">
             <a href="#github" class="btn btn-primary">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
                 View GitHub
             </a>
             <a href="mailto:nemesisjr111@gmail.com" class="btn btn-ghost">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
                 Get in touch
             </a>
         </div>
@@ -394,40 +397,41 @@
         <p class="section-label">// what I work with</p>
         <div class="cards-grid">
             <div class="card">
-                <span class="card-icon">🐧</span>
+                <span class="card-icon" aria-hidden="true">🐧</span>
                 <div class="card-title">Linux &amp; Systems</div>
                 <div class="card-desc">Arch / CachyOS · Hyprland · kernel tuning · dotfile ricing</div>
             </div>
             <div class="card">
-                <span class="card-icon">🐳</span>
+                <span class="card-icon" aria-hidden="true">🐳</span>
                 <div class="card-title">DevOps &amp; Docker</div>
                 <div class="card-desc">Container orchestration · self-hosted stacks · CI pipelines</div>
             </div>
             <div class="card">
-                <span class="card-icon">📊</span>
+                <span class="card-icon" aria-hidden="true">📊</span>
                 <div class="card-title">Data Viz</div>
                 <div class="card-desc">Metabase · Apache Superset · dashboards &amp; analytics</div>
             </div>
             <div class="card">
-                <span class="card-icon">⚡</span>
+                <span class="card-icon" aria-hidden="true">⚡</span>
                 <div class="card-title">Scripting</div>
                 <div class="card-desc">Bash · Python · shell pipelines · system automation</div>
             </div>
         </div>
     </section>
 
-    <!-- GitHub Section -->
     <section class="gh-section" id="github">
         <p class="section-label">// github activity</p>
 
-        <!-- Profile Card -->
         <div class="gh-profile-card">
             <div class="gh-avatar-wrap">
                 <img
-                    src="https://avatars.githubusercontent.com/u/Cybersnake223?v=4"
-                    onerror="this.src='https://github.com/Cybersnake223.png'"
+                    src="https://github.com/Cybersnake223.png"
                     class="gh-avatar"
                     alt="Abhishek Aryan avatar"
+                    width="100"
+                    height="100"
+                    loading="lazy"
+                    decoding="async"
                 />
             </div>
             <div class="gh-info">
@@ -439,54 +443,57 @@
                 <div class="gh-bio">🐧 Linux Enthusiast who likes to play around with Computers and stuff. Casually scripting for fun. Also does ricing. <br>I use Arch BTW!!!</div>
                 <div class="gh-meta">
                     <span class="gh-meta-item">
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
                         New Delhi, India
                     </span>
                     <span class="gh-meta-item">
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                         Neovim · Hyprland · Foot
                     </span>
                     <span class="gh-meta-item">
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
                         Currently in college
                     </span>
                 </div>
             </div>
         </div>
 
-        <!-- Stats Cards -->
         <div class="gh-stats-grid">
             <img
                 src="https://github-readme-stats.vercel.app/api?username=Cybersnake223&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=a78bfa&icon_color=06b6d4&text_color=94a3b8&rank_icon=github"
                 class="gh-stat-img"
-                alt="GitHub Stats"
+                alt="GitHub Stats for Cybersnake223"
+                width="495" height="195"
                 loading="lazy"
+                decoding="async"
             />
             <img
                 src="https://github-readme-stats.vercel.app/api/top-langs/?username=Cybersnake223&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=a78bfa&text_color=94a3b8&langs_count=6"
                 class="gh-stat-img"
-                alt="Top Languages"
+                alt="Top Languages for Cybersnake223"
+                width="495" height="195"
                 loading="lazy"
+                decoding="async"
             />
         </div>
 
-        <!-- Contribution streak -->
         <div style="margin-bottom:2rem;">
             <img
                 src="https://streak-stats.demolab.com?user=Cybersnake223&theme=tokyonight-duo&hide_border=true&background=0d1117&ring=a78bfa&fire=ec4899&currStreakLabel=06b6d4"
                 class="gh-stat-img"
-                alt="GitHub Streak"
+                alt="GitHub Streak for Cybersnake223"
+                width="495" height="195"
                 loading="lazy"
+                decoding="async"
                 style="max-width:600px;display:block;margin:0 auto;"
             />
         </div>
 
-        <!-- Featured Repos -->
         <p class="section-label" style="margin-bottom:1.5rem;">// featured repositories</p>
         <div class="repos-grid">
-            <a href="https://github.com/Cybersnake223/Hypr" target="_blank" class="repo-card">
+            <a href="https://github.com/Cybersnake223/Hypr" target="_blank" rel="noopener" class="repo-card">
                 <div class="repo-top">
-                    <svg class="repo-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3zM3 9h18M9 21V9"/></svg>
+                    <svg class="repo-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 3h18v18H3zM3 9h18M9 21V9"/></svg>
                     <span class="repo-name">Hypr</span>
                 </div>
                 <div class="repo-desc">🐍 Vicious Viper Dotfiles — Hyprland setup with Waybar, Yazi, Foot terminal &amp; custom scripts for screenshots, wallpapers and more.</div>
@@ -499,9 +506,9 @@
                 </div>
             </a>
 
-            <a href="https://github.com/Cybersnake223/mkgit-gh" target="_blank" class="repo-card">
+            <a href="https://github.com/Cybersnake223/mkgit-gh" target="_blank" rel="noopener" class="repo-card">
                 <div class="repo-top">
-                    <svg class="repo-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 012 2v7M11 18H8a2 2 0 01-2-2V9"/></svg>
+                    <svg class="repo-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 012 2v7M11 18H8a2 2 0 01-2-2V9"/></svg>
                     <span class="repo-name">mkgit-gh</span>
                 </div>
                 <div class="repo-desc">⚡ Bash script that automates GitHub repo creation — initializes with a README and pushes the first commit automatically.</div>
@@ -513,15 +520,15 @@
                 </div>
             </a>
 
-            <a href="https://github.com/Cybersnake223" target="_blank" class="repo-card" style="border-style:dashed;justify-content:center;align-items:center;text-align:center;min-height:140px;">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" style="color:#64748b;margin-bottom:0.6rem;"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            <a href="https://github.com/Cybersnake223" target="_blank" rel="noopener" class="repo-card" style="border-style:dashed;justify-content:center;align-items:center;text-align:center;min-height:140px;">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" style="color:#64748b;margin-bottom:0.6rem;" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
                 <div style="font-size:0.85rem;color:#64748b;">View all repositories →</div>
             </a>
         </div>
 
         <div class="gh-cta-wrap">
-            <a href="https://github.com/Cybersnake223" target="_blank" class="btn btn-primary">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            <a href="https://github.com/Cybersnake223" target="_blank" rel="noopener" class="btn btn-primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
                 Open Full GitHub Profile
             </a>
         </div>
@@ -529,23 +536,30 @@
 
     <!-- Socials -->
     <div class="socials">
-        <a href="https://github.com/cybersnake223" class="social-link" target="_blank">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        <a href="https://github.com/cybersnake223" class="social-link" target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
             GitHub
         </a>
         <a href="https://cybersnake223.github.io" class="social-link">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
             Website
         </a>
     </div>
 
     <script>
-    /* ── Particle network ── */
     (function () {
         const canvas = document.getElementById('bg');
         const ctx = canvas.getContext('2d');
         let W, H, particles = [], mouse = { x: -9999, y: -9999 };
-        const COUNT = 90, CONNECT_DIST = 130, MOUSE_DIST = 160;
+
+        const COUNT = window.innerWidth < 768 ? 35 : 90;
+        const CONNECT_DIST = 130;
+        const CONNECT_DIST2 = CONNECT_DIST * CONNECT_DIST; // avoid sqrt in loop
+        const MOUSE_DIST = 160;
+        const MOUSE_DIST2 = MOUSE_DIST * MOUSE_DIST;
+
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReduced) { canvas.style.display = 'none'; return; }
 
         function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
 
@@ -556,86 +570,111 @@
         }
         Particle.prototype.update = function() {
             this.x += this.vx; this.y += this.vy;
-            if (this.x<0||this.x>W) this.vx*=-1;
-            if (this.y<0||this.y>H) this.vy*=-1;
-            const dx=this.x-mouse.x, dy=this.y-mouse.y, d=Math.sqrt(dx*dx+dy*dy);
-            if (d<MOUSE_DIST) { const f=(MOUSE_DIST-d)/MOUSE_DIST*0.8; this.vx+=(dx/d)*f*0.04; this.vy+=(dy/d)*f*0.04; }
-            const sp=Math.sqrt(this.vx*this.vx+this.vy*this.vy);
-            if (sp>1.2){this.vx/=sp;this.vy/=sp;}
+            if (this.x < 0 || this.x > W) this.vx *= -1;
+            if (this.y < 0 || this.y > H) this.vy *= -1;
+            const dx = this.x - mouse.x, dy = this.y - mouse.y;
+            const d2 = dx*dx + dy*dy;
+            if (d2 < MOUSE_DIST2) {
+                const d = Math.sqrt(d2);
+                const f = (MOUSE_DIST - d) / MOUSE_DIST * 0.8;
+                this.vx += (dx/d)*f*0.04; this.vy += (dy/d)*f*0.04;
+            }
+            const sp = this.vx*this.vx + this.vy*this.vy;
+            if (sp > 1.44) { const s = Math.sqrt(sp); this.vx /= s; this.vy /= s; }
         };
         Particle.prototype.draw = function() {
             ctx.beginPath(); ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
-            ctx.fillStyle=`hsla(${this.hue},80%,75%,0.85)`; ctx.fill();
+            ctx.fillStyle = `hsla(${this.hue},80%,75%,0.85)`; ctx.fill();
         };
 
-        function init() { resize(); particles = Array.from({length:COUNT},()=>new Particle()); }
+        function init() { resize(); particles = Array.from({length:COUNT}, () => new Particle()); }
+
         function frame() {
             ctx.clearRect(0,0,W,H);
-            for(let i=0;i<particles.length;i++){
-                particles[i].update(); particles[i].draw();
-                for(let j=i+1;j<particles.length;j++){
-                    const dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y;
-                    const d=Math.sqrt(dx*dx+dy*dy);
-                    if(d<CONNECT_DIST){
-                        ctx.beginPath(); ctx.moveTo(particles[i].x,particles[i].y);
-                        ctx.lineTo(particles[j].x,particles[j].y);
-                        ctx.strokeStyle=`rgba(139,92,246,${(1-d/CONNECT_DIST)*0.35})`; ctx.lineWidth=0.8; ctx.stroke();
+
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+            }
+
+            ctx.beginPath();
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i+1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    if (dx*dx + dy*dy < CONNECT_DIST2) {
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
                     }
                 }
             }
+            ctx.strokeStyle = 'rgba(139,92,246,0.3)';
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+
             requestAnimationFrame(frame);
         }
-        window.addEventListener('resize',resize);
-        window.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;});
-        window.addEventListener('mouseleave',()=>{mouse.x=-9999;mouse.y=-9999;});
+
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(resize, 150);
+        });
+        window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+        window.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
         init(); frame();
     })();
 
-    /* ── Typing effect ── */
     (function(){
-        const lines=['arch linux  |  hyprland  |  neovim','docker  |  bash  |  self-hosted','metabase  |  superset  |  analytics','open source everything 🚀'];
-        let li=0, ci=0, del=false;
-        const el=document.getElementById('typed');
+        const lines = ['arch linux  |  hyprland  |  neovim','docker  |  bash  |  self-hosted','metabase  |  superset  |  analytics','open source everything 🚀'];
+        let li = 0, ci = 0, del = false;
+        const el = document.getElementById('typed');
         function tick(){
-            const line=lines[li];
-            if(!del){ el.textContent=line.slice(0,++ci); if(ci===line.length){del=true;setTimeout(tick,2200);return;} }
-            else { el.textContent=line.slice(0,--ci); if(ci===0){del=false;li=(li+1)%lines.length;setTimeout(tick,400);return;} }
-            setTimeout(tick,del?35:62);
+            const line = lines[li];
+            if (!del) { el.textContent = line.slice(0,++ci); if (ci===line.length){del=true;setTimeout(tick,2200);return;} }
+            else { el.textContent = line.slice(0,--ci); if (ci===0){del=false;li=(li+1)%lines.length;setTimeout(tick,400);return;} }
+            setTimeout(tick, del ? 35 : 62);
         }
-        setTimeout(tick,1200);
+        setTimeout(tick, 1200);
     })();
 
-    /* ── Mouse trail ── */
     (function(){
-        const dots=[];
-        for(let i=0;i<12;i++){
-            const d=document.createElement('div'); d.className='trail-dot';
-            const s=(12-i)*1.4;
-            d.style.cssText=`width:${s}px;height:${s}px;background:rgba(139,92,246,${0.5-i*0.04});`;
-            document.body.appendChild(d); dots.push({el:d,x:0,y:0});
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        if ('ontouchstart' in window) return; 
+
+        const TRAIL_COUNT = 8; 
+        const dots = [];
+        for (let i = 0; i < TRAIL_COUNT; i++) {
+            const d = document.createElement('div');
+            d.className = 'trail-dot';
+            const s = (TRAIL_COUNT - i) * 1.6;
+            d.style.cssText = `width:${s}px;height:${s}px;background:rgba(139,92,246,${0.5 - i*0.05});`;
+            document.body.appendChild(d);
+            dots.push({el: d, x: 0, y: 0});
         }
-        let mx=0,my=0;
-        window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+        let mx = 0, my = 0;
+        window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
         function loop(){
-            let px=mx,py=my;
-            dots.forEach((dot,i)=>{
-                dot.x+=(px-dot.x)*(0.28-i*0.015); dot.y+=(py-dot.y)*(0.28-i*0.015);
-                dot.el.style.left=dot.x+'px'; dot.el.style.top=dot.y+'px';
-                px=dot.x; py=dot.y;
+            let px = mx, py = my;
+            dots.forEach((dot, i) => {
+                dot.x += (px - dot.x) * (0.28 - i*0.02);
+                dot.y += (py - dot.y) * (0.28 - i*0.02);
+                dot.el.style.transform = `translate(calc(${dot.x}px - 50%), calc(${dot.y}px - 50%))`;
+                px = dot.x; py = dot.y;
             });
             requestAnimationFrame(loop);
         }
         loop();
     })();
 
-    /* ── Card tilt ── */
-    document.querySelectorAll('.card, .repo-card').forEach(card=>{
-        card.addEventListener('mousemove',e=>{
-            const r=card.getBoundingClientRect();
-            const x=(e.clientX-r.left)/r.width-0.5, y=(e.clientY-r.top)/r.height-0.5;
-            card.style.transform=`translateY(-4px) rotateX(${-y*8}deg) rotateY(${x*8}deg)`;
+    document.querySelectorAll('.card, .repo-card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const r = card.getBoundingClientRect();
+            const x = (e.clientX - r.left) / r.width - 0.5;
+            const y = (e.clientY - r.top) / r.height - 0.5;
+            card.style.transform = `translateY(-4px) rotateX(${-y*8}deg) rotateY(${x*8}deg)`;
         });
-        card.addEventListener('mouseleave',()=>card.style.transform='');
+        card.addEventListener('mouseleave', () => card.style.transform = '');
     });
     </script>
 </body>
