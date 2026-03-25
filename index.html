@@ -5,8 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abhishek Aryan</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: 'JetBrainsMono NF';
+            src: url('https://cdn.jsdelivr.net/gh/ryanoasis/nerd-fonts@master/patched-fonts/JetBrainsMono/Ligatures/Regular/JetBrainsMonoNerdFont-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'JetBrainsMono NF';
+            src: url('https://cdn.jsdelivr.net/gh/ryanoasis/nerd-fonts@master/patched-fonts/JetBrainsMono/Ligatures/Bold/JetBrainsMonoNerdFont-Bold.ttf') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
@@ -15,6 +30,7 @@
             --glow: rgba(124, 58, 237, 0.5);
             --glass-bg: rgba(255,255,255,0.04);
             --glass-border: rgba(255,255,255,0.1);
+            --mono: 'JetBrainsMono NF', 'JetBrains Mono', monospace;
         }
 
         html { scroll-behavior: smooth; }
@@ -56,7 +72,7 @@
             border-bottom: 1px solid var(--glass-border);
         }
         .nav-logo {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--mono);
             font-size: 1rem; font-weight: 700; color: var(--accent2);
         }
         .nav-links { display: flex; gap: 2rem; list-style: none; }
@@ -77,7 +93,7 @@
             display: inline-flex; align-items: center; gap: 0.5rem;
             padding: 0.4rem 1rem; border-radius: 999px;
             background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.4);
-            font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+            font-family: var(--mono); font-size: 0.75rem;
             color: #a78bfa; letter-spacing: 0.08em; margin-bottom: 2rem;
             animation: fadeDown 0.8s ease both;
         }
@@ -113,7 +129,7 @@
         }
 
         .typed-line {
-            font-family: 'JetBrains Mono', monospace; font-size: 0.95rem;
+            font-family: var(--mono); font-size: 0.95rem;
             color: var(--accent2); margin-bottom: 3rem; min-height: 1.4em;
             animation: fadeDown 1s ease 0.3s both;
         }
@@ -171,7 +187,7 @@
             padding: 4rem 2rem;
         }
         .section-label {
-            font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+            font-family: var(--mono); font-size: 0.75rem;
             color: var(--accent2); letter-spacing: 0.15em; text-transform: uppercase;
             text-align: center; margin-bottom: 2.5rem; opacity: 0.8;
         }
@@ -241,7 +257,7 @@
             display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.3rem;
         }
         .gh-handle {
-            font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;
+            font-family: var(--mono); font-size: 0.85rem;
             color: var(--accent2); margin-bottom: 0.8rem;
         }
         .gh-bio {
@@ -297,7 +313,7 @@
         .repo-top { display: flex; align-items: center; gap: 0.6rem; }
         .repo-icon { color: var(--accent2); flex-shrink: 0; }
         .repo-name {
-            font-family: 'JetBrains Mono', monospace; font-size: 0.88rem;
+            font-family: var(--mono); font-size: 0.88rem;
             font-weight: 700; color: #c4b5fd;
         }
         .repo-desc { font-size: 0.78rem; color: #64748b; line-height: 1.5; flex: 1; }
@@ -358,14 +374,14 @@
     <section class="hero" id="about">
         <div class="badge">Open to opportunities</div>
         <h1>Hi, I'm <span class="gradient-text">Abhishek</span> <br><span style="font-size:clamp(1.4rem,3.5vw,2.2rem);font-weight:250;color:#94a3b8;">aka <span class="gradient-text" style="font-weight:900;">Cybersnake</span></span></h1>
-<p class="tagline">Linux enthusiast & software developer crafting elegant systems from the terminal up.</p>
+        <p class="tagline">Linux enthusiast &amp; software developer crafting elegant systems from the terminal up.</p>
         <div class="typed-line"><span id="typed"></span><span class="cursor"></span></div>
         <div class="cta-group">
             <a href="#github" class="btn btn-primary">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
                 View GitHub
             </a>
-            <a href="mailto:" class="btn btn-ghost">
+            <a href="mailto:nemesisjr111@gmail.com" class="btn btn-ghost">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
                 Get in touch
             </a>
@@ -379,18 +395,18 @@
         <div class="cards-grid">
             <div class="card">
                 <span class="card-icon">🐧</span>
-                <div class="card-title">Linux & Systems</div>
+                <div class="card-title">Linux &amp; Systems</div>
                 <div class="card-desc">Arch / CachyOS · Hyprland · kernel tuning · dotfile ricing</div>
             </div>
             <div class="card">
                 <span class="card-icon">🐳</span>
-                <div class="card-title">DevOps & Docker</div>
+                <div class="card-title">DevOps &amp; Docker</div>
                 <div class="card-desc">Container orchestration · self-hosted stacks · CI pipelines</div>
             </div>
             <div class="card">
                 <span class="card-icon">📊</span>
                 <div class="card-title">Data Viz</div>
-                <div class="card-desc">Metabase · Apache Superset · dashboards & analytics</div>
+                <div class="card-desc">Metabase · Apache Superset · dashboards &amp; analytics</div>
             </div>
             <div class="card">
                 <span class="card-icon">⚡</span>
@@ -417,7 +433,7 @@
             <div class="gh-info">
                 <div class="gh-name">
                     Abhishek Aryan
-                    <span style="font-size:0.7rem;background:rgba(124,58,237,0.2);border:1px solid rgba(124,58,237,0.4);color:#a78bfa;padding:0.2rem 0.6rem;border-radius:999px;font-family:'JetBrains Mono',monospace;">@cybersnake223</span>
+                    <span style="font-size:0.7rem;background:rgba(124,58,237,0.2);border:1px solid rgba(124,58,237,0.4);color:#a78bfa;padding:0.2rem 0.6rem;border-radius:999px;font-family:var(--mono);">@cybersnake223</span>
                 </div>
                 <div class="gh-handle">github.com/Cybersnake223</div>
                 <div class="gh-bio">🐧 Linux Enthusiast who likes to play around with Computers and stuff. Casually scripting for fun. Also does ricing. <br>I use Arch BTW!!!</div>
@@ -438,7 +454,7 @@
             </div>
         </div>
 
-        <!-- Stats Cards (GitHub Readme Stats) -->
+        <!-- Stats Cards -->
         <div class="gh-stats-grid">
             <img
                 src="https://github-readme-stats.vercel.app/api?username=Cybersnake223&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=a78bfa&icon_color=06b6d4&text_color=94a3b8&rank_icon=github"
@@ -473,7 +489,7 @@
                     <svg class="repo-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3zM3 9h18M9 21V9"/></svg>
                     <span class="repo-name">Hypr</span>
                 </div>
-                <div class="repo-desc">🐍 Vicious Viper Dotfiles — Hyprland setup with Waybar, Yazi, Foot terminal & custom scripts for screenshots, wallpapers and more.</div>
+                <div class="repo-desc">🐍 Vicious Viper Dotfiles — Hyprland setup with Waybar, Yazi, Foot terminal &amp; custom scripts for screenshots, wallpapers and more.</div>
                 <div class="repo-footer">
                     <span class="repo-lang">
                         <span class="lang-dot" style="background:#89e051;"></span>
