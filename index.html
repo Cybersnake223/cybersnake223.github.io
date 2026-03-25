@@ -1,8 +1,91 @@
 <!DOCTYPE html>
 <html>
-  <head><title>Abhishek Aryan</title></head>
-  <body>
-    <h1>Hi, Myself Abhishek</h1>
-    <p>Software developer & Linux enthusiast.</p>
-  </body>
+<head>
+    <title>Abhishek Aryan</title>
+    <style>
+        body { 
+            margin: 0; 
+            overflow: hidden; 
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            background: radial-gradient(circle, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.8) 100%);
+        }
+        canvas { 
+            display: block; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: -1;
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 20vh 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 { font-size: 3rem; margin: 0 0 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
+        p { font-size: 1.2rem; margin: 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); }
+    </style>
+</head>
+<body>
+    <canvas id="bg"></canvas>
+    <div class="content">
+        <h1>Hi, Myself Abhishek</h1>
+        <p>Software developer & Linux enthusiast.</p>
+    </div>
+    <script>
+        const canvas = document.getElementById('bg');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let rotation = 0;
+        let mouseX = 0, mouseY = 0;
+        let isDragging = false;
+
+        canvas.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX / window.innerWidth;
+            mouseY = e.clientY / window.innerHeight;
+            if (isDragging) rotation += (e.movementX * 0.01);
+        });
+        canvas.addEventListener('mousedown', () => isDragging = true);
+        canvas.addEventListener('mouseup', () => isDragging = false);
+        canvas.addEventListener('mouseleave', () => isDragging = false);
+
+        function drawShape(x, y, size, rot, hue) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(rot);
+            ctx.fillStyle = `hsl(${hue}, 70%, ${50 + Math.sin(Date.now() * 0.001 + rot) * 20}%)`;
+            ctx.shadowColor = `hsla(${hue}, 70%, 50%, 0.5)`;
+            ctx.shadowBlur = 20;
+            ctx.beginPath();
+            ctx.arc(0, 0, size, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+        }
+
+        function animate() {
+            ctx.fillStyle = 'rgba(0, 10, 30, 0.15)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            rotation += (mouseX - 0.5) * 0.02;
+            const time = Date.now() * 0.001;
+            for (let i = 0; i < 25; i++) {
+                const angle = rotation + i * 0.4 + time * 0.5;
+                const x = (canvas.width / 2) + Math.sin(angle) * (150 + i * 20);
+                const y = (canvas.height / 2) + Math.cos(angle * 0.7 + time * 0.3) * (100 + i * 15);
+                drawShape(x, y, 25 + i * 1.5, rotation * 2 + i * 0.3 + time, (time * 50 + i * 15) % 360);
+            }
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
 </html>
