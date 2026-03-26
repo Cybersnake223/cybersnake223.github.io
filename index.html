@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#020818">
   <title>Abhishek — Linux Developer & DevOps Engineer</title>
   <meta name="description" content="Abhishek — Linux systems developer, DevOps engineer & open-source enthusiast. Arch Linux, Hyprland, Docker, Bash, Metabase, self-hosted stacks.">
   <meta name="robots" content="index, follow">
@@ -62,6 +63,11 @@
     .mesh-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(ellipse 80% 60% at 20% 10%, rgba(124,58,237,0.12) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 80% 80%, rgba(6,182,212,0.1) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 50% 50%, rgba(236,72,153,0.06) 0%, transparent 60%), var(--bg); }
     .orb { position: fixed; border-radius: 50%; filter: blur(90px); opacity: 0.18; pointer-events: none; z-index: 0; }
     .orb1 { width: 600px; height: 600px; background: var(--accent); top: -150px; left: -150px; }
+    .orb2 { width: 480px; height: 480px; background: var(--accent2); bottom: -120px; right: -100px; }
+    .orb3 { width: 300px; height: 300px; background: var(--accent3); top: 50%; left: 55%; opacity: 0.08; }
+    @media (prefers-reduced-motion: no-preference) { .orb { animation: drift 16s ease-in-out infinite alternate; } .orb2 { animation-delay: -6s; } .orb3 { animation-delay: -3s; } }
+    @keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(50px,35px) scale(1.12); } }
+    canvas { position: fixed; top: 0; left: 0; z-index: 0; pointer-events: none; }
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1rem 3rem; background: rgba(2,8,24,0.75); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); transition: border-color 0.3s, background 0.3s; transform: translateZ(0); }
     nav.scrolled { border-bottom-color: rgba(255,255,255,0.14); background: rgba(2,8,24,0.92); }
     .nav-logo { font-family: var(--mono); font-size: 0.92rem; font-weight: 700; color: var(--accent2); text-decoration: none; letter-spacing: -0.02em; transition: color 0.3s; }
@@ -94,7 +100,7 @@
     .reveal-delay-3 { transition-delay: 0.24s; }
     .reveal-delay-4 { transition-delay: 0.32s; }
     .reveal-delay-5 { transition-delay: 0.40s; }
-    .hero { position: relative; z-index: 10; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 8rem 2rem 6rem; overflow: hidden; contain: layout style; }
+    .hero { position: relative; z-index: 10; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 8rem 2rem 6rem; overflow: hidden; contain: layout style paint; }
     .hero::before { content: ''; position: absolute; inset: 0; z-index: 0; background-image: linear-gradient(rgba(124,58,237,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(124,58,237,0.07) 1px, transparent 1px); background-size: 48px 48px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%); -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%); pointer-events: none; }
     .hero > * { position: relative; z-index: 1; }
     .badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.35rem 1rem; border-radius: 999px; background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.25); font-family: var(--mono); font-size: 0.72rem; color: #4ade80; letter-spacing: 0.1em; margin-bottom: 2rem; animation: fadeDown 0.8s ease both; }
@@ -273,7 +279,10 @@
   <div id="progress" aria-hidden="true"></div>
   <div class="mesh-bg" aria-hidden="true"></div>
   <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
 
+  <canvas id="bg" aria-hidden="true"></canvas>
   <button id="toTop" aria-label="Back to top">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
@@ -502,7 +511,7 @@
         </div>
         <div class="gh-views">
           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          <img src="https://komarev.com/ghpvc/?username=Cybersnake223&color=7c3aed&style=flat-square&label=profile+views" alt="Profile view count" height="14" loading="lazy" onerror="this.parentElement.style.display='none'">
+          <img src="https://komarev.com/ghpvc/?username=Cybersnake223&color=7c3aed&style=flat-square&label=profile+views" alt="Profile view count" width="128" height="14" decoding="async" loading="lazy" onerror="this.parentElement.style.display='none'">
         </div>
       </div>
     </div>
@@ -600,7 +609,7 @@
     <span class="footer-easter">// btw i use arch &nbsp;·&nbsp; hyprland &nbsp;·&nbsp; neofetch goes hard</span>
   </footer>
 
-  <script>
+  <script defer>
   document.getElementById('year').textContent = new Date().getFullYear();
 
   (function(){
@@ -620,6 +629,39 @@
     window.addEventListener('scroll',onScroll,{passive:true});
     btn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
   })();
+
+  (function(){
+    const canvas=document.getElementById('bg'),ctx=canvas.getContext('2d');
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){canvas.style.display='none';return;}
+    let W,H,P=[],paused=false;
+    const N=20,CD2=16900;
+    function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+    function mkP(){return{x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:Math.random()*1.4+.6,hue:Math.random()*60+240};}
+    function frame(){
+      if(paused){requestAnimationFrame(frame);return;}
+      ctx.clearRect(0,0,W,H);
+      for(let i=0;i<N;i++){
+        const p=P[i];
+        p.x+=p.vx;p.y+=p.vy;
+        if(p.x<0||p.x>W)p.vx*=-1;
+        if(p.y<0||p.y>H)p.vy*=-1;
+        ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle=`hsla(${p.hue},80%,75%,0.8)`;ctx.fill();
+      }
+      ctx.beginPath();ctx.strokeStyle='rgba(139,92,246,0.2)';ctx.lineWidth=0.6;
+      for(let i=0;i<N;i++)for(let j=i+1;j<N;j++){
+        const dx=P[i].x-P[j].x;if(dx*dx>CD2)continue;
+        const dy=P[i].y-P[j].y;
+        if(dx*dx+dy*dy<CD2){ctx.moveTo(P[i].x,P[i].y);ctx.lineTo(P[j].x,P[j].y);}
+      }
+      ctx.stroke();
+      requestAnimationFrame(frame);
+    }
+    document.addEventListener('visibilitychange',()=>{paused=document.hidden;});
+    window.addEventListener('resize',()=>{resize();P=Array.from({length:N},mkP);},{passive:true});
+    resize();P=Array.from({length:N},mkP);frame();
+  })();
+
 
 
   (function(){
