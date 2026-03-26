@@ -31,6 +31,7 @@
     "address": { "@type": "PostalAddress", "addressLocality": "New Delhi", "addressCountry": "IN" }
   }
   </script>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;700&display=swap">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -167,7 +168,7 @@
     .avail-dot { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; position: relative; flex-shrink: 0; }
     .avail-dot::after { content: ''; position: absolute; inset: -3px; border-radius: 50%; border: 1px solid rgba(74,222,128,0.5); animation: ripple 2s ease infinite; }
     .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 0.85rem; }
-    .skill-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-top: 2px solid transparent; border-radius: 16px; padding: 1.4rem; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s, background 0.3s; box-shadow: 0 4px 20px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.06); position: relative; overflow: hidden; }
+    .skill-card { background: rgba(255,255,255,0.035); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); border-top: 2px solid transparent; border-radius: 16px; padding: 1.4rem; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s, background 0.3s; will-change: transform; box-shadow: 0 4px 20px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.06); position: relative; overflow: hidden; }
     .skill-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.04) 50%, transparent 60%); background-size: 200% 100%; background-position: -100% 0; transition: background-position 0.5s ease; pointer-events: none; }
     .skill-card:hover::after { background-position: 100% 0; }
     .skill-card:nth-child(1) { border-color: rgba(74,222,128,0.08); }
@@ -198,13 +199,13 @@
     .skill-card:nth-child(5) .skill-bar { background: linear-gradient(90deg, var(--accent2), var(--accent)); }
     .skill-card.bar-animate .skill-bar { width: var(--bar-width); }
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1.2rem; }
-    .project-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09); border-radius: 18px; padding: 1.6rem; display: flex; flex-direction: column; gap: 0.75rem; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.06); }
+    .project-card { background: rgba(255,255,255,0.035); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.09); border-radius: 18px; padding: 1.6rem; display: flex; flex-direction: column; gap: 0.75rem; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; will-change: transform; box-shadow: 0 4px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.06); }
     .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent2)); opacity: 0; transition: opacity 0.3s; }
     .project-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.05) 50%, transparent 60%); background-size: 200% 100%; background-position: -100% 0; transition: background-position 0.5s ease; pointer-events: none; }
     .project-card:hover { transform: translateY(-5px); border-color: rgba(124,58,237,0.45); box-shadow: 0 16px 48px rgba(124,58,237,0.2), inset 0 1px 0 rgba(255,255,255,0.1); }
     .project-card:hover::before { opacity: 1; }
     .project-card:hover::after { background-position: 100% 0; }
-    .project-card-more { background: rgba(255,255,255,0.02); border: 1px dashed rgba(255,255,255,0.1); border-radius: 18px; justify-content: center; align-items: center; text-align: center; min-height: 160px; text-decoration: none; display: flex; flex-direction: column; gap: 0.5rem; transition: border-color 0.3s, background 0.3s, transform 0.3s; box-shadow: inset 0 1px 0 rgba(255,255,255,0.04); }
+    .project-card-more { background: rgba(255,255,255,0.02); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px dashed rgba(255,255,255,0.1); border-radius: 18px; justify-content: center; align-items: center; text-align: center; min-height: 160px; text-decoration: none; display: flex; flex-direction: column; gap: 0.5rem; transition: border-color 0.3s, background 0.3s, transform 0.3s; box-shadow: inset 0 1px 0 rgba(255,255,255,0.04); }
     .project-card-more:hover { border-color: rgba(124,58,237,0.4); background: rgba(124,58,237,0.06); transform: translateY(-3px); }
     .project-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
     .project-title-wrap { display: flex; align-items: center; gap: 0.6rem; }
@@ -220,7 +221,7 @@
     .proj-tag { font-size: 0.67rem; font-family: var(--mono); padding: 0.15rem 0.5rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.08); color: var(--text-dim); background: rgba(255,255,255,0.03); transition: color 0.2s, border-color 0.2s, background 0.2s; }
     .proj-tag:hover { color: var(--accent2); border-color: rgba(6,182,212,0.4); background: rgba(6,182,212,0.08); }
     .gh-section { position: relative; z-index: 10; max-width: 980px; margin: 0 auto; padding: 0 2rem 5rem; contain: layout; }
-    .gh-profile-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09); border-radius: 22px; padding: 2rem 2.4rem; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; position: relative; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.07); transition: border-color 0.3s, box-shadow 0.3s; }
+    .gh-profile-card { background: rgba(255,255,255,0.035); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.09); border-radius: 22px; padding: 2rem 2.4rem; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; position: relative; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.07); transition: border-color 0.3s, box-shadow 0.3s; }
     .gh-profile-card::before { content: ''; position: absolute; inset: -1px; border-radius: 23px; background: linear-gradient(135deg, rgba(124,58,237,0.25), rgba(6,182,212,0.2), rgba(236,72,153,0.12)); z-index: -1; mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask-composite: exclude; -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: destination-out; padding: 1px; }
     .gh-profile-card:hover { border-color: rgba(124,58,237,0.3); box-shadow: 0 12px 60px rgba(124,58,237,0.15), inset 0 1px 0 rgba(255,255,255,0.1); }
     .gh-avatar-wrap { position: relative; flex-shrink: 0; }
@@ -236,24 +237,26 @@
     .gh-meta-item { display: flex; align-items: center; gap: 0.35rem; font-size: 0.78rem; color: var(--text-dim); }
     .gh-meta-item svg { opacity: 0.6; }
     .gh-counters { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
-    .gh-counter { display: flex; flex-direction: column; align-items: center; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 0.5rem 1rem; min-width: 64px; transition: border-color 0.2s, background 0.2s, transform 0.2s; }
+    .gh-counter { display: flex; flex-direction: column; align-items: center; background: rgba(255,255,255,0.04); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 0.5rem 1rem; min-width: 64px; transition: border-color 0.2s, background 0.2s, transform 0.2s; }
     .gh-counter:hover { background: rgba(124,58,237,0.12); border-color: rgba(124,58,237,0.35); transform: translateY(-2px); }
     .gh-counter-val { font-family: var(--mono); font-size: 1.1rem; font-weight: 700; color: #a78bfa; line-height: 1.2; }
     .gh-counter-label { font-size: 0.65rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.15rem; }
     .gh-views { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--mono); font-size: 0.7rem; color: var(--text-dim); background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 999px; padding: 0.2rem 0.7rem; margin-top: 0.7rem; }
-    .gh-stats-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1rem; }
-    .gh-stat-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; position: relative; transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s; display: flex; flex-direction: column; box-shadow: 0 4px 24px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.05); }
+    .gh-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    @media (max-width: 640px) { .gh-stats-grid { grid-template-columns: 1fr; } }
+    .gh-stat-card { background: rgba(255,255,255,0.03); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; position: relative; transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s; display: flex; flex-direction: column; box-shadow: 0 4px 24px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.05); }
     .gh-stat-card:hover { border-color: rgba(124,58,237,0.35); box-shadow: 0 10px 40px rgba(124,58,237,0.15), inset 0 1px 0 rgba(255,255,255,0.08); transform: translateY(-3px); }
+    .gh-stat-card.span2 { grid-column: 1 / -1; }
     .gh-stat-card-header { padding: 0.65rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.02); }
     .gh-stat-card-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
     .gh-stat-card-label { font-family: var(--mono); font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; }
     .gh-stat-card-body { flex: 1; display: flex; align-items: center; justify-content: center; padding: 1rem; min-height: 180px; position: relative; }
+    .gh-stat-card.span2 .gh-stat-card-body { min-height: 155px; }
     .gh-stat-card.activity .gh-stat-card-body { min-height: 140px; padding: 0.6rem; }
     .gh-stat-card-body img { width: 100%; display: block; border-radius: 6px; transition: transform 0.3s; }
     .gh-stat-card:hover .gh-stat-card-body img { transform: scale(1.01); }
     .gh-stat-shimmer { position: absolute; inset: 0; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.025) 50%, transparent 100%); background-size: 200% 100%; animation: shimmer 2s ease infinite; pointer-events: none; z-index: 1; }
     @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
-    .gh-stat-fallback { display: none; align-items: center; justify-content: center; color: var(--text-dim); font-size: 0.75rem; font-family: var(--mono); padding: 2rem; width: 100%; }
     .gh-cta-wrap { text-align: center; margin-top: 2.5rem; }
     .contact-section { position: relative; z-index: 10; max-width: 680px; margin: 0 auto; padding: 0 2rem 5rem; text-align: center; contain: layout; }
     .contact-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 3rem 2.5rem; position: relative; z-index: 0; }
@@ -351,50 +354,31 @@
       <div class="reveal reveal-delay-2">
         <div class="status-card">
           <div class="status-row">
-            <div class="status-icon">🖥️</div>
+            <span class="status-icon">🎓</span>
             <div>
-              <div class="status-label">Daily Driver</div>
-              <div class="status-value">CachyOS <small>/ Arch Linux</small></div>
+              <div class="status-label">Education</div>
+              <div class="status-value">Computer Science<br><small>Currently in college · New Delhi</small></div>
             </div>
           </div>
           <div class="status-row">
-            <div class="status-icon">🪟</div>
+            <span class="status-icon">🖥️</span>
             <div>
-              <div class="status-label">Window Manager</div>
-              <div class="status-value">Hyprland <small>/ Wayland</small></div>
+              <div class="status-label">Daily Setup</div>
+              <div class="status-value">CachyOS · Hyprland · Neovim<br><small>Foot terminal · Waybar · rofi</small></div>
             </div>
           </div>
           <div class="status-row">
-            <div class="status-icon">⚙️</div>
-            <div>
-              <div class="status-label">Shell</div>
-              <div class="status-value">Zsh <small>+ custom plugins</small></div>
-            </div>
-          </div>
-          <div class="status-row">
-            <div class="status-icon">🐋</div>
-            <div>
-              <div class="status-label">Containers</div>
-              <div class="status-value">Docker <small>/ Compose stacks</small></div>
-            </div>
-          </div>
-          <div class="status-row">
-            <div class="status-icon">📍</div>
+            <span class="status-icon">📍</span>
             <div>
               <div class="status-label">Location</div>
-              <div class="status-value">New Delhi, India</div>
+              <div class="status-value">New Delhi, India<br><small>Open to remote</small></div>
             </div>
           </div>
           <div class="status-row">
-            <div class="status-icon">💼</div>
+            <span class="status-icon">💼</span>
             <div>
-              <div class="status-label">Status</div>
-              <div class="status-value">
-                <span class="avail-badge">
-                  <span class="avail-dot"></span>
-                  Available for hire
-                </span>
-              </div>
+              <div class="status-label">Availability</div>
+              <div class="avail-badge"><span class="avail-dot" aria-hidden="true"></span>Open to opportunities</div>
             </div>
           </div>
         </div>
@@ -402,74 +386,53 @@
     </div>
   </section>
 
-  <hr class="section-divider" aria-hidden="true">
+  <hr class="section-divider">
 
   <section class="section" id="skills" aria-label="Skills">
     <div class="section-header reveal">
-      <span class="section-label">// expertise</span>
+      <span class="section-label">// technical skills</span>
       <h2 class="section-title">What I <em class="accent-word">work</em> <span>with</span></h2>
     </div>
     <div class="skills-grid">
-      <div class="skill-card reveal reveal-delay-1" style="--bar-width:92%">
-        <span class="skill-icon">🐧</span>
-        <div class="skill-name">Linux Systems</div>
-        <div class="skill-tags">
-          <span class="skill-tag green">Arch</span>
-          <span class="skill-tag green">CachyOS</span>
-          <span class="skill-tag">Bash</span>
-          <span class="skill-tag">systemd</span>
-        </div>
-        <div class="skill-note">Daily driver since years. Kernel tuning, custom boot, full rice stacks.</div>
+      <div class="skill-card reveal reveal-delay-1" data-bar="92">
+        <span class="skill-icon" aria-hidden="true">🐧</span>
+        <div class="skill-name">Linux &amp; Systems</div>
+        <div class="skill-tags"><span class="skill-tag">Arch</span><span class="skill-tag">CachyOS</span><span class="skill-tag cyan">Hyprland</span><span class="skill-tag cyan">Wayland</span></div>
+        <div class="skill-note">Kernel tuning, dotfile ricing, Waybar &amp; rofi config, PipeWire audio, Bluetooth scripting.</div>
         <div class="skill-bar-wrap"><div class="skill-bar"></div></div>
       </div>
-      <div class="skill-card reveal reveal-delay-2" style="--bar-width:87%">
-        <span class="skill-icon">🪟</span>
-        <div class="skill-name">Hyprland / Wayland</div>
-        <div class="skill-tags">
-          <span class="skill-tag cyan">Waybar</span>
-          <span class="skill-tag cyan">Rofi</span>
-          <span class="skill-tag cyan">Hyprlock</span>
-        </div>
-        <div class="skill-note">Full compositor setup, animations, shader fx, theme consistency.</div>
+      <div class="skill-card reveal reveal-delay-2" data-bar="82">
+        <span class="skill-icon" aria-hidden="true">🐳</span>
+        <div class="skill-name">DevOps &amp; Docker</div>
+        <div class="skill-tags"><span class="skill-tag cyan">Docker</span><span class="skill-tag cyan">Compose</span><span class="skill-tag">Self-hosted</span></div>
+        <div class="skill-note">Container orchestration, self-hosted service stacks, volume management &amp; CI/CD pipelines.</div>
         <div class="skill-bar-wrap"><div class="skill-bar"></div></div>
       </div>
-      <div class="skill-card reveal reveal-delay-3" style="--bar-width:80%">
-        <span class="skill-icon">🐋</span>
-        <div class="skill-name">Docker & DevOps</div>
-        <div class="skill-tags">
-          <span class="skill-tag pink">Compose</span>
-          <span class="skill-tag pink">Self-hosted</span>
-          <span class="skill-tag">Nginx</span>
-        </div>
-        <div class="skill-note">Self-hosted analytics, reverse proxies, container orchestration.</div>
+      <div class="skill-card reveal reveal-delay-3" data-bar="78">
+        <span class="skill-icon" aria-hidden="true">📊</span>
+        <div class="skill-name">Data Visualization</div>
+        <div class="skill-tags"><span class="skill-tag pink">Metabase</span><span class="skill-tag pink">Superset</span><span class="skill-tag">MySQL</span><span class="skill-tag">MariaDB</span></div>
+        <div class="skill-note">Dashboard creation, database relationships, analytics stack deployment on self-hosted infra.</div>
         <div class="skill-bar-wrap"><div class="skill-bar"></div></div>
       </div>
-      <div class="skill-card reveal reveal-delay-4" style="--bar-width:78%">
-        <span class="skill-icon">📊</span>
-        <div class="skill-name">Data & Analytics</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Metabase</span>
-          <span class="skill-tag">Superset</span>
-          <span class="skill-tag">MySQL</span>
-        </div>
-        <div class="skill-note">Dashboards, SQL queries, self-hosted BI stacks on bare metal.</div>
+      <div class="skill-card reveal reveal-delay-4" data-bar="88">
+        <span class="skill-icon" aria-hidden="true">⚡</span>
+        <div class="skill-name">Scripting &amp; Automation</div>
+        <div class="skill-tags"><span class="skill-tag green">Bash</span><span class="skill-tag green">Python</span><span class="skill-tag">Git</span><span class="skill-tag">GitHub CLI</span></div>
+        <div class="skill-note">Shell pipelines, system automation scripts, GitHub workflow automation, LSP tooling.</div>
         <div class="skill-bar-wrap"><div class="skill-bar"></div></div>
       </div>
-      <div class="skill-card reveal reveal-delay-5" style="--bar-width:74%">
-        <span class="skill-icon">🌐</span>
-        <div class="skill-name">Web & Scripting</div>
-        <div class="skill-tags">
-          <span class="skill-tag cyan">HTML/CSS</span>
-          <span class="skill-tag cyan">JS</span>
-          <span class="skill-tag">Python</span>
-        </div>
-        <div class="skill-note">Static sites, CLI tools, automation scripts, browser customization.</div>
+      <div class="skill-card reveal reveal-delay-5" data-bar="75">
+        <span class="skill-icon" aria-hidden="true">🌐</span>
+        <div class="skill-name">Web &amp; Browsers</div>
+        <div class="skill-tags"><span class="skill-tag">HTML/CSS</span><span class="skill-tag cyan">JS</span><span class="skill-tag">userChrome</span><span class="skill-tag">uBlock</span></div>
+        <div class="skill-note">Browser customization (Zen Browser), CSS theming, privacy hardening &amp; static site publishing.</div>
         <div class="skill-bar-wrap"><div class="skill-bar"></div></div>
       </div>
     </div>
   </section>
 
-  <hr class="section-divider" aria-hidden="true">
+  <hr class="section-divider">
 
   <section class="section" id="projects" aria-label="Projects">
     <div class="section-header reveal">
@@ -480,344 +443,339 @@
       <div class="project-card reveal reveal-delay-1">
         <div class="project-header">
           <div class="project-title-wrap">
-            <svg class="project-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-            <span class="project-name">Hypr</span>
+            <svg class="project-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 3h18v18H3zM3 9h18M9 21V9"/></svg>
+            <span class="project-name">Hypr — Vicious Viper Dotfiles</span>
           </div>
           <div class="project-links">
-            <a href="https://github.com/Cybersnake223/Hypr" target="_blank" rel="noopener" class="project-link">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-              GitHub
+            <a href="https://github.com/Cybersnake223/Hypr" target="_blank" rel="noopener noreferrer" class="project-link">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              Source
             </a>
           </div>
         </div>
-        <p class="project-desc">My full Hyprland dotfiles — Waybar, Rofi, Hyprlock, custom shaders, and a complete rice stack for CachyOS / Arch Linux with Wayland.</p>
+        <div class="project-desc">A complete Hyprland desktop configuration featuring Waybar status bar, Yazi file manager, Foot terminal, and custom scripts for screenshots, wallpaper switching, and window management. Showcases a full Wayland-native workflow.</div>
         <div class="project-footer">
-          <span class="proj-lang"><span class="lang-dot" style="background:#89e051"></span>Shell</span>
-          <span class="proj-tag">dotfiles</span>
-          <span class="proj-tag">rice</span>
-          <span class="proj-tag">wayland</span>
+          <span class="proj-lang"><span class="lang-dot" style="background:#89e051;" aria-hidden="true"></span>Shell 70.1%</span>
+          <span class="proj-tag">dotfiles</span><span class="proj-tag">hyprland</span><span class="proj-tag">MIT</span>
         </div>
       </div>
       <div class="project-card reveal reveal-delay-2">
         <div class="project-header">
           <div class="project-title-wrap">
-            <svg class="project-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
-            <span class="project-name">cybersnake223.github.io</span>
+            <svg class="project-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 012 2v7M11 18H8a2 2 0 01-2-2V9"/></svg>
+            <span class="project-name">mkgit-gh</span>
           </div>
           <div class="project-links">
-            <a href="https://cybersnake223.github.io" target="_blank" rel="noopener" class="project-link">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Live
-            </a>
-            <a href="https://github.com/Cybersnake223/cybersnake223.github.io" target="_blank" rel="noopener" class="project-link">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-              GitHub
+            <a href="https://github.com/Cybersnake223/mkgit-gh" target="_blank" rel="noopener noreferrer" class="project-link">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              Source
             </a>
           </div>
         </div>
-        <p class="project-desc">This portfolio — built with vanilla HTML/CSS/JS. Glassmorphism UI, particle canvas, typed animations, scroll reveals, and zero frameworks.</p>
+        <div class="project-desc">A Bash CLI tool that eliminates the friction of spinning up a new GitHub repository — creates the remote repo via the GitHub API, initializes it with a README, and pushes the first commit in a single command.</div>
         <div class="project-footer">
-          <span class="proj-lang"><span class="lang-dot" style="background:#f1e05a"></span>JavaScript</span>
-          <span class="proj-tag">portfolio</span>
-          <span class="proj-tag">vanilla</span>
-          <span class="proj-tag">css</span>
+          <span class="proj-lang"><span class="lang-dot" style="background:#89e051;" aria-hidden="true"></span>Shell</span>
+          <span class="proj-tag">automation</span><span class="proj-tag">bash</span><span class="proj-tag">github-api</span>
         </div>
       </div>
-      <a href="https://github.com/Cybersnake223" target="_blank" rel="noopener" class="project-card project-card-more reveal reveal-delay-3">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" style="color:var(--text-dim)" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-        <span style="font-size:0.82rem;color:var(--text-dim);margin-top:0.3rem">More on GitHub →</span>
+      <a href="https://github.com/Cybersnake223" target="_blank" rel="me noopener noreferrer" class="project-card-more reveal reveal-delay-3">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" style="color:var(--text-dim);" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        <div style="font-size:0.85rem;color:var(--text-dim);">More on GitHub →</div>
       </a>
     </div>
   </section>
 
-  <hr class="section-divider" aria-hidden="true">
+  <hr class="section-divider">
 
-  <section class="gh-section" id="github" aria-label="GitHub stats">
-    <div class="section-header reveal" style="text-align:center;margin-bottom:2rem">
-      <span class="section-label">// github</span>
-      <h2 class="section-title">Open source <em class="accent-word">activity</em></h2>
+  <section class="gh-section" id="github" aria-label="GitHub activity">
+    <div class="section-header reveal" style="padding-top:3rem;">
+      <span class="section-label">// github activity</span>
+      <h2 class="section-title">Open source <em class="accent-word">contributions</em></h2>
     </div>
     <div class="gh-profile-card reveal">
       <div class="gh-avatar-wrap">
-        <img class="gh-avatar" src="https://github.com/Cybersnake223.png" alt="Abhishek's GitHub avatar" width="90" height="90" loading="lazy">
+        <img src="https://github.com/Cybersnake223.png" class="gh-avatar" alt="Abhishek GitHub avatar" width="90" height="90" loading="lazy" decoding="async" onerror="this.src='https://avatars.githubusercontent.com/u/0'">
       </div>
       <div class="gh-info">
         <div class="gh-name">
-          Abhishek
-          <span style="font-size:0.75rem;background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.3);color:#4ade80;padding:0.2rem 0.6rem;border-radius:999px;font-family:var(--mono)">PRO</span>
+          Cybersnake
+          <span style="font-size:0.68rem;background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.35);color:#a78bfa;padding:0.18rem 0.55rem;border-radius:999px;font-family:var(--mono);">@cybersnake223</span>
         </div>
-        <div class="gh-handle">@Cybersnake223</div>
-        <div class="gh-bio">Linux systems developer · Hyprland rice addict · Docker-first infrastructure · Self-hosting everything possible from New Delhi 🇮🇳</div>
+        <div class="gh-handle">github.com/Cybersnake223</div>
+        <div class="gh-bio">🐧 Linux Enthusiast who likes to play around with computers and stuff. Casually scripting for fun. Also does ricing.<br>I use Arch BTW!!!</div>
         <div class="gh-meta">
           <span class="gh-meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
             New Delhi, India
           </span>
           <span class="gh-meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            github.com/Cybersnake223
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            Neovim · Hyprland · Foot
           </span>
         </div>
         <div class="gh-counters">
-          <div class="gh-counter"><span class="gh-counter-val" id="ghRepos">—</span><span class="gh-counter-label">Repos</span></div>
+          <div class="gh-counter"><span class="gh-counter-val" data-target="8">0</span><span class="gh-counter-label">Repos</span></div>
+          <div class="gh-counter"><span class="gh-counter-val" data-target="3">0</span><span class="gh-counter-label">Years</span></div>
         </div>
         <div class="gh-views">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          Profile views tracked via GitHub
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          <img src="https://komarev.com/ghpvc/?username=Cybersnake223&color=7c3aed&style=flat-square&label=profile+views" alt="Profile view count" height="14" loading="lazy" onerror="this.parentElement.style.display='none'">
         </div>
       </div>
     </div>
-    <div class="gh-stats-grid reveal reveal-delay-1">
+    <div class="gh-stats-grid reveal">
       <div class="gh-stat-card">
         <div class="gh-stat-card-header">
-          <span class="gh-stat-card-dot" style="background:#ec4899"></span>
+          <span class="gh-stat-card-dot" style="background:#a78bfa;"></span>
+          <span class="gh-stat-card-label">GitHub Stats</span>
+        </div>
+        <div class="gh-stat-card-body">
+          <div class="gh-stat-shimmer"></div>
+          <img src="https://github-readme-stats.vercel.app/api?username=Cybersnake223&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=a78bfa&icon_color=06b6d4&text_color=94a3b8&rank_icon=github" alt="GitHub stats" loading="lazy" decoding="async" onerror="this.closest('.gh-stat-card').style.display='none'">
+        </div>
+      </div>
+      <div class="gh-stat-card">
+        <div class="gh-stat-card-header">
+          <span class="gh-stat-card-dot" style="background:#06b6d4;"></span>
+          <span class="gh-stat-card-label">Top Languages</span>
+        </div>
+        <div class="gh-stat-card-body">
+          <div class="gh-stat-shimmer"></div>
+          <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Cybersnake223&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=a78bfa&text_color=94a3b8&langs_count=6" alt="Top languages" loading="lazy" decoding="async" onerror="this.closest('.gh-stat-card').style.display='none'">
+        </div>
+      </div>
+      <div class="gh-stat-card span2">
+        <div class="gh-stat-card-header">
+          <span class="gh-stat-card-dot" style="background:#ec4899;"></span>
           <span class="gh-stat-card-label">Contribution Streak</span>
         </div>
         <div class="gh-stat-card-body">
-          <div class="gh-stat-shimmer" aria-hidden="true"></div>
-          <img src="https://streak-stats.demolab.com?user=Cybersnake223&theme=transparent&hide_border=true&ring=a78bfa&fire=ec4899&currStreakLabel=06b6d4&sideLabels=94a3b8&dates=64748b&background=00000000" alt="GitHub streak" width="495" height="195" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="gh-stat-fallback">Stats temporarily unavailable</div>
+          <div class="gh-stat-shimmer"></div>
+          <img src="https://streak-stats.demolab.com?user=Cybersnake223&theme=tokyonight-duo&hide_border=true&background=0d1117&ring=a78bfa&fire=ec4899&currStreakLabel=06b6d4" alt="GitHub streak" loading="lazy" decoding="async" onerror="this.closest('.gh-stat-card').style.display='none'">
         </div>
       </div>
-      <div class="gh-stat-card activity">
+      <div class="gh-stat-card span2 activity">
         <div class="gh-stat-card-header">
-          <span class="gh-stat-card-dot" style="background:#4ade80"></span>
-          <span class="gh-stat-card-label">Contribution Graph</span>
+          <span class="gh-stat-card-dot" style="background:#4ade80;"></span>
+          <span class="gh-stat-card-label">Activity Graph</span>
         </div>
         <div class="gh-stat-card-body">
-          <div class="gh-stat-shimmer" aria-hidden="true"></div>
-          <img src="https://github-readme-activity-graph.vercel.app/graph?username=Cybersnake223&theme=react-dark&hide_border=true&bg_color=00000000&color=94a3b8&line=7c3aed&point=06b6d4&area=true&area_color=7c3aed" alt="Contribution graph" width="800" height="200" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="gh-stat-fallback">Graph temporarily unavailable</div>
+          <div class="gh-stat-shimmer"></div>
+          <img src="https://github-readme-activity-graph.vercel.app/graph?username=Cybersnake223&theme=tokyo-night&hide_border=true&bg_color=0d1117&color=a78bfa&line=7c3aed&point=06b6d4&area=true&area_color=7c3aed" alt="GitHub activity graph" loading="lazy" decoding="async" onerror="this.closest('.gh-stat-card').style.display='none'">
         </div>
       </div>
     </div>
     <div class="gh-cta-wrap reveal">
-      <a href="https://github.com/Cybersnake223" target="_blank" rel="noopener" class="btn btn-ghost">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-        View Full GitHub Profile
+      <a href="https://github.com/Cybersnake223" target="_blank" rel="me noopener noreferrer" class="btn btn-primary">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        Open Full GitHub Profile
       </a>
     </div>
   </section>
 
-  <hr class="section-divider" aria-hidden="true">
+  <hr class="section-divider">
 
   <section class="contact-section" id="contact" aria-label="Contact">
-    <div class="section-header reveal">
+    <div class="section-header reveal" style="padding-top:3rem;">
       <span class="section-label">// contact</span>
-      <h2 class="section-title">Let's <em class="accent-word">connect</em></h2>
+      <h2 class="section-title">Let's <em class="accent-word">work</em> <span>together</span></h2>
     </div>
     <div class="contact-card reveal reveal-delay-1">
-      <p>I'm currently open to internship opportunities in DevOps, systems engineering, or backend development. Whether you have a project in mind, want to collaborate on open-source, or just want to chat Linux — my inbox is open.</p>
+      <p>I'm open to internships, freelance projects, and open-source collaborations. Whether you want to talk Linux, DevOps, or just geek out about Wayland compositors — my inbox is open.</p>
       <div class="contact-btns">
         <a href="mailto:nemesisjr111@gmail.com" class="btn btn-primary">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
           Send Email
         </a>
-        <a href="https://github.com/Cybersnake223" target="_blank" rel="noopener" class="btn btn-ghost">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-          GitHub
-        </a>
+        <button class="btn btn-ghost" id="copyEmail">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          <span id="copyEmailLabel">Copy Email</span>
+        </button>
       </div>
       <div class="socials-inline">
-        <button class="social-link" onclick="navigator.clipboard.writeText('cybersnake223').then(()=>{this.textContent='Copied!';setTimeout(()=>{this.innerHTML='<svg width=\'14\' height=\'14\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\'><rect x=\'9\' y=\'9\' width=\'13\' height=\'13\' rx=\'2\'/><path d=\'M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1\'/></svg> Discord';},2000)})" aria-label="Copy Discord username">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-          Discord
-        </button>
-        <a href="https://x.com/cybersnake223" target="_blank" rel="noopener" class="social-link">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          Twitter / X
+        <a href="https://github.com/cybersnake223" class="social-link" target="_blank" rel="me noopener noreferrer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          GitHub
+        </a>
+        <a href="https://linkedin.com/in/YOUR_USERNAME" class="social-link" target="_blank" rel="noopener noreferrer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://cybersnake223.github.io" class="social-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          Website
         </a>
       </div>
     </div>
   </section>
 
   <footer>
-    <div>Built with ♥ by <a href="https://github.com/Cybersnake223" target="_blank" rel="noopener">Abhishek</a> · Vanilla HTML/CSS/JS · Hosted on GitHub Pages</div>
-    <div class="footer-easter">// crafted in the terminal, deployed from the CLI</div>
+    <span>built with 🐧 &amp; vim motions &nbsp;·&nbsp; </span>
+    <a href="https://github.com/Cybersnake223" target="_blank" rel="me noopener noreferrer">@cybersnake223</a>
+    <span> &nbsp;·&nbsp; New Delhi, India &nbsp;·&nbsp; [<span id="year"></span>]</span>
+    <br>
+    <span class="footer-easter">// btw i use arch &nbsp;·&nbsp; hyprland &nbsp;·&nbsp; neofetch goes hard</span>
   </footer>
 
   <script>
-    const prog = document.getElementById('progress');
-    window.addEventListener('scroll', () => {
-      prog.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100) + '%';
-    }, { passive: true });
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-    const scrollHint = document.getElementById('scrollHint');
-    window.addEventListener('scroll', () => { if (window.scrollY > 80) scrollHint.style.opacity = '0'; }, { passive: true, once: true });
+  (function(){
+    const bar=document.getElementById('progress'),hint=document.getElementById('scrollHint'),btn=document.getElementById('toTop'),nav=document.querySelector('nav');
+    let ticking=false;
+    function onScroll(){
+      if(ticking)return;ticking=true;
+      requestAnimationFrame(()=>{
+        const y=window.scrollY,max=document.body.scrollHeight-window.innerHeight;
+        bar.style.width=(y/max*100)+'%';
+        btn.classList.toggle('visible',y>400);
+        nav.classList.toggle('scrolled',y>20);
+        if(hint)hint.style.opacity=y>80?'0':'0.45';
+        ticking=false;
+      });
+    }
+    window.addEventListener('scroll',onScroll,{passive:true});
+    btn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+  })();
 
-    const nav = document.querySelector('nav');
-    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  (function(){
+    const canvas=document.getElementById('bg'),ctx=canvas.getContext('2d');
+    let W,H,particles=[],mouse={x:-9999,y:-9999},rt,paused=false;
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){canvas.style.display='none';return;}
+    function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+    function Particle(){this.x=Math.random()*W;this.y=Math.random()*H;this.vx=(Math.random()-0.5)*0.35;this.vy=(Math.random()-0.5)*0.35;this.r=Math.random()*1.6+0.5;this.hue=Math.random()*60+240;}
+    Particle.prototype.update=function(){
+      this.x+=this.vx;this.y+=this.vy;
+      if(this.x<0||this.x>W)this.vx*=-1;if(this.y<0||this.y>H)this.vy*=-1;
+      const dx=this.x-mouse.x,dy=this.y-mouse.y,d2=dx*dx+dy*dy;
+      if(d2<22500){const d=Math.sqrt(d2),f=(150-d)/150*0.8;this.vx+=(dx/d)*f*0.035;this.vy+=(dy/d)*f*0.035;}
+      const sp=this.vx*this.vx+this.vy*this.vy;if(sp>1.2){const s=Math.sqrt(sp);this.vx/=s;this.vy/=s;}
+    };
+    Particle.prototype.draw=function(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=`hsla(${this.hue},80%,75%,0.8)`;ctx.fill();};
+    function init(){resize();particles=Array.from({length:50},()=>new Particle());}
+    const CD2=14400;
+    function frame(){
+      if(paused){requestAnimationFrame(frame);return;}
+      ctx.clearRect(0,0,W,H);
+      for(let i=0;i<particles.length;i++){particles[i].update();particles[i].draw();}
+      ctx.beginPath();
+      for(let i=0;i<particles.length;i++)for(let j=i+1;j<particles.length;j++){
+        const dx=particles[i].x-particles[j].x;if(dx*dx>CD2)continue;
+        const dy=particles[i].y-particles[j].y;
+        if(dx*dx+dy*dy<CD2){ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);}
+      }
+      ctx.strokeStyle='rgba(139,92,246,0.25)';ctx.lineWidth=0.7;ctx.stroke();
+      requestAnimationFrame(frame);
+    }
+    document.addEventListener('visibilitychange',()=>{paused=document.hidden;});
+    window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{resize();particles=Array.from({length:50},()=>new Particle());},200);});
+    window.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;},{passive:true});
+    window.addEventListener('mouseleave',()=>{mouse.x=-9999;mouse.y=-9999;});
+    init();frame();
+  })();
 
-    const navToggle = document.getElementById('navToggle');
-    const navLinks  = document.getElementById('navLinks');
-    navToggle.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('open');
-      navToggle.classList.toggle('open', open);
-      navToggle.setAttribute('aria-expanded', open);
+  (function(){
+    const lines=['arch linux  |  hyprland  |  neovim','docker  |  bash  |  self-hosted stacks','metabase  |  superset  |  analytics','open source everything 🚀'];
+    let li=0,ci=0,del=false;
+    const el=document.getElementById('typed');
+    function tick(){
+      const line=lines[li];
+      if(!del){el.textContent=line.slice(0,++ci);if(ci===line.length){del=true;setTimeout(tick,2400);return;}}
+      else{el.textContent=line.slice(0,--ci);if(ci===0){del=false;li=(li+1)%lines.length;setTimeout(tick,350);return;}}
+      setTimeout(tick,del?30:58);
+    }
+    setTimeout(tick,1000);
+  })();
+
+  (function(){
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    if('ontouchstart'in window)return;
+    const TRAIL=8,dots=[];
+    for(let i=0;i<TRAIL;i++){
+      const d=document.createElement('div');d.className='trail-dot';
+      const s=(TRAIL-i)*1.5;
+      d.style.cssText=`width:${s}px;height:${s}px;background:rgba(139,92,246,${0.45-i*0.045});`;
+      document.body.appendChild(d);dots.push({el:d,x:0,y:0});
+    }
+    let mx=0,my=0;
+    window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;},{passive:true});
+    (function loop(){
+      let px=mx,py=my;
+      dots.forEach((dot,i)=>{
+        dot.x+=(px-dot.x)*(0.26-i*0.018);dot.y+=(py-dot.y)*(0.26-i*0.018);
+        dot.el.style.transform=`translate(calc(${dot.x}px - 50%), calc(${dot.y}px - 50%))`;
+        px=dot.x;py=dot.y;
+      });
+      requestAnimationFrame(loop);
+    })();
+  })();
+
+  document.querySelectorAll('.skill-card, .project-card').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-0.5,y=(e.clientY-r.top)/r.height-0.5;
+      card.style.transform=`translateY(-4px) rotateX(${-y*7}deg) rotateY(${x*7}deg)`;
     });
+    card.addEventListener('mouseleave',()=>{card.style.transform='';});
+  });
 
-    const pill = document.getElementById('navPill');
-    const links = navLinks.querySelectorAll('a');
-    links.forEach(a => {
-      a.addEventListener('mouseenter', () => {
-        pill.style.left    = a.offsetLeft + 'px';
-        pill.style.width   = a.offsetWidth + 'px';
-        pill.style.opacity = '1';
+  (function(){
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));
+      document.querySelectorAll('.skill-card[data-bar]').forEach(card=>{card.style.setProperty('--bar-width',card.dataset.bar+'%');card.classList.add('bar-animate');});
+      return;
+    }
+    const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    const barIO=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.setProperty('--bar-width',e.target.dataset.bar+'%');e.target.classList.add('bar-animate');barIO.unobserve(e.target);}});},{threshold:0.3});
+    document.querySelectorAll('.skill-card[data-bar]').forEach(el=>barIO.observe(el));
+  })();
+
+  (function(){
+    const counters=document.querySelectorAll('.gh-counter-val[data-target]');
+    if(!counters.length)return;
+    const io=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(!e.isIntersecting)return;
+        const el=e.target,target=parseInt(el.dataset.target),dur=1400,start=performance.now();
+        function step(now){const p=Math.min((now-start)/dur,1),ease=1-Math.pow(1-p,3);el.textContent=Math.floor(ease*target)+(p<1?'':'+');if(p<1)requestAnimationFrame(step);}
+        requestAnimationFrame(step);io.unobserve(el);
       });
+    },{threshold:0.5});
+    counters.forEach(el=>io.observe(el));
+  })();
+
+  (function(){
+    const links=document.querySelectorAll('.nav-links a[href^="#"]:not(.nav-cta)');
+    const pill=document.getElementById('navPill'),navLinks=document.getElementById('navLinks');
+    function movePill(el){
+      if(!el||!pill)return;
+      const navRect=navLinks.getBoundingClientRect(),elRect=el.getBoundingClientRect();
+      pill.style.left=(elRect.left-navRect.left)+'px';pill.style.width=elRect.width+'px';
+      pill.style.top=(elRect.top-navRect.top)+'px';pill.style.height=elRect.height+'px';pill.style.opacity='1';
+    }
+    links.forEach(a=>a.addEventListener('mouseenter',()=>movePill(a)));
+    navLinks.addEventListener('mouseleave',()=>{if(pill)pill.style.opacity='0';});
+    const sections=document.querySelectorAll('section[id], .gh-section[id]');
+    const spy=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.remove('active'));const active=document.querySelector(`.nav-links a[href="#${e.target.id}"]`);if(active)active.classList.add('active');}});
+    },{rootMargin:'-40% 0px -55% 0px'});
+    sections.forEach(s=>spy.observe(s));
+  })();
+
+  (function(){
+    const toggle=document.getElementById('navToggle'),links=document.getElementById('navLinks');
+    toggle.addEventListener('click',()=>{const open=links.classList.toggle('open');toggle.classList.toggle('open',open);toggle.setAttribute('aria-expanded',open);});
+    links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');toggle.classList.remove('open');toggle.setAttribute('aria-expanded','false');}));
+  })();
+
+  (function(){
+    const btn=document.getElementById('copyEmail'),label=document.getElementById('copyEmailLabel');
+    if(!btn)return;
+    btn.addEventListener('click',async()=>{
+      try{await navigator.clipboard.writeText('nemesisjr111@gmail.com');label.textContent='Copied ✓';setTimeout(()=>label.textContent='Copy Email',2000);}
+      catch{label.textContent='nemesisjr111@gmail.com';}
     });
-    navLinks.addEventListener('mouseleave', () => { pill.style.opacity = '0'; });
-
-    const sections   = document.querySelectorAll('section[id], .gh-section[id]');
-    const navAnchors = navLinks.querySelectorAll('a[href^="#"]');
-    const ioNav = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting)
-          navAnchors.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
-      });
-    }, { rootMargin: '-40% 0px -55% 0px' });
-    sections.forEach(s => ioNav.observe(s));
-
-    const ioReveal = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ioReveal.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => ioReveal.observe(el));
-
-    const ioBar = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('bar-animate'); ioBar.unobserve(e.target); } });
-    }, { threshold: 0.4 });
-    document.querySelectorAll('.skill-card').forEach(c => ioBar.observe(c));
-
-    const lines = [
-      '$ uptime && echo "still ricing..."',
-      '$ docker ps | grep running',
-      '$ hyprctl dispatch workspace 3',
-      '$ git push origin main --force-with-lease',
-      '$ neofetch | lolcat',
-      '$ sudo pacman -Syu && yay',
-    ];
-    let li = 0, ci = 0, deleting = false;
-    const typedEl = document.getElementById('typed');
-    function typeStep() {
-      const line = lines[li];
-      if (!deleting) {
-        typedEl.textContent = line.slice(0, ++ci);
-        if (ci === line.length) { deleting = true; setTimeout(typeStep, 2200); return; }
-        setTimeout(typeStep, 52);
-      } else {
-        typedEl.textContent = line.slice(0, --ci);
-        if (ci === 0) { deleting = false; li = (li + 1) % lines.length; setTimeout(typeStep, 400); return; }
-        setTimeout(typeStep, 28);
-      }
-    }
-    typeStep();
-
-    const toTop = document.getElementById('toTop');
-    window.addEventListener('scroll', () => { toTop.classList.toggle('visible', window.scrollY > 400); }, { passive: true });
-    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-    fetch('https://api.github.com/users/Cybersnake223')
-      .then(r => r.json())
-      .then(d => {
-        document.getElementById('ghRepos').textContent     = d.public_repos ?? '—';
-      }).catch(() => {});
-
-    const canvas = document.getElementById('bg');
-    const ctx    = canvas.getContext('2d');
-    let W, H, particles, animId;
-    const isMobile = window.innerWidth < 768;
-    const COUNT  = isMobile ? 25 : 50;
-    const COLORS = ['rgba(124,58,237,', 'rgba(6,182,212,', 'rgba(236,72,153,'];
-    const CD2    = 12000;
-
-    class Particle {
-      constructor() { this.reset(true); }
-      reset(init) {
-        this.x  = Math.random() * W;
-        this.y  = init ? Math.random() * H : (Math.random() > 0.5 ? -10 : H + 10);
-        this.r  = Math.random() * 1.5 + 0.5;
-        this.vx = (Math.random() - 0.5) * 0.4;
-        this.vy = (Math.random() - 0.5) * 0.4;
-        this.a  = Math.random() * 0.5 + 0.1;
-        this.c  = COLORS[Math.floor(Math.random() * COLORS.length)];
-      }
-      update() {
-        this.x += this.vx; this.y += this.vy;
-        if (this.x < -10 || this.x > W + 10 || this.y < -10 || this.y > H + 10) this.reset(false);
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-        ctx.fillStyle = this.c + this.a + ')';
-        ctx.fill();
-      }
-    }
-
-    function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-    function init()   { resize(); particles = Array.from({ length: COUNT }, () => new Particle()); }
-    function draw() {
-      ctx.clearRect(0, 0, W, H);
-      for (let i = 0; i < COUNT; i++) {
-        particles[i].update();
-        particles[i].draw();
-        for (let j = i + 1; j < COUNT; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          if (dx * dx > CD2) continue;
-          const d2 = dx * dx + dy * dy;
-          if (d2 < CD2) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = 'rgba(124,58,237,' + (1 - d2 / CD2) * 0.18 + ')';
-            ctx.lineWidth = 0.6;
-            ctx.stroke();
-          }
-        }
-      }
-      animId = requestAnimationFrame(draw);
-    }
-
-    const motionOk = window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
-    if (motionOk) {
-      init();
-      draw();
-      window.addEventListener('resize', resize, { passive: true });
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden) { cancelAnimationFrame(animId); } else { draw(); }
-      });
-    } else {
-      canvas.style.display = 'none';
-    }
-
-    if (motionOk && !isMobile) {
-      const DOTS  = 8;
-      const trail = Array.from({ length: DOTS }, (_, i) => {
-        const d = document.createElement('div');
-        d.className = 'trail-dot';
-        const s = (DOTS - i) * 2.2;
-        d.style.cssText = `width:${s}px;height:${s}px;opacity:${0.12 + i * 0.04};background:${i % 2 === 0 ? 'var(--accent)' : 'var(--accent2)'}`;
-        document.body.appendChild(d);
-        return d;
-      });
-      const pos = Array.from({ length: DOTS }, () => ({ x: 0, y: 0 }));
-      let mx = 0, my = 0, lastMx = -1, lastMy = -1;
-
-      window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; }, { passive: true });
-
-      (function loop() {
-        if (mx !== lastMx || my !== lastMy) {
-          lastMx = mx; lastMy = my;
-          pos[0].x += (mx - pos[0].x) * 0.35;
-          pos[0].y += (my - pos[0].y) * 0.35;
-          for (let i = 1; i < DOTS; i++) {
-            pos[i].x += (pos[i - 1].x - pos[i].x) * 0.35;
-            pos[i].y += (pos[i - 1].y - pos[i].y) * 0.35;
-          }
-          trail.forEach((d, i) => { d.style.transform = `translate(${pos[i].x}px,${pos[i].y}px) translate(-50%,-50%)`; });
-        }
-        requestAnimationFrame(loop);
-      })();
-    }
+  })();
   </script>
 </body>
 </html>
