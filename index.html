@@ -3,764 +3,778 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Abhishek Aryan | cybersnake223</title>
-
-  <meta name="description" content="Abhishek Aryan (cybersnake223) — Linux enthusiast & software developer. Arch Linux, Hyprland, Docker, Bash, Metabase, self-hosted stacks.">
+  <meta name="color-scheme" content="dark">
+  <title>Abhishek Aryan — Linux Developer & DevOps Engineer</title>
+  <meta name="description" content="Abhishek Aryan — Linux systems developer, DevOps engineer & open-source enthusiast. Arch Linux, Hyprland, Docker, Bash, Metabase, self-hosted stacks.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://cybersnake223.github.io">
+  <link rel="icon" type="image/png" href="https://github.com/Cybersnake223.png">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Abhishek Aryan | cybersnake223">
-  <meta property="og:description" content="Linux enthusiast crafting elegant systems from the terminal up.">
+  <meta property="og:title" content="Abhishek Aryan — Linux Developer & DevOps Engineer">
+  <meta property="og:description" content="Linux systems developer crafting elegant infrastructure from the terminal up.">
   <meta property="og:image" content="https://github.com/Cybersnake223.png">
   <meta property="og:url" content="https://cybersnake223.github.io">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Abhishek Aryan | cybersnake223">
-  <meta name="twitter:description" content="Linux enthusiast crafting elegant systems from the terminal up.">
+  <meta name="twitter:title" content="Abhishek Aryan — Linux Developer & DevOps Engineer">
+  <meta name="twitter:description" content="Linux systems developer crafting elegant infrastructure from the terminal up.">
   <meta name="twitter:image" content="https://github.com/Cybersnake223.png">
-
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Abhishek Aryan",
+    "url": "https://cybersnake223.github.io",
+    "image": "https://github.com/Cybersnake223.png",
+    "sameAs": ["https://github.com/Cybersnake223"],
+    "jobTitle": "Linux Developer & DevOps Engineer",
+    "knowsAbout": ["Linux","Docker","Bash","Hyprland","Metabase","Apache Superset","DevOps"],
+    "address": { "@type": "PostalAddress", "addressLocality": "New Delhi", "addressCountry": "IN" }
+  }
+  </script>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;700&display=swap">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; } }
     :root {
-      --accent:       #7c3aed;
-      --accent2:      #06b6d4;
-      --glow:         rgba(124,58,237,0.5);
-      --glass-bg:     rgba(255,255,255,0.04);
-      --glass-border: rgba(255,255,255,0.1);
-      --mono: 'JetBrains Mono', monospace;
+      --accent: #7c3aed; --accent2: #06b6d4; --accent3: #ec4899;
+      --glow: rgba(124,58,237,0.45);
+      --glass-bg: rgba(255,255,255,0.03); --glass-bg2: rgba(255,255,255,0.06);
+      --glass-border: rgba(255,255,255,0.08); --glass-border2: rgba(255,255,255,0.14);
+      --text-primary: #e2e8f0; --text-muted: #94a3b8; --text-dim: #64748b;
+      --bg: #020818; --mono: 'Geist Mono', monospace;
     }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      color: #e2e8f0;
-      background: #020818;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    .orb {
-      position: fixed; border-radius: 50%;
-      filter: blur(80px); opacity: 0.25;
-      pointer-events: none;
-    }
-    .orb1 { width: 520px; height: 520px; background: var(--accent); top: -120px; left: -120px; }
-    .orb2 { width: 420px; height: 420px; background: var(--accent2); bottom: -100px; right: -80px; }
-
-    @media (prefers-reduced-motion: no-preference) {
-      .orb  { animation: drift 14s ease-in-out infinite alternate; }
-      .orb2 { animation-delay: -5s; }
-    }
-    @keyframes drift {
-      from { transform: translate(0,0) scale(1); }
-      to   { transform: translate(40px,30px) scale(1.1); }
-    }
-
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--accent), var(--accent2)); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #9333ea, var(--accent2)); }
+    * { scrollbar-width: thin; scrollbar-color: var(--accent) var(--bg); }
+    ::selection { background: rgba(124,58,237,0.35); color: #e2e8f0; }
+    ::-moz-selection { background: rgba(124,58,237,0.35); color: #e2e8f0; }
+    :focus-visible { outline: 2px solid var(--accent2); outline-offset: 3px; border-radius: 6px; }
+    body { font-family: 'Geist', sans-serif; color: var(--text-primary); background: var(--bg); min-height: 100vh; overflow-x: hidden; }
+    [id] { scroll-margin-top: 80px; }
+    #progress { position: fixed; top: 0; left: 0; z-index: 101; height: 2px; width: 0%; background: linear-gradient(90deg, var(--accent), var(--accent2)); pointer-events: none; will-change: width; }
+    .mesh-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(ellipse 80% 60% at 20% 10%, rgba(124,58,237,0.12) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 80% 80%, rgba(6,182,212,0.1) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 50% 50%, rgba(236,72,153,0.06) 0%, transparent 60%), var(--bg); }
+    @media (prefers-reduced-motion: no-preference) { .mesh-bg { animation: meshShift 20s ease infinite alternate; } }
+    @keyframes meshShift { 0% { background-position: 0% 0%, 100% 100%, 50% 50%; } 50% { background-position: 30% 20%, 70% 60%, 80% 30%; } 100% { background-position: 10% 40%, 90% 20%, 20% 80%; } }
+    .orb { position: fixed; border-radius: 50%; filter: blur(90px); opacity: 0.18; pointer-events: none; z-index: 0; will-change: transform; }
+    .orb1 { width: 600px; height: 600px; background: var(--accent); top: -150px; left: -150px; }
+    .orb2 { width: 480px; height: 480px; background: var(--accent2); bottom: -120px; right: -100px; }
+    .orb3 { width: 300px; height: 300px; background: var(--accent3); top: 50%; left: 55%; opacity: 0.08; }
+    @media (prefers-reduced-motion: no-preference) { .orb { animation: drift 16s ease-in-out infinite alternate; } .orb2 { animation-delay: -6s; } .orb3 { animation-delay: -3s; } }
+    @keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(50px,35px) scale(1.12); } }
     canvas { position: fixed; top: 0; left: 0; z-index: 0; pointer-events: none; }
-
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1.1rem 3rem;
-      background: rgba(2,8,24,0.8);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--glass-border);
-    }
-    .nav-logo {
-      font-family: var(--mono); font-size: 1rem;
-      font-weight: 700; color: var(--accent2);
-      text-decoration: none;
-    }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      font-size: 0.85rem; font-weight: 500; color: #94a3b8;
-      text-decoration: none; letter-spacing: 0.05em; transition: color 0.25s;
-    }
-    .nav-links a:hover { color: #e2e8f0; }
-
-    .nav-toggle {
-      display: none; flex-direction: column; gap: 5px;
-      background: none; border: none; cursor: pointer; padding: 4px;
-    }
-    .nav-toggle span {
-      display: block; width: 22px; height: 2px;
-      background: #94a3b8; border-radius: 2px;
-      transition: transform 0.3s, opacity 0.3s;
-    }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1rem 3rem; background: rgba(2,8,24,0.75); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); transition: border-color 0.3s, background 0.3s; transform: translateZ(0); }
+    nav.scrolled { border-bottom-color: rgba(255,255,255,0.14); background: rgba(2,8,24,0.92); }
+    .nav-logo { font-family: var(--mono); font-size: 0.92rem; font-weight: 700; color: var(--accent2); text-decoration: none; letter-spacing: -0.02em; transition: color 0.3s; }
+    .nav-logo:hover { background: linear-gradient(135deg, #a78bfa, var(--accent2)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .nav-logo span { color: var(--text-dim); font-weight: 400; animation: blink 1.2s step-end infinite; }
+    .nav-links { display: flex; gap: 0.25rem; list-style: none; align-items: center; position: relative; }
+    .nav-pill { position: absolute; top: 0; height: 100%; border-radius: 7px; background: var(--glass-bg2); border: 1px solid rgba(6,182,212,0.2); transition: left 0.3s cubic-bezier(0.4,0,0.2,1), width 0.3s cubic-bezier(0.4,0,0.2,1), opacity 0.2s; opacity: 0; pointer-events: none; z-index: 0; }
+    .nav-links a { font-size: 0.82rem; font-weight: 500; color: var(--text-dim); text-decoration: none; letter-spacing: 0.02em; padding: 0.4rem 0.75rem; border-radius: 7px; transition: color 0.2s; position: relative; z-index: 1; }
+    .nav-links a.active, .nav-links a:hover { color: var(--accent2); }
+    .nav-links .nav-cta { background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.35); color: #a78bfa; margin-left: 0.5rem; }
+    .nav-links .nav-cta:hover, .nav-links .nav-cta.active { background: rgba(124,58,237,0.25); color: #c4b5fd; }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text-muted); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
     .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .nav-toggle.open span:nth-child(2) { opacity: 0; }
     .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    @media (max-width: 600px) {
+    @media (max-width: 640px) {
       nav { padding: 1rem 1.4rem; }
       .nav-toggle { display: flex; }
-      .nav-links {
-        position: fixed; top: 57px; left: 0; right: 0;
-        background: rgba(2,8,24,0.96); backdrop-filter: blur(16px);
-        flex-direction: column; gap: 0; list-style: none;
-        max-height: 0; overflow: hidden;
-        transition: max-height 0.35s ease;
-        border-bottom: 1px solid var(--glass-border);
-      }
-      .nav-links.open { max-height: 260px; }
-      .nav-links li a {
-        display: block; padding: 0.85rem 1.8rem;
-        border-top: 1px solid var(--glass-border);
-        font-size: 0.9rem;
-      }
+      .nav-pill { display: none; }
+      .nav-links { position: fixed; top: 57px; left: 0; right: 0; background: rgba(2,8,24,0.97); backdrop-filter: blur(20px); flex-direction: column; gap: 0; list-style: none; max-height: 0; overflow: hidden; transition: max-height 0.35s ease; border-bottom: 1px solid var(--glass-border); }
+      .nav-links.open { max-height: 360px; }
+      .nav-links li a { display: block; padding: 0.9rem 1.8rem; border-top: 1px solid var(--glass-border); font-size: 0.9rem; border-radius: 0; }
+      .nav-links .nav-cta { margin-left: 0; border-radius: 0; }
     }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
-    }
-    .reveal.visible   { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1   { transition-delay: 0.1s; }
-    .reveal-delay-2   { transition-delay: 0.2s; }
-    .reveal-delay-3   { transition-delay: 0.3s; }
-    .reveal-delay-4   { transition-delay: 0.4s; }
-
-    .hero {
-      position: relative; z-index: 10; min-height: 100vh;
-      display: flex; flex-direction: column; justify-content: center;
-      align-items: center; text-align: center; padding: 6rem 2rem 4rem;
-    }
-    .badge {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.4rem 1rem; border-radius: 999px;
-      background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.4);
-      font-family: var(--mono); font-size: 0.75rem;
-      color: #a78bfa; letter-spacing: 0.08em; margin-bottom: 2rem;
-      animation: fadeDown 0.8s ease both;
-    }
-    .badge-dot {
-      width: 6px; height: 6px; border-radius: 50%; background: #a78bfa;
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      .badge-dot { animation: pulse 1.5s ease infinite; }
-    }
-    @keyframes pulse {
-      0%,100% { opacity:1; transform:scale(1); }
-      50%      { opacity:0.4; transform:scale(0.7); }
-    }
-
-    h1 {
-      font-size: clamp(2.8rem,7vw,5.5rem); font-weight: 700;
-      line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.5rem;
-      animation: fadeDown 0.9s ease 0.1s both;
-    }
-    .gradient-text {
-      background: linear-gradient(135deg, #a78bfa 0%, #06b6d4 50%, #ec4899 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text; background-size: 200% 200%;
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      .gradient-text { animation: gradientShift 5s ease infinite; }
-    }
-    @keyframes gradientShift {
-      0%,100% { background-position: 0% 50%; }
-      50%      { background-position: 100% 50%; }
-    }
-
-    .tagline {
-      font-size: clamp(1rem,2.5vw,1.25rem); color: #94a3b8;
-      font-weight: 300; max-width: 520px; line-height: 1.7;
-      margin-bottom: 1.2rem; animation: fadeDown 1s ease 0.2s both;
-    }
-    .typed-line {
-      font-family: var(--mono); font-size: 0.95rem;
-      color: var(--accent2); margin-bottom: 3rem; min-height: 1.4em;
-      animation: fadeDown 1s ease 0.3s both;
-    }
-    .cursor {
-      display: inline-block; width: 2px; height: 1em; background: var(--accent2);
-      margin-left: 2px; vertical-align: text-bottom;
-      animation: blink 1s step-end infinite;
-    }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+    .reveal-delay-5 { transition-delay: 0.40s; }
+    .hero { position: relative; z-index: 10; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 8rem 2rem 6rem; overflow: hidden; contain: layout style; }
+    .hero::before { content: ''; position: absolute; inset: 0; z-index: 0; background-image: linear-gradient(rgba(124,58,237,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(124,58,237,0.07) 1px, transparent 1px); background-size: 48px 48px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%); -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%); pointer-events: none; }
+    .hero > * { position: relative; z-index: 1; }
+    .badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.35rem 1rem; border-radius: 999px; background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.25); font-family: var(--mono); font-size: 0.72rem; color: #4ade80; letter-spacing: 0.1em; margin-bottom: 2rem; animation: fadeDown 0.8s ease both; }
+    .badge-dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; position: relative; flex-shrink: 0; }
+    .badge-dot::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid rgba(74,222,128,0.5); animation: ripple 2s ease infinite; }
+    @keyframes ripple { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(2.8); opacity: 0; } }
+    h1 { font-size: clamp(2.6rem,6.5vw,5rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.04em; margin-bottom: 0.6rem; animation: fadeDown 0.9s ease 0.1s both; }
+    .hero-handle { font-family: var(--mono); font-size: clamp(0.85rem,2vw,1rem); font-weight: 400; color: var(--text-dim); margin-bottom: 1.6rem; animation: fadeDown 0.9s ease 0.15s both; letter-spacing: 0.02em; }
+    .hero-handle span { color: var(--accent2); }
+    .gradient-text { background: linear-gradient(135deg, #a78bfa 0%, #06b6d4 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; background-size: 200% 200%; }
+    @media (prefers-reduced-motion: no-preference) { .gradient-text { animation: gradientShift 5s ease infinite; } }
+    @keyframes gradientShift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+    .tagline { font-size: clamp(1rem,2.2vw,1.15rem); color: var(--text-muted); font-weight: 400; max-width: 540px; line-height: 1.75; margin-bottom: 1rem; animation: fadeDown 1s ease 0.2s both; }
+    .typed-line { font-family: var(--mono); font-size: 0.875rem; color: var(--accent2); margin-bottom: 2.5rem; min-height: 1.4em; animation: fadeDown 1s ease 0.3s both; opacity: 0.8; }
+    .cursor { display: inline-block; width: 2px; height: 0.9em; border-radius: 1px; margin-left: 2px; vertical-align: text-bottom; animation: blink 1s step-end infinite, cursorColor 3s ease infinite; }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-
-    .cta-group {
-      display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
-      animation: fadeDown 1s ease 0.4s both;
-    }
-    .btn {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.75rem 1.8rem; border-radius: 10px; font-size: 0.9rem;
-      font-weight: 600; text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s; cursor: pointer;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), #9333ea);
-      color: #fff; border: none; box-shadow: 0 0 24px var(--glow);
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 40px var(--glow); }
-    .btn-ghost {
-      background: var(--glass-bg); color: #e2e8f0;
-      border: 1px solid var(--glass-border);
-    }
-    .btn-ghost:hover { transform: translateY(-2px); background: rgba(255,255,255,0.08); }
-
-    .scroll-hint {
-      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
-      z-index: 10; display: flex; flex-direction: column; align-items: center;
-      gap: 0.4rem; opacity: 0.4; font-size: 0.7rem;
-      letter-spacing: 0.1em; color: #94a3b8;
-      animation: fadeDown 1s ease 1.2s both;
-    }
-    .scroll-hint .line {
-      width: 1px; height: 36px;
-      background: linear-gradient(to bottom, transparent, #94a3b8);
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      .scroll-hint .line { animation: scrollLine 1.8s ease infinite; }
-    }
-    @keyframes scrollLine {
-      0%   { transform:scaleY(0); transform-origin:top; }
-      50%  { transform:scaleY(1); transform-origin:top; }
-      51%  { transform:scaleY(1); transform-origin:bottom; }
-      100% { transform:scaleY(0); transform-origin:bottom; }
-    }
-
-    .section {
-      position: relative; z-index: 10;
-      max-width: 960px; margin: 0 auto;
-      padding: 4rem 2rem;
-    }
-    .section-label {
-      font-family: var(--mono); font-size: 0.75rem;
-      color: var(--accent2); letter-spacing: 0.15em; text-transform: uppercase;
-      text-align: center; margin-bottom: 2.5rem; opacity: 0.8;
-    }
-
-    .cards-grid {
-      display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-      gap: 1.2rem;
-    }
-    .card {
-      background: var(--glass-bg); border: 1px solid var(--glass-border);
-      border-radius: 16px; padding: 1.6rem 1.4rem;
-      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-    }
-    .card:hover {
-      border-color: rgba(124,58,237,0.5);
-      box-shadow: 0 8px 40px rgba(124,58,237,0.2);
-    }
-    .card-icon  { font-size: 1.8rem; margin-bottom: 0.8rem; display: block; }
-    .card-title { font-size: 0.95rem; font-weight: 600; color: #e2e8f0; margin-bottom: 0.4rem; }
-    .card-desc  { font-size: 0.78rem; color: #64748b; line-height: 1.5; }
-
-    .gh-section {
-      position: relative; z-index: 10;
-      max-width: 960px; margin: 0 auto;
-      padding: 2rem 2rem 5rem;
-    }
-    .gh-profile-card {
-      background: var(--glass-bg); border: 1px solid var(--glass-border);
-      border-radius: 20px; padding: 2.4rem; margin-bottom: 2rem;
-      display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;
-      transition: border-color 0.3s, box-shadow 0.3s;
-    }
-    .gh-profile-card:hover {
-      border-color: rgba(124,58,237,0.4);
-      box-shadow: 0 0 50px rgba(124,58,237,0.12);
-    }
+    @keyframes cursorColor { 0%,100%{background:var(--accent)} 33%{background:var(--accent2)} 66%{background:var(--accent3)} }
+    .cta-group { display: flex; gap: 0.85rem; flex-wrap: wrap; justify-content: center; animation: fadeDown 1s ease 0.4s both; margin-bottom: 2rem; }
+    .scroll-hint { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); color: var(--text-dim); opacity: 0.45; transition: opacity 0.4s ease; }
+    @media (prefers-reduced-motion: no-preference) { .scroll-hint { animation: bounceY 2s ease infinite; } }
+    @keyframes bounceY { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.72rem 1.6rem; border-radius: 10px; font-size: 0.875rem; font-weight: 600; text-decoration: none; font-family: 'Geist', sans-serif; transition: transform 0.2s, box-shadow 0.2s, background 0.2s; cursor: pointer; border: none; }
+    .btn-primary { background: linear-gradient(135deg, var(--accent), #9333ea); color: #fff; box-shadow: 0 0 28px var(--glow); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 48px var(--glow); }
+    @media (prefers-reduced-motion: no-preference) { .btn-primary { animation: glowPulse 3s ease infinite; } }
+    @keyframes glowPulse { 0%,100% { box-shadow: 0 0 28px var(--glow); } 50% { box-shadow: 0 0 52px rgba(124,58,237,0.7); } }
+    .btn-ghost { background: var(--glass-bg); color: var(--text-primary); border: 1px solid transparent; background-clip: padding-box; position: relative; }
+    .btn-ghost::before { content: ''; position: absolute; inset: -1px; border-radius: 11px; z-index: -1; background: linear-gradient(135deg, rgba(124,58,237,0.4), rgba(6,182,212,0.4)); opacity: 0; transition: opacity 0.3s; }
+    .btn-ghost:hover::before { opacity: 1; }
+    .btn-ghost:hover { transform: translateY(-2px); background: var(--glass-bg2); }
+    .btn-outline { background: transparent; color: var(--accent2); border: 1px solid rgba(6,182,212,0.35); }
+    .btn-outline:hover { transform: translateY(-2px); background: rgba(6,182,212,0.08); }
+    #toTop { position: fixed; bottom: 2rem; right: 2rem; z-index: 200; width: 42px; height: 42px; border-radius: 50%; background: rgba(124,58,237,0.2); border: 1px solid rgba(124,58,237,0.4); color: #a78bfa; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s, background 0.2s; }
+    #toTop.visible { opacity: 1; pointer-events: all; }
+    #toTop.visible::after { content: ''; position: absolute; inset: -6px; border-radius: 50%; border: 1px solid rgba(124,58,237,0.4); animation: ripple 2s ease infinite; }
+    #toTop:hover { background: rgba(124,58,237,0.35); transform: translateY(-3px); }
+    .section { position: relative; z-index: 10; max-width: 980px; margin: 0 auto; padding: 5rem 2rem; contain: layout; }
+    .section-header { text-align: center; margin-bottom: 3rem; }
+    .section-label { font-family: var(--mono); font-size: 0.72rem; color: var(--accent2); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 0.6rem; opacity: 0.7; display: inline-block; position: relative; cursor: default; }
+    .section-label::after { content: ''; position: absolute; left: 0; bottom: -3px; width: 0; height: 1px; background: var(--accent2); transition: width 0.4s ease; }
+    .section-label:hover::after { width: 100%; }
+    .section-title { font-size: clamp(1.6rem,3.5vw,2.2rem); font-weight: 700; color: var(--text-primary); letter-spacing: -0.03em; line-height: 1.2; }
+    .section-title span { color: var(--text-muted); font-weight: 300; }
+    .accent-word { font-style: normal; background: linear-gradient(135deg, #a78bfa, var(--accent2)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+    @media (max-width: 680px) { .about-grid { grid-template-columns: 1fr; } }
+    .about-text p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 1rem; }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-text p:first-child::first-letter { font-size: 2.8rem; font-weight: 700; line-height: 0.85; float: left; margin-right: 0.08em; margin-top: 0.05em; background: linear-gradient(135deg, #a78bfa, var(--accent2)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .about-text strong { color: var(--text-primary); font-weight: 600; }
+    .about-text a { color: var(--accent2); text-decoration: none; }
+    .about-text a:hover { text-decoration: underline; }
+    .status-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.6rem; }
+    .status-row { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.7rem 0.5rem; border-bottom: 1px solid var(--glass-border); border-radius: 10px; margin: 0 -0.5rem; transition: background 0.2s; }
+    .status-row:last-child { border-bottom: none; }
+    .status-row:hover { background: var(--glass-bg2); }
+    .status-icon { font-size: 0.95rem; flex-shrink: 0; width: 32px; height: 32px; border-radius: 8px; background: var(--glass-bg2); border: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: center; }
+    .status-label { font-size: 0.68rem; font-family: var(--mono); color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.2rem; }
+    .status-value { font-size: 0.85rem; color: var(--text-primary); font-weight: 500; }
+    .status-value small { color: var(--text-dim); font-weight: 400; }
+    .avail-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.3); color: #4ade80; font-size: 0.75rem; font-family: var(--mono); padding: 0.25rem 0.7rem; border-radius: 999px; margin-top: 0.3rem; }
+    @media (prefers-reduced-motion: no-preference) { .avail-badge { animation: availPulse 3s ease infinite; } }
+    @keyframes availPulse { 0%,100% { background: rgba(34,197,94,0.12); } 50% { background: rgba(34,197,94,0.22); } }
+    .avail-dot { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; position: relative; flex-shrink: 0; }
+    .avail-dot::after { content: ''; position: absolute; inset: -3px; border-radius: 50%; border: 1px solid rgba(74,222,128,0.5); animation: ripple 2s ease infinite; }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 0.85rem; }
+    .skill-card { background: rgba(255,255,255,0.035); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); border-top: 2px solid transparent; border-radius: 16px; padding: 1.4rem; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s, background 0.3s; will-change: transform; box-shadow: 0 4px 20px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.06); position: relative; overflow: hidden; }
+    .skill-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.04) 50%, transparent 60%); background-size: 200% 100%; background-position: -100% 0; transition: background-position 0.5s ease; pointer-events: none; }
+    .skill-card:hover::after { background-position: 100% 0; }
+    .skill-card:nth-child(1) { border-color: rgba(74,222,128,0.08); }
+    .skill-card:nth-child(2) { border-color: rgba(6,182,212,0.08); }
+    .skill-card:nth-child(3) { border-color: rgba(244,114,182,0.08); }
+    .skill-card:nth-child(4) { border-color: rgba(250,204,21,0.08); }
+    .skill-card:nth-child(5) { border-color: rgba(6,182,212,0.08); }
+    .skill-card:nth-child(1):hover { border-top-color: #4ade80; border-color: rgba(74,222,128,0.3); box-shadow: 0 12px 36px rgba(74,222,128,0.18), inset 0 1px 0 rgba(74,222,128,0.12); background: rgba(74,222,128,0.05); }
+    .skill-card:nth-child(2):hover { border-top-color: var(--accent2); border-color: rgba(6,182,212,0.3); box-shadow: 0 12px 36px rgba(6,182,212,0.18), inset 0 1px 0 rgba(6,182,212,0.12); background: rgba(6,182,212,0.05); }
+    .skill-card:nth-child(3):hover { border-top-color: #f472b6; border-color: rgba(244,114,182,0.3); box-shadow: 0 12px 36px rgba(244,114,182,0.18), inset 0 1px 0 rgba(244,114,182,0.12); background: rgba(244,114,182,0.05); }
+    .skill-card:nth-child(4):hover { border-top-color: #facc15; border-color: rgba(250,204,21,0.3); box-shadow: 0 12px 36px rgba(250,204,21,0.18), inset 0 1px 0 rgba(250,204,21,0.12); background: rgba(250,204,21,0.05); }
+    .skill-card:nth-child(5):hover { border-top-color: var(--accent2); border-color: rgba(6,182,212,0.3); box-shadow: 0 12px 36px rgba(6,182,212,0.18), inset 0 1px 0 rgba(6,182,212,0.12); background: rgba(6,182,212,0.05); }
+    .skill-icon { font-size: 1.7rem; margin-bottom: 0.8rem; display: block; transition: transform 0.3s; }
+    .skill-card:hover .skill-icon { transform: translateY(-4px) scale(1.15); }
+    .skill-name { font-size: 0.92rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.75rem; }
+    .skill-tag { font-size: 0.67rem; font-family: var(--mono); padding: 0.2rem 0.55rem; border-radius: 999px; background: rgba(124,58,237,0.12); border: 1px solid rgba(124,58,237,0.25); color: #a78bfa; }
+    .skill-tag.cyan  { background: rgba(6,182,212,0.1);  border-color: rgba(6,182,212,0.25);  color: var(--accent2); }
+    .skill-tag.pink  { background: rgba(236,72,153,0.1); border-color: rgba(236,72,153,0.25); color: #f472b6; }
+    .skill-tag.green { background: rgba(34,197,94,0.1);  border-color: rgba(34,197,94,0.25);  color: #4ade80; }
+    .skill-note { font-size: 0.76rem; color: var(--text-dim); line-height: 1.55; margin-bottom: 0.9rem; }
+    .skill-bar-wrap { height: 3px; background: rgba(255,255,255,0.06); border-radius: 999px; overflow: hidden; }
+    .skill-bar { height: 100%; border-radius: 999px; width: 0; transition: width 1.2s cubic-bezier(0.4,0,0.2,1); }
+    .skill-card:nth-child(1) .skill-bar { background: linear-gradient(90deg, #4ade80, #22c55e); }
+    .skill-card:nth-child(2) .skill-bar { background: linear-gradient(90deg, var(--accent2), #0891b2); }
+    .skill-card:nth-child(3) .skill-bar { background: linear-gradient(90deg, #f472b6, #ec4899); }
+    .skill-card:nth-child(4) .skill-bar { background: linear-gradient(90deg, #facc15, #eab308); }
+    .skill-card:nth-child(5) .skill-bar { background: linear-gradient(90deg, var(--accent2), var(--accent)); }
+    .skill-card.bar-animate .skill-bar { width: var(--bar-width); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1.2rem; }
+    .project-card { background: rgba(255,255,255,0.035); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.09); border-radius: 18px; padding: 1.6rem; display: flex; flex-direction: column; gap: 0.75rem; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; will-change: transform; box-shadow: 0 4px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.06); }
+    .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent2)); opacity: 0; transition: opacity 0.3s; }
+    .project-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.05) 50%, transparent 60%); background-size: 200% 100%; background-position: -100% 0; transition: background-position 0.5s ease; pointer-events: none; }
+    .project-card:hover { transform: translateY(-5px); border-color: rgba(124,58,237,0.45); box-shadow: 0 16px 48px rgba(124,58,237,0.2), inset 0 1px 0 rgba(255,255,255,0.1); }
+    .project-card:hover::before { opacity: 1; }
+    .project-card:hover::after { background-position: 100% 0; }
+    .project-card-more { background: rgba(255,255,255,0.02); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px dashed rgba(255,255,255,0.1); border-radius: 18px; justify-content: center; align-items: center; text-align: center; min-height: 160px; text-decoration: none; display: flex; flex-direction: column; gap: 0.5rem; transition: border-color 0.3s, background 0.3s, transform 0.3s; box-shadow: inset 0 1px 0 rgba(255,255,255,0.04); }
+    .project-card-more:hover { border-color: rgba(124,58,237,0.4); background: rgba(124,58,237,0.06); transform: translateY(-3px); }
+    .project-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+    .project-title-wrap { display: flex; align-items: center; gap: 0.6rem; }
+    .project-icon { color: var(--accent2); flex-shrink: 0; }
+    .project-name { font-family: var(--mono); font-size: 0.95rem; font-weight: 700; color: #c4b5fd; }
+    .project-links { display: flex; gap: 0.5rem; flex-shrink: 0; }
+    .project-link { display: flex; align-items: center; gap: 0.3rem; font-size: 0.72rem; color: var(--text-dim); text-decoration: none; padding: 0.25rem 0.6rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.04); transition: color 0.2s, border-color 0.2s, background 0.2s; }
+    .project-link:hover { color: var(--text-primary); border-color: var(--glass-border2); background: rgba(255,255,255,0.08); }
+    .project-desc { font-size: 0.81rem; color: var(--text-muted); line-height: 1.65; flex: 1; }
+    .project-footer { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+    .proj-lang { display: flex; align-items: center; gap: 0.4rem; font-size: 0.74rem; color: var(--text-muted); }
+    .lang-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+    .proj-tag { font-size: 0.67rem; font-family: var(--mono); padding: 0.15rem 0.5rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.08); color: var(--text-dim); background: rgba(255,255,255,0.03); transition: color 0.2s, border-color 0.2s, background 0.2s; }
+    .proj-tag:hover { color: var(--accent2); border-color: rgba(6,182,212,0.4); background: rgba(6,182,212,0.08); }
+    .gh-section { position: relative; z-index: 10; max-width: 980px; margin: 0 auto; padding: 0 2rem 5rem; contain: layout; }
+    .gh-profile-card { background: rgba(255,255,255,0.035); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.09); border-radius: 22px; padding: 2rem 2.4rem; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; position: relative; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.07); transition: border-color 0.3s, box-shadow 0.3s; }
+    .gh-profile-card::before { content: ''; position: absolute; inset: -1px; border-radius: 23px; background: linear-gradient(135deg, rgba(124,58,237,0.25), rgba(6,182,212,0.2), rgba(236,72,153,0.12)); z-index: -1; mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask-composite: exclude; -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: destination-out; padding: 1px; }
+    .gh-profile-card:hover { border-color: rgba(124,58,237,0.3); box-shadow: 0 12px 60px rgba(124,58,237,0.15), inset 0 1px 0 rgba(255,255,255,0.1); }
     .gh-avatar-wrap { position: relative; flex-shrink: 0; }
-    .gh-avatar-wrap::before {
-      content: '';
-      position: absolute; inset: -3px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent2), #ec4899);
-      z-index: -1;
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      .gh-avatar-wrap::before { animation: rotateBorder 4s linear infinite; }
-    }
-    @keyframes rotateBorder {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
-    }
-    .gh-avatar {
-      width: 100px; height: 100px; border-radius: 50%;
-      border: 3px solid #020818; display: block;
-    }
-    .gh-info    { flex: 1; min-width: 200px; }
-    .gh-name {
-      font-size: 1.5rem; font-weight: 700; color: #e2e8f0;
-      display: flex; align-items: center; gap: 0.7rem;
-      flex-wrap: wrap; margin-bottom: 0.3rem;
-    }
-    .gh-handle  { font-family: var(--mono); font-size: 0.85rem; color: var(--accent2); margin-bottom: 0.8rem; }
-    .gh-bio     { font-size: 0.88rem; color: #94a3b8; line-height: 1.6; max-width: 480px; margin-bottom: 1rem; }
-    .gh-meta    { display: flex; gap: 1.2rem; flex-wrap: wrap; }
-    .gh-meta-item {
-      display: flex; align-items: center; gap: 0.35rem;
-      font-size: 0.8rem; color: #64748b;
-    }
-    .gh-meta-item svg { opacity: 0.7; }
-    .gh-views {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      font-family: var(--mono); font-size: 0.72rem; color: #64748b;
-      background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border);
-      border-radius: 999px; padding: 0.25rem 0.75rem; margin-top: 0.75rem;
-    }
-
-    .gh-stats-grid {
-      display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-      gap: 1.2rem; margin-bottom: 2rem;
-    }
-    .gh-stat-img {
-      width: 100%; aspect-ratio: 495/195;
-      border-radius: 14px; border: 1px solid var(--glass-border);
-      display: block; background: rgba(13,17,23,0.8);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .gh-stat-img:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(124,58,237,0.25);
-    }
-    .gh-stat-wide { margin-bottom: 2rem; }
-    .gh-stat-wide .gh-stat-img {
-      max-width: 600px; display: block; margin: 0 auto;
-    }
-    .gh-stat-activity {
-      width: 100%; border-radius: 14px; border: 1px solid var(--glass-border);
-      display: block; background: rgba(13,17,23,0.8);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .gh-stat-activity:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(124,58,237,0.25);
-    }
-
-    .repos-grid {
-      display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-      gap: 1rem;
-    }
-    .repo-card {
-      background: var(--glass-bg); border: 1px solid var(--glass-border);
-      border-radius: 14px; padding: 1.4rem;
-      text-decoration: none; color: inherit;
-      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
-      display: flex; flex-direction: column; gap: 0.5rem;
-    }
-    .repo-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(124,58,237,0.45);
-      box-shadow: 0 8px 30px rgba(124,58,237,0.18);
-    }
-    .repo-top   { display: flex; align-items: center; gap: 0.6rem; }
-    .repo-icon  { color: var(--accent2); flex-shrink: 0; }
-    .repo-name  { font-family: var(--mono); font-size: 0.88rem; font-weight: 700; color: #c4b5fd; }
-    .repo-desc  { font-size: 0.78rem; color: #64748b; line-height: 1.5; flex: 1; }
-    .repo-footer { display: flex; align-items: center; gap: 1rem; margin-top: 0.4rem; flex-wrap: wrap; }
-    .repo-lang  { display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: #94a3b8; }
-    .lang-dot   { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-    .repo-tag {
-      font-size: 0.68rem; font-family: var(--mono); padding: 0.15rem 0.5rem;
-      border-radius: 999px; border: 1px solid var(--glass-border);
-      color: #64748b; background: rgba(255,255,255,0.03);
-    }
-
+    .gh-avatar-wrap::before { content: ''; position: absolute; inset: -3px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3)); z-index: -1; }
+    @media (prefers-reduced-motion: no-preference) { .gh-avatar-wrap::before { animation: rotateBorder 5s linear infinite; } }
+    @keyframes rotateBorder { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+    .gh-avatar { width: 90px; height: 90px; border-radius: 50%; border: 3px solid var(--bg); display: block; }
+    .gh-info { flex: 1; min-width: 200px; }
+    .gh-name { font-size: 1.35rem; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap; margin-bottom: 0.2rem; }
+    .gh-handle { font-family: var(--mono); font-size: 0.82rem; color: var(--accent2); margin-bottom: 0.7rem; opacity: 0.85; }
+    .gh-bio { font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; max-width: 500px; margin-bottom: 0.9rem; }
+    .gh-meta { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+    .gh-meta-item { display: flex; align-items: center; gap: 0.35rem; font-size: 0.78rem; color: var(--text-dim); }
+    .gh-meta-item svg { opacity: 0.6; }
+    .gh-counters { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
+    .gh-counter { display: flex; flex-direction: column; align-items: center; background: rgba(255,255,255,0.04); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 0.5rem 1rem; min-width: 64px; transition: border-color 0.2s, background 0.2s, transform 0.2s; }
+    .gh-counter:hover { background: rgba(124,58,237,0.12); border-color: rgba(124,58,237,0.35); transform: translateY(-2px); }
+    .gh-counter-val { font-family: var(--mono); font-size: 1.1rem; font-weight: 700; color: #a78bfa; line-height: 1.2; }
+    .gh-counter-label { font-size: 0.65rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.15rem; }
+    .gh-views { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--mono); font-size: 0.7rem; color: var(--text-dim); background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 999px; padding: 0.2rem 0.7rem; margin-top: 0.7rem; }
+    .gh-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    @media (max-width: 640px) { .gh-stats-grid { grid-template-columns: 1fr; } }
+    .gh-stat-card { background: rgba(255,255,255,0.03); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; position: relative; transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s; display: flex; flex-direction: column; box-shadow: 0 4px 24px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.05); }
+    .gh-stat-card:hover { border-color: rgba(124,58,237,0.35); box-shadow: 0 10px 40px rgba(124,58,237,0.15), inset 0 1px 0 rgba(255,255,255,0.08); transform: translateY(-3px); }
+    .gh-stat-card.span2 { grid-column: 1 / -1; }
+    .gh-stat-card-header { padding: 0.65rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.02); }
+    .gh-stat-card-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .gh-stat-card-label { font-family: var(--mono); font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; }
+    .gh-stat-card-body { flex: 1; display: flex; align-items: center; justify-content: center; padding: 1rem; min-height: 180px; position: relative; }
+    .gh-stat-card.span2 .gh-stat-card-body { min-height: 155px; }
+    .gh-stat-card.activity .gh-stat-card-body { min-height: 140px; padding: 0.6rem; }
+    .gh-stat-card-body img { width: 100%; display: block; border-radius: 6px; transition: transform 0.3s; }
+    .gh-stat-card:hover .gh-stat-card-body img { transform: scale(1.01); }
+    .gh-stat-shimmer { position: absolute; inset: 0; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.025) 50%, transparent 100%); background-size: 200% 100%; animation: shimmer 2s ease infinite; pointer-events: none; z-index: 1; }
+    @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
     .gh-cta-wrap { text-align: center; margin-top: 2.5rem; }
-
-    .socials {
-      position: relative; z-index: 10;
-      display: flex; justify-content: center; gap: 1.2rem;
-      padding-bottom: 4rem; flex-wrap: wrap;
-    }
-    .social-link {
-      display: flex; align-items: center; gap: 0.5rem;
-      padding: 0.55rem 1.1rem; border-radius: 9px;
-      background: var(--glass-bg); border: 1px solid var(--glass-border);
-      color: #94a3b8; text-decoration: none; font-size: 0.82rem; font-weight: 500;
-      transition: color 0.2s, border-color 0.2s, transform 0.2s;
-      cursor: pointer; font-family: inherit;
-    }
-    .social-link:hover { color: #e2e8f0; border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
-
-    footer {
-      position: relative; z-index: 10; text-align: center;
-      padding: 1.5rem 2rem 3rem;
-      font-size: 0.75rem; color: #334155; font-family: var(--mono);
-    }
-    footer a { color: #475569; text-decoration: none; }
-
-    @keyframes fadeDown {
-      from { opacity:0; transform:translateY(-20px); }
-      to   { opacity:1; transform:translateY(0); }
-    }
-
-    .trail-dot {
-      position: fixed; border-radius: 50%; pointer-events: none;
-      z-index: 9999; transform: translate(-50%,-50%);
-    }
+    .contact-section { position: relative; z-index: 10; max-width: 680px; margin: 0 auto; padding: 0 2rem 5rem; text-align: center; contain: layout; }
+    .contact-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 3rem 2.5rem; position: relative; z-index: 0; }
+    .contact-card::before { content: ''; position: absolute; inset: -1px; border-radius: 21px; background: linear-gradient(135deg, rgba(124,58,237,0), rgba(6,182,212,0)); z-index: -1; transition: background 0.4s; }
+    .contact-card:hover::before { background: linear-gradient(135deg, rgba(124,58,237,0.35), rgba(6,182,212,0.35)); }
+    .contact-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 2rem; }
+    .contact-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+    .socials-inline { display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; }
+    .social-link { display: flex; align-items: center; gap: 0.45rem; padding: 0.5rem 1rem; border-radius: 9px; background: var(--glass-bg); border: 1px solid var(--glass-border); color: var(--text-muted); text-decoration: none; font-size: 0.8rem; font-weight: 500; transition: color 0.2s, border-color 0.2s, transform 0.2s; cursor: pointer; font-family: 'Geist', sans-serif; }
+    .social-link:hover { transform: translateY(-2px); }
+    .social-link:nth-child(1):hover { color: #c4b5fd; border-color: rgba(124,58,237,0.4); }
+    .social-link:nth-child(2):hover { color: #60a5fa; border-color: rgba(96,165,250,0.4); }
+    .social-link:nth-child(3):hover { color: var(--accent2); border-color: rgba(6,182,212,0.4); }
+    footer { position: relative; z-index: 10; text-align: center; padding: 1.5rem 2rem 3rem; font-size: 0.72rem; color: var(--text-dim); font-family: var(--mono); border-top: 1px solid var(--glass-border); background: linear-gradient(180deg, transparent, rgba(124,58,237,0.04)); }
+    footer a { text-decoration: none; background: linear-gradient(135deg, #a78bfa, var(--accent2)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; transition: opacity 0.2s; }
+    footer a:hover { opacity: 0.7; }
+    .footer-easter { display: inline-block; margin-top: 0.6rem; font-size: 0.68rem; color: transparent; transition: color 0.4s ease, letter-spacing 0.4s ease; letter-spacing: -0.5em; cursor: default; user-select: none; }
+    footer:hover .footer-easter { color: var(--text-dim); letter-spacing: 0.04em; }
+    .section-divider { max-width: 980px; margin: 0 auto; border: none; height: 1px; background: linear-gradient(90deg, transparent, rgba(124,58,237,0.4), rgba(6,182,212,0.4), transparent); background-size: 200% 100%; }
+    @media (prefers-reduced-motion: no-preference) { .section-divider { animation: shimmerDiv 4s ease infinite; } }
+    @keyframes shimmerDiv { 0%,100% { background-position: 0% 0; } 50% { background-position: 100% 0; } }
+    @keyframes fadeDown { from { opacity:0; transform:translateY(-16px); } to { opacity:1; transform:translateY(0); } }
+    .trail-dot { position: fixed; border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); }
   </style>
 </head>
 <body>
 
+  <div id="progress" aria-hidden="true"></div>
+  <div class="mesh-bg" aria-hidden="true"></div>
   <div class="orb orb1"></div>
   <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
   <canvas id="bg" aria-hidden="true"></canvas>
 
+  <button id="toTop" aria-label="Back to top">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
   <nav role="navigation" aria-label="Main navigation">
-    <a href="#about" class="nav-logo">~/cybersnake223</a>
+    <a href="#hero" class="nav-logo">~/cybersnake223 <span>▸</span></a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks" role="list">
+      <div class="nav-pill" id="navPill" aria-hidden="true"></div>
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#github">GitHub</a></li>
-      <li><a href="https://github.com/cybersnake223" target="_blank" rel="noopener noreferrer">Profile ↗</a></li>
+      <li><a href="#contact" class="nav-cta">Contact ↗</a></li>
     </ul>
   </nav>
 
-  <section class="hero" id="about" aria-label="Introduction">
-    <div class="badge"><span class="badge-dot" aria-hidden="true"></span>Open to opportunities</div>
-    <h1>
-      Hi, I'm <span class="gradient-text">Cybersnake</span><br>
-      <span style="font-size:clamp(1.4rem,3.5vw,2.2rem);font-weight:250;color:#94a3b8;">
-        aka <span class="gradient-text" style="font-weight:900;">Abhishek</span>
-      </span>
-    </h1>
-    <p class="tagline">Linux enthusiast &amp; software developer crafting elegant systems from the terminal up.</p>
-    <div class="typed-line" aria-live="polite"><span id="typed"></span><span class="cursor" aria-hidden="true"></span></div>
+  <section class="hero" id="hero" aria-label="Introduction">
+    <div class="badge">
+      <span class="badge-dot" aria-hidden="true"></span>
+      Open to internships &amp; collabs
+    </div>
+    <h1>Hi, I'm <span class="gradient-text">Abhishek Aryan</span></h1>
+    <div class="hero-handle"><span>@cybersnake223</span> · New Delhi, India</div>
+    <p class="tagline">Linux systems developer &amp; DevOps engineer who builds elegant infrastructure from the terminal up — and rices it for fun.</p>
+    <div class="typed-line" aria-live="polite" aria-atomic="true">
+      <span id="typed"></span><span class="cursor" aria-hidden="true"></span>
+    </div>
     <div class="cta-group">
-      <a href="#github" class="btn btn-primary">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-        View GitHub
+      <a href="#projects" class="btn btn-primary">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        View Projects
       </a>
-      <a href="mailto:nemesisjr111@gmail.com" class="btn btn-ghost">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+      <a href="/resume.pdf" download class="btn btn-ghost">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Resume
+      </a>
+      <a href="mailto:nemesisjr111@gmail.com" class="btn btn-outline">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
         Get in touch
       </a>
     </div>
-    <div class="scroll-hint" aria-hidden="true"><span>scroll</span><div class="line"></div></div>
+    <div class="scroll-hint" id="scrollHint" aria-hidden="true">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
   </section>
 
-  <section class="section" id="skills" aria-label="Skills">
-    <p class="section-label reveal">// what I work with</p>
-    <div class="cards-grid">
-      <div class="card reveal reveal-delay-1">
-        <span class="card-icon" aria-hidden="true">🐧</span>
-        <div class="card-title">Linux &amp; Systems</div>
-        <div class="card-desc">Arch / CachyOS · Hyprland · kernel tuning · dotfile ricing</div>
+  <section class="section" id="about" aria-label="About">
+    <div class="section-header reveal">
+      <span class="section-label">// about me</span>
+      <h2 class="section-title">Who I am <span>&amp; what I </span><em class="accent-word">do</em></h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal reveal-delay-1">
+        <p>I'm <strong>Abhishek Aryan</strong>, a computer science student based in <strong>New Delhi, India</strong>, passionate about Linux systems, open-source software, and building self-hosted infrastructure. I thrive in the terminal and believe in crafting tools that are both functional and elegant.</p>
+        <p>My daily driver is <strong>Arch Linux / CachyOS</strong> with <a href="https://github.com/Cybersnake223/Hypr" target="_blank" rel="noopener">Hyprland</a> — a fully custom Wayland compositor setup I've spent months perfecting. I containerize everything with <strong>Docker</strong>, automate repetitive tasks with Bash, and run analytics stacks like <strong>Metabase &amp; Apache Superset</strong> on self-hosted infrastructure.</p>
+        <p>Currently looking for <strong>internship opportunities</strong> in DevOps, systems, or backend engineering — remote-friendly or Delhi-based.</p>
       </div>
-      <div class="card reveal reveal-delay-2">
-        <span class="card-icon" aria-hidden="true">🐳</span>
-        <div class="card-title">DevOps &amp; Docker</div>
-        <div class="card-desc">Container orchestration · self-hosted stacks · CI pipelines</div>
-      </div>
-      <div class="card reveal reveal-delay-3">
-        <span class="card-icon" aria-hidden="true">📊</span>
-        <div class="card-title">Data Viz</div>
-        <div class="card-desc">Metabase · Apache Superset · dashboards &amp; analytics</div>
-      </div>
-      <div class="card reveal reveal-delay-4">
-        <span class="card-icon" aria-hidden="true">⚡</span>
-        <div class="card-title">Scripting</div>
-        <div class="card-desc">Bash · Python · shell pipelines · system automation</div>
+      <div class="reveal reveal-delay-2">
+        <div class="status-card">
+          <div class="status-row">
+            <span class="status-icon">🎓</span>
+            <div>
+              <div class="status-label">Education</div>
+              <div class="status-value">Computer Science<br><small>Currently in college · New Delhi</small></div>
+            </div>
+          </div>
+          <div class="status-row">
+            <span class="status-icon">🖥️</span>
+            <div>
+              <div class="status-label">Daily Setup</div>
+              <div class="status-value">CachyOS · Hyprland · Neovim<br><small>Foot terminal · Waybar · rofi</small></div>
+            </div>
+          </div>
+          <div class="status-row">
+            <span class="status-icon">📍</span>
+            <div>
+              <div class="status-label">Location</div>
+              <div class="status-value">New Delhi, India<br><small>Open to remote</small></div>
+            </div>
+          </div>
+          <div class="status-row">
+            <span class="status-icon">💼</span>
+            <div>
+              <div class="status-label">Availability</div>
+              <div class="avail-badge"><span class="avail-dot" aria-hidden="true"></span>Open to opportunities</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="gh-section" id="github" aria-label="GitHub activity">
-    <p class="section-label reveal">// github activity</p>
+  <hr class="section-divider">
 
+  <section class="section" id="skills" aria-label="Skills">
+    <div class="section-header reveal">
+      <span class="section-label">// technical skills</span>
+      <h2 class="section-title">What I <em class="accent-word">work</em> <span>with</span></h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card reveal reveal-delay-1" data-bar="92">
+        <span class="skill-icon" aria-hidden="true">🐧</span>
+        <div class="skill-name">Linux &amp; Systems</div>
+        <div class="skill-tags"><span class="skill-tag">Arch</span><span class="skill-tag">CachyOS</span><span class="skill-tag cyan">Hyprland</span><span class="skill-tag cyan">Wayland</span></div>
+        <div class="skill-note">Kernel tuning, dotfile ricing, Waybar &amp; rofi config, PipeWire audio, Bluetooth scripting.</div>
+        <div class="skill-bar-wrap"><div class="skill-bar"></div></div>
+      </div>
+      <div class="skill-card reveal reveal-delay-2" data-bar="82">
+        <span class="skill-icon" aria-hidden="true">🐳</span>
+        <div class="skill-name">DevOps &amp; Docker</div>
+        <div class="skill-tags"><span class="skill-tag cyan">Docker</span><span class="skill-tag cyan">Compose</span><span class="skill-tag">Self-hosted</span></div>
+        <div class="skill-note">Container orchestration, self-hosted service stacks, volume management &amp; CI/CD pipelines.</div>
+        <div class="skill-bar-wrap"><div class="skill-bar"></div></div>
+      </div>
+      <div class="skill-card reveal reveal-delay-3" data-bar="78">
+        <span class="skill-icon" aria-hidden="true">📊</span>
+        <div class="skill-name">Data Visualization</div>
+        <div class="skill-tags"><span class="skill-tag pink">Metabase</span><span class="skill-tag pink">Superset</span><span class="skill-tag">MySQL</span><span class="skill-tag">MariaDB</span></div>
+        <div class="skill-note">Dashboard creation, database relationships, analytics stack deployment on self-hosted infra.</div>
+        <div class="skill-bar-wrap"><div class="skill-bar"></div></div>
+      </div>
+      <div class="skill-card reveal reveal-delay-4" data-bar="88">
+        <span class="skill-icon" aria-hidden="true">⚡</span>
+        <div class="skill-name">Scripting &amp; Automation</div>
+        <div class="skill-tags"><span class="skill-tag green">Bash</span><span class="skill-tag green">Python</span><span class="skill-tag">Git</span><span class="skill-tag">GitHub CLI</span></div>
+        <div class="skill-note">Shell pipelines, system automation scripts, GitHub workflow automation, LSP tooling.</div>
+        <div class="skill-bar-wrap"><div class="skill-bar"></div></div>
+      </div>
+      <div class="skill-card reveal reveal-delay-5" data-bar="75">
+        <span class="skill-icon" aria-hidden="true">🌐</span>
+        <div class="skill-name">Web &amp; Browsers</div>
+        <div class="skill-tags"><span class="skill-tag">HTML/CSS</span><span class="skill-tag cyan">JS</span><span class="skill-tag">userChrome</span><span class="skill-tag">uBlock</span></div>
+        <div class="skill-note">Browser customization (Zen Browser), CSS theming, privacy hardening &amp; static site publishing.</div>
+        <div class="skill-bar-wrap"><div class="skill-bar"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <section class="section" id="projects" aria-label="Projects">
+    <div class="section-header reveal">
+      <span class="section-label">// projects</span>
+      <h2 class="section-title">Things I've <em class="accent-word">built</em></h2>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-header">
+          <div class="project-title-wrap">
+            <svg class="project-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 3h18v18H3zM3 9h18M9 21V9"/></svg>
+            <span class="project-name">Hypr — Vicious Viper Dotfiles</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Cybersnake223/Hypr" target="_blank" rel="noopener noreferrer" class="project-link">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              Source
+            </a>
+          </div>
+        </div>
+        <div class="project-desc">A complete Hyprland desktop configuration featuring Waybar status bar, Yazi file manager, Foot terminal, and custom scripts for screenshots, wallpaper switching, and window management. Showcases a full Wayland-native workflow.</div>
+        <div class="project-footer">
+          <span class="proj-lang"><span class="lang-dot" style="background:#89e051;" aria-hidden="true"></span>Shell 70.1%</span>
+          <span class="proj-tag">dotfiles</span><span class="proj-tag">hyprland</span><span class="proj-tag">MIT</span>
+        </div>
+      </div>
+      <div class="project-card reveal reveal-delay-2">
+        <div class="project-header">
+          <div class="project-title-wrap">
+            <svg class="project-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 012 2v7M11 18H8a2 2 0 01-2-2V9"/></svg>
+            <span class="project-name">mkgit-gh</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Cybersnake223/mkgit-gh" target="_blank" rel="noopener noreferrer" class="project-link">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              Source
+            </a>
+          </div>
+        </div>
+        <div class="project-desc">A Bash CLI tool that eliminates the friction of spinning up a new GitHub repository — creates the remote repo via the GitHub API, initializes it with a README, and pushes the first commit in a single command.</div>
+        <div class="project-footer">
+          <span class="proj-lang"><span class="lang-dot" style="background:#89e051;" aria-hidden="true"></span>Shell</span>
+          <span class="proj-tag">automation</span><span class="proj-tag">bash</span><span class="proj-tag">github-api</span>
+        </div>
+      </div>
+      <a href="https://github.com/Cybersnake223" target="_blank" rel="me noopener noreferrer" class="project-card-more reveal reveal-delay-3">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" style="color:var(--text-dim);" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        <div style="font-size:0.85rem;color:var(--text-dim);">More on GitHub →</div>
+      </a>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <section class="gh-section" id="github" aria-label="GitHub activity">
+    <div class="section-header reveal" style="padding-top:3rem;">
+      <span class="section-label">// github activity</span>
+      <h2 class="section-title">Open source <em class="accent-word">contributions</em></h2>
+    </div>
     <div class="gh-profile-card reveal">
       <div class="gh-avatar-wrap">
-        <img src="https://github.com/Cybersnake223.png"
-             class="gh-avatar" alt="Abhishek Aryan GitHub avatar"
-             width="100" height="100" loading="lazy" decoding="async"
-             onerror="this.src='https://avatars.githubusercontent.com/u/0'">
+        <img src="https://github.com/Cybersnake223.png" class="gh-avatar" alt="Abhishek Aryan GitHub avatar" width="90" height="90" loading="lazy" decoding="async" onerror="this.src='https://avatars.githubusercontent.com/u/0'">
       </div>
       <div class="gh-info">
         <div class="gh-name">
           Abhishek Aryan
-          <span style="font-size:0.7rem;background:rgba(124,58,237,0.2);border:1px solid rgba(124,58,237,0.4);color:#a78bfa;padding:0.2rem 0.6rem;border-radius:999px;font-family:var(--mono);">@cybersnake223</span>
+          <span style="font-size:0.68rem;background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.35);color:#a78bfa;padding:0.18rem 0.55rem;border-radius:999px;font-family:var(--mono);">@cybersnake223</span>
         </div>
         <div class="gh-handle">github.com/Cybersnake223</div>
         <div class="gh-bio">🐧 Linux Enthusiast who likes to play around with computers and stuff. Casually scripting for fun. Also does ricing.<br>I use Arch BTW!!!</div>
         <div class="gh-meta">
           <span class="gh-meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
             New Delhi, India
           </span>
           <span class="gh-meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
             Neovim · Hyprland · Foot
           </span>
-          <span class="gh-meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            Currently in college
-          </span>
+        </div>
+        <div class="gh-counters">
+          <div class="gh-counter"><span class="gh-counter-val" data-target="12">0</span><span class="gh-counter-label">Repos</span></div>
+          <div class="gh-counter"><span class="gh-counter-val" data-target="2">0</span><span class="gh-counter-label">Years</span></div>
+          <div class="gh-counter"><span class="gh-counter-val">∞</span><span class="gh-counter-label">Commits</span></div>
         </div>
         <div class="gh-views">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          <img src="https://komarev.com/ghpvc/?username=Cybersnake223&color=7c3aed&style=flat-square&label=profile+views"
-               alt="Profile view count" height="16" loading="lazy"
-               onerror="this.parentElement.style.display='none'">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          <img src="https://komarev.com/ghpvc/?username=Cybersnake223&color=7c3aed&style=flat-square&label=profile+views" alt="Profile view count" height="14" loading="lazy" onerror="this.parentElement.style.display='none'">
         </div>
       </div>
     </div>
-
-    <div class="gh-stats-grid">
-      <img src="https://github-readme-stats.vercel.app/api?username=Cybersnake223&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=a78bfa&icon_color=06b6d4&text_color=94a3b8&rank_icon=github"
-           class="gh-stat-img reveal reveal-delay-1"
-           alt="GitHub stats for Cybersnake223"
-           width="495" height="195" loading="lazy" decoding="async"
-           onerror="this.style.display='none'">
-      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Cybersnake223&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=a78bfa&text_color=94a3b8&langs_count=6"
-           class="gh-stat-img reveal reveal-delay-2"
-           alt="Top languages for Cybersnake223"
-           width="495" height="195" loading="lazy" decoding="async"
-           onerror="this.style.display='none'">
-    </div>
-
-    <div class="gh-stat-wide reveal">
-      <img src="https://streak-stats.demolab.com?user=Cybersnake223&theme=tokyonight-duo&hide_border=true&background=0d1117&ring=a78bfa&fire=ec4899&currStreakLabel=06b6d4"
-           class="gh-stat-img"
-           alt="GitHub streak for Cybersnake223"
-           width="495" height="195" loading="lazy" decoding="async"
-           onerror="this.style.display='none'">
-    </div>
-
-    <div style="margin-bottom:2rem;" class="reveal">
-      <img src="https://github-readme-activity-graph.vercel.app/graph?username=Cybersnake223&theme=tokyo-night&hide_border=true&bg_color=0d1117&color=a78bfa&line=7c3aed&point=06b6d4&area=true&area_color=7c3aed"
-           class="gh-stat-activity"
-           alt="GitHub activity graph for Cybersnake223"
-           loading="lazy" decoding="async"
-           onerror="this.style.display='none'">
-    </div>
-
-    <p class="section-label reveal" style="margin-bottom:1.5rem;">// featured repositories</p>
-    <div class="repos-grid">
-      <a href="https://github.com/Cybersnake223/Hypr" target="_blank" rel="noopener noreferrer" class="repo-card reveal reveal-delay-1">
-        <div class="repo-top">
-          <svg class="repo-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 3h18v18H3zM3 9h18M9 21V9"/></svg>
-          <span class="repo-name">Hypr</span>
+    <div class="gh-stats-grid reveal">
+      <div class="gh-stat-card">
+        <div class="gh-stat-card-header">
+          <span class="gh-stat-card-dot" style="background:#a78bfa;"></span>
+          <span class="gh-stat-card-label">GitHub Stats</span>
         </div>
-        <div class="repo-desc">🐍 Vicious Viper Dotfiles — Hyprland setup with Waybar, Yazi, Foot terminal &amp; custom scripts for screenshots, wallpapers and more.</div>
-        <div class="repo-footer">
-          <span class="repo-lang"><span class="lang-dot" style="background:#89e051;" aria-hidden="true"></span>Shell 70.1%</span>
-          <span class="repo-tag">dotfiles</span>
-          <span class="repo-tag">MIT</span>
+        <div class="gh-stat-card-body">
+          <div class="gh-stat-shimmer"></div>
+          <img src="https://github-readme-stats.vercel.app/api?username=Cybersnake223&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=a78bfa&icon_color=06b6d4&text_color=94a3b8&rank_icon=github" alt="GitHub stats" loading="lazy" decoding="async" onerror="this.closest('.gh-stat-card').style.display='none'">
         </div>
-      </a>
-
-      <a href="https://github.com/Cybersnake223/mkgit-gh" target="_blank" rel="noopener noreferrer" class="repo-card reveal reveal-delay-2">
-        <div class="repo-top">
-          <svg class="repo-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 012 2v7M11 18H8a2 2 0 01-2-2V9"/></svg>
-          <span class="repo-name">mkgit-gh</span>
+      </div>
+      <div class="gh-stat-card">
+        <div class="gh-stat-card-header">
+          <span class="gh-stat-card-dot" style="background:#06b6d4;"></span>
+          <span class="gh-stat-card-label">Top Languages</span>
         </div>
-        <div class="repo-desc">⚡ Bash script that automates GitHub repo creation — initializes with a README and pushes the first commit automatically.</div>
-        <div class="repo-footer">
-          <span class="repo-lang"><span class="lang-dot" style="background:#89e051;" aria-hidden="true"></span>Shell</span>
-          <span class="repo-tag">automation</span>
-          <span class="repo-tag">bash</span>
+        <div class="gh-stat-card-body">
+          <div class="gh-stat-shimmer"></div>
+          <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Cybersnake223&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=a78bfa&text_color=94a3b8&langs_count=6" alt="Top languages" loading="lazy" decoding="async" onerror="this.closest('.gh-stat-card').style.display='none'">
         </div>
-      </a>
-
-      <a href="https://github.com/Cybersnake223" target="_blank" rel="noopener noreferrer"
-         class="repo-card reveal reveal-delay-3"
-         style="border-style:dashed;justify-content:center;align-items:center;text-align:center;min-height:140px;">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" style="color:#64748b;margin-bottom:0.6rem;" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-        <div style="font-size:0.85rem;color:#64748b;">View all repositories →</div>
-      </a>
+      </div>
+      <div class="gh-stat-card span2">
+        <div class="gh-stat-card-header">
+          <span class="gh-stat-card-dot" style="background:#ec4899;"></span>
+          <span class="gh-stat-card-label">Contribution Streak</span>
+        </div>
+        <div class="gh-stat-card-body">
+          <div class="gh-stat-shimmer"></div>
+          <img src="https://streak-stats.demolab.com?user=Cybersnake223&theme=tokyonight-duo&hide_border=true&background=0d1117&ring=a78bfa&fire=ec4899&currStreakLabel=06b6d4" alt="GitHub streak" loading="lazy" decoding="async" onerror="this.closest('.gh-stat-card').style.display='none'">
+        </div>
+      </div>
+      <div class="gh-stat-card span2 activity">
+        <div class="gh-stat-card-header">
+          <span class="gh-stat-card-dot" style="background:#4ade80;"></span>
+          <span class="gh-stat-card-label">Activity Graph</span>
+        </div>
+        <div class="gh-stat-card-body">
+          <div class="gh-stat-shimmer"></div>
+          <img src="https://github-readme-activity-graph.vercel.app/graph?username=Cybersnake223&theme=tokyo-night&hide_border=true&bg_color=0d1117&color=a78bfa&line=7c3aed&point=06b6d4&area=true&area_color=7c3aed" alt="GitHub activity graph" loading="lazy" decoding="async" onerror="this.closest('.gh-stat-card').style.display='none'">
+        </div>
+      </div>
     </div>
-
     <div class="gh-cta-wrap reveal">
-      <a href="https://github.com/Cybersnake223" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+      <a href="https://github.com/Cybersnake223" target="_blank" rel="me noopener noreferrer" class="btn btn-primary">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
         Open Full GitHub Profile
       </a>
     </div>
   </section>
 
-  <div class="socials reveal">
-    <a href="https://github.com/cybersnake223" class="social-link" target="_blank" rel="noopener noreferrer">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-      GitHub
-    </a>
-    <a href="https://cybersnake223.github.io" class="social-link">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-      Website
-    </a>
-    <button class="social-link" id="copyEmail" aria-label="Copy email address">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-      <span id="copyEmailLabel">Copy Email</span>
-    </button>
-  </div>
+  <hr class="section-divider">
+
+  <section class="contact-section" id="contact" aria-label="Contact">
+    <div class="section-header reveal" style="padding-top:3rem;">
+      <span class="section-label">// contact</span>
+      <h2 class="section-title">Let's <em class="accent-word">work</em> <span>together</span></h2>
+    </div>
+    <div class="contact-card reveal reveal-delay-1">
+      <p>I'm open to internships, freelance projects, and open-source collaborations. Whether you want to talk Linux, DevOps, or just geek out about Wayland compositors — my inbox is open.</p>
+      <div class="contact-btns">
+        <a href="mailto:nemesisjr111@gmail.com" class="btn btn-primary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+          Send Email
+        </a>
+        <button class="btn btn-ghost" id="copyEmail">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          <span id="copyEmailLabel">Copy Email</span>
+        </button>
+      </div>
+      <div class="socials-inline">
+        <a href="https://github.com/cybersnake223" class="social-link" target="_blank" rel="me noopener noreferrer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          GitHub
+        </a>
+        <a href="https://linkedin.com/in/YOUR_USERNAME" class="social-link" target="_blank" rel="noopener noreferrer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://cybersnake223.github.io" class="social-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          Website
+        </a>
+      </div>
+    </div>
+  </section>
 
   <footer>
-    <span>built with 🐧 &amp; vim motions · </span>
-    <a href="https://github.com/Cybersnake223" target="_blank" rel="noopener noreferrer">@cybersnake223</a>
+    <span>built with 🐧 &amp; vim motions &nbsp;·&nbsp; </span>
+    <a href="https://github.com/Cybersnake223" target="_blank" rel="me noopener noreferrer">@cybersnake223</a>
+    <span> &nbsp;·&nbsp; New Delhi, India &nbsp;·&nbsp; [<span id="year"></span>]</span>
+    <br>
+    <span class="footer-easter">// btw i use arch &nbsp;·&nbsp; hyprland &nbsp;·&nbsp; neofetch goes hard</span>
   </footer>
 
   <script>
-  (function () {
-    const canvas = document.getElementById('bg');
-    const ctx    = canvas.getContext('2d');
-    let W, H, particles = [], mouse = { x: -9999, y: -9999 };
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { canvas.style.display = 'none'; return; }
-
-    const isMobile      = window.innerWidth < 768;
-    const COUNT         = isMobile ? 30 : 75;
-    const CONNECT_DIST2 = isMobile ? 8100 : 16900;
-    const MOUSE_DIST    = 160;
-    const MOUSE_DIST2   = MOUSE_DIST * MOUSE_DIST;
-
-    function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-
-    function Particle() {
-      this.x = Math.random()*W; this.y = Math.random()*H;
-      this.vx = (Math.random()-0.5)*0.4; this.vy = (Math.random()-0.5)*0.4;
-      this.r  = Math.random()*1.8+0.6;   this.hue = Math.random()*60+240;
+  (function(){
+    const bar=document.getElementById('progress'),hint=document.getElementById('scrollHint'),btn=document.getElementById('toTop'),nav=document.querySelector('nav');
+    let ticking=false;
+    function onScroll(){
+      if(ticking)return;ticking=true;
+      requestAnimationFrame(()=>{
+        const y=window.scrollY,max=document.body.scrollHeight-window.innerHeight;
+        bar.style.width=(y/max*100)+'%';
+        btn.classList.toggle('visible',y>400);
+        nav.classList.toggle('scrolled',y>20);
+        if(hint)hint.style.opacity=y>80?'0':'0.45';
+        ticking=false;
+      });
     }
-    Particle.prototype.update = function() {
-      this.x += this.vx; this.y += this.vy;
-      if (this.x < 0 || this.x > W) this.vx *= -1;
-      if (this.y < 0 || this.y > H) this.vy *= -1;
-      const dx = this.x-mouse.x, dy = this.y-mouse.y, d2 = dx*dx+dy*dy;
-      if (d2 < MOUSE_DIST2) {
-        const d = Math.sqrt(d2), f = (MOUSE_DIST-d)/MOUSE_DIST*0.8;
-        this.vx += (dx/d)*f*0.04; this.vy += (dy/d)*f*0.04;
-      }
-      const sp = this.vx*this.vx+this.vy*this.vy;
-      if (sp > 1.44) { const s = Math.sqrt(sp); this.vx /= s; this.vy /= s; }
-    };
-    Particle.prototype.draw = function() {
-      ctx.beginPath(); ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
-      ctx.fillStyle = `hsla(${this.hue},80%,75%,0.85)`; ctx.fill();
-    };
+    window.addEventListener('scroll',onScroll,{passive:true});
+    btn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+  })();
 
-    function init() { resize(); particles = Array.from({length:COUNT}, ()=>new Particle()); }
-
-    function frame() {
+  (function(){
+    const canvas=document.getElementById('bg'),ctx=canvas.getContext('2d');
+    let W,H,particles=[],mouse={x:-9999,y:-9999},rt,paused=false;
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){canvas.style.display='none';return;}
+    function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+    function Particle(){this.x=Math.random()*W;this.y=Math.random()*H;this.vx=(Math.random()-0.5)*0.35;this.vy=(Math.random()-0.5)*0.35;this.r=Math.random()*1.6+0.5;this.hue=Math.random()*60+240;}
+    Particle.prototype.update=function(){
+      this.x+=this.vx;this.y+=this.vy;
+      if(this.x<0||this.x>W)this.vx*=-1;if(this.y<0||this.y>H)this.vy*=-1;
+      const dx=this.x-mouse.x,dy=this.y-mouse.y,d2=dx*dx+dy*dy;
+      if(d2<22500){const d=Math.sqrt(d2),f=(150-d)/150*0.8;this.vx+=(dx/d)*f*0.035;this.vy+=(dy/d)*f*0.035;}
+      const sp=this.vx*this.vx+this.vy*this.vy;if(sp>1.2){const s=Math.sqrt(sp);this.vx/=s;this.vy/=s;}
+    };
+    Particle.prototype.draw=function(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=`hsla(${this.hue},80%,75%,0.8)`;ctx.fill();};
+    function init(){resize();particles=Array.from({length:50},()=>new Particle());}
+    const CD2=14400;
+    function frame(){
+      if(paused){requestAnimationFrame(frame);return;}
       ctx.clearRect(0,0,W,H);
-      for (let i=0; i<particles.length; i++) { particles[i].update(); particles[i].draw(); }
+      for(let i=0;i<particles.length;i++){particles[i].update();particles[i].draw();}
       ctx.beginPath();
-      for (let i=0; i<particles.length; i++) {
-        for (let j=i+1; j<particles.length; j++) {
-          const dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y;
-          if (dx*dx+dy*dy < CONNECT_DIST2) {
-            ctx.moveTo(particles[i].x,particles[i].y);
-            ctx.lineTo(particles[j].x,particles[j].y);
-          }
-        }
+      for(let i=0;i<particles.length;i++)for(let j=i+1;j<particles.length;j++){
+        const dx=particles[i].x-particles[j].x;if(dx*dx>CD2)continue;
+        const dy=particles[i].y-particles[j].y;
+        if(dx*dx+dy*dy<CD2){ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);}
       }
-      ctx.strokeStyle='rgba(139,92,246,0.3)'; ctx.lineWidth=0.8; ctx.stroke();
+      ctx.strokeStyle='rgba(139,92,246,0.25)';ctx.lineWidth=0.7;ctx.stroke();
       requestAnimationFrame(frame);
     }
-
-    let rt;
-    window.addEventListener('resize', ()=>{ clearTimeout(rt); rt=setTimeout(resize,150); });
-    window.addEventListener('mousemove', e=>{ mouse.x=e.clientX; mouse.y=e.clientY; });
-    window.addEventListener('mouseleave', ()=>{ mouse.x=-9999; mouse.y=-9999; });
-    init(); frame();
+    document.addEventListener('visibilitychange',()=>{paused=document.hidden;});
+    window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{resize();particles=Array.from({length:50},()=>new Particle());},200);});
+    window.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;},{passive:true});
+    window.addEventListener('mouseleave',()=>{mouse.x=-9999;mouse.y=-9999;});
+    init();frame();
   })();
 
   (function(){
-    const lines = [
-      'arch linux  |  hyprland  |  neovim',
-      'docker  |  bash  |  self-hosted',
-      'metabase  |  superset  |  analytics',
-      'open source everything 🚀'
-    ];
-    let li=0, ci=0, del=false;
-    const el = document.getElementById('typed');
+    const lines=['arch linux  |  hyprland  |  neovim','docker  |  bash  |  self-hosted stacks','metabase  |  superset  |  analytics','open source everything 🚀'];
+    let li=0,ci=0,del=false;
+    const el=document.getElementById('typed');
     function tick(){
-      const line = lines[li];
-      if (!del) { el.textContent=line.slice(0,++ci); if(ci===line.length){del=true;setTimeout(tick,2200);return;} }
-      else       { el.textContent=line.slice(0,--ci); if(ci===0){del=false;li=(li+1)%lines.length;setTimeout(tick,400);return;} }
-      setTimeout(tick, del?35:62);
+      const line=lines[li];
+      if(!del){el.textContent=line.slice(0,++ci);if(ci===line.length){del=true;setTimeout(tick,2400);return;}}
+      else{el.textContent=line.slice(0,--ci);if(ci===0){del=false;li=(li+1)%lines.length;setTimeout(tick,350);return;}}
+      setTimeout(tick,del?30:58);
     }
-    setTimeout(tick, 1200);
+    setTimeout(tick,1000);
   })();
 
   (function(){
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    if ('ontouchstart' in window) return;
-    const TRAIL = 8, dots = [];
-    for (let i=0; i<TRAIL; i++) {
-      const d = document.createElement('div');
-      d.className = 'trail-dot';
-      const s = (TRAIL-i)*1.6;
-      d.style.cssText = `width:${s}px;height:${s}px;background:rgba(139,92,246,${0.5-i*0.05});`;
-      document.body.appendChild(d);
-      dots.push({el:d, x:0, y:0});
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    if('ontouchstart'in window)return;
+    const TRAIL=8,dots=[];
+    for(let i=0;i<TRAIL;i++){
+      const d=document.createElement('div');d.className='trail-dot';
+      const s=(TRAIL-i)*1.5;
+      d.style.cssText=`width:${s}px;height:${s}px;background:rgba(139,92,246,${0.45-i*0.045});`;
+      document.body.appendChild(d);dots.push({el:d,x:0,y:0});
     }
-    let mx=0, my=0;
-    window.addEventListener('mousemove', e=>{ mx=e.clientX; my=e.clientY; });
+    let mx=0,my=0;
+    window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;},{passive:true});
     (function loop(){
-      let px=mx, py=my;
+      let px=mx,py=my;
       dots.forEach((dot,i)=>{
-        dot.x += (px-dot.x)*(0.28-i*0.02);
-        dot.y += (py-dot.y)*(0.28-i*0.02);
-        dot.el.style.transform = `translate(calc(${dot.x}px - 50%), calc(${dot.y}px - 50%))`;
-        px=dot.x; py=dot.y;
+        dot.x+=(px-dot.x)*(0.26-i*0.018);dot.y+=(py-dot.y)*(0.26-i*0.018);
+        dot.el.style.transform=`translate(calc(${dot.x}px - 50%), calc(${dot.y}px - 50%))`;
+        px=dot.x;py=dot.y;
       });
       requestAnimationFrame(loop);
     })();
   })();
 
-  document.querySelectorAll('.card, .repo-card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const r = card.getBoundingClientRect();
-      const x = (e.clientX-r.left)/r.width  - 0.5;
-      const y = (e.clientY-r.top) /r.height - 0.5;
-      card.style.transform = `translateY(-4px) rotateX(${-y*8}deg) rotateY(${x*8}deg)`;
+  document.querySelectorAll('.skill-card, .project-card').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-0.5,y=(e.clientY-r.top)/r.height-0.5;
+      card.style.transform=`translateY(-4px) rotateX(${-y*7}deg) rotateY(${x*7}deg)`;
     });
-    card.addEventListener('mouseleave', ()=>{ card.style.transform = 'translateY(0)'; });
+    card.addEventListener('mouseleave',()=>{card.style.transform='';});
   });
 
   (function(){
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));
+      document.querySelectorAll('.skill-card[data-bar]').forEach(card=>{card.style.setProperty('--bar-width',card.dataset.bar+'%');card.classList.add('bar-animate');});
       return;
     }
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    const barIO=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.setProperty('--bar-width',e.target.dataset.bar+'%');e.target.classList.add('bar-animate');barIO.unobserve(e.target);}});},{threshold:0.3});
+    document.querySelectorAll('.skill-card[data-bar]').forEach(el=>barIO.observe(el));
   })();
 
   (function(){
-    const toggle = document.getElementById('navToggle');
-    const links  = document.getElementById('navLinks');
-    toggle.addEventListener('click', () => {
-      const open = links.classList.toggle('open');
-      toggle.classList.toggle('open', open);
-      toggle.setAttribute('aria-expanded', open);
-    });
-    links.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        links.classList.remove('open');
-        toggle.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
+    const counters=document.querySelectorAll('.gh-counter-val[data-target]');
+    if(!counters.length)return;
+    const io=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(!e.isIntersecting)return;
+        const el=e.target,target=parseInt(el.dataset.target),dur=1400,start=performance.now();
+        function step(now){const p=Math.min((now-start)/dur,1),ease=1-Math.pow(1-p,3);el.textContent=Math.floor(ease*target)+(p<1?'':'+');if(p<1)requestAnimationFrame(step);}
+        requestAnimationFrame(step);io.unobserve(el);
       });
-    });
+    },{threshold:0.5});
+    counters.forEach(el=>io.observe(el));
   })();
 
   (function(){
-    const btn   = document.getElementById('copyEmail');
-    const label = document.getElementById('copyEmailLabel');
-    if (!btn) return;
-    btn.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText('nemesisjr111@gmail.com');
-        label.textContent = 'Copied!';
-        setTimeout(()=> label.textContent = 'Copy Email', 2000);
-      } catch {
-        label.textContent = 'nemesisjr111@gmail.com';
-      }
+    const links=document.querySelectorAll('.nav-links a[href^="#"]:not(.nav-cta)');
+    const pill=document.getElementById('navPill'),navLinks=document.getElementById('navLinks');
+    function movePill(el){
+      if(!el||!pill)return;
+      const navRect=navLinks.getBoundingClientRect(),elRect=el.getBoundingClientRect();
+      pill.style.left=(elRect.left-navRect.left)+'px';pill.style.width=elRect.width+'px';
+      pill.style.top=(elRect.top-navRect.top)+'px';pill.style.height=elRect.height+'px';pill.style.opacity='1';
+    }
+    links.forEach(a=>a.addEventListener('mouseenter',()=>movePill(a)));
+    navLinks.addEventListener('mouseleave',()=>{if(pill)pill.style.opacity='0';});
+    const sections=document.querySelectorAll('section[id], .gh-section[id]');
+    const spy=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.remove('active'));const active=document.querySelector(`.nav-links a[href="#${e.target.id}"]`);if(active)active.classList.add('active');}});
+    },{rootMargin:'-40% 0px -55% 0px'});
+    sections.forEach(s=>spy.observe(s));
+  })();
+
+  (function(){
+    const toggle=document.getElementById('navToggle'),links=document.getElementById('navLinks');
+    toggle.addEventListener('click',()=>{const open=links.classList.toggle('open');toggle.classList.toggle('open',open);toggle.setAttribute('aria-expanded',open);});
+    links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');toggle.classList.remove('open');toggle.setAttribute('aria-expanded','false');}));
+  })();
+
+  (function(){
+    const btn=document.getElementById('copyEmail'),label=document.getElementById('copyEmailLabel');
+    if(!btn)return;
+    btn.addEventListener('click',async()=>{
+      try{await navigator.clipboard.writeText('nemesisjr111@gmail.com');label.textContent='Copied ✓';setTimeout(()=>label.textContent='Copy Email',2000);}
+      catch{label.textContent='nemesisjr111@gmail.com';}
     });
   })();
   </script>
