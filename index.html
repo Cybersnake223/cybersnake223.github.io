@@ -31,9 +31,9 @@
     "address": { "@type": "PostalAddress", "addressLocality": "New Delhi", "addressCountry": "IN" }
   }
   </script>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;700&display=swap">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;700&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
   <style>
@@ -62,8 +62,6 @@
     .mesh-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(ellipse 80% 60% at 20% 10%, rgba(124,58,237,0.12) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 80% 80%, rgba(6,182,212,0.1) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 50% 50%, rgba(236,72,153,0.06) 0%, transparent 60%), var(--bg); }
     .orb { position: fixed; border-radius: 50%; filter: blur(90px); opacity: 0.18; pointer-events: none; z-index: 0; }
     .orb1 { width: 600px; height: 600px; background: var(--accent); top: -150px; left: -150px; }
-    .orb2 { width: 480px; height: 480px; background: var(--accent2); bottom: -120px; right: -100px; }
-    .orb3 { width: 300px; height: 300px; background: var(--accent3); top: 50%; left: 55%; opacity: 0.08; }
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1rem 3rem; background: rgba(2,8,24,0.75); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); transition: border-color 0.3s, background 0.3s; transform: translateZ(0); }
     nav.scrolled { border-bottom-color: rgba(255,255,255,0.14); background: rgba(2,8,24,0.92); }
     .nav-logo { font-family: var(--mono); font-size: 0.92rem; font-weight: 700; color: var(--accent2); text-decoration: none; letter-spacing: -0.02em; transition: color 0.3s; }
@@ -106,9 +104,8 @@
     h1 { font-size: clamp(2.6rem,6.5vw,5rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.04em; margin-bottom: 0.6rem; animation: fadeDown 0.9s ease 0.1s both; }
     .hero-handle { font-family: var(--mono); font-size: clamp(0.85rem,2vw,1rem); font-weight: 400; color: var(--text-dim); margin-bottom: 1.6rem; animation: fadeDown 0.9s ease 0.15s both; letter-spacing: 0.02em; }
     .hero-handle span { color: var(--accent2); }
-    .gradient-text { background: linear-gradient(135deg, #a78bfa 0%, #06b6d4 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; background-size: 200% 200%; }
-    @media (prefers-reduced-motion: no-preference) { .gradient-text { animation: gradientShift 5s ease infinite; } }
-    @keyframes gradientShift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+    .gradient-text { background: linear-gradient(135deg, #a78bfa 0%, #06b6d4 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
     .tagline { font-size: clamp(1rem,2.2vw,1.15rem); color: var(--text-muted); font-weight: 400; max-width: 540px; line-height: 1.75; margin-bottom: 1rem; animation: fadeDown 1s ease 0.2s both; }
     .typed-line { font-family: var(--mono); font-size: 0.875rem; color: var(--accent2); margin-bottom: 2.5rem; min-height: 1.4em; animation: fadeDown 1s ease 0.3s both; opacity: 0.8; }
     .cursor { display: inline-block; width: 2px; height: 0.9em; border-radius: 1px; margin-left: 2px; vertical-align: text-bottom; animation: blink 1s step-end infinite, cursorColor 3s ease infinite; }
@@ -116,13 +113,11 @@
     @keyframes cursorColor { 0%,100%{background:var(--accent)} 33%{background:var(--accent2)} 66%{background:var(--accent3)} }
     .cta-group { display: flex; gap: 0.85rem; flex-wrap: wrap; justify-content: center; animation: fadeDown 1s ease 0.4s both; margin-bottom: 2rem; }
     .scroll-hint { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); color: var(--text-dim); opacity: 0.45; transition: opacity 0.4s ease; }
-    @media (prefers-reduced-motion: no-preference) { .scroll-hint { animation: bounceY 2s ease infinite; } }
-    @keyframes bounceY { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+
     .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.72rem 1.6rem; border-radius: 10px; font-size: 0.875rem; font-weight: 600; text-decoration: none; font-family: 'Geist', sans-serif; transition: transform 0.2s, box-shadow 0.2s, background 0.2s; cursor: pointer; border: none; }
     .btn-primary { background: linear-gradient(135deg, var(--accent), #9333ea); color: #fff; box-shadow: 0 0 28px var(--glow); }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 48px var(--glow); }
-    @media (prefers-reduced-motion: no-preference) { .btn-primary { animation: glowPulse 3s ease infinite; } }
-    @keyframes glowPulse { 0%,100% { box-shadow: 0 0 28px var(--glow); } 50% { box-shadow: 0 0 52px rgba(124,58,237,0.7); } }
+
     .btn-ghost { background: var(--glass-bg); color: var(--text-primary); border: 1px solid transparent; background-clip: padding-box; position: relative; }
     .btn-ghost::before { content: ''; position: absolute; inset: -1px; border-radius: 11px; z-index: -1; background: linear-gradient(135deg, rgba(124,58,237,0.4), rgba(6,182,212,0.4)); opacity: 0; transition: opacity 0.3s; }
     .btn-ghost:hover::before { opacity: 1; }
@@ -158,12 +153,11 @@
     .status-value { font-size: 0.85rem; color: var(--text-primary); font-weight: 500; }
     .status-value small { color: var(--text-dim); font-weight: 400; }
     .avail-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.3); color: #4ade80; font-size: 0.75rem; font-family: var(--mono); padding: 0.25rem 0.7rem; border-radius: 999px; margin-top: 0.3rem; }
-    @media (prefers-reduced-motion: no-preference) { .avail-badge { animation: availPulse 3s ease infinite; } }
-    @keyframes availPulse { 0%,100% { background: rgba(34,197,94,0.12); } 50% { background: rgba(34,197,94,0.22); } }
+
     .avail-dot { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; position: relative; flex-shrink: 0; }
     .avail-dot::after { content: ''; position: absolute; inset: -3px; border-radius: 50%; border: 1px solid rgba(74,222,128,0.5); animation: ripple 2s ease infinite; }
     .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 0.85rem; }
-    .skill-card { background: rgba(255,255,255,0.035); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); border-top: 2px solid transparent; border-radius: 16px; padding: 1.4rem; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s, background 0.3s; will-change: transform; box-shadow: 0 4px 20px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.06); position: relative; overflow: hidden; }
+    .skill-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-top: 2px solid transparent; border-radius: 16px; padding: 1.4rem; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s, background 0.3s; will-change: transform; box-shadow: 0 4px 20px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.06); position: relative; overflow: hidden; }
     .skill-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.04) 50%, transparent 60%); background-size: 200% 100%; background-position: -100% 0; transition: background-position 0.5s ease; pointer-events: none; }
     .skill-card:hover::after { background-position: 100% 0; }
     .skill-card:nth-child(1) { border-color: rgba(74,222,128,0.08); }
@@ -194,13 +188,13 @@
     .skill-card:nth-child(5) .skill-bar { background: linear-gradient(90deg, var(--accent2), var(--accent)); }
     .skill-card.bar-animate .skill-bar { width: var(--bar-width); }
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1.2rem; }
-    .project-card { background: rgba(255,255,255,0.035); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.09); border-radius: 18px; padding: 1.6rem; display: flex; flex-direction: column; gap: 0.75rem; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; will-change: transform; box-shadow: 0 4px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.06); }
+    .project-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.09); border-radius: 18px; padding: 1.6rem; display: flex; flex-direction: column; gap: 0.75rem; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; will-change: transform; box-shadow: 0 4px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.06); }
     .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent2)); opacity: 0; transition: opacity 0.3s; }
     .project-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.05) 50%, transparent 60%); background-size: 200% 100%; background-position: -100% 0; transition: background-position 0.5s ease; pointer-events: none; }
     .project-card:hover { transform: translateY(-5px); border-color: rgba(124,58,237,0.45); box-shadow: 0 16px 48px rgba(124,58,237,0.2), inset 0 1px 0 rgba(255,255,255,0.1); }
     .project-card:hover::before { opacity: 1; }
     .project-card:hover::after { background-position: 100% 0; }
-    .project-card-more { background: rgba(255,255,255,0.02); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px dashed rgba(255,255,255,0.1); border-radius: 18px; justify-content: center; align-items: center; text-align: center; min-height: 160px; text-decoration: none; display: flex; flex-direction: column; gap: 0.5rem; transition: border-color 0.3s, background 0.3s, transform 0.3s; box-shadow: inset 0 1px 0 rgba(255,255,255,0.04); }
+    .project-card-more { background: rgba(255,255,255,0.04); border: 1px dashed rgba(255,255,255,0.1); border-radius: 18px; justify-content: center; align-items: center; text-align: center; min-height: 160px; text-decoration: none; display: flex; flex-direction: column; gap: 0.5rem; transition: border-color 0.3s, background 0.3s, transform 0.3s; box-shadow: inset 0 1px 0 rgba(255,255,255,0.04); }
     .project-card-more:hover { border-color: rgba(124,58,237,0.4); background: rgba(124,58,237,0.06); transform: translateY(-3px); }
     .project-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
     .project-title-wrap { display: flex; align-items: center; gap: 0.6rem; }
@@ -216,13 +210,12 @@
     .proj-tag { font-size: 0.67rem; font-family: var(--mono); padding: 0.15rem 0.5rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.08); color: var(--text-dim); background: rgba(255,255,255,0.03); transition: color 0.2s, border-color 0.2s, background 0.2s; }
     .proj-tag:hover { color: var(--accent2); border-color: rgba(6,182,212,0.4); background: rgba(6,182,212,0.08); }
     .gh-section { position: relative; z-index: 10; max-width: 980px; margin: 0 auto; padding: 0 2rem 5rem; contain: layout; }
-    .gh-profile-card { background: rgba(255,255,255,0.035); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.09); border-radius: 22px; padding: 2rem 2.4rem; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; position: relative; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.07); transition: border-color 0.3s, box-shadow 0.3s; }
+    .gh-profile-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.09); border-radius: 22px; padding: 2rem 2.4rem; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; position: relative; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.07); transition: border-color 0.3s, box-shadow 0.3s; }
     .gh-profile-card::before { content: ''; position: absolute; inset: -1px; border-radius: 23px; background: linear-gradient(135deg, rgba(124,58,237,0.25), rgba(6,182,212,0.2), rgba(236,72,153,0.12)); z-index: -1; mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask-composite: exclude; -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: destination-out; padding: 1px; }
     .gh-profile-card:hover { border-color: rgba(124,58,237,0.3); box-shadow: 0 12px 60px rgba(124,58,237,0.15), inset 0 1px 0 rgba(255,255,255,0.1); }
     .gh-avatar-wrap { position: relative; flex-shrink: 0; }
     .gh-avatar-wrap::before { content: ''; position: absolute; inset: -3px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3)); z-index: -1; }
-    @media (prefers-reduced-motion: no-preference) { .gh-avatar-wrap::before { animation: rotateBorder 5s linear infinite; } }
-    @keyframes rotateBorder { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+
     .gh-avatar { width: 90px; height: 90px; border-radius: 50%; border: 3px solid var(--bg); display: block; }
     .gh-info { flex: 1; min-width: 200px; }
     .gh-name { font-size: 1.35rem; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap; margin-bottom: 0.2rem; }
@@ -232,14 +225,14 @@
     .gh-meta-item { display: flex; align-items: center; gap: 0.35rem; font-size: 0.78rem; color: var(--text-dim); }
     .gh-meta-item svg { opacity: 0.6; }
     .gh-counters { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
-    .gh-counter { display: flex; flex-direction: column; align-items: center; background: rgba(255,255,255,0.04); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 0.5rem 1rem; min-width: 64px; transition: border-color 0.2s, background 0.2s, transform 0.2s; }
+    .gh-counter { display: flex; flex-direction: column; align-items: center; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 0.5rem 1rem; min-width: 64px; transition: border-color 0.2s, background 0.2s, transform 0.2s; }
     .gh-counter:hover { background: rgba(124,58,237,0.12); border-color: rgba(124,58,237,0.35); transform: translateY(-2px); }
     .gh-counter-val { font-family: var(--mono); font-size: 1.1rem; font-weight: 700; color: #a78bfa; line-height: 1.2; }
     .gh-counter-label { font-size: 0.65rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.15rem; }
     .gh-views { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--mono); font-size: 0.7rem; color: var(--text-dim); background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 999px; padding: 0.2rem 0.7rem; margin-top: 0.7rem; }
     .gh-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
     @media (max-width: 640px) { .gh-stats-grid { grid-template-columns: 1fr; } }
-    .gh-stat-card { background: rgba(255,255,255,0.03); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; position: relative; transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s; display: flex; flex-direction: column; box-shadow: 0 4px 24px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.05); }
+    .gh-stat-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; position: relative; transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s; display: flex; flex-direction: column; box-shadow: 0 4px 24px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.05); }
     .gh-stat-card:hover { border-color: rgba(124,58,237,0.35); box-shadow: 0 10px 40px rgba(124,58,237,0.15), inset 0 1px 0 rgba(255,255,255,0.08); transform: translateY(-3px); }
     .gh-stat-card.span2 { grid-column: 1 / -1; }
     .gh-stat-card-header { padding: 0.65rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.02); }
@@ -250,8 +243,7 @@
     .gh-stat-card.activity .gh-stat-card-body { min-height: 140px; padding: 0.6rem; }
     .gh-stat-card-body img { width: 100%; display: block; border-radius: 6px; transition: transform 0.3s; }
     .gh-stat-card:hover .gh-stat-card-body img { transform: scale(1.01); }
-    .gh-stat-shimmer { position: absolute; inset: 0; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.025) 50%, transparent 100%); background-size: 200% 100%; animation: shimmer 2s ease infinite; pointer-events: none; z-index: 1; }
-    @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+    .gh-stat-shimmer { display: none; }
     .gh-cta-wrap { text-align: center; margin-top: 2.5rem; }
     .contact-section { position: relative; z-index: 10; max-width: 680px; margin: 0 auto; padding: 0 2rem 5rem; text-align: center; contain: layout; }
     .contact-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 3rem 2.5rem; position: relative; z-index: 0; }
@@ -270,19 +262,17 @@
     footer a:hover { opacity: 0.7; }
     .footer-easter { display: inline-block; margin-top: 0.6rem; font-size: 0.68rem; color: transparent; transition: color 0.4s ease, letter-spacing 0.4s ease; letter-spacing: -0.5em; cursor: default; user-select: none; }
     footer:hover .footer-easter { color: var(--text-dim); letter-spacing: 0.04em; }
-    .section-divider { max-width: 980px; margin: 0 auto; border: none; height: 1px; background: linear-gradient(90deg, transparent, rgba(124,58,237,0.4), rgba(6,182,212,0.4), transparent); background-size: 200% 100%; }
-    @media (prefers-reduced-motion: no-preference) { .section-divider { animation: shimmerDiv 4s ease infinite; } }
-    @keyframes shimmerDiv { 0%,100% { background-position: 0% 0; } 50% { background-position: 100% 0; } }
+    .section-divider { max-width: 980px; margin: 0 auto; border: none; height: 1px; background: linear-gradient(90deg, transparent, rgba(124,58,237,0.4), rgba(6,182,212,0.4), transparent); }
+     50% { background-position: 100% 0; } }
     @keyframes fadeDown { from { opacity:0; transform:translateY(-16px); } to { opacity:1; transform:translateY(0); } }
   </style>
 </head>
 <body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none"><symbol id="gh-icon" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></symbol></svg>
 
   <div id="progress" aria-hidden="true"></div>
   <div class="mesh-bg" aria-hidden="true"></div>
   <div class="orb orb1"></div>
-  <div class="orb orb2"></div>
-  <div class="orb orb3"></div>
 
   <button id="toTop" aria-label="Back to top">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
@@ -441,7 +431,7 @@
           </div>
           <div class="project-links">
             <a href="https://github.com/Cybersnake223/Hypr" target="_blank" rel="noopener noreferrer" class="project-link">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              <svg width="11" height="11" aria-hidden="true"><use href="#gh-icon"/></svg>
               Source
             </a>
           </div>
@@ -460,7 +450,7 @@
           </div>
           <div class="project-links">
             <a href="https://github.com/Cybersnake223/mkgit-gh" target="_blank" rel="noopener noreferrer" class="project-link">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              <svg width="11" height="11" aria-hidden="true"><use href="#gh-icon"/></svg>
               Source
             </a>
           </div>
@@ -472,7 +462,7 @@
         </div>
       </div>
       <a href="https://github.com/Cybersnake223" target="_blank" rel="me noopener noreferrer" class="project-card-more reveal reveal-delay-3">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" style="color:var(--text-dim);" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        <svg width="26" height="26" style="color:var(--text-dim);" aria-hidden="true"><use href="#gh-icon"/></svg>
         <div style="font-size:0.85rem;color:var(--text-dim);">More on GitHub →</div>
       </a>
     </div>
@@ -487,7 +477,7 @@
     </div>
     <div class="gh-profile-card reveal">
       <div class="gh-avatar-wrap">
-        <img src="https://github.com/Cybersnake223.png" class="gh-avatar" alt="Abhishek GitHub avatar" width="90" height="90" loading="lazy" decoding="async" onerror="this.src='https://avatars.githubusercontent.com/u/0'">
+        <img src="https://github.com/Cybersnake223.png" class="gh-avatar" alt="Abhishek GitHub avatar" width="90" height="90" loading="eager" fetchpriority="high" decoding="async" onerror="this.src='https://avatars.githubusercontent.com/u/0'">
       </div>
       <div class="gh-info">
         <div class="gh-name">
@@ -507,7 +497,7 @@
           </span>
         </div>
         <div class="gh-counters">
-          <div class="gh-counter"><span class="gh-counter-val" data-target="5">0</span><span class="gh-counter-label">Repos</span></div>
+          <div class="gh-counter"><span class="gh-counter-val" data-target="6">0</span><span class="gh-counter-label">Repos</span></div>
           <div class="gh-counter"><span class="gh-counter-val" data-target="2">0</span><span class="gh-counter-label">Years</span></div>
         </div>
         <div class="gh-views">
@@ -560,7 +550,7 @@
     </div>
     <div class="gh-cta-wrap reveal">
       <a href="https://github.com/Cybersnake223" target="_blank" rel="me noopener noreferrer" class="btn btn-primary">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        <svg width="15" height="15" aria-hidden="true"><use href="#gh-icon"/></svg>
         Open Full GitHub Profile
       </a>
     </div>
@@ -587,7 +577,7 @@
       </div>
       <div class="socials-inline">
         <a href="https://github.com/cybersnake223" class="social-link" target="_blank" rel="me noopener noreferrer">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          <svg width="14" height="14" aria-hidden="true"><use href="#gh-icon"/></svg>
           GitHub
         </a>
         <a href="https://linkedin.com/in/YOUR_USERNAME" class="social-link" target="_blank" rel="noopener noreferrer">
