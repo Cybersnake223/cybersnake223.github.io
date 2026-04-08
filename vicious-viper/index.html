@@ -8,14 +8,12 @@
   <meta name="description"
     content="Vicious Viper — A minimal, keyboard-driven Hyprland dotfiles setup for Arch Linux by Cybersnake223." />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300..800;1,300..800&family=Inter:wght@300..700&display=swap"
     rel="stylesheet">
 
-  <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
 
   <style>
@@ -59,6 +57,7 @@
 
       /* Transitions */
       --transition-interactive: 160ms cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-slow: 400ms cubic-bezier(0.16, 1, 0.3, 1);
 
       /* Shadows */
       --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.4);
@@ -179,7 +178,6 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-
       *,
       *::before,
       *::after {
@@ -279,6 +277,19 @@
       width: 28px;
       height: 28px;
       color: var(--color-primary);
+    }
+
+    .nav__logo-img {
+      height: 28px;
+      width: auto;
+      /* Inverting to make it pop on dark background if needed */
+      filter: brightness(0) invert(1) opacity(0.8);
+      transition: filter var(--transition-interactive), transform var(--transition-interactive);
+    }
+
+    .nav__logo:hover .nav__logo-img {
+        filter: brightness(1) opacity(1);
+        transform: scale(1.1);
     }
 
     .nav__links {
@@ -399,13 +410,11 @@
     }
 
     @keyframes pulse-dot {
-
       0%,
       100% {
         opacity: 1;
         transform: scale(1);
       }
-
       50% {
         opacity: 0.5;
         transform: scale(0.7);
@@ -557,12 +566,10 @@
     }
 
     @keyframes blink {
-
       0%,
       100% {
         opacity: 1
       }
-
       50% {
         opacity: 0
       }
@@ -792,106 +799,47 @@
       font-weight: 600;
     }
 
-    /* ── Screenshots placeholder ─────────────────────────── */
+    /* ── Screenshots Pop-Out Effect ─────────────────────────── */
     .screenshots-section {
       background: var(--color-surface);
-    }
-
-    .screenshots-note {
-      margin-top: var(--space-8);
-      padding: var(--space-8);
-      background: var(--color-bg);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      text-align: center;
-      color: var(--color-text-muted);
-      font-size: var(--text-sm);
-      font-family: var(--font-mono);
     }
 
     .preview-grid {
       margin-top: var(--space-8);
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
-      gap: var(--space-4);
+      gap: var(--space-8); /* Increased gap for pop-out clearance */
     }
 
     .preview-card {
       background: var(--color-bg);
       border: 1px solid var(--color-border);
       border-radius: var(--radius-lg);
-      overflow: hidden;
       aspect-ratio: 16 / 9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--color-text-faint);
-      font-family: var(--font-mono);
-      font-size: var(--text-xs);
       position: relative;
+      /* Critical: Removed overflow: hidden to allow image to pop outside container */
+      overflow: visible;
+      transition: border-color var(--transition-interactive), box-shadow var(--transition-interactive);
+      z-index: 1;
     }
 
-    .preview-card__mock {
+    .preview-card img {
       width: 100%;
       height: 100%;
-      padding: var(--space-3);
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-2);
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+      will-change: transform;
     }
 
-    .mock-bar {
-      height: 12px;
-      border-radius: 2px;
-      background: var(--color-surface-offset);
+    .preview-card:hover {
+      z-index: 50; /* Ensure popped image stays on top of neighbors */
+      border-color: var(--color-primary);
     }
 
-    .mock-bar--accent {
-      background: oklch(from var(--color-primary) l c h / 0.25);
-      width: 40%;
-    }
-
-    .mock-windows {
-      flex: 1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-2);
-    }
-
-    .mock-win {
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: 3px;
-      padding: var(--space-2);
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-1);
-    }
-
-    .mock-win--main {
-      grid-column: span 2;
-    }
-
-    .mock-line {
-      height: 6px;
-      border-radius: 2px;
-      background: var(--color-surface-offset);
-    }
-
-    .mock-line--green {
-      background: oklch(from var(--color-primary) l c h / 0.4);
-    }
-
-    .mock-line--cyan {
-      background: oklch(from var(--color-cyan) l c h / 0.3);
-    }
-
-    .mock-line--short {
-      width: 55%;
-    }
-
-    .mock-line--med {
-      width: 75%;
+    .preview-card:hover img {
+      transform: scale(1.15); /* Pop outside the border */
+      box-shadow: var(--shadow-lg), 0 0 20px oklch(from var(--color-primary) l c h / 0.2);
     }
 
     .preview-label {
@@ -901,6 +849,7 @@
       font-family: var(--font-mono);
       font-size: var(--text-xs);
       color: var(--color-text-faint);
+      pointer-events: none;
     }
 
     /* ── Footer ───────────────────────────────────────────── */
@@ -1001,11 +950,9 @@
 <body>
   <a href="#main" class="skip-link">Skip to content</a>
 
-  <!-- ── NAV ── -->
   <nav class="nav" aria-label="Main navigation">
     <div class="nav__inner">
       <a href="#" class="nav__logo" aria-label="Vicious Viper Home">
-        <!-- SVG Logo: stylized viper head / terminal prompt hybrid -->
         <svg class="nav__logo-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg">
           <rect width="28" height="28" rx="6" fill="currentColor" fill-opacity="0.1" />
@@ -1013,7 +960,8 @@
             stroke-linejoin="round" />
           <path d="M13.5 18.5H22" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
         </svg>
-        vicious-viper
+        <span>vicious-viper</span>
+        <img src="assets/cslogo.png" alt="Viper Logo" class="nav__logo-img">
       </a>
       <ul class="nav__links" role="list">
         <li><a href="#stack">stack</a></li>
@@ -1032,7 +980,6 @@
     </div>
   </nav>
 
-  <!-- ── HERO ── -->
   <main id="main">
     <section class="hero">
       <div class="container hero__inner">
@@ -1059,7 +1006,6 @@
           </a>
         </div>
 
-        <!-- Terminal mock -->
         <div class="hero__terminal" role="img" aria-label="Installation preview terminal">
           <div class="hero__terminal-bar">
             <span class="terminal-dot terminal-dot--red"></span>
@@ -1082,7 +1028,6 @@
           </div>
         </div>
 
-        <!-- Stats -->
         <div class="stat-bar">
           <div class="stat-item">
             <div class="stat-item__value">Wayland</div>
@@ -1106,7 +1051,6 @@
 
     <hr class="divider" />
 
-    <!-- ── STACK ── -->
     <section class="components-section" id="stack">
       <div class="container">
         <p class="section-label">// stack</p>
@@ -1179,7 +1123,6 @@
 
     <hr class="divider" />
 
-    <!-- ── FEATURES ── -->
     <section class="features-section" id="features">
       <div class="container">
         <p class="section-label">// features</p>
@@ -1244,39 +1187,28 @@
         <div class="preview-grid">
           <div class="preview-card">
             <img src="assets/asset4.png" alt="Hyprland workspace with Waybar and terminals" loading="lazy">
-            <span class="preview-label">workspace 1</span>
           </div>
           <div class="preview-card">
             <img src="assets/asset1.png" alt="Yazi file manager in Wayland" loading="lazy">
-            <span class="preview-label">file manager</span>
           </div>
-          <!-- Add more as needed -->
           <div class="preview-card">
             <img src="assets/asset10.png" alt="Lock Screen" loading="lazy">
-            <span class="preview-label">hyprlock</span>
           </div>
           <div class="preview-card">
             <img src="assets/asset11.png" alt="Login Manager" loading="lazy">
-            <span class="preview-label">sddm</span>
           </div>
           <div class="preview-card">
             <img src="assets/asset5.png" alt="Neovim" loading="lazy">
-            <span class="preview-label">neovim</span>
           </div>
           <div class="preview-card">
             <img src="assets/asset6.png" alt="Neovim Data Analysis Setup" loading="lazy">
-            <span class="preview-label">neovim</span>
           </div>
-
         </div>
       </div>
-    </section>
-    </div>
     </section>
 
     <hr class="divider" />
 
-    <!-- ── INSTALL ── -->
     <section class="install-section" id="install">
       <div class="container">
         <p class="section-label">// install</p>
@@ -1339,7 +1271,6 @@
 
   </main>
 
-  <!-- ── FOOTER ── -->
   <footer>
     <div class="container footer__inner">
       <div class="footer__left">
