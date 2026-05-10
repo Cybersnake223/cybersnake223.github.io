@@ -1,1522 +1,1337 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vicious Viper — Hyprland Dotfiles</title>
-  <meta name="description" content="Vicious Viper — A minimal, keyboard-driven Hyprland dotfiles setup for Arch Linux by Cybersnake223." />
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://cybersnake223.github.io/vicious-viper/">
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/cslogo.png">
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Vicious Viper — Hyprland Dotfiles">
-  <meta property="og:description" content="A minimal, keyboard-driven Hyprland dotfiles setup for Arch Linux.">
-  <meta property="og:url" content="https://cybersnake223.github.io/vicious-viper/">
-  <meta property="og:image" content="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset1.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Vicious Viper — Hyprland Dotfiles">
-  <meta name="twitter:description" content="A minimal, keyboard-driven Hyprland dotfiles setup for Arch Linux.">
-  <meta name="twitter:image" content="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset1.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300..800;1,300..800&family=Inter:wght@300..700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300..800;1,300..800&family=Inter:wght@300..700&display=swap" rel="stylesheet"></noscript>
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+
+  <title>Vicious Viper — Event-Driven Hyprland Ecosystem</title>
+
+  <meta
+    name="description"
+    content="Vicious Viper is an event-driven Hyprland ecosystem for Arch Linux featuring dynamic Material You theming, automation-first workflows, modular installation, and a keyboard-centric UI."
+  />
+
+  <meta name="theme-color" content="#39d353" />
+  <meta name="robots" content="index,follow" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Vicious Viper" />
+  <meta
+    property="og:description"
+    content="An event-driven Hyprland ecosystem for Arch Linux."
+  />
+  <meta
+    property="og:image"
+    content="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset1.png"
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
   <style>
-    :root, [data-theme="dark"] {
-      --color-bg: #0d0e0f;
-      --color-surface: #111314;
-      --color-surface-2: #161819;
-      --color-surface-offset: #1c1e1f;
-      --color-surface-dynamic: #232527;
-      --color-divider: #1f2122;
-      --color-border: #2a2d2e;
-      --color-border-hover: #3d4042;
-      --color-text: #e2e4e6;
-      --color-text-muted: #7a8085;
-      --color-text-faint: #3f4244;
-      --color-text-inverse: #0d0e0f;
-      --color-primary: #39d353;
-      --color-primary-hover: #2eb845;
-      --color-primary-active: #239938;
-      --color-primary-highlight: #0e2413;
-      --color-primary-dim: rgba(57,211,83,0.08);
-      --color-cyan: #4fc3d4;
-      --color-cyan-dim: #1a3a40;
-      --color-warning: #f0a84a;
-      --color-error: #e05c6a;
-      --color-purple: #a855f7;
-      --color-purple-dim: rgba(168,85,247,0.1);
-      --radius-sm: 0.25rem;
-      --radius-md: 0.375rem;
-      --radius-lg: 0.5rem;
-      --radius-xl: 0.75rem;
-      --radius-2xl: 1rem;
-      --radius-full: 9999px;
-      --transition-fast: 120ms cubic-bezier(0.16,1,0.3,1);
-      --transition-interactive: 160ms cubic-bezier(0.16,1,0.3,1);
-      --transition-slow: 400ms cubic-bezier(0.16,1,0.3,1);
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
-      --shadow-md: 0 4px 14px rgba(0,0,0,0.5);
-      --shadow-lg: 0 12px 36px rgba(0,0,0,0.6);
-      --shadow-glow: 0 0 24px rgba(57,211,83,0.25), 0 0 48px rgba(57,211,83,0.1);
-      --shadow-glow-sm: 0 0 12px rgba(57,211,83,0.2), 0 0 24px rgba(57,211,83,0.08);
-      --shadow-glow-neon: 0 0 0 1px rgba(57,211,83,0.4), 0 0 20px rgba(57,211,83,0.3), 0 0 40px rgba(57,211,83,0.1);
-      --text-xs: clamp(0.72rem, 0.68rem + 0.2vw, 0.8rem);
-      --text-sm: clamp(0.85rem, 0.8rem + 0.25vw, 0.95rem);
-      --text-base: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
-      --text-lg: clamp(1.1rem, 1rem + 0.6vw, 1.4rem);
-      --text-xl: clamp(1.4rem, 1.1rem + 1.2vw, 2.1rem);
-      --text-2xl: clamp(1.9rem, 1.2rem + 2.2vw, 3.2rem);
-      --text-3xl: clamp(2.6rem, 1rem + 4.2vw, 5rem);
-      --font-mono: 'JetBrains Mono', 'Cascadia Code', monospace;
-      --font-body: 'Inter', system-ui, sans-serif;
-      --content-narrow: 640px;
-      --content-default: 960px;
-      --content-wide: 1160px;
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    @keyframes pulseGlow {
+      0%, 100% {
+        box-shadow:
+          0 0 20px rgba(57,211,83,0.18),
+          0 0 60px rgba(57,211,83,0.08);
+      }
+      50% {
+        box-shadow:
+          0 0 40px rgba(57,211,83,0.28),
+          0 0 120px rgba(57,211,83,0.14);
+      }
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes scanline {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100vh); }
+    }
+
+    @keyframes rotateOrb {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    :root {
+      --bg: #090b0c;
+      --surface: #111415;
+      --surface-2: #171a1c;
+      --surface-3: #1d2022;
+
+      --border: rgba(255,255,255,0.08);
+      --border-strong: rgba(57,211,83,0.28);
+
+      --text: #edf2f7;
+      --muted: #9aa4af;
+      --faint: #5b6670;
+
+      --primary: #39d353;
+      --cyan: #4fc3d4;
+      --purple: #b084ff;
+
+      --radius: 18px;
+
+      --shadow:
+        0 0 0 1px rgba(57,211,83,0.08),
+        0 12px 40px rgba(0,0,0,0.5);
+
+      --glow:
+        0 0 20px rgba(57,211,83,0.16),
+        0 0 60px rgba(57,211,83,0.06);
+
+      --mono: "JetBrains Mono", monospace;
+      --body: "Inter", sans-serif;
+
+      --container: 1220px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     html {
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
       scroll-behavior: smooth;
-      scroll-padding-top: 4rem;
     }
 
     body {
-      min-height: 100dvh;
-      font-family: var(--font-body);
-      font-size: var(--text-base);
-      color: var(--color-text);
-      background-color: var(--color-bg);
-      line-height: 1.65;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
       overflow-x: hidden;
+      line-height: 1.7;
     }
 
     body::before {
-      content: '';
-      position: fixed; inset: 0;
-      background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
-      pointer-events: none; z-index: 9999; opacity: 0.6;
-    }
-
-    img, picture, video, canvas, svg { display: block; max-width: 100%; height: auto; }
-    ul[role="list"], ol[role="list"] { list-style: none; }
-    input, button, textarea, select { font: inherit; color: inherit; }
-    h1, h2, h3, h4 { text-wrap: balance; line-height: 1.2; }
-    p { text-wrap: pretty; }
-    button { cursor: pointer; background: none; border: none; }
-
-    ::selection { background: var(--color-primary-highlight); color: var(--color-primary); }
-    :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; border-radius: var(--radius-sm); }
-
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: var(--color-bg); }
-    ::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: var(--radius-full); }
-    ::-webkit-scrollbar-thumb:hover { background: var(--color-primary); }
-    * { scrollbar-width: thin; scrollbar-color: var(--color-border) var(--color-bg); }
-
-    .skip-link {
-      position: absolute; left: -9999px; top: 1rem;
-      background: var(--color-primary); color: var(--color-text-inverse);
-      padding: 0.5rem 1rem; border-radius: var(--radius-md);
-      font-size: var(--text-sm); font-weight: 600; z-index: 1000;
-      transition: left var(--transition-interactive);
-    }
-    .skip-link:focus { left: 1rem; }
-
-    .container { max-width: var(--content-default); margin-inline: auto; padding-inline: clamp(1rem, 4vw, 2rem); }
-    .container--wide { max-width: var(--content-wide); }
-
-    #toTop {
-      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 200;
-      width: 38px; height: 38px; border-radius: 50%;
-      background: var(--color-surface-offset); border: 1px solid rgba(57,211,83,0.3);
-      color: var(--color-primary); display: flex; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none; transition: all var(--transition-interactive);
-      box-shadow: var(--shadow-glow-sm);
-    }
-    #toTop.visible { opacity: 1; pointer-events: all; }
-    #toTop:hover { box-shadow: var(--shadow-glow-neon); transform: translateY(-3px); }
-
-    /* ─── NAVIGATION ─── */
-    .nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(13,14,15,0.75);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      border-bottom: 1px solid var(--color-divider);
-      transition: background var(--transition-interactive), border-color var(--transition-interactive);
-    }
-    .nav.opaque { background: rgba(13,14,15,0.97); border-color: rgba(57,211,83,0.15); }
-
-    .nav__inner {
-      display: flex; align-items: center; justify-content: space-between;
-      height: 56px; max-width: var(--content-wide); margin-inline: auto;
-      padding-inline: clamp(1rem, 4vw, 2rem);
-    }
-
-    .nav__logo {
-      display: flex; align-items: center; gap: 0.5rem;
-      text-decoration: none; color: var(--color-text);
-      font-family: var(--font-mono); font-size: var(--text-sm); font-weight: 600;
-      letter-spacing: 0.01em; transition: color var(--transition-interactive);
-    }
-    .nav__logo:hover { color: var(--color-primary); text-shadow: 0 0 20px rgba(57,211,83,0.5); }
-    .nav__logo-icon { width: 26px; height: 26px; color: var(--color-primary); flex-shrink: 0; }
-
-    .nav__links { display: flex; align-items: center; gap: 1.5rem; list-style: none; }
-    .nav__links a {
-      font-size: var(--text-xs); color: var(--color-text-muted); text-decoration: none;
-      transition: color var(--transition-interactive); font-family: var(--font-mono);
-      letter-spacing: 0.04em; position: relative;
-    }
-    .nav__links a::after {
-      content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
-      height: 1px; background: var(--color-primary);
-      transform: scaleX(0); transition: transform var(--transition-interactive);
-      transform-origin: left;
-    }
-    .nav__links a:hover::after, .nav__links a.active::after { transform: scaleX(1); }
-    .nav__links a:hover, .nav__links a.active { color: var(--color-text); }
-
-    .nav__cta {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      padding: 0.4rem 0.9rem;
-      background: var(--color-primary); color: var(--color-text-inverse) !important;
-      border-radius: var(--radius-md); font-weight: 600; font-size: var(--text-xs) !important;
-      transition: background var(--transition-interactive), box-shadow var(--transition-interactive) !important;
-    }
-    .nav__cta:hover { background: var(--color-primary-hover) !important; box-shadow: var(--shadow-glow) !important; }
-    .nav__cta::after { display: none !important; }
-
-    .nav__mobile-toggle {
-      display: none; color: var(--color-text-muted); padding: 0.4rem;
-      transition: color var(--transition-interactive);
-    }
-    .nav__mobile-toggle:hover { color: var(--color-text); }
-
-    .nav__mobile-links {
-      display: none; flex-direction: column; position: fixed;
-      top: 56px; left: 0; right: 0;
-      background: rgba(13,14,15,0.98); backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--color-border);
-      max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
-    }
-    .nav__mobile-links.open { max-height: 400px; }
-    .nav__mobile-links a {
-      display: block; padding: 0.85rem 1.5rem;
-      font-family: var(--font-mono); font-size: var(--text-sm);
-      color: var(--color-text-muted); text-decoration: none;
-      border-top: 1px solid var(--color-divider);
-      transition: color var(--transition-interactive), padding-left var(--transition-interactive);
-    }
-    .nav__mobile-links a:hover { color: var(--color-primary); padding-left: 2rem; }
-
-    @media (max-width: 640px) {
-      .nav__links { display: none; }
-      .nav__mobile-toggle { display: flex; align-items: center; }
-      .nav__mobile-links { display: flex; }
-    }
-
-    /* ─── HERO ─── */
-    .hero {
-      padding-top: calc(56px + clamp(4rem, 10vw, 6rem));
-      padding-bottom: clamp(4rem, 10vw, 6rem);
-      position: relative; overflow: hidden;
-    }
-    .hero::before {
-      content: ''; position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(57,211,83,0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(57,211,83,0.06) 1px, transparent 1px);
-      background-size: 40px 40px;
-      animation: grid-drift 20s linear infinite;
-      pointer-events: none;
-    }
-    @keyframes grid-drift {
-      0% { background-position: 0 0, 0 0; }
-      100% { background-position: 40px 40px, 40px 40px; }
-    }
-    .hero::after {
-      content: ''; position: absolute; top: 30%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: clamp(400px, 70vw, 900px); height: clamp(300px, 50vw, 600px);
+      animation: gradientShift 18s ease infinite;
+      content: "";
+      position: fixed;
+      inset: 0;
       background:
-        radial-gradient(ellipse at 40% 50%, rgba(57,211,83,0.1) 0%, transparent 55%),
-        radial-gradient(ellipse at 70% 30%, rgba(79,195,212,0.06) 0%, transparent 50%);
-      animation: orb-drift 12s ease-in-out infinite alternate;
+        linear-gradient(rgba(57,211,83,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(57,211,83,0.03) 1px, transparent 1px);
+      background-size: 42px 42px;
+      pointer-events: none;
+      opacity: 0.45;
+      filter: blur(0.2px);
+      z-index: -1;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 2rem));
+      margin-inline: auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      background: rgba(9,11,12,0.78);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-family: var(--mono);
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .logo-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--primary);
+      box-shadow: 0 0 16px var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.4rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      color: var(--muted);
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-cta {
+      border: 1px solid var(--border-strong);
+      padding: 0.7rem 1rem;
+      border-radius: 999px;
+      background: rgba(57,211,83,0.08);
+    }
+
+    .hero {
+      overflow: hidden;
+      backdrop-filter: blur(20px);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.06),
+          rgba(255,255,255,0.02)
+        );
+      padding: 8rem 0 5rem;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(57,211,83,0.16), transparent 70%);
+      top: -180px;
+      right: -180px;
+      filter: blur(40px);
+      animation: rotateOrb 24s linear infinite;
       pointer-events: none;
     }
-    @keyframes orb-drift {
-      0% { transform: translate(-50%, -50%) scale(1); }
-      100% { transform: translate(-50%, -52%) scale(1.08); }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(57,211,83,0.03),
+        transparent
+      );
+      pointer-events: none;
     }
-    .hero__inner { position: relative; z-index: 1; }
-    .hero__eyebrow {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      font-family: var(--font-mono); font-size: var(--text-xs);
-      color: var(--color-primary); letter-spacing: 0.1em; text-transform: uppercase;
-      margin-bottom: 1.25rem; padding: 0.2rem 0.75rem;
-      border: 1px solid rgba(57,211,83,0.3); border-radius: var(--radius-full);
-      background: var(--color-primary-highlight);
-      box-shadow: 0 0 12px rgba(57,211,83,0.15);
+
+    .scanline {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 999;
     }
-    .hero__eyebrow-dot {
-      width: 6px; height: 6px; background: var(--color-primary);
-      border-radius: var(--radius-full); animation: pulse-dot 2s ease-in-out infinite;
-      box-shadow: 0 0 6px var(--color-primary);
+
+    .scanline::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 120px;
+      background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(57,211,83,0.05),
+        transparent
+      );
+      animation: scanline 8s linear infinite;
     }
-    @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.5;transform:scale(0.7);} }
-    .hero__title {
-      font-family: var(--font-mono); font-size: var(--text-3xl); font-weight: 800;
-      color: var(--color-text); line-height: 1.0; margin-bottom: 1rem; letter-spacing: -0.02em;
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 4px 4px;
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: -1;
     }
-    .hero__title-accent {
-      background: linear-gradient(135deg, #39d353 0%, #4fc3d4 40%, #39d353 80%, #a8ff78 100%);
-      background-size: 200% auto;
-      -webkit-background-clip: text; background-clip: text;
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--primary);
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-strong);
+      background: rgba(57,211,83,0.06);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: 0.92;
+      font-family: var(--mono);
+      letter-spacing: -0.06em;
+      margin-bottom: 1.4rem;
+    }
+
+    .gradient {
+      background-size: 200% 200%;
+      animation: gradientShift 8s ease infinite;
+      background: linear-gradient(135deg, var(--primary), var(--cyan));
+      -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: shimmer-text 4s linear infinite;
-      filter: drop-shadow(0 0 20px rgba(57,211,83,0.4));
     }
-    @keyframes shimmer-text {
-      0% { background-position: 0% center; }
-      100% { background-position: 200% center; }
+
+    .hero p {
+      max-width: 60ch;
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
     }
-    .hero__subtitle {
-      font-size: var(--text-base); color: var(--color-text-muted);
-      max-width: 52ch; margin-bottom: 2rem; line-height: 1.8;
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
     }
-    .hero__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
 
     .btn {
-      display: inline-flex; align-items: center; gap: 0.45rem;
-      padding: 0.6rem 1.25rem; border-radius: var(--radius-md);
-      font-size: var(--text-sm); font-weight: 600; text-decoration: none;
-      transition: all var(--transition-interactive); white-space: nowrap; border: none; cursor: pointer;
-    }
-    .btn--primary {
-      background: var(--color-primary); color: var(--color-text-inverse);
-      position: relative; overflow: hidden;
-    }
-    .btn--primary::before {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
-      opacity: 0; transition: opacity var(--transition-fast);
-    }
-    .btn--primary:hover::before { opacity: 1; }
-    .btn--primary:hover { background: var(--color-primary-hover); box-shadow: var(--shadow-glow); transform: translateY(-2px); }
-    .btn--ghost {
-      background: transparent; color: var(--color-text-muted);
-      border: 1px solid var(--color-border);
-    }
-    .btn--ghost:hover {
-      border-color: rgba(57,211,83,0.4); color: var(--color-primary);
-      background: var(--color-primary-dim); transform: translateY(-2px);
-      box-shadow: var(--shadow-glow-sm);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.95rem 1.2rem;
+      border-radius: 14px;
+      font-weight: 600;
+      transition: 0.2s ease;
     }
 
-    /* ─── TERMINAL ─── */
-    .hero__terminal {
-      margin-top: 3rem; background: rgba(17,19,20,0.9);
-      border: 1px solid rgba(57,211,83,0.2); border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-lg), 0 0 0 1px rgba(57,211,83,0.05) inset, var(--shadow-glow-sm);
-      overflow: hidden; max-width: 600px;
-      backdrop-filter: blur(12px);
-    }
-    .hero__terminal-bar {
-      display: flex; align-items: center; gap: 0.5rem;
-      padding: 0.65rem 1rem; background: rgba(28,30,31,0.95);
-      border-bottom: 1px solid rgba(57,211,83,0.1);
-    }
-    .terminal-dot { width: 10px; height: 10px; border-radius: var(--radius-full); flex-shrink: 0; }
-    .terminal-dot--red { background: #e05c6a; box-shadow: 0 0 6px rgba(224,92,106,0.5); }
-    .terminal-dot--yellow { background: #f0a84a; box-shadow: 0 0 6px rgba(240,168,74,0.5); }
-    .terminal-dot--green { background: var(--color-primary); box-shadow: 0 0 6px rgba(57,211,83,0.6); }
-    .terminal-title { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-faint); margin-left: 0.5rem; }
-    .hero__terminal-body { padding: 1.1rem 1.25rem; font-family: var(--font-mono); font-size: var(--text-xs); line-height: 1.9; }
-    .t-prompt { color: var(--color-primary); text-shadow: 0 0 8px rgba(57,211,83,0.4); }
-    .t-cmd { color: var(--color-text); }
-    .t-comment { color: var(--color-text-faint); }
-    .t-str { color: var(--color-cyan); }
-    .t-out { color: var(--color-text-muted); }
-    .t-flag { color: var(--color-warning); }
-    .t-cursor {
-      display: inline-block; width: 8px; height: 1em;
-      background: var(--color-primary); vertical-align: text-bottom;
-      animation: blink 1.1s step-end infinite;
-      box-shadow: 0 0 8px var(--color-primary);
-    }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-
-    /* ─── STAT BAR ─── */
-    .stat-bar {
-      display: flex; flex-wrap: wrap; gap: 2rem;
-      margin-top: 3rem; padding-top: 2rem;
-      border-top: 1px solid var(--color-divider);
-    }
-    .stat-item__value {
-      font-family: var(--font-mono); font-size: var(--text-xl); font-weight: 800;
-      color: var(--color-primary); line-height: 1;
-      text-shadow: 0 0 20px rgba(57,211,83,0.3);
-    }
-    .stat-item__label { font-size: var(--text-xs); color: var(--color-text-muted); font-family: var(--font-mono); margin-top: 0.25rem; }
-
-    /* ─── SECTIONS ─── */
-    section { padding-block: clamp(4rem, 8vw, 6rem); }
-    .section-label {
-      font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-primary);
-      letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.65rem;
-      display: flex; align-items: center; gap: 0.5rem;
-    }
-    .section-label::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, rgba(57,211,83,0.4), transparent); max-width: 120px; }
-    .section-title {
-      font-family: var(--font-mono); font-size: var(--text-xl); font-weight: 700;
-      color: var(--color-text); margin-bottom: 1rem; letter-spacing: -0.01em;
-    }
-    .section-desc { font-size: var(--text-sm); color: var(--color-text-muted); max-width: 58ch; line-height: 1.8; }
-    .divider { border: none; border-top: 1px solid var(--color-divider); }
-
-    /* ─── COMPONENT CARDS ─── */
-    .components-section { background: var(--color-bg); }
-    .components-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr));
-      gap: 1rem; margin-top: 2.5rem;
-    }
-    .component-card {
-      background: rgba(17,19,20,0.8);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-xl); padding: 1.25rem;
-      transition: border-color var(--transition-interactive), box-shadow var(--transition-interactive), transform var(--transition-interactive);
-      position: relative; overflow: hidden;
-      backdrop-filter: blur(8px);
-    }
-    .component-card::before {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(57,211,83,0.05) 0%, rgba(79,195,212,0.02) 60%, transparent 100%);
-      opacity: 0; transition: opacity var(--transition-interactive);
-    }
-    .component-card::after {
-      content: ''; position: absolute; top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(57,211,83,0.4), transparent);
-      opacity: 0; transition: opacity var(--transition-interactive);
-    }
-    .component-card:hover { border-color: rgba(57,211,83,0.4); box-shadow: var(--shadow-glow-neon); transform: translateY(-3px); }
-    .component-card:hover::before { opacity: 1; }
-    .component-card:hover::after { opacity: 1; }
-    .component-card__icon { width: 32px; height: 32px; color: var(--color-primary); margin-bottom: 1rem; opacity: 0.9; filter: drop-shadow(0 0 6px rgba(57,211,83,0.4)); }
-    .component-card__name { font-family: var(--font-mono); font-size: var(--text-sm); font-weight: 700; color: var(--color-text); margin-bottom: 0.2rem; }
-    .component-card__role { font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.5; }
-    .component-card__pkg {
-      margin-top: 0.85rem; font-family: var(--font-mono); font-size: var(--text-xs);
-      color: var(--color-cyan); background: var(--color-cyan-dim);
-      display: inline-block; padding: 0.15rem 0.55rem; border-radius: var(--radius-sm);
-      border: 1px solid rgba(79,195,212,0.2);
+    .btn-primary {
+      animation: pulseGlow 4s ease infinite;
+      background: var(--primary);
+      color: #08110a;
+      box-shadow: var(--glow);
     }
 
-    /* ─── FEATURES ─── */
-    .features-section { background: rgba(17,19,20,0.6); }
-    .features-list {
-      margin-top: 2.5rem;
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
-      gap: 0.75rem;
-    }
-    .feature-item {
-      display: flex; align-items: flex-start; gap: 0.75rem;
-      padding: 1rem; background: rgba(13,14,15,0.8);
-      border: 1px solid var(--color-border); border-radius: var(--radius-lg);
-      transition: border-color var(--transition-interactive), transform var(--transition-interactive), box-shadow var(--transition-interactive);
-      backdrop-filter: blur(6px);
-    }
-    .feature-item:hover {
-      border-color: rgba(57,211,83,0.35);
-      transform: translateX(4px);
-      box-shadow: -3px 0 0 0 rgba(57,211,83,0.5), var(--shadow-glow-sm);
-    }
-    .feature-item__check { color: var(--color-primary); flex-shrink: 0; margin-top: 1px; filter: drop-shadow(0 0 4px rgba(57,211,83,0.5)); }
-    .feature-item__text { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.65; }
-    .feature-item__text strong { color: var(--color-text); font-weight: 600; }
-
-    /* ─── THEMING SECTION ─── */
-    .theming-section { background: var(--color-bg); }
-    .theming-demo {
-      margin-top: 2.5rem;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1.5rem; align-items: start;
-    }
-    @media (max-width: 640px) { .theming-demo { grid-template-columns: 1fr; } }
-    .theming-demo__card {
-      background: rgba(17,19,20,0.8); border: 1px solid var(--color-border);
-      border-radius: var(--radius-xl); padding: 1.5rem;
-      backdrop-filter: blur(8px);
-    }
-    .theming-demo__title {
-      font-family: var(--font-mono); font-size: var(--text-sm); font-weight: 700;
-      color: var(--color-primary); margin-bottom: 1rem;
-      display: flex; align-items: center; gap: 0.5rem;
-    }
-    .theming-demo__palette {
-      display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1rem;
-    }
-    .palette-swatch {
-      width: 28px; height: 28px; border-radius: var(--radius-md);
-      transition: transform var(--transition-interactive);
-    }
-    .palette-swatch:hover { transform: scale(1.2); }
-    .theming-demo__desc { font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.7; }
-    .theming-demo__cmd {
-      margin-top: 1rem; font-family: var(--font-mono); font-size: var(--text-xs);
-      background: rgba(13,14,15,0.9); border: 1px solid var(--color-border);
-      border-radius: var(--radius-md); padding: 0.6rem 0.85rem;
-      color: var(--color-text-muted);
-    }
-    .theming-demo__cmd .t-prompt { color: var(--color-primary); }
-    .theming-badge {
-      display: inline-flex; align-items: center; gap: 0.35rem;
-      font-family: var(--font-mono); font-size: var(--text-xs);
-      color: var(--color-purple); background: var(--color-purple-dim);
-      border: 1px solid rgba(168,85,247,0.25); border-radius: var(--radius-full);
-      padding: 0.15rem 0.6rem; margin-bottom: 0.85rem;
+    .btn-primary:hover {
+      transform: translateY(-2px);
     }
 
-    /* ─── KEYBINDS SECTION ─── */
-    .keybinds-section { background: rgba(17,19,20,0.6); }
-    .keybinds-tabs {
-      display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; margin-bottom: 1.5rem;
+    .btn-secondary {
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.04),
+          rgba(255,255,255,0.01)
+        );
+      backdrop-filter: blur(18px);
     }
-    .keybind-tab {
-      font-family: var(--font-mono); font-size: var(--text-xs);
-      color: var(--color-text-muted); background: rgba(13,14,15,0.8);
-      border: 1px solid var(--color-border); border-radius: var(--radius-md);
-      padding: 0.35rem 0.85rem; cursor: pointer;
-      transition: all var(--transition-interactive);
-    }
-    .keybind-tab:hover, .keybind-tab.active {
-      color: var(--color-primary); border-color: rgba(57,211,83,0.4);
-      background: var(--color-primary-highlight);
-      box-shadow: var(--shadow-glow-sm);
-    }
-    .keybind-panel { display: none; }
-    .keybind-panel.active { display: block; }
-    .keybind-table {
-      width: 100%; border-collapse: collapse;
-      font-family: var(--font-mono); font-size: var(--text-xs);
-    }
-    .keybind-table tr {
-      border-bottom: 1px solid var(--color-divider);
-      transition: background var(--transition-fast);
-    }
-    .keybind-table tr:hover { background: rgba(57,211,83,0.04); }
-    .keybind-table tr:last-child { border-bottom: none; }
-    .keybind-table td { padding: 0.6rem 0.5rem; vertical-align: middle; }
-    .keybind-table td:first-child { width: 42%; }
-    .kbd {
-      display: inline-flex; align-items: center; gap: 0.2rem;
-    }
-    .kbd-key {
-      display: inline-block;
-      background: var(--color-surface-offset); border: 1px solid var(--color-border);
-      border-bottom: 2px solid var(--color-border-hover);
-      border-radius: var(--radius-sm); padding: 0.1rem 0.45rem;
-      font-family: var(--font-mono); font-size: var(--text-xs);
-      color: var(--color-cyan); white-space: nowrap;
-      box-shadow: 0 1px 0 rgba(0,0,0,0.4);
-    }
-    .kbd-sep { color: var(--color-text-faint); font-size: 0.65rem; }
-    .keybind-action { color: var(--color-text-muted); line-height: 1.5; }
 
-    /* ─── SCREENSHOTS ─── */
-    .screenshots-section { background: var(--color-bg); }
-    .preview-grid {
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
       margin-top: 2rem;
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+    }
+
+    .stat {
+      background: rgba(17,20,21,0.75);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.6rem;
+      color: var(--primary);
+      font-family: var(--mono);
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .terminal {
+      animation: float 6s ease-in-out infinite;
+      background: rgba(17,20,21,0.82);
+      border: 1px solid var(--border-strong);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .terminal-top {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 1rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+    }
+
+    .red { background: #ff5f57; }
+    .yellow { background: #febc2e; }
+    .green { background: #28c840; }
+
+    .terminal-body {
+      padding: 1.5rem;
+      font-family: var(--mono);
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 2;
+    }
+
+    .prompt {
+      color: var(--primary);
+    }
+
+    .section {
+      padding: 6rem 0;
+    }
+
+    .section-head {
+      margin-bottom: 2.5rem;
+    }
+
+    .section-label {
+      color: var(--primary);
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-family: var(--mono);
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      max-width: 70ch;
+    }
+
+    .architecture {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .arch-card {
+      background: linear-gradient(to bottom, rgba(57,211,83,0.06), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+      padding: 1.4rem;
+      border-radius: var(--radius);
+      position: relative;
+    }
+
+    .arch-card::after {
+      content: "→";
+      position: absolute;
+      right: -0.7rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+
+    .arch-card:last-child::after {
+      display: none;
+    }
+
+    .arch-card h3 {
+      font-family: var(--mono);
+      margin-bottom: 0.7rem;
+      color: var(--primary);
+    }
+
+    .arch-card p {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
     }
-    .preview-card {
-      background: var(--color-surface); border: 1px solid var(--color-border);
-      border-radius: var(--radius-xl); aspect-ratio: 16/9;
-      position: relative; overflow: hidden;
-      transition: border-color var(--transition-slow), box-shadow var(--transition-slow), transform var(--transition-slow);
-    }
-    .preview-card img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform var(--transition-slow), filter var(--transition-slow);
-      will-change: transform; filter: brightness(0.82) saturate(0.9);
-      cursor: zoom-in;
-    }
-    .preview-card:hover { border-color: var(--color-primary); box-shadow: var(--shadow-glow-neon); transform: translateY(-4px) scale(1.01); }
-    .preview-card:hover img { transform: scale(1.07); filter: brightness(1) saturate(1.1); }
-    .preview-label {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 2rem 0.85rem 0.65rem;
-      background: linear-gradient(transparent, rgba(13,14,15,0.95));
-      font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-primary);
-      pointer-events: none; opacity: 0; transition: opacity var(--transition-interactive);
-      text-shadow: 0 0 10px rgba(57,211,83,0.5);
-    }
-    .preview-card:hover .preview-label { opacity: 1; }
 
-    /* ─── LIGHTBOX ─── */
-    .lightbox {
-      position: fixed; inset: 0; z-index: 500;
-      background: rgba(0,0,0,0.92); backdrop-filter: blur(12px);
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none; transition: opacity 0.2s ease;
-    }
-    .lightbox.open { opacity: 1; pointer-events: all; }
-    .lightbox__img {
-      max-width: 90vw; max-height: 88vh; border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-lg), 0 0 0 1px rgba(57,211,83,0.2), 0 0 60px rgba(57,211,83,0.1);
-    }
-    .lightbox__close {
-      position: absolute; top: 1.25rem; right: 1.25rem;
-      width: 36px; height: 36px; border-radius: 50%;
-      background: var(--color-surface-offset); border: 1px solid var(--color-border);
-      color: var(--color-text-muted); display: flex; align-items: center; justify-content: center;
-      transition: all var(--transition-interactive); cursor: pointer;
-    }
-    .lightbox__close:hover { color: var(--color-primary); border-color: rgba(57,211,83,0.5); box-shadow: var(--shadow-glow-sm); }
-
-    /* ─── INSTALL ─── */
-    .install-section { background: var(--color-surface); }
-    .install-tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; }
-    .install-tab {
-      font-family: var(--font-mono); font-size: var(--text-xs);
-      color: var(--color-text-muted); background: rgba(13,14,15,0.8);
-      border: 1px solid var(--color-border); border-radius: var(--radius-md);
-      padding: 0.35rem 0.85rem; cursor: pointer;
-      transition: all var(--transition-interactive);
-    }
-    .install-tab:hover, .install-tab.active {
-      color: var(--color-primary); border-color: rgba(57,211,83,0.4);
-      background: var(--color-primary-highlight); box-shadow: var(--shadow-glow-sm);
-    }
-    .install-panel { display: none; }
-    .install-panel.active { display: flex; flex-direction: column; gap: 1.5rem; }
-    .install-steps { display: flex; flex-direction: column; gap: 1.5rem; counter-reset: steps; }
-    .install-step { display: grid; grid-template-columns: 44px 1fr; gap: 1rem; align-items: start; }
-    .install-step__num {
-      counter-increment: steps;
-      width: 36px; height: 36px; border-radius: var(--radius-full);
-      border: 1px solid rgba(57,211,83,0.35); background: var(--color-primary-highlight);
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-primary);
-      font-weight: 700; flex-shrink: 0;
-      box-shadow: 0 0 12px rgba(57,211,83,0.15);
-    }
-    .install-step__num::before { content: counter(steps, decimal-leading-zero); }
-    .install-step__content { padding-top: 0.4rem; }
-    .install-step__title { font-family: var(--font-mono); font-size: var(--text-sm); font-weight: 600; color: var(--color-text); margin-bottom: 0.6rem; }
-    .install-note {
-      padding: 0.85rem 1rem; background: rgba(168,85,247,0.08);
-      border: 1px solid rgba(168,85,247,0.2); border-radius: var(--radius-lg);
-      font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.7;
-      font-family: var(--font-mono);
-    }
-    .install-note strong { color: var(--color-purple); }
-    .flags-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
-      gap: 0.6rem;
-    }
-    .flag-item {
-      background: rgba(13,14,15,0.8); border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg); padding: 0.75rem 1rem;
-      transition: border-color var(--transition-interactive);
-    }
-    .flag-item:hover { border-color: rgba(57,211,83,0.3); }
-    .flag-item__key {
-      font-family: var(--font-mono); font-size: var(--text-xs);
-      color: var(--color-warning); margin-bottom: 0.3rem;
-    }
-    .flag-item__desc { font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.5; }
-
-    .code-block {
-      background: rgba(13,14,15,0.9); border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg); padding: 0.85rem 1rem;
-      font-family: var(--font-mono); font-size: var(--text-xs);
-      color: var(--color-text-muted); line-height: 1.9; position: relative; overflow-x: auto;
-      backdrop-filter: blur(4px);
-    }
-    .code-block:hover { border-color: rgba(57,211,83,0.2); }
-    .code-block .t-prompt { user-select: none; }
-    .copy-btn {
-      position: absolute; top: 0.5rem; right: 0.5rem;
-      padding: 0.2rem 0.55rem;
-      background: var(--color-surface-offset); border: 1px solid var(--color-border);
-      border-radius: var(--radius-sm); font-size: var(--text-xs); font-family: var(--font-mono);
-      color: var(--color-text-muted); transition: all var(--transition-interactive);
-    }
-    .copy-btn:hover { color: var(--color-primary); border-color: rgba(57,211,83,0.4); box-shadow: var(--shadow-glow-sm); }
-    .copy-btn.copied { color: var(--color-primary); border-color: rgba(57,211,83,0.4); }
-
-    /* ─── FOOTER ─── */
-    footer { padding-block: 2.5rem; border-top: 1px solid var(--color-divider); background: var(--color-bg); }
-    .footer__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
-    .footer__left { display: flex; align-items: center; gap: 0.75rem; }
-    .footer__copy { font-size: var(--text-xs); color: var(--color-text-faint); font-family: var(--font-mono); }
-    .footer__links { display: flex; align-items: center; gap: 1rem; list-style: none; }
-    .footer__links a {
-      font-size: var(--text-xs); color: var(--color-text-faint); font-family: var(--font-mono);
-      text-decoration: none; transition: color var(--transition-interactive);
-      display: flex; align-items: center; gap: 0.25rem;
-    }
-    .footer__links a:hover { color: var(--color-primary); text-shadow: 0 0 10px rgba(57,211,83,0.4); }
-
-    @media (max-width: 768px) {
-      .hero__terminal { max-width: 100%; }
-      .stat-bar { gap: 1.5rem; }
-      .install-step { grid-template-columns: 1fr; }
-      .install-step__num { display: none; }
+    .feature-card {
+      position: relative;
+      overflow: hidden;
+      background: rgba(17,20,21,0.72);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 1.6rem;
+      transition: 0.25s ease;
     }
 
-    #particles { position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.45; }
-    .reveal-item { opacity: 0; transform: translateY(16px); }
+    .feature-card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      background: linear-gradient(
+        135deg,
+        rgba(57,211,83,0.16),
+        transparent,
+        rgba(79,195,212,0.12)
+      );
+      opacity: 0;
+      transition: 0.3s ease;
+      z-index: 0;
+    }
+
+    .feature-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .feature-card:hover::before {
+      opacity: 1;
+    }
+
+    .feature-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-5px);
+      box-shadow: var(--glow);
+    }
+
+    .feature-card i {
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+      font-family: var(--mono);
+      margin-bottom: 0.8rem;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .metric {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+
+    .metric h3 {
+      color: var(--primary);
+      font-size: 2rem;
+      font-family: var(--mono);
+      margin-bottom: 0.4rem;
+    }
+
+    .metric p {
+      color: var(--muted);
+    }
+
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .shot {
+      isolation: isolate;
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .shot img {
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      transition: 0.4s ease;
+    }
+
+    .shot:hover {
+      box-shadow:
+        0 0 40px rgba(57,211,83,0.14),
+        0 0 120px rgba(79,195,212,0.08);
+    }
+
+    .shot:hover img {
+      transform: scale(1.05);
+    }
+
+    .shot-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.88), transparent 60%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.5rem;
+    }
+
+    .shot-overlay h3 {
+      font-family: var(--mono);
+      margin-bottom: 0.5rem;
+    }
+
+    .shot-overlay ul {
+      color: var(--muted);
+      padding-left: 1rem;
+      font-size: 0.92rem;
+    }
+
+    .explorer {
+      position: relative;
+      background: rgba(17,20,21,0.7);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .explorer-top {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .explorer-search {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-family: var(--mono);
+    }
+
+    .explorer-list {
+      padding: 1rem;
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .explorer-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .explorer-item strong {
+      display: block;
+      font-family: var(--mono);
+      margin-bottom: 0.25rem;
+    }
+
+    .explorer-item span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .tag {
+      font-family: var(--mono);
+      color: var(--cyan);
+      font-size: 0.75rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-inner p {
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .architecture,
+      .grid-3,
+      .metrics,
+      .showcase-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 5rem;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
-  <canvas id="particles" aria-hidden="true"></canvas>
-  <a href="#main" class="skip-link">Skip to content</a>
 
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
-    <img class="lightbox__img" id="lightboxImg" src="" alt="">
-    <button class="lightbox__close" id="lightboxClose" aria-label="Close image">
-      <i data-lucide="x" style="width:14px;height:14px;"></i>
-    </button>
-  </div>
+  <div class="noise"></div>
+  <div class="scanline"></div>
 
-  <button id="toTop" aria-label="Back to top">
-    <i data-lucide="chevron-up" style="width:14px;height:14px;"></i>
-  </button>
-
-  <nav class="nav" aria-label="Main navigation">
-    <div class="nav__inner">
-      <a href="#" class="nav__logo" aria-label="Vicious Viper Home">
-        <svg class="nav__logo-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-          <rect width="28" height="28" rx="6" fill="currentColor" fill-opacity="0.1"/>
-          <path d="M6 9.5L11 14L6 18.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M13.5 18.5H22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        vicious-viper
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#" class="logo">
+        <span class="logo-dot"></span>
+        Vicious Viper
       </a>
-      <ul class="nav__links" role="list">
-        <li><a href="#stack">stack</a></li>
-        <li><a href="#features">features</a></li>
-        <li><a href="#theming">theming</a></li>
-        <li><a href="#keybinds">keybinds</a></li>
-        <li><a href="#preview">preview</a></li>
-        <li><a href="#install">install</a></li>
-        <li>
-          <a href="https://github.com/Cybersnake223/Hypr" target="_blank" rel="noopener noreferrer" class="nav__cta">
-            <i data-lucide="github" style="width:13px;height:13px;"></i>
-            GitHub
-          </a>
-        </li>
+
+      <ul class="nav-links">
+        <li><a href="#architecture">Architecture</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#metrics">Metrics</a></li>
+        <li><a href="#showcase">Showcase</a></li>
+        <li><a href="#configs">Configs</a></li>
+        <li><a href="https://github.com/Cybersnake223/Hypr" class="nav-cta">GitHub</a></li>
       </ul>
-      <button class="nav__mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-expanded="false">
-        <i data-lucide="menu" style="width:20px;height:20px;"></i>
-      </button>
-    </div>
-    <div class="nav__mobile-links" id="mobileLinks">
-      <a href="#stack">// stack</a>
-      <a href="#features">// features</a>
-      <a href="#theming">// theming</a>
-      <a href="#keybinds">// keybinds</a>
-      <a href="#preview">// preview</a>
-      <a href="#install">// install</a>
-      <a href="https://github.com/Cybersnake223/Hypr" target="_blank" rel="noopener noreferrer">// github &rarr;</a>
     </div>
   </nav>
 
-  <main id="main">
-    <!-- ─── HERO ─── -->
-    <section class="hero">
-      <div class="container hero__inner">
-        <div class="hero__eyebrow">
-          <span class="hero__eyebrow-dot"></span>
-          Arch Linux &middot; Hyprland &middot; Wayland
+  <header class="hero">
+    <div class="container hero-grid">
+
+      <div>
+        <div class="eyebrow">
+          <span class="logo-dot"></span>
+          Arch Linux · Hyprland · Wayland
         </div>
-        <h1 class="hero__title">
-          Vicious<br><span class="hero__title-accent">Viper</span>
+
+        <h1>
+          <span style="display:block; opacity:0.7; font-size:0.22em; letter-spacing:0.35em; margin-bottom:1rem; color:var(--primary)">
+            SYSTEM INITIALIZED
+          </span>
+          Event-Driven<br />
+          <span class="gradient">Hyprland</span><br />
+          Ecosystem
         </h1>
-        <p class="hero__subtitle">
-          A minimal, keyboard-driven Hyprland dotfiles setup for Arch Linux.
-          Laptop-first. Script-heavy. Zero bloat.
+
+        <p>
+          Vicious Viper is a modular Hyprland ecosystem engineered for laptop-first workflows.
+          Dynamic Material You theming, automation-driven tooling, event-based scripting,
+          and performance-oriented UX — designed for daily Arch Linux usage.
         </p>
-        <div class="hero__actions">
-          <a href="#install" class="btn btn--primary">
-            <i data-lucide="terminal" style="width:14px;height:14px;"></i>
-            Get Started
+
+        <div class="hero-actions">
+          <div style="display:flex; gap:0.5rem; align-items:center; margin-bottom:1rem; width:100%; color:var(--muted); font-family:var(--mono); font-size:0.82rem;">
+            <span style="color:var(--primary)">●</span> LIVE THEME SYNC
+            <span style="color:var(--cyan)">●</span> EVENT HOOKS
+            <span style="color:var(--purple)">●</span> LOW LATENCY
+          </div>
+          <a class="btn btn-primary" href="https://github.com/Cybersnake223/Hypr">
+            <i data-lucide="github"></i>
+            View Repository
           </a>
-          <a href="https://github.com/Cybersnake223/Hypr" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">
-            <i data-lucide="github" style="width:14px;height:14px;"></i>
-            View on GitHub
-          </a>
-          <a href="https://cybersnake223.github.io" class="btn btn--ghost">
-            <i data-lucide="user" style="width:14px;height:14px;"></i>
-            Portfolio
+
+          <a class="btn btn-secondary" href="#architecture">
+            <i data-lucide="workflow"></i>
+            Explore Architecture
           </a>
         </div>
 
-        <!-- Updated terminal: shows install.sh as primary path -->
-        <div class="hero__terminal" role="img" aria-label="Installation preview terminal">
-          <div class="hero__terminal-bar">
-            <span class="terminal-dot terminal-dot--red"></span>
-            <span class="terminal-dot terminal-dot--yellow"></span>
-            <span class="terminal-dot terminal-dot--green"></span>
-            <span class="terminal-title">zsh &mdash; ~/Hypr</span>
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>437+</strong>
+            <span>GitHub Stars</span>
           </div>
-          <div class="hero__terminal-body" aria-hidden="true">
-            <div><span class="t-prompt">&#10095; </span><span class="t-cmd">git clone https://github.com/Cybersnake223/Hypr</span></div>
-            <div><span class="t-out">Cloning into <span class="t-str">'Hypr'</span>... done.</span></div>
-            <div style="margin-top:4px"><span class="t-prompt">&#10095; </span><span class="t-cmd">cd Hypr &amp;&amp; chmod +x install.sh</span></div>
-            <div style="margin-top:4px"><span class="t-prompt">&#10095; </span><span class="t-cmd">./install.sh <span class="t-flag">--dry-run</span></span></div>
-            <div><span class="t-out">&#10003; dry-run mode &mdash; no changes will be made</span></div>
-            <div><span class="t-out">&#10003; all ecosystem packages found</span></div>
-            <div style="margin-top:4px"><span class="t-prompt">&#10095; </span><span class="t-cmd">./install.sh <span class="t-flag">--select</span></span></div>
-            <div><span class="t-comment"># interactive module picker — choose what to install</span></div>
-            <div style="margin-top:4px"><span class="t-prompt">&#10095; </span><span class="t-cursor"></span></div>
-          </div>
-        </div>
 
-        <!-- Updated stat bar with real numbers -->
-        <div class="stat-bar">
-          <div class="stat-item">
-            <div class="stat-item__value">437+</div>
-            <div class="stat-item__label">github stars</div>
+          <div class="stat">
+            <strong>780MB</strong>
+            <span>Idle RAM</span>
           </div>
-          <div class="stat-item">
-            <div class="stat-item__value">13</div>
-            <div class="stat-item__label">forks</div>
+
+          <div class="stat">
+            <strong>0.2%</strong>
+            <span>Waybar CPU</span>
           </div>
-          <div class="stat-item">
-            <div class="stat-item__value">18</div>
-            <div class="stat-item__label">topics tagged</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-item__value">MIT</div>
-            <div class="stat-item__label">open source</div>
+
+          <div class="stat">
+            <strong>MIT</strong>
+            <span>Open Source</span>
           </div>
         </div>
       </div>
-    </section>
 
-    <hr class="divider"/>
+      <div class="terminal">
+        <div class="terminal-top">
+          <div class="dot red"></div>
+          <div class="dot yellow"></div>
+          <div class="dot green"></div>
+        </div>
 
-    <!-- ─── STACK ─── -->
-    <section class="components-section" id="stack">
-      <div class="container">
-        <p class="section-label">// stack</p>
-        <h2 class="section-title">Software Stack</h2>
-        <p class="section-desc">Every component is handpicked for speed, aesthetics, and keyboard-first operation.</p>
-        <div class="components-grid">
-          <div class="component-card reveal-item" data-delay="0">
-            <div class="component-card__icon"><i data-lucide="layout-dashboard" style="width:28px;height:28px;"></i></div>
-            <div class="component-card__name">Hyprland</div>
-            <div class="component-card__role">Wayland compositor</div>
-            <span class="component-card__pkg">&#127804; compositor</span>
-          </div>
-          <div class="component-card reveal-item" data-delay="1">
-            <div class="component-card__icon"><i data-lucide="minus-square" style="width:28px;height:28px;"></i></div>
-            <div class="component-card__name">Waybar</div>
-            <div class="component-card__role">Status bar</div>
-            <span class="component-card__pkg">&#10024; bar</span>
-          </div>
-          <div class="component-card reveal-item" data-delay="2">
-            <div class="component-card__icon"><i data-lucide="terminal-square" style="width:28px;height:28px;"></i></div>
-            <div class="component-card__name">Kitty</div>
-            <div class="component-card__role">GPU-accelerated terminal</div>
-            <span class="component-card__pkg">&#128009; terminal</span>
-          </div>
-          <div class="component-card reveal-item" data-delay="3">
-            <div class="component-card__icon"><i data-lucide="code-2" style="width:28px;height:28px;"></i></div>
-            <div class="component-card__name">Neovim</div>
-            <div class="component-card__role">Text editor</div>
-            <span class="component-card__pkg">&#129695; editor</span>
-          </div>
-          <div class="component-card reveal-item" data-delay="4">
-            <div class="component-card__icon"><i data-lucide="folder-open" style="width:28px;height:28px;"></i></div>
-            <div class="component-card__name">Nautilus</div>
-            <div class="component-card__role">GUI File Manager</div>
-            <span class="component-card__pkg">&#128166; file manager</span>
-          </div>
-          <div class="component-card reveal-item" data-delay="5">
-            <div class="component-card__icon"><i data-lucide="terminal-square" style="width:28px;height:28px;"></i></div>
-            <div class="component-card__name">Yazi</div>
-            <div class="component-card__role">TUI File Manager</div>
-            <span class="component-card__pkg">&#128450;&#65039; tui manager</span>
-          </div>
-          <div class="component-card reveal-item" data-delay="6">
-            <div class="component-card__icon"><i data-lucide="search" style="width:28px;height:28px;"></i></div>
-            <div class="component-card__name">Rofi (lbonn fork)</div>
-            <div class="component-card__role">Wayland app launcher</div>
-            <span class="component-card__pkg">&#128640; launcher</span>
-          </div>
-          <div class="component-card reveal-item" data-delay="7">
-            <div class="component-card__icon"><i data-lucide="monitor" style="width:28px;height:28px;"></i></div>
-            <div class="component-card__name">Zen Browser</div>
-            <div class="component-card__role">Privacy-first browser</div>
-            <span class="component-card__pkg">&#127760; browser</span>
-          </div>
-          <div class="component-card reveal-item" data-delay="8">
-            <div class="component-card__icon"><i data-lucide="palette" style="width:28px;height:28px;"></i></div>
-            <div class="component-card__name">Matugen</div>
-            <div class="component-card__role">Material You dynamic theming</div>
-            <span class="component-card__pkg">&#127775; theming</span>
-          </div>
-          <div class="component-card reveal-item" data-delay="9">
-            <div class="component-card__icon"><i data-lucide="music" style="width:28px;height:28px;"></i></div>
-            <div class="component-card__name">cmus + Cava</div>
-            <div class="component-card__role">Music player + visualizer</div>
-            <span class="component-card__pkg">&#127925; audio</span>
-          </div>
-          <div class="component-card reveal-item" data-delay="10">
-            <div class="component-card__icon"><i data-lucide="list" style="width:28px;height:28px;"></i></div>
-            <div class="component-card__name">Eza + Bat + Fd</div>
-            <div class="component-card__role">Modern CLI replacements</div>
-            <span class="component-card__pkg">ls/cat/find alternatives</span>
-          </div>
-          <div class="component-card reveal-item" data-delay="11">
-            <div class="component-card__icon"><i data-lucide="image" style="width:28px;height:28px;"></i></div>
-            <div class="component-card__name">Custom Scripts</div>
-            <div class="component-card__role">Wallpaper switcher, ytdla &amp; more</div>
-            <span class="component-card__pkg">&#127916; automation</span>
-          </div>
+        <div class="terminal-body">
+          <div><span class="prompt">❯</span> git clone https://github.com/Cybersnake223/Hypr</div>
+          <div><span class="prompt">❯</span> cd Hypr</div>
+          <div><span class="prompt">❯</span> ./install.sh --select</div>
+          <div>✔ interactive module installer</div>
+          <div>✔ matugen integration detected</div>
+          <div>✔ waybar event hooks enabled</div>
+          <div>✔ wallpaper automation active</div>
+          <br />
+          <div><span class="prompt">❯</span> matugen image ~/walls/cyberpunk.png</div>
+          <div>↳ regenerating color templates...</div>
+          <div>↳ reloading Waybar...</div>
+          <div>↳ syncing GTK + Qt themes...</div>
+          <div>↳ applying terminal palette...</div>
         </div>
       </div>
-    </section>
 
-    <hr class="divider"/>
+    </div>
+  </header>
 
-    <!-- ─── FEATURES ─── -->
-    <section class="features-section" id="features">
-      <div class="container">
-        <p class="section-label">// features</p>
-        <h2 class="section-title">What's Included</h2>
-        <p class="section-desc">More than just config files &mdash; a complete, opinionated workflow for daily Arch Linux use.</p>
-        <div class="features-list">
-          <div class="feature-item reveal-item" data-delay="0">
-            <i data-lucide="check" class="feature-item__check" style="width:15px;height:15px;"></i>
-            <p class="feature-item__text"><strong>Keyboard-driven layout</strong> &mdash; Navigate workspaces and windows entirely without a mouse using ALT as the modifier</p>
-          </div>
-          <div class="feature-item reveal-item" data-delay="1">
-            <i data-lucide="check" class="feature-item__check" style="width:15px;height:15px;"></i>
-            <p class="feature-item__text"><strong>Dynamic theming via Matugen</strong> &mdash; Wallpaper-driven Material You palettes applied to every app automatically</p>
-          </div>
-          <div class="feature-item reveal-item" data-delay="2">
-            <i data-lucide="check" class="feature-item__check" style="width:15px;height:15px;"></i>
-            <p class="feature-item__text"><strong>Smart installer with flags</strong> &mdash; <code style="font-family:var(--font-mono);font-size:0.85em;color:var(--color-cyan)">--dry-run</code>, <code style="font-family:var(--font-mono);font-size:0.85em;color:var(--color-cyan)">--select</code>, <code style="font-family:var(--font-mono);font-size:0.85em;color:var(--color-cyan)">--uninstall</code> and timestamped backups</p>
-          </div>
-          <div class="feature-item reveal-item" data-delay="3">
-            <i data-lucide="check" class="feature-item__check" style="width:15px;height:15px;"></i>
-            <p class="feature-item__text"><strong>Laptop-optimized</strong> &mdash; auto-cpufreq, battery module, brightness and touchpad gestures tuned out of the box</p>
-          </div>
-          <div class="feature-item reveal-item" data-delay="4">
-            <i data-lucide="check" class="feature-item__check" style="width:15px;height:15px;"></i>
-            <p class="feature-item__text"><strong>yt-dlp + aria2 integration</strong> &mdash; Download videos, audio, and manage downloads via custom scripts</p>
-          </div>
-          <div class="feature-item reveal-item" data-delay="5">
-            <i data-lucide="check" class="feature-item__check" style="width:15px;height:15px;"></i>
-            <p class="feature-item__text"><strong>AirPods + Bluetooth TUI</strong> &mdash; Dedicated menus for Bluetooth devices and AirPods management</p>
-          </div>
-          <div class="feature-item reveal-item" data-delay="6">
-            <i data-lucide="check" class="feature-item__check" style="width:15px;height:15px;"></i>
-            <p class="feature-item__text"><strong>Waybar config</strong> &mdash; Clean, minimal status bar with workspaces, clock, battery, and system tray</p>
-          </div>
-          <div class="feature-item reveal-item" data-delay="7">
-            <i data-lucide="check" class="feature-item__check" style="width:15px;height:15px;"></i>
-            <p class="feature-item__text"><strong>GTK + Qt themes</strong> &mdash; <code style="font-family:var(--font-mono);font-size:0.85em;color:var(--color-cyan)">.themes</code> directory included for consistent GUI app theming</p>
-          </div>
-          <div class="feature-item reveal-item" data-delay="8">
-            <i data-lucide="check" class="feature-item__check" style="width:15px;height:15px;"></i>
-            <p class="feature-item__text"><strong>Clipboard + emoji pickers</strong> &mdash; cliphist history and rofiemoji bound to quick shortcuts</p>
-          </div>
-          <div class="feature-item reveal-item" data-delay="9">
-            <i data-lucide="check" class="feature-item__check" style="width:15px;height:15px;"></i>
-            <p class="feature-item__text"><strong>Works on desktops too</strong> &mdash; Primarily laptop-focused but fully desktop-compatible with minor config tweaks</p>
-          </div>
+  <section class="section" id="architecture">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-label">Architecture</div>
+        <h2 class="section-title">Automation Pipeline</h2>
+        <p class="section-desc">
+          Vicious Viper is designed around event-driven automation.
+          Wallpaper changes, audio updates, workspace events, and system state transitions
+          propagate through lightweight scripts and dynamic reload hooks.
+        </p>
+      </div>
+
+      <div class="architecture">
+        <div class="arch-card">
+          <h3>Wallpaper Event</h3>
+          <p>Wallpaper switch triggers automation pipeline.</p>
+        </div>
+
+        <div class="arch-card">
+          <h3>Matugen</h3>
+          <p>Extracts Material You palettes and generates templates.</p>
+        </div>
+
+        <div class="arch-card">
+          <h3>Template Engine</h3>
+          <p>Updates Waybar, Rofi, Mako, GTK and terminal themes.</p>
+        </div>
+
+        <div class="arch-card">
+          <h3>Reload Hooks</h3>
+          <p>Reloads components without restarting the session.</p>
+        </div>
+
+        <div class="arch-card">
+          <h3>Live UI Sync</h3>
+          <p>Entire desktop updates dynamically in real time.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <hr class="divider"/>
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-label">Features</div>
+        <h2 class="section-title">Workflow-Oriented Design</h2>
+        <p class="section-desc">
+          More than aesthetic dotfiles — Vicious Viper focuses on operational workflows,
+          dynamic theming, automation tooling, and low-friction keyboard-first UX.
+        </p>
+      </div>
 
-    <!-- ─── THEMING ─── (NEW SECTION) -->
-    <section class="theming-section" id="theming">
-      <div class="container">
-        <p class="section-label">// theming</p>
-        <h2 class="section-title">Dynamic Color System</h2>
-        <p class="section-desc">Powered by <strong style="color:var(--color-text)">Matugen</strong> &mdash; a Material You color extraction engine that derives a full palette from your active wallpaper and recolors every component automatically.</p>
-        <div class="theming-demo">
-          <div class="theming-demo__card reveal-item" data-delay="0">
-            <div class="theming-badge">
-              <i data-lucide="sparkles" style="width:11px;height:11px;"></i>
-              Material You
-            </div>
-            <div class="theming-demo__title">
-              <i data-lucide="palette" style="width:16px;height:16px;"></i>
-              How It Works
-            </div>
-            <p class="theming-demo__desc">
-              Set a wallpaper with <code style="color:var(--color-cyan);font-family:var(--font-mono)">aww</code>, then run <code style="color:var(--color-cyan);font-family:var(--font-mono)">matugen image</code> on it.
-              Matugen reads the dominant colors, generates a full Material You token set, and writes them into
-              Waybar, Rofi, Mako, Hyprlock, GTK apps, and the terminal &mdash; all in one command.
-            </p>
-            <div class="theming-demo__cmd">
-              <span class="t-prompt">$ </span>aww set ~/walls/forest.jpg<br>
-              <span class="t-prompt">$ </span>matugen image ~/walls/forest.jpg
-            </div>
-          </div>
-          <div class="theming-demo__card reveal-item" data-delay="1">
-            <div class="theming-demo__title">
-              <i data-lucide="layers" style="width:16px;height:16px;"></i>
-              Themed Components
-            </div>
-            <div style="display:flex;flex-direction:column;gap:0.6rem;margin-top:0.5rem;">
-              <div class="feature-item" style="padding:0.6rem 0.85rem;">
-                <i data-lucide="check" class="feature-item__check" style="width:13px;height:13px;"></i>
-                <span class="feature-item__text">Waybar status bar</span>
-              </div>
-              <div class="feature-item" style="padding:0.6rem 0.85rem;">
-                <i data-lucide="check" class="feature-item__check" style="width:13px;height:13px;"></i>
-                <span class="feature-item__text">Rofi app launcher</span>
-              </div>
-              <div class="feature-item" style="padding:0.6rem 0.85rem;">
-                <i data-lucide="check" class="feature-item__check" style="width:13px;height:13px;"></i>
-                <span class="feature-item__text">Mako notifications</span>
-              </div>
-              <div class="feature-item" style="padding:0.6rem 0.85rem;">
-                <i data-lucide="check" class="feature-item__check" style="width:13px;height:13px;"></i>
-                <span class="feature-item__text">Hyprlock lock screen</span>
-              </div>
-              <div class="feature-item" style="padding:0.6rem 0.85rem;">
-                <i data-lucide="check" class="feature-item__check" style="width:13px;height:13px;"></i>
-                <span class="feature-item__text">GTK apps + terminal</span>
-              </div>
-            </div>
-            <p class="theming-demo__desc" style="margin-top:0.85rem;">
-              Templates live in <code style="color:var(--color-cyan);font-family:var(--font-mono)">.config/matugen/</code> &mdash; edit them to customize per-app color mapping.
-            </p>
-          </div>
+      <div class="grid-3">
+
+        <div class="feature-card">
+          <i data-lucide="cpu"></i>
+          <h3>Performance Tuned</h3>
+          <p>
+            Lightweight Waybar modules, efficient shell scripts,
+            laptop-focused power management, and low idle overhead.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <i data-lucide="palette"></i>
+          <h3>Dynamic Theming</h3>
+          <p>
+            Material You color extraction via Matugen with synchronized GTK,
+            terminal, notifications, lockscreen and Waybar styling.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <i data-lucide="terminal"></i>
+          <h3>Automation Ecosystem</h3>
+          <p>
+            Custom scripts for wallpaper management, media downloads,
+            Bluetooth workflows, notifications, and system automation.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <i data-lucide="keyboard"></i>
+          <h3>Keyboard-Centric UX</h3>
+          <p>
+            ALT-based navigation model optimized for workspace switching,
+            launchers, clipboard workflows, and rapid task execution.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <i data-lucide="package"></i>
+          <h3>Modular Installer</h3>
+          <p>
+            Dry-run validation, selective installs, timestamped backups,
+            uninstall routines, and profile-aware deployment.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <i data-lucide="monitor"></i>
+          <h3>Multi-Environment Ready</h3>
+          <p>
+            Designed for laptops first, but validated for desktop usage,
+            multi-monitor setups, NVIDIA systems, and Arch derivatives.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="metrics">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-label">Metrics</div>
+        <h2 class="section-title">Runtime Performance</h2>
+        <p class="section-desc">
+          Real-world runtime characteristics collected from daily laptop usage.
+        </p>
+      </div>
+
+      <div class="metrics">
+        <div class="metric">
+          <h3>780MB</h3>
+          <p>Idle Session RAM</p>
+        </div>
+
+        <div class="metric">
+          <h3>0.2%</h3>
+          <p>Waybar CPU Usage</p>
+        </div>
+
+        <div class="metric">
+          <h3>7.3s</h3>
+          <p>Cold Boot Time</p>
+        </div>
+
+        <div class="metric">
+          <h3>0.4s</h3>
+          <p>Hyprland Startup</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <hr class="divider"/>
-
-    <!-- ─── KEYBINDS ─── (NEW SECTION) -->
-    <section class="keybinds-section" id="keybinds">
-      <div class="container">
-        <p class="section-label">// keybinds</p>
-        <h2 class="section-title">Keyboard Shortcuts</h2>
-        <p class="section-desc">All binds use <kbd class="kbd-key">ALT</kbd> as the primary modifier. Zero mouse required.</p>
-        <div class="keybinds-tabs" role="tablist">
-          <button class="keybind-tab active" data-panel="kb-system" role="tab" aria-selected="true">System</button>
-          <button class="keybind-tab" data-panel="kb-apps" role="tab" aria-selected="false">Apps</button>
-          <button class="keybind-tab" data-panel="kb-web" role="tab" aria-selected="false">Web</button>
-          <button class="keybind-tab" data-panel="kb-windows" role="tab" aria-selected="false">Windows</button>
-          <button class="keybind-tab" data-panel="kb-workspaces" role="tab" aria-selected="false">Workspaces</button>
-        </div>
-
-        <div class="keybind-panel active" id="kb-system" role="tabpanel">
-          <table class="keybind-table">
-            <tbody>
-              <tr><td><span class="kbd"><span class="kbd-key">F1</span></span></td><td class="keybind-action">Toggle mute (speakers)</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">F2</span></span></td><td class="keybind-action">Volume down 10%</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">F3</span></span></td><td class="keybind-action">Volume up 10%</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">F4</span></span></td><td class="keybind-action">Toggle mute (microphone)</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">F7</span></span></td><td class="keybind-action">Toggle Wi-Fi</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">F9</span></span></td><td class="keybind-action">Lock screen (Hyprlock)</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">F11</span></span></td><td class="keybind-action">Brightness down 10%</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">F12</span></span></td><td class="keybind-action">Brightness up 10%</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">Print</span></span></td><td class="keybind-action">Screenshot</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="keybind-panel" id="kb-apps" role="tabpanel">
-          <table class="keybind-table">
-            <tbody>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">Enter</span></span></td><td class="keybind-action">Terminal (Kitty)</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">D</span></span></td><td class="keybind-action">App launcher (Rofi)</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">R</span></span></td><td class="keybind-action">File manager TUI (Yazi)</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">N</span></span></td><td class="keybind-action">Text editor (Neovim)</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">M</span></span></td><td class="keybind-action">Music player (cmus)</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">H</span></span></td><td class="keybind-action">System monitor (btop)</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">L</span></span></td><td class="keybind-action">AirPods TUI</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">B</span></span></td><td class="keybind-action">Bluetooth menu</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">W</span></span></td><td class="keybind-action">Change wallpaper</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">V</span></span></td><td class="keybind-action">Clipboard history (cliphist)</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">E</span></span></td><td class="keybind-action">Emoji picker (rofiemoji)</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">X</span></span></td><td class="keybind-action">Power menu</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">Y</span></span></td><td class="keybind-action">YouTube downloader (ytdla)</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT SHIFT</span><span class="kbd-sep">+</span><span class="kbd-key">K</span></span></td><td class="keybind-action">System cleaner</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT SHIFT</span><span class="kbd-sep">+</span><span class="kbd-key">S</span></span></td><td class="keybind-action">Universal snip (QuickShell)</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="keybind-panel" id="kb-web" role="tabpanel">
-          <table class="keybind-table">
-            <tbody>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT SHIFT</span><span class="kbd-sep">+</span><span class="kbd-key">B</span></span></td><td class="keybind-action">Browser (Zen)</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT SHIFT</span><span class="kbd-sep">+</span><span class="kbd-key">I</span></span></td><td class="keybind-action">Incognito (Zen private)</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">G</span></span></td><td class="keybind-action">GitHub profile</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT SHIFT</span><span class="kbd-sep">+</span><span class="kbd-key">Y</span></span></td><td class="keybind-action">YouTube</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT SHIFT</span><span class="kbd-sep">+</span><span class="kbd-key">G</span></span></td><td class="keybind-action">Gemini</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT SHIFT</span><span class="kbd-sep">+</span><span class="kbd-key">W</span></span></td><td class="keybind-action">Wallhaven</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT SHIFT</span><span class="kbd-sep">+</span><span class="kbd-key">R</span></span></td><td class="keybind-action">Reddit</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="keybind-panel" id="kb-windows" role="tabpanel">
-          <table class="keybind-table">
-            <tbody>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">Q</span></span></td><td class="keybind-action">Close active window</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">F</span></span></td><td class="keybind-action">Toggle fullscreen</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">P</span></span></td><td class="keybind-action">Toggle floating</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">J</span></span></td><td class="keybind-action">Toggle split</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">↑↓←→</span></span></td><td class="keybind-action">Move focus</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT SHIFT</span><span class="kbd-sep">+</span><span class="kbd-key">↑↓←→</span></span></td><td class="keybind-action">Swap window</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT CTRL</span><span class="kbd-sep">+</span><span class="kbd-key">↑↓←→</span></span></td><td class="keybind-action">Resize window</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">LMB drag</span></span></td><td class="keybind-action">Move window</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">RMB drag</span></span></td><td class="keybind-action">Resize window</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="keybind-panel" id="kb-workspaces" role="tabpanel">
-          <table class="keybind-table">
-            <tbody>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">1–0</span></span></td><td class="keybind-action">Switch to workspace 1–10</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT SHIFT</span><span class="kbd-sep">+</span><span class="kbd-key">1–0</span></span></td><td class="keybind-action">Move window to workspace 1–10</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">Scroll ↑</span></span></td><td class="keybind-action">Next workspace</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">Scroll ↓</span></span></td><td class="keybind-action">Previous workspace</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">`</span></span></td><td class="keybind-action">Toggle scratchpad</td></tr>
-              <tr><td><span class="kbd"><span class="kbd-key">ALT SHIFT</span><span class="kbd-sep">+</span><span class="kbd-key">`</span></span></td><td class="keybind-action">Move window to scratchpad</td></tr>
-            </tbody>
-          </table>
-        </div>
+  <section class="section" id="showcase">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-label">Showcase</div>
+        <h2 class="section-title">Interactive Desktop Environment</h2>
+        <p class="section-desc">
+          Screenshots are contextualized with actual workflow capabilities,
+          not just visual presentation.
+        </p>
       </div>
-    </section>
 
-    <hr class="divider"/>
+      <div class="showcase-grid">
 
-    <!-- ─── PREVIEW ─── -->
-    <section class="screenshots-section" id="preview">
-      <div class="container">
-        <p class="section-label">// preview</p>
-        <h2 class="section-title">Layout Preview</h2>
-        <p class="section-desc">Screenshots from the Vicious Viper setup. Click any image to enlarge.</p>
-        <div class="preview-grid">
-          <div class="preview-card reveal-item" data-delay="0">
-            <img src="assets/asset1.png" alt="Vicious Viper desktop overview" loading="lazy">
-            <span class="preview-label">desktop overview</span>
-          </div>
-          <div class="preview-card reveal-item" data-delay="1">
-            <img src="assets/asset4.png" alt="Hyprland workspace with Waybar and terminals" loading="lazy">
-            <span class="preview-label">workspace &mdash; waybar</span>
-          </div>
-          <div class="preview-card reveal-item" data-delay="4">
-            <img src="assets/asset5.png" alt="Neovim editor" loading="lazy">
-            <span class="preview-label">neovim</span>
-          </div>
-          <div class="preview-card reveal-item" data-delay="5">
-            <img src="assets/asset6.png" alt="Neovim Data Analysis Setup" loading="lazy">
-            <span class="preview-label">neovim &mdash; data analysis</span>
-          </div>
-          <div class="preview-card reveal-item" data-delay="9">
-            <img src="assets/asset10.png" alt="Hyprlock lock screen" loading="lazy">
-            <span class="preview-label">hyprlock &mdash; lock screen</span>
-          </div>
-          <div class="preview-card reveal-item" data-delay="10">
-            <img src="assets/asset11.png" alt="Login Manager" loading="lazy">
-            <span class="preview-label">login manager</span>
-          </div>
-        </div>
-      </div>
-    </section>
+        <div class="shot">
+          <img
+            loading="lazy"
+            decoding="async"
+            src="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset3.png"
+            alt="Waybar Preview"
+          />
 
-    <hr class="divider"/>
-
-    <!-- ─── INSTALL ─── -->
-    <section class="install-section" id="install">
-      <div class="container">
-        <p class="section-label">// install</p>
-        <h2 class="section-title">Installation</h2>
-        <p class="section-desc">Run <code style="font-family:var(--font-mono);color:var(--color-cyan)">--dry-run</code> first to preview every action before committing. Your existing configs are backed up automatically.</p>
-
-        <div class="install-tabs">
-          <button class="install-tab active" data-panel="install-quick">Quick Install</button>
-          <button class="install-tab" data-panel="install-manual">Manual</button>
-          <button class="install-tab" data-panel="install-flags">Flags</button>
-        </div>
-
-        <!-- Quick Install panel -->
-        <div class="install-panel active" id="install-quick">
-          <div class="install-note">
-            <strong>Recommended:</strong> Always run <code style="color:var(--color-cyan);font-family:var(--font-mono)">--dry-run</code> first.
-            The installer backs up every file it overwrites to <code style="color:var(--color-cyan);font-family:var(--font-mono)">~/.local/share/hypr-dotfiles-backups/&lt;timestamp&gt;/</code>.
-            Use <code style="color:var(--color-cyan);font-family:var(--font-mono)">--uninstall</code> to restore originals precisely.
-          </div>
-          <div class="install-steps">
-            <div class="install-step reveal-item" data-delay="0">
-              <div class="install-step__num"></div>
-              <div class="install-step__content">
-                <p class="install-step__title">Clone the repository</p>
-                <div class="code-block">
-                  <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy command">copy</button>
-                  <div><span class="t-prompt">$ </span><span>git clone https://github.com/Cybersnake223/Hypr</span></div>
-                  <div><span class="t-prompt">$ </span><span>cd Hypr &amp;&amp; chmod +x install.sh</span></div>
-                </div>
-              </div>
-            </div>
-            <div class="install-step reveal-item" data-delay="1">
-              <div class="install-step__num"></div>
-              <div class="install-step__content">
-                <p class="install-step__title">Preview changes (recommended)</p>
-                <div class="code-block">
-                  <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy command">copy</button>
-                  <div><span class="t-prompt">$ </span><span>./install.sh <span class="t-flag">--dry-run</span></span></div>
-                </div>
-              </div>
-            </div>
-            <div class="install-step reveal-item" data-delay="2">
-              <div class="install-step__num"></div>
-              <div class="install-step__content">
-                <p class="install-step__title">Run the installer</p>
-                <div class="code-block">
-                  <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy command">copy</button>
-                  <div><span class="t-comment"># Interactive module picker:</span></div>
-                  <div><span class="t-prompt">$ </span><span>./install.sh <span class="t-flag">--select</span></span></div>
-                  <div style="margin-top:4px"><span class="t-comment"># Or install everything non-interactively:</span></div>
-                  <div><span class="t-prompt">$ </span><span>./install.sh <span class="t-flag">--yes</span></span></div>
-                </div>
-              </div>
-            </div>
-            <div class="install-step reveal-item" data-delay="3">
-              <div class="install-step__num"></div>
-              <div class="install-step__content">
-                <p class="install-step__title">Undo if needed</p>
-                <div class="code-block">
-                  <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy command">copy</button>
-                  <div><span class="t-prompt">$ </span><span>./install.sh <span class="t-flag">--uninstall</span></span></div>
-                </div>
-              </div>
-            </div>
+          <div class="shot-overlay">
+            <h3>Adaptive Waybar System</h3>
+            <ul>
+              <li>Dynamic glassmorphism modules</li>
+              <li>Workspace-aware styling</li>
+              <li>Animated indicators and telemetry</li>
+              <li>Material You color synchronization</li>
+            </ul>
           </div>
         </div>
 
-        <!-- Manual panel -->
-        <div class="install-panel" id="install-manual">
-          <div class="install-steps">
-            <div class="install-step reveal-item" data-delay="0">
-              <div class="install-step__num"></div>
-              <div class="install-step__content">
-                <p class="install-step__title">Copy config files</p>
-                <div class="code-block">
-                  <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy command">copy</button>
-                  <div><span class="t-prompt">$ </span><span>cp -r .config/* $HOME/.config</span></div>
-                  <div><span class="t-prompt">$ </span><span>cp -r .local/bin/scripts $HOME/.local/bin</span></div>
-                  <div><span class="t-prompt">$ </span><span>cp -r .icons $HOME/.icons</span></div>
-                  <div><span class="t-prompt">$ </span><span>cp -r .themes $HOME/.themes</span></div>
-                  <div><span class="t-prompt">$ </span><span>cp -r .fonts $HOME/.fonts</span></div>
-                  <div><span class="t-prompt">$ </span><span>cp .Xresources .gtkrc-2.0 $HOME/</span></div>
-                </div>
-              </div>
-            </div>
-            <div class="install-step reveal-item" data-delay="1">
-              <div class="install-step__num"></div>
-              <div class="install-step__content">
-                <p class="install-step__title">Mark scripts executable &amp; rebuild font cache</p>
-                <div class="code-block">
-                  <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy command">copy</button>
-                  <div><span class="t-prompt">$ </span><span>find $HOME/.local/bin/scripts -type f -exec chmod +x {} +</span></div>
-                  <div><span class="t-prompt">$ </span><span>fc-cache -f</span></div>
-                </div>
-              </div>
-            </div>
-            <div class="install-step reveal-item" data-delay="2">
-              <div class="install-step__num"></div>
-              <div class="install-step__content">
-                <p class="install-step__title">Add scripts to PATH</p>
-                <div class="code-block">
-                  <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy command">copy</button>
-                  <div><span class="t-comment"># zsh / bash:</span></div>
-                  <div><span class="t-prompt">$ </span><span>echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc</span></div>
-                  <div style="margin-top:4px"><span class="t-comment"># fish:</span></div>
-                  <div><span class="t-prompt">$ </span><span>fish_add_path $HOME/.local/bin</span></div>
-                </div>
-              </div>
-            </div>
+        <div class="shot">
+          <img
+            loading="lazy"
+            decoding="async"
+            src="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset4.png"
+            alt="Rofi Launcher"
+          />
+
+          <div class="shot-overlay">
+            <h3>Launcher & Workflow Layer</h3>
+            <ul>
+              <li>Custom Rofi interface</li>
+              <li>Blur-aware UI composition</li>
+              <li>Keyboard-first application control</li>
+              <li>Wallpaper-reactive palette engine</li>
+            </ul>
           </div>
         </div>
 
-        <!-- Flags panel -->
-        <div class="install-panel" id="install-flags">
-          <div class="flags-grid">
-            <div class="flag-item reveal-item" data-delay="0">
-              <div class="flag-item__key">--dry-run</div>
-              <div class="flag-item__desc">Preview every action — zero changes made. Run this first.</div>
-            </div>
-            <div class="flag-item reveal-item" data-delay="1">
-              <div class="flag-item__key">--select</div>
-              <div class="flag-item__desc">Interactive TUI to toggle which modules to install.</div>
-            </div>
-            <div class="flag-item reveal-item" data-delay="2">
-              <div class="flag-item__key">--yes</div>
-              <div class="flag-item__desc">Non-interactive, auto-confirm all prompts.</div>
-            </div>
-            <div class="flag-item reveal-item" data-delay="3">
-              <div class="flag-item__key">--uninstall</div>
-              <div class="flag-item__desc">Restore originals from the most recent backup precisely.</div>
-            </div>
-            <div class="flag-item reveal-item" data-delay="4">
-              <div class="flag-item__key">--list-backups</div>
-              <div class="flag-item__desc">Show all backups with timestamps, file counts, and sizes.</div>
-            </div>
-            <div class="flag-item reveal-item" data-delay="5">
-              <div class="flag-item__key">--skip-deps</div>
-              <div class="flag-item__desc">Skip the ecosystem dependency check (faster re-installs).</div>
-            </div>
-            <div class="flag-item reveal-item" data-delay="6">
-              <div class="flag-item__key">--no-backup</div>
-              <div class="flag-item__desc">Skip backup step. Dangerous — disables --uninstall.</div>
-            </div>
-            <div class="flag-item reveal-item" data-delay="7">
-              <div class="flag-item__key">-h / --help</div>
-              <div class="flag-item__desc">Show usage and all available options.</div>
-            </div>
+        <div class="shot">
+          <img
+            loading="lazy"
+            decoding="async"
+            src="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset5.png"
+            alt="Notification System"
+          />
+
+          <div class="shot-overlay">
+            <h3>Notification & OSD Pipeline</h3>
+            <ul>
+              <li>Mako notification stack</li>
+              <li>Custom audio and brightness OSD</li>
+              <li>Event-triggered UI animations</li>
+              <li>Consistent Material You styling</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="shot">
+          <img
+            loading="lazy"
+            decoding="async"
+            src="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset6.png"
+            alt="Lockscreen Preview"
+          />
+
+          <div class="shot-overlay">
+            <h3>Hyprlock Experience</h3>
+            <ul>
+              <li>Blur-enhanced lockscreen</li>
+              <li>Wallpaper-aware theming</li>
+              <li>Minimal authentication interface</li>
+              <li>Integrated session styling</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="shot">
+          <img
+            loading="lazy"
+            decoding="async"
+            src="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset1.png"
+            alt="Desktop Preview"
+          />
+
+          <div class="shot-overlay">
+            <h3>Dynamic Workspace UI</h3>
+            <ul>
+              <li>Matugen-generated palette</li>
+              <li>Glassmorphism Waybar styling</li>
+              <li>Event-driven workspace indicators</li>
+              <li>Mako OSD integration</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="shot">
+          <img
+            loading="lazy"
+            decoding="async"
+            src="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset2.png"
+            alt="Terminal Preview"
+          />
+
+          <div class="shot-overlay">
+            <h3>Developer Workflow</h3>
+            <ul>
+              <li>Neovim development stack</li>
+              <li>Yazi + CLI ecosystem</li>
+              <li>Script-based automation</li>
+              <li>Keyboard-first navigation</li>
+            </ul>
           </div>
         </div>
 
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+
+  <section class="section" id="install">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-label">Installation</div>
+        <h2 class="section-title">Modular Deployment System</h2>
+        <p class="section-desc">
+          Vicious Viper ships with a profile-aware installation pipeline featuring
+          dry-run validation, backup generation, selective module deployment,
+          and rollback-safe configuration management.
+        </p>
+      </div>
+
+      <div class="terminal" style="margin-bottom:2rem;">
+        <div class="terminal-top">
+          <div class="dot red"></div>
+          <div class="dot yellow"></div>
+          <div class="dot green"></div>
+        </div>
+
+        <div class="terminal-body">
+          <div><span class="prompt">❯</span> sudo pacman -S git base-devel</div>
+          <div><span class="prompt">❯</span> git clone https://github.com/Cybersnake223/Hypr</div>
+          <div><span class="prompt">❯</span> cd Hypr</div>
+          <div><span class="prompt">❯</span> chmod +x install.sh</div>
+          <div><span class="prompt">❯</span> ./install.sh --dry-run</div>
+          <div>✔ validating dependencies...</div>
+          <div>✔ checking NVIDIA compatibility...</div>
+          <div>✔ backup paths initialized...</div>
+          <div><span class="prompt">❯</span> ./install.sh --select</div>
+        </div>
+      </div>
+
+      <div class="grid-3">
+
+        <div class="feature-card">
+          <i data-lucide="shield-check"></i>
+          <h3>Dry-Run Validation</h3>
+          <p>
+            Validate dependencies, packages, and system compatibility before
+            modifying the environment.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <i data-lucide="layers-3"></i>
+          <h3>Selective Installs</h3>
+          <p>
+            Deploy only the required modules including Waybar, Hyprland,
+            Rofi, Neovim, notifications, and automation scripts.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <i data-lucide="archive-restore"></i>
+          <h3>Automatic Backups</h3>
+          <p>
+            Existing dotfiles are timestamped and preserved before
+            deployment to ensure rollback safety.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="explorer" style="margin-top:2rem;">
+        <div class="explorer-top">
+          <strong style="font-family:var(--mono); color:var(--primary);">
+            Supported Profiles
+          </strong>
+        </div>
+
+        <div class="explorer-list">
+
+          <div class="explorer-item">
+            <div>
+              <strong>Minimal</strong>
+              <span>Hyprland + Waybar + essential workflow tooling.</span>
+            </div>
+            <div class="tag">lightweight</div>
+          </div>
+
+          <div class="explorer-item">
+            <div>
+              <strong>Full</strong>
+              <span>Complete Vicious Viper ecosystem with all automation modules.</span>
+            </div>
+            <div class="tag">recommended</div>
+          </div>
+
+          <div class="explorer-item">
+            <div>
+              <strong>Laptop</strong>
+              <span>Battery-aware optimizations and portable workflow tweaks.</span>
+            </div>
+            <div class="tag">mobile</div>
+          </div>
+
+          <div class="explorer-item">
+            <div>
+              <strong>Developer</strong>
+              <span>Enhanced Neovim stack, CLI tooling, and terminal workflows.</span>
+            </div>
+            <div class="tag">dev</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="configs">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-label">Config Explorer</div>
+        <h2 class="section-title">Searchable Configuration Map</h2>
+        <p class="section-desc">
+          Treat the project like an ecosystem instead of a screenshot repository.
+          Expose major configs and scripts directly.
+        </p>
+      </div>
+
+      <div class="explorer">
+        <div class="explorer-top">
+          <input
+            class="explorer-search"
+            type="text"
+            placeholder="Search configs, scripts, modules..."
+          />
+        </div>
+
+        <div class="explorer-list">
+
+          <div class="explorer-item">
+            <div>
+              <strong>.config/hypr/hyprland.conf</strong>
+              <span>Core compositor configuration and workspace logic.</span>
+            </div>
+            <div class="tag">hyprland</div>
+          </div>
+
+          <div class="explorer-item">
+            <div>
+              <strong>.config/waybar/style.css</strong>
+              <span>Dynamic glassmorphism styling with Matugen tokens.</span>
+            </div>
+            <div class="tag">waybar</div>
+          </div>
+
+          <div class="explorer-item">
+            <div>
+              <strong>scripts/audio-osd.sh</strong>
+              <span>Mako-based volume and microphone OSD system.</span>
+            </div>
+            <div class="tag">automation</div>
+          </div>
+
+          <div class="explorer-item">
+            <div>
+              <strong>.config/rofi/config.rasi</strong>
+              <span>Launcher styling and workflow integration.</span>
+            </div>
+            <div class="tag">rofi</div>
+          </div>
+
+          <div class="explorer-item">
+            <div>
+              <strong>.config/matugen/templates</strong>
+              <span>Material You generation templates and sync pipeline.</span>
+            </div>
+            <div class="tag">matugen</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
 
   <footer>
-    <div class="container footer__inner">
-      <div class="footer__left">
-        <svg viewBox="0 0 28 28" fill="none" width="20" height="20" style="color:var(--color-primary)" aria-hidden="true">
-          <rect width="28" height="28" rx="6" fill="currentColor" fill-opacity="0.1"/>
-          <path d="M6 9.5L11 14L6 18.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M13.5 18.5H22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <span class="footer__copy">vicious-viper &middot; cybersnake223 &middot; arch + hyprland</span>
+    <div class="container footer-inner">
+      <p>
+        Vicious Viper · Event-Driven Hyprland Ecosystem
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-secondary" href="https://github.com/Cybersnake223/Hypr">
+          GitHub
+        </a>
+
+        <a class="btn btn-secondary" href="https://cybersnake223.github.io">
+          Portfolio
+        </a>
       </div>
-      <ul class="footer__links" role="list">
-        <li>
-          <a href="https://github.com/Cybersnake223/Hypr" target="_blank" rel="noopener noreferrer">
-            <i data-lucide="github" style="width:12px;height:12px;"></i> source
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/Cybersnake223/Hypr/issues" target="_blank" rel="noopener noreferrer">
-            <i data-lucide="circle-alert" style="width:12px;height:12px;"></i> issues
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/Cybersnake223/Hypr/blob/main/README.md" target="_blank" rel="noopener noreferrer">
-            <i data-lucide="file-text" style="width:12px;height:12px;"></i> readme
-          </a>
-        </li>
-        <li>
-          <a href="https://cybersnake223.github.io">
-            <i data-lucide="user" style="width:12px;height:12px;"></i> portfolio
-          </a>
-        </li>
-      </ul>
     </div>
   </footer>
 
-  <script defer>
-    document.addEventListener('DOMContentLoaded', () => {
-      if (window.lucide) lucide.createIcons();
-    });
-
-    // Particle field
-    (function() {
-      const canvas = document.getElementById('particles');
-      const ctx = canvas.getContext('2d');
-      let W, H, particles = [];
-      const COUNT = 55;
-      const GREEN = '57,211,83';
-      const CYAN = '79,195,212';
-      function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-      function mkParticle() {
-        return { x: Math.random()*W, y: Math.random()*H, r: Math.random()*1.5+0.3,
-          vx: (Math.random()-0.5)*0.3, vy: (Math.random()-0.5)*0.3,
-          color: Math.random()>0.6?CYAN:GREEN, alpha: Math.random()*0.5+0.1 };
-      }
-      resize();
-      for(let i=0;i<COUNT;i++) particles.push(mkParticle());
-      window.addEventListener('resize', resize);
-      function draw() {
-        ctx.clearRect(0,0,W,H);
-        particles.forEach(p => {
-          p.x+=p.vx; p.y+=p.vy;
-          if(p.x<0)p.x=W; if(p.x>W)p.x=0; if(p.y<0)p.y=H; if(p.y>H)p.y=0;
-          ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-          ctx.fillStyle=`rgba(${p.color},${p.alpha})`; ctx.fill();
-        });
-        for(let i=0;i<particles.length;i++) {
-          for(let j=i+1;j<particles.length;j++) {
-            const dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y;
-            const dist=Math.sqrt(dx*dx+dy*dy);
-            if(dist<110) {
-              ctx.beginPath(); ctx.moveTo(particles[i].x,particles[i].y); ctx.lineTo(particles[j].x,particles[j].y);
-              ctx.strokeStyle=`rgba(${GREEN},${0.06*(1-dist/110)})`; ctx.lineWidth=0.5; ctx.stroke();
-            }
-          }
-        }
-        requestAnimationFrame(draw);
-      }
-      draw();
-    })();
-
-    // Scroll: toTop + nav opaque
-    (function(){
-      const btn=document.getElementById('toTop'), nav=document.querySelector('.nav');
-      let t=false;
-      window.addEventListener('scroll',()=>{
-        if(t)return;t=true;
-        requestAnimationFrame(()=>{
-          const y=window.scrollY;
-          btn.classList.toggle('visible',y>400);
-          nav.classList.toggle('opaque',y>30);
-          t=false;
-        });
-      },{passive:true});
-      btn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-    })();
-
-    // Mobile nav — fixed aria-hidden
-    (function(){
-      const toggle=document.getElementById('mobileToggle');
-      const links=document.getElementById('mobileLinks');
-      toggle.addEventListener('click',()=>{
-        const open=links.classList.toggle('open');
-        toggle.setAttribute('aria-expanded',open);
-        links.setAttribute('aria-hidden',!open);  // false when open
-      });
-      links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
-        links.classList.remove('open');
-        toggle.setAttribute('aria-expanded','false');
-        links.setAttribute('aria-hidden','true');
-      }));
-    })();
-
-    // Scroll-spy nav
-    (function(){
-      const navLinks=document.querySelectorAll('.nav__links a:not(.nav__cta)');
-      const sections=document.querySelectorAll('section[id]');
-      const spy=new IntersectionObserver(entries=>{
-        entries.forEach(e=>{
-          if(e.isIntersecting){
-            navLinks.forEach(a=>a.classList.remove('active'));
-            const active=document.querySelector(`.nav__links a[href="#${e.target.id}"]`);
-            if(active)active.classList.add('active');
-          }
-        });
-      },{rootMargin:'-35% 0px -60% 0px'});
-      sections.forEach(s=>spy.observe(s));
-    })();
-
-    // Reveal animations — uses data-delay for deterministic stagger
-    (function(){
-      const prefersReduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const els=document.querySelectorAll('.reveal-item');
-      if(prefersReduced){els.forEach(el=>{el.style.opacity='1';el.style.transform='none';});return;}
-      const io=new IntersectionObserver(entries=>{
-        entries.forEach(e=>{
-          if(e.isIntersecting){
-            const delay=(parseInt(e.target.dataset.delay||0)*0.05);
-            e.target.style.transition=`opacity 0.5s ease ${delay}s, transform 0.5s cubic-bezier(0.16,1,0.3,1) ${delay}s`;
-            e.target.style.opacity='1';
-            e.target.style.transform='translateY(0)';
-            io.unobserve(e.target);
-          }
-        });
-      },{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
-      els.forEach(el=>io.observe(el));
-    })();
-
-    // Generic tab switcher (keybinds + install)
-    (function(){
-      document.querySelectorAll('.keybind-tab, .install-tab').forEach(tab=>{
-        tab.addEventListener('click',()=>{
-          const panelId=tab.dataset.panel;
-          const group=tab.closest('section, .install-section');
-          // deactivate siblings
-          tab.parentElement.querySelectorAll('button').forEach(t=>{
-            t.classList.remove('active');
-            t.setAttribute('aria-selected','false');
-          });
-          // hide all panels in scope
-          group.querySelectorAll('.keybind-panel, .install-panel').forEach(p=>p.classList.remove('active'));
-          // activate
-          tab.classList.add('active');
-          tab.setAttribute('aria-selected','true');
-          const panel=document.getElementById(panelId);
-          if(panel){
-            panel.classList.add('active');
-            // re-trigger reveal for newly visible items
-            panel.querySelectorAll('.reveal-item').forEach(el=>{
-              if(el.style.opacity!=='1'){
-                const delay=(parseInt(el.dataset.delay||0)*0.05);
-                el.style.transition=`opacity 0.4s ease ${delay}s, transform 0.4s cubic-bezier(0.16,1,0.3,1) ${delay}s`;
-                el.style.opacity='1'; el.style.transform='translateY(0)';
-              }
-            });
-          }
-        });
-      });
-    })();
-
-    // Copy code
-    function copyCode(btn) {
-      const block=btn.closest('.code-block');
-      const lines=block.querySelectorAll('div');
-      let text='';
-      lines.forEach(line=>{
-        const prompt=line.querySelector('.t-prompt');
-        const comment=line.querySelector('.t-comment');
-        if(prompt)text+=line.textContent.replace(prompt.textContent,'').trim()+"\n";
-        else if(!comment){const t=line.textContent.trim();if(t)text+=t+"\n";}
-      });
-      navigator.clipboard.writeText(text.trim()).then(()=>{
-        btn.textContent='copied!'; btn.classList.add('copied');
-        setTimeout(()=>{btn.textContent='copy';btn.classList.remove('copied');},1800);
-      });
-    }
-
-    // Lightbox
-    (function(){
-      const lightbox=document.getElementById('lightbox');
-      const lbImg=document.getElementById('lightboxImg');
-      const lbClose=document.getElementById('lightboxClose');
-      document.querySelectorAll('.preview-card img').forEach(img=>{
-        img.addEventListener('click',()=>{
-          lbImg.src=img.src; lbImg.alt=img.alt;
-          lightbox.classList.add('open');
-          document.body.style.overflow='hidden';
-          lbClose.focus();
-        });
-      });
-      function closeLightbox(){lightbox.classList.remove('open');document.body.style.overflow='';}
-      lbClose.addEventListener('click',closeLightbox);
-      lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLightbox();});
-      document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
-    })();
+  <script>
+    lucide.createIcons();
   </script>
+
 </body>
-</html>
