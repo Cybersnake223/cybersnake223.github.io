@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#080c14">
   <title>Abhishek Aryan — Linux Developer &amp; DevOps Engineer | New Delhi</title>
@@ -10,8 +10,10 @@
   <meta name="keywords" content="Abhishek, Linux developer, DevOps engineer, Arch Linux, Hyprland, Docker, Bash, open source, self-hosted, New Delhi, internship, CachyOS, Wayland">
   <meta name="author" content="Abhishek Aryan">
   <meta name="robots" content="index, follow">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
   <link rel="canonical" href="https://cybersnake223.github.io">
   <link rel="icon" type="image/png" href="https://github.com/Cybersnake223.png">
+  <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="https://github.com/Cybersnake223.png">
   <link rel="preload" as="image" href="https://github.com/Cybersnake223.png" fetchpriority="high">
   <meta property="og:type" content="website">
@@ -20,7 +22,7 @@
   <meta property="og:image" content="https://github.com/Cybersnake223.png">
   <meta property="og:url" content="https://cybersnake223.github.io">
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Abhishek — Linux Developer &amp; DevOps Engineer">
   <meta name="twitter:description" content="Linux systems developer crafting elegant infrastructure from the terminal up.">
   <meta name="twitter:image" content="https://github.com/Cybersnake223.png">
@@ -99,7 +101,9 @@
       .nav-links li a { display:block; padding:0.9rem 1.5rem; border-top:1px solid var(--border); border-radius:0; }
       .nav-cta { margin-left:0 !important; border-radius:0 !important; }
     }
-    .reveal { opacity:0; transform:translateY(18px); transition:opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+    .reveal { opacity:1; transform:none; transition:opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+    .js-animate .reveal { opacity:0; transform:translateY(18px); }
+    .js-animate .reveal.visible { opacity:1; transform:translateY(0); }
     .reveal.visible { opacity:1; transform:translateY(0); }
     .rd1{transition-delay:0.06s;} .rd2{transition-delay:0.12s;} .rd3{transition-delay:0.18s;} .rd4{transition-delay:0.24s;} .rd5{transition-delay:0.30s;}
     .hero { position:relative; z-index:10; min-height:100dvh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:7rem max(2rem,6vw) 5rem max(2rem,6vw); overflow:hidden; max-width:1100px; margin:0 auto; }
@@ -249,7 +253,7 @@
 
     /* Reduced motion: also handle counters */
     @media (prefers-reduced-motion: reduce) {
-      .reveal { opacity:1 !important; transform:none !important; }
+      .reveal, .js-animate .reveal { opacity:1 !important; transform:none !important; }
     }
 
     /* High contrast mode support */
@@ -566,9 +570,199 @@
       box-shadow: 0 1px 20px rgba(62,207,207,0.06);
     }
 
+
+    /* Scroll Progress Bar */
+    #scroll-progress {
+      position: fixed; top: 0; left: 0; z-index: 9999;
+      height: 2.5px; width: 0%;
+      background: linear-gradient(90deg, var(--teal), var(--gold), var(--teal));
+      background-size: 200% auto;
+      animation: shimmerText 3s linear infinite;
+      transition: width 0.05s linear;
+      border-radius: 0 2px 2px 0;
+      box-shadow: 0 0 10px rgba(62,207,207,0.5);
+      pointer-events: none;
+    }
+
+    /* Starfield canvas */
+    #starfield {
+      position: fixed; inset: 0; z-index: 0;
+      pointer-events: none; opacity: 0.55;
+    }
+
+    /* Terminal Widget */
+    .hero-terminal {
+      width: 100%; max-width: 540px;
+      margin-top: 2.5rem;
+      background: rgba(8,12,20,0.85);
+      border: 1px solid var(--border2);
+      border-radius: var(--r-lg);
+      box-shadow: var(--sh-lg), 0 0 40px rgba(62,207,207,0.08);
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.4s both;
+    }
+    .term-bar {
+      display: flex; align-items: center; gap: 0.45rem;
+      padding: 0.6rem 0.9rem;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+    }
+    .term-dot {
+      width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+    }
+    .term-dot.red   { background: #ff5f57; }
+    .term-dot.yellow{ background: #febc2e; }
+    .term-dot.green { background: #28c840; }
+    .term-title {
+      font-family: var(--mono); font-size: var(--t-xs);
+      color: var(--faint); margin: 0 auto; letter-spacing: 0.08em;
+    }
+    .term-body {
+      padding: 1rem 1.2rem 1.2rem;
+      font-family: var(--mono); font-size: var(--t-xs);
+      line-height: 1.8; min-height: 130px;
+    }
+    .term-line { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .term-prompt { color: var(--teal); user-select: none; }
+    .term-cmd { color: var(--text); }
+    .term-out { color: var(--muted); padding-left: 1.1rem; }
+    .term-out .hi  { color: var(--teal); }
+    .term-out .gold{ color: var(--gold); }
+    .term-out .green{ color: #4ade80; }
+    .term-cursor {
+      display: inline-block; width: 7px; height: 13px;
+      background: var(--teal); vertical-align: middle;
+      animation: blink 1s step-end infinite; margin-left: 2px;
+    }
+
+    /* Skill Tag Tooltips */
+    [data-tip] { position: relative; }
+    [data-tip]::before {
+      content: attr(data-tip);
+      position: absolute; bottom: calc(100% + 7px); left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      background: var(--bg3); color: var(--text);
+      font-family: var(--mono); font-size: 0.68rem;
+      padding: 0.3rem 0.6rem; border-radius: var(--r-sm);
+      border: 1px solid var(--border2);
+      white-space: nowrap; pointer-events: none;
+      opacity: 0; transition: opacity 180ms, transform 180ms;
+      box-shadow: var(--sh-md);
+      z-index: 100;
+    }
+    [data-tip]::after {
+      content: '';
+      position: absolute; bottom: calc(100% + 1px); left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      border: 5px solid transparent;
+      border-top-color: var(--border2);
+      pointer-events: none; opacity: 0;
+      transition: opacity 180ms, transform 180ms;
+      z-index: 100;
+    }
+    [data-tip]:hover::before,
+    [data-tip]:hover::after {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Contact Form */
+    .contact-form {
+      margin-top: 1.6rem;
+      display: flex; flex-direction: column; gap: 0.85rem;
+      text-align: left;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+    @media (max-width: 540px) { .form-row { grid-template-columns: 1fr; } }
+    .form-field { display: flex; flex-direction: column; gap: 0.35rem; }
+    .form-label {
+      font-family: var(--mono); font-size: var(--t-xs);
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint);
+    }
+    .form-input, .form-textarea {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--r-sm); color: var(--text);
+      font-family: var(--sans); font-size: var(--t-sm);
+      padding: 0.6rem 0.85rem;
+      transition: border-color 200ms, box-shadow 200ms;
+      outline: none; resize: none;
+      -webkit-appearance: none;
+    }
+    .form-input:focus, .form-textarea:focus {
+      border-color: var(--teal3);
+      box-shadow: 0 0 0 3px rgba(62,207,207,0.1);
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--faint); }
+    .form-textarea { min-height: 100px; line-height: 1.65; }
+    .form-submit {
+      align-self: center;
+      background: linear-gradient(135deg, var(--teal), #2db8b8);
+      color: #08121e; font-weight: 600; font-family: var(--sans);
+      font-size: var(--t-sm); border: none; cursor: pointer;
+      padding: 0.65rem 2rem; border-radius: var(--r-sm);
+      transition: transform 200ms, box-shadow 200ms;
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(62,207,207,0.35); }
+    .form-status {
+      font-family: var(--mono); font-size: var(--t-xs); text-align: center;
+      min-height: 1.2em; color: var(--teal); letter-spacing: 0.05em;
+    }
+
+    /* Theme Toggle */
+    #themeToggle {
+      background: none; border: 1px solid var(--border);
+      border-radius: var(--r-sm); cursor: pointer;
+      padding: 0.3rem 0.5rem; color: var(--muted);
+      display: flex; align-items: center; gap: 0.3rem;
+      font-size: 0.75rem; font-family: var(--mono);
+      transition: color 180ms, border-color 180ms, background 180ms;
+      margin-left: 0.4rem;
+    }
+    #themeToggle:hover { color: var(--teal); border-color: var(--teal3); background: var(--teal2); }
+
+    /* Light theme overrides */
+    html.light {
+      --bg:#f4f6fb; --bg1:#edf0f7; --bg2:#e4e9f2; --bg3:#d8dff0;
+      --border:rgba(0,0,0,0.08); --border2:rgba(0,0,0,0.15);
+      --text:#0f1b2d; --muted:#4a5a7a; --faint:#8a9bbf;
+      --teal:#1a9999; --teal2:rgba(26,153,153,0.1); --teal3:rgba(26,153,153,0.25);
+      --gold:#9a6e1c; --gold2:rgba(154,110,28,0.1);
+      --sh-sm:0 1px 4px rgba(0,0,0,0.1); --sh-md:0 4px 20px rgba(0,0,0,0.12); --sh-lg:0 12px 48px rgba(0,0,0,0.15);
+    }
+    html.light body::before { opacity: 0.008; }
+    html.light body::after { opacity: 0.5; }
+    html.light #starfield { opacity: 0.15; }
+    html.light nav { background: rgba(244,246,251,0.88); }
+    html.light nav.scrolled { background: rgba(244,246,251,0.98); }
+    html.light .hero-terminal { background: rgba(244,246,251,0.92); }
+    html.light h1 em {
+      background: linear-gradient(120deg, transparent 0%, var(--teal) 40%, var(--gold) 70%, transparent 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+
+
+    /* View Transitions API */
+    @view-transition { navigation: auto; }
+    ::view-transition-old(root) {
+      animation: 220ms cubic-bezier(0.4,0,1,1) both vtFadeOut;
+    }
+    ::view-transition-new(root) {
+      animation: 300ms cubic-bezier(0,0,0.2,1) 90ms both vtFadeIn;
+    }
+    @keyframes vtFadeOut { from{opacity:1;} to{opacity:0;} }
+    @keyframes vtFadeIn  { from{opacity:0;} to{opacity:1;} }
+
   </style>
+  <!-- GoatCounter: privacy-friendly analytics, no cookies -->
+  <script data-goatcounter="https://cybersnake223.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
+
+<canvas id="starfield" aria-hidden="true"></canvas>
+<div id="scroll-progress" aria-hidden="true"></div>
 
 <a class="skip-link" href="#hero">Skip to main content</a>
 
@@ -597,6 +791,9 @@
     <li><a href="#github">GitHub</a></li>
     <li><a href="#contact" class="nav-cta">Contact &#8599;</a></li>
   </ul>
+  <button id="themeToggle" aria-label="Toggle light/dark theme" title="Toggle theme">
+    <svg id="themeIcon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+  </button>
 </nav>
 
 <main id="main-content">
@@ -628,7 +825,20 @@
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
       nemesisjr111@gmail.com
     </a>
+
+  <div class="hero-terminal" role="region" aria-label="Terminal demo">
+    <div class="term-bar">
+      <span class="term-dot red"></span>
+      <span class="term-dot yellow"></span>
+      <span class="term-dot green"></span>
+      <span class="term-title">abhishek@cachyos ~ $</span>
+    </div>
+    <div class="term-body" id="termBody">
+      <div class="term-line"><span class="term-prompt">❯</span><span class="term-cmd" id="termCmd"></span><span class="term-cursor" id="termCursor"></span></div>
+      <div id="termOutput"></div>
+    </div>
   </div>
+</div>
 </section>
 
 <hr class="div">
@@ -680,6 +890,46 @@
         <span class="proj-tag">automation</span>
         <span class="proj-tag">bash</span>
         <span class="proj-tag">github-api</span>
+      </div>
+    </div>
+    <div class="project-card reveal rd3">
+      <div class="project-header">
+        <div class="project-title-wrap">
+          <svg class="project-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></ellipse></svg>
+          <span class="project-name">Self-hosted Analytics Stack</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Cybersnake223" target="_blank" rel="noopener noreferrer" class="project-link">
+            <svg width="9" height="9" aria-hidden="true"><use href="#ico-gh"/></svg> Source
+          </a>
+        </div>
+      </div>
+      <p class="project-desc">Docker Compose stack running Metabase &amp; Apache Superset on self-hosted infrastructure with MySQL/MariaDB backends. Fully containerised, reverse-proxied via Nginx, with persistent volumes and automated backups.</p>
+      <div class="project-footer">
+        <span class="proj-lang"><span class="lang-dot" style="background:#384d54;"></span>Docker</span>
+        <span class="proj-tag">metabase</span>
+        <span class="proj-tag">superset</span>
+        <span class="proj-tag">self-hosted</span>
+      </div>
+    </div>
+    <div class="project-card reveal rd4">
+      <div class="project-header">
+        <div class="project-title-wrap">
+          <svg class="project-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          <span class="project-name">Zen Browser Config</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Cybersnake223" target="_blank" rel="noopener noreferrer" class="project-link">
+            <svg width="9" height="9" aria-hidden="true"><use href="#ico-gh"/></svg> Source
+          </a>
+        </div>
+      </div>
+      <p class="project-desc">Custom userChrome.css &amp; uBlock Origin ruleset for Zen Browser — removes UI chrome, adds Wayland-native gestures, and applies a cohesive dark theme matching the Hyprland desktop aesthetic.</p>
+      <div class="project-footer">
+        <span class="proj-lang"><span class="lang-dot" style="background:#563d7c;"></span>CSS</span>
+        <span class="proj-tag">browser</span>
+        <span class="proj-tag">userchrome</span>
+        <span class="proj-tag">wayland</span>
       </div>
     </div>
     <a href="https://github.com/Cybersnake223" target="_blank" rel="me noopener noreferrer" class="project-card-more reveal rd3">
@@ -753,50 +1003,50 @@
     <div class="skill-cluster reveal rd1">
       <div class="cluster-label">// Linux &amp; Desktop</div>
       <div class="cluster-tags">
-        <span class="ctag teal">Arch Linux</span>
-        <span class="ctag teal">CachyOS</span>
-        <span class="ctag teal">Hyprland</span>
-        <span class="ctag hi">Wayland</span>
-        <span class="ctag">Neovim</span>
-        <span class="ctag">Waybar</span>
-        <span class="ctag">rofi</span>
-        <span class="ctag">Foot</span>
-        <span class="ctag">PipeWire</span>
-        <span class="ctag">Yazi</span>
+        <span class="ctag teal" data-tip="Rolling release Linux distro">Arch Linux</span>
+        <span class="ctag teal" data-tip="Performance-tuned Arch fork">CachyOS</span>
+        <span class="ctag teal" data-tip="Dynamic Wayland compositor">Hyprland</span>
+        <span class="ctag hi" data-tip="Modern display server protocol">Wayland</span>
+        <span class="ctag" data-tip="Hyperextensible Vim-based editor">Neovim</span>
+        <span class="ctag" data-tip="Highly customisable status bar">Waybar</span>
+        <span class="ctag" data-tip="Window switcher &amp; app launcher">rofi</span>
+        <span class="ctag" data-tip="Wayland-native terminal emulator">Foot</span>
+        <span class="ctag" data-tip="Low-latency audio/video server">PipeWire</span>
+        <span class="ctag" data-tip="Blazing fast terminal file manager">Yazi</span>
       </div>
     </div>
     <div class="skill-cluster reveal rd2">
       <div class="cluster-label">// DevOps &amp; Infrastructure</div>
       <div class="cluster-tags">
-        <span class="ctag teal">Docker</span>
-        <span class="ctag teal">Docker Compose</span>
-        <span class="ctag hi">Self-hosted</span>
-        <span class="ctag">Nginx</span>
+        <span class="ctag teal" data-tip="Container runtime">Docker</span>
+        <span class="ctag teal" data-tip="Container runtime">Docker Compose</span>
+        <span class="ctag hi" data-tip="Run your own infra, no cloud lock-in">Self-hosted</span>
+        <span class="ctag" data-tip="High-performance reverse proxy">Nginx</span>
         <span class="ctag">Git</span>
         <span class="ctag">GitHub CLI</span>
-        <span class="ctag">SSH</span>
+        <span class="ctag" data-tip="Secure remote shell access">SSH</span>
       </div>
     </div>
     <div class="skill-cluster reveal rd3">
       <div class="cluster-label">// Data &amp; Analytics</div>
       <div class="cluster-tags">
-        <span class="ctag gold">Metabase</span>
-        <span class="ctag gold">Apache Superset</span>
-        <span class="ctag hi">MySQL</span>
-        <span class="ctag">MariaDB</span>
+        <span class="ctag gold" data-tip="Open-source BI & analytics">Metabase</span>
+        <span class="ctag gold" data-tip="Enterprise data exploration tool">Apache Superset</span>
+        <span class="ctag hi" data-tip="Relational database system">MySQL</span>
+        <span class="ctag" data-tip="MySQL-compatible open-source DB">MariaDB</span>
         <span class="ctag">SQL</span>
       </div>
     </div>
     <div class="skill-cluster reveal rd4">
       <div class="cluster-label">// Scripting &amp; Web</div>
       <div class="cluster-tags">
-        <span class="ctag teal">Bash</span>
-        <span class="ctag hi">Python</span>
+        <span class="ctag teal" data-tip="Unix shell & scripting language">Bash</span>
+        <span class="ctag hi" data-tip="General-purpose scripting language">Python</span>
         <span class="ctag">HTML/CSS</span>
         <span class="ctag">JavaScript</span>
         <span class="ctag">userChrome</span>
         <span class="ctag">uBlock Origin</span>
-        <span class="ctag">Zen Browser</span>
+        <span class="ctag" data-tip="Firefox-based browser with Wayland support">Zen Browser</span>
       </div>
     </div>
   </div>
@@ -868,6 +1118,27 @@
     </div>
     <div class="contact-card reveal rd1">
       <p>Open to internships, freelance projects, and open-source collaborations. Whether you want to talk Linux, DevOps, or geek out about Wayland compositors &mdash; my inbox is open.</p>
+      <form class="contact-form" id="contactForm" action="https://formspree.io/f/xpwzovgj" method="POST" novalidate>
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label" for="fname">Name</label>
+            <input class="form-input" type="text" id="fname" name="name" placeholder="Your name" required autocomplete="name">
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="femail">Email</label>
+            <input class="form-input" type="email" id="femail" name="email" placeholder="your@email.com" required autocomplete="email">
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="fmsg">Message</label>
+          <textarea class="form-textarea" id="fmsg" name="message" placeholder="What&#39;s on your mind?" required></textarea>
+        </div>
+        <div class="form-status" id="formStatus" aria-live="polite"></div>
+        <button type="submit" class="form-submit">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Send Message
+        </button>
+      </form>
       <div class="contact-btns">
         <a href="mailto:nemesisjr111@gmail.com" class="btn btn-primary">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
@@ -923,33 +1194,79 @@
   })();
 
   (function(){
-    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-      document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
-      return;
-    }
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    document.documentElement.classList.add('js-animate');
     const io = new IntersectionObserver(entries=>{
       entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
-    }, { threshold:0.07, rootMargin:'0px 0px -25px 0px' });
+    }, { threshold:0.07, rootMargin:'0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   })();
 
+  /* ===== LIVE GITHUB API COUNTERS ===== */
   (function(){
-    const counters = document.querySelectorAll('.gh-counter-val[data-target]');
-    if(!counters.length) return;
-    const io = new IntersectionObserver(entries=>{
-      entries.forEach(e=>{
-        if(!e.isIntersecting) return;
-        const el = e.target, target = parseInt(el.dataset.target), dur = 1200, start = performance.now();
-        function step(now){
-          const p = Math.min((now-start)/dur,1), ease = 1-Math.pow(1-p,3);
-          el.textContent = Math.floor(ease*target) + (p<1?'':'+');
-          if(p<1) requestAnimationFrame(step);
+    const CACHE_KEY = 'gh_data', CACHE_TTL = 3600000; // 1hr cache
+    const repoEl  = document.querySelector('.gh-counter-val[data-target="6"]');
+    const yearEl  = document.querySelector('.gh-counter-val[data-target="2"]');
+    if(!repoEl) return;
+
+    function animateCount(el, target){
+      const dur = 1200, start = performance.now();
+      function step(now){
+        const p = Math.min((now-start)/dur, 1);
+        const ease = 1 - Math.pow(1-p, 3);
+        el.textContent = Math.floor(ease * target) + (p < 1 ? '' : '+');
+        if(p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    async function loadGitHubData(){
+      // Check sessionStorage cache first
+      try {
+        const cached = sessionStorage.getItem(CACHE_KEY);
+        if(cached){
+          const {data, ts} = JSON.parse(cached);
+          if(Date.now() - ts < CACHE_TTL) return data;
         }
-        requestAnimationFrame(step);
-        io.unobserve(el);
+      } catch(e){}
+
+      const res = await fetch('https://api.github.com/users/Cybersnake223');
+      if(!res.ok) throw new Error('GitHub API error');
+      const data = await res.json();
+      try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({data, ts: Date.now()})); } catch(e){}
+      return data;
+    }
+
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(async e=>{
+        if(!e.isIntersecting) return;
+        io.unobserve(e.target);
+        try {
+          const data = await loadGitHubData();
+          const repos = data.public_repos || 6;
+          // Calculate years on GitHub
+          const joined = new Date(data.created_at);
+          const years  = Math.floor((Date.now() - joined) / (1000*60*60*24*365)) || 2;
+          // Update data-target so animation uses real numbers
+          repoEl.dataset.target = repos;
+          if(yearEl) yearEl.dataset.target = years;
+          animateCount(repoEl, repos);
+          if(yearEl) animateCount(yearEl, years);
+          // Also update bio if available
+          const bioEl = document.querySelector('.gh-bio');
+          if(bioEl && data.bio) bioEl.textContent = data.bio;
+          // Update followers count if element exists
+          const followEl = document.querySelector('.gh-followers');
+          if(followEl) followEl.textContent = data.followers;
+        } catch(err){
+          // Fallback: animate with hardcoded values
+          animateCount(repoEl, 6);
+          if(yearEl) animateCount(yearEl, 2);
+        }
       });
-    }, { threshold:0.5 });
-    counters.forEach(el => io.observe(el));
+    }, { threshold: 0.5 });
+
+    io.observe(repoEl);
   })();
 
   (function(){
@@ -967,18 +1284,55 @@
     sections.forEach(s => spy.observe(s));
   })();
 
+  /* ===== MOBILE NAV with keyboard trap + Escape ===== */
   (function(){
-    const toggle = document.getElementById('navToggle'), links = document.getElementById('navLinks');
-    toggle.addEventListener('click', ()=>{
-      const open = links.classList.toggle('open');
-      toggle.classList.toggle('open', open);
-      toggle.setAttribute('aria-expanded', open);
-    });
-    links.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=>{
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    if(!toggle || !links) return;
+
+    function openMenu(){
+      links.classList.add('open');
+      toggle.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+      // Focus first nav link
+      const first = links.querySelector('a');
+      if(first) setTimeout(()=> first.focus(), 50);
+    }
+    function closeMenu(){
       links.classList.remove('open');
       toggle.classList.remove('open');
       toggle.setAttribute('aria-expanded', 'false');
-    }));
+      toggle.focus();
+    }
+
+    toggle.addEventListener('click', ()=>{
+      links.classList.contains('open') ? closeMenu() : openMenu();
+    });
+
+    // Close on link click
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+    // Keyboard: Escape closes, Tab traps focus inside menu
+    document.addEventListener('keydown', e=>{
+      if(!links.classList.contains('open')) return;
+      if(e.key === 'Escape'){ closeMenu(); return; }
+      if(e.key === 'Tab'){
+        const focusable = [...links.querySelectorAll('a')];
+        const first = focusable[0], last = focusable[focusable.length-1];
+        if(e.shiftKey){
+          if(document.activeElement === first){ e.preventDefault(); last.focus(); }
+        } else {
+          if(document.activeElement === last){ e.preventDefault(); toggle.focus(); }
+        }
+      }
+    });
+
+    // Close on outside click
+    document.addEventListener('click', e=>{
+      if(links.classList.contains('open') && !links.contains(e.target) && e.target !== toggle){
+        closeMenu();
+      }
+    });
   })();
 
   (function(){
@@ -1083,6 +1437,237 @@
         btn.style.transform = `translate(${x}px, ${y}px) translateY(-2px)`;
       });
       btn.addEventListener('mouseleave', ()=>{ btn.style.transform = ''; });
+    });
+  })();
+
+  /* ===== SCROLL PROGRESS BAR ===== */
+  (function(){
+    const bar = document.getElementById('scroll-progress');
+    if(!bar) return;
+    function updateBar(){
+      const scrolled = window.scrollY;
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (total > 0 ? (scrolled/total)*100 : 0) + '%';
+    }
+    window.addEventListener('scroll', updateBar, {passive:true});
+    updateBar();
+  })();
+
+  /* ===== STARFIELD CANVAS ===== */
+  (function(){
+    const canvas = document.getElementById('starfield');
+    if(!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let W, H, stars = [], lines = [];
+    const N = 70, MAX_DIST = 130;
+
+    function resize(){
+      W = canvas.width  = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize, {passive:true});
+
+    for(let i=0;i<N;i++){
+      stars.push({
+        x: Math.random()*window.innerWidth,
+        y: Math.random()*window.innerHeight,
+        vx: (Math.random()-0.5)*0.18,
+        vy: (Math.random()-0.5)*0.18,
+        r: Math.random()*1.4+0.4,
+        a: Math.random()*0.5+0.3
+      });
+    }
+
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+      // Draw connection lines
+      for(let i=0;i<N;i++){
+        for(let j=i+1;j<N;j++){
+          const dx=stars[i].x-stars[j].x, dy=stars[i].y-stars[j].y;
+          const d=Math.sqrt(dx*dx+dy*dy);
+          if(d<MAX_DIST){
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(62,207,207,${0.12*(1-d/MAX_DIST)})`;
+            ctx.lineWidth = 0.6;
+            ctx.moveTo(stars[i].x,stars[i].y);
+            ctx.lineTo(stars[j].x,stars[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      // Draw stars
+      for(const s of stars){
+        ctx.beginPath();
+        ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+        ctx.fillStyle = `rgba(62,207,207,${s.a})`;
+        ctx.fill();
+        // Move
+        s.x+=s.vx; s.y+=s.vy;
+        if(s.x<0) s.x=W; if(s.x>W) s.x=0;
+        if(s.y<0) s.y=H; if(s.y>H) s.y=0;
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+
+  /* ===== TERMINAL TYPEWRITER ===== */
+  (function(){
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const cmdEl = document.getElementById('termCmd');
+    const curEl = document.getElementById('termCursor');
+    const outEl = document.getElementById('termOutput');
+    if(!cmdEl || !outEl) return;
+
+    const sequences = [
+      { cmd:'neofetch --off', out:[
+        '<span class="hi">OS</span>        CachyOS Linux x86_64',
+        '<span class="hi">WM</span>        Hyprland (Wayland)',
+        '<span class="hi">Shell</span>     Bash 5.2.37',
+        '<span class="hi">Terminal</span>  Foot v1.19',
+        '<span class="hi">Editor</span>    <span class="gold">Neovim v0.11</span>',
+        '<span class="green">─────────────────────────</span>'
+      ]},
+      { cmd:'docker ps --format "table {{.Names}}\t{{.Status}}"', out:[
+        '<span class="hi">NAMES</span>            STATUS',
+        '<span class="green">metabase</span>         Up 3 days',
+        '<span class="green">superset</span>         Up 3 days',
+        '<span class="green">mariadb</span>          Up 3 days',
+        '<span class="green">nginx-proxy</span>      Up 3 days'
+      ]},
+      { cmd:'uptime -p', out:[
+        '<span class="gold">up 6 days, 4 hours, 17 minutes</span>'
+      ]},
+      { cmd:'ls ~/projects', out:[
+        '<span class="hi">vicious-viper/</span>   <span class="gold">mkgit-gh/</span>   <span class="green">analytics-stack/</span>   zen-config/'
+      ]},
+    ];
+
+    let seq = 0;
+    function runSequence(){
+      const s = sequences[seq % sequences.length];
+      seq++;
+      // Type command
+      let i = 0;
+      cmdEl.textContent = '';
+      outEl.innerHTML = '';
+      curEl.style.display = 'inline-block';
+      function typeChar(){
+        if(i <= s.cmd.length){
+          cmdEl.textContent = s.cmd.slice(0,i);
+          i++;
+          setTimeout(typeChar, 45 + Math.random()*25);
+        } else {
+          // Show output
+          curEl.style.display = 'none';
+          let oi = 0;
+          function showLine(){
+            if(oi < s.out.length){
+              const d = document.createElement('div');
+              d.className = 'term-out';
+              d.innerHTML = s.out[oi];
+              outEl.appendChild(d);
+              oi++;
+              setTimeout(showLine, 80);
+            } else {
+              // Wait then clear and run next
+              setTimeout(()=>{
+                // Fade out
+                outEl.style.transition = 'opacity 0.4s';
+                outEl.style.opacity = '0';
+                cmdEl.style.opacity = '0';
+                setTimeout(()=>{
+                  outEl.innerHTML = '';
+                  outEl.style.opacity = '1';
+                  cmdEl.style.opacity = '1';
+                  runSequence();
+                }, 500);
+              }, 2800);
+            }
+          }
+          setTimeout(showLine, 180);
+        }
+      }
+      typeChar();
+    }
+    setTimeout(runSequence, 1200);
+  })();
+
+  /* ===== THEME TOGGLE (with prefers-color-scheme + View Transitions) ===== */
+  (function(){
+    const btn = document.getElementById('themeToggle');
+    const icon = document.getElementById('themeIcon');
+    if(!btn) return;
+    const moonSvg = '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';
+    const sunSvg  = '<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>';
+
+    // Determine initial theme: saved pref > OS pref > dark
+    const saved = localStorage.getItem('theme');
+    const osPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+    let light = saved ? saved === 'light' : osPrefersLight;
+
+    function applyTheme(){
+      document.documentElement.classList.toggle('light', light);
+      icon.innerHTML = light ? sunSvg : moonSvg;
+      btn.setAttribute('aria-label', light ? 'Switch to dark theme' : 'Switch to light theme');
+      localStorage.setItem('theme', light ? 'light' : 'dark');
+    }
+
+    // Use View Transitions API for smooth theme switch if available
+    function toggleWithTransition(){
+      light = !light;
+      if(document.startViewTransition){
+        document.startViewTransition(() => applyTheme());
+      } else {
+        applyTheme();
+      }
+    }
+
+    applyTheme(); // apply on load (no transition)
+    btn.addEventListener('click', toggleWithTransition);
+
+    // Listen for OS theme changes (e.g. auto dark at sunset)
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
+      if(!localStorage.getItem('theme')){ // only if user hasn't manually picked
+        light = e.matches;
+        applyTheme();
+      }
+    });
+  })();
+
+  /* ===== CONTACT FORM ===== */
+  (function(){
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    if(!form || !status) return;
+    form.addEventListener('submit', async e=>{
+      e.preventDefault();
+      const btn = form.querySelector('.form-submit');
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
+      status.textContent = 'Sending…';
+      try {
+        const res = await fetch(form.action, {
+          method:'POST',
+          body: new FormData(form),
+          headers:{ 'Accept':'application/json' }
+        });
+        if(res.ok){
+          status.textContent = '✓ Message sent! I'll reply soon.';
+          status.style.color = '#4ade80';
+          form.reset();
+        } else {
+          throw new Error('fail');
+        }
+      } catch {
+        status.textContent = '✗ Something went wrong. Email me directly.';
+        status.style.color = '#f87171';
+      } finally {
+        btn.disabled = false;
+        btn.style.opacity = '1';
+        setTimeout(()=>{ status.textContent=''; status.style.color=''; }, 5000);
+      }
     });
   })();
 

@@ -1,0 +1,27 @@
+{
+  "name": "Abhishek Aryan — Linux Developer & DevOps Engineer",
+  "short_name": "Abhishek",
+  "description": "Linux systems developer & DevOps engineer based in New Delhi, India.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080c14",
+  "theme_color": "#3ecfcf",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://github.com/Cybersnake223.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://github.com/Cybersnake223.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["portfolio", "technology"],
+  "lang": "en",
+  "dir": "ltr"
+}
