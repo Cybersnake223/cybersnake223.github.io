@@ -7,10 +7,18 @@
   <meta name="description" content="Vicious Viper — A minimal, keyboard-driven Hyprland dotfiles setup for Arch Linux by Cybersnake223." />
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://cybersnake223.github.io/vicious-viper/">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/cslogo.png">
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Vicious Viper — Hyprland Dotfiles">
   <meta property="og:description" content="A minimal, keyboard-driven Hyprland dotfiles setup for Arch Linux.">
   <meta property="og:url" content="https://cybersnake223.github.io/vicious-viper/">
+  <meta property="og:image" content="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset1.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Vicious Viper — Hyprland Dotfiles">
+  <meta name="twitter:description" content="A minimal, keyboard-driven Hyprland dotfiles setup for Arch Linux.">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset1.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300..800;1,300..800&family=Inter:wght@300..700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -39,6 +47,8 @@
       --color-cyan-dim: #1a3a40;
       --color-warning: #f0a84a;
       --color-error: #e05c6a;
+      --color-purple: #a855f7;
+      --color-purple-dim: rgba(168,85,247,0.1);
       --radius-sm: 0.25rem;
       --radius-md: 0.375rem;
       --radius-lg: 0.5rem;
@@ -90,21 +100,11 @@
       overflow-x: hidden;
     }
 
-    /* Scanline texture overlay */
     body::before {
       content: '';
-      position: fixed;
-      inset: 0;
-      background-image: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(0,0,0,0.03) 2px,
-        rgba(0,0,0,0.03) 4px
-      );
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 0.6;
+      position: fixed; inset: 0;
+      background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+      pointer-events: none; z-index: 9999; opacity: 0.6;
     }
 
     img, picture, video, canvas, svg { display: block; max-width: 100%; height: auto; }
@@ -210,7 +210,7 @@
       border-bottom: 1px solid var(--color-border);
       max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
     }
-    .nav__mobile-links.open { max-height: 300px; }
+    .nav__mobile-links.open { max-height: 400px; }
     .nav__mobile-links a {
       display: block; padding: 0.85rem 1.5rem;
       font-family: var(--font-mono); font-size: var(--text-sm);
@@ -232,8 +232,6 @@
       padding-bottom: clamp(4rem, 10vw, 6rem);
       position: relative; overflow: hidden;
     }
-
-    /* Animated grid */
     .hero::before {
       content: ''; position: absolute; inset: 0;
       background-image:
@@ -247,8 +245,6 @@
       0% { background-position: 0 0, 0 0; }
       100% { background-position: 40px 40px, 40px 40px; }
     }
-
-    /* Drifting radial orbs */
     .hero::after {
       content: ''; position: absolute; top: 30%; left: 50%;
       transform: translate(-50%, -50%);
@@ -263,9 +259,7 @@
       0% { transform: translate(-50%, -50%) scale(1); }
       100% { transform: translate(-50%, -52%) scale(1.08); }
     }
-
     .hero__inner { position: relative; z-index: 1; }
-
     .hero__eyebrow {
       display: inline-flex; align-items: center; gap: 0.5rem;
       font-family: var(--font-mono); font-size: var(--text-xs);
@@ -281,8 +275,6 @@
       box-shadow: 0 0 6px var(--color-primary);
     }
     @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.5;transform:scale(0.7);} }
-
-    /* Neon shimmer title */
     .hero__title {
       font-family: var(--font-mono); font-size: var(--text-3xl); font-weight: 800;
       color: var(--color-text); line-height: 1.0; margin-bottom: 1rem; letter-spacing: -0.02em;
@@ -299,12 +291,10 @@
       0% { background-position: 0% center; }
       100% { background-position: 200% center; }
     }
-
     .hero__subtitle {
       font-size: var(--text-base); color: var(--color-text-muted);
       max-width: 52ch; margin-bottom: 2rem; line-height: 1.8;
     }
-
     .hero__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
 
     .btn {
@@ -358,6 +348,7 @@
     .t-comment { color: var(--color-text-faint); }
     .t-str { color: var(--color-cyan); }
     .t-out { color: var(--color-text-muted); }
+    .t-flag { color: var(--color-warning); }
     .t-cursor {
       display: inline-block; width: 8px; height: 1em;
       background: var(--color-primary); vertical-align: text-bottom;
@@ -413,18 +404,13 @@
       background: linear-gradient(135deg, rgba(57,211,83,0.05) 0%, rgba(79,195,212,0.02) 60%, transparent 100%);
       opacity: 0; transition: opacity var(--transition-interactive);
     }
-    /* top glint line */
     .component-card::after {
       content: ''; position: absolute; top: 0; left: 0; right: 0;
       height: 1px;
       background: linear-gradient(90deg, transparent, rgba(57,211,83,0.4), transparent);
       opacity: 0; transition: opacity var(--transition-interactive);
     }
-    .component-card:hover {
-      border-color: rgba(57,211,83,0.4);
-      box-shadow: var(--shadow-glow-neon);
-      transform: translateY(-3px);
-    }
+    .component-card:hover { border-color: rgba(57,211,83,0.4); box-shadow: var(--shadow-glow-neon); transform: translateY(-3px); }
     .component-card:hover::before { opacity: 1; }
     .component-card:hover::after { opacity: 1; }
     .component-card__icon { width: 32px; height: 32px; color: var(--color-primary); margin-bottom: 1rem; opacity: 0.9; filter: drop-shadow(0 0 6px rgba(57,211,83,0.4)); }
@@ -460,6 +446,94 @@
     .feature-item__text { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.65; }
     .feature-item__text strong { color: var(--color-text); font-weight: 600; }
 
+    /* ─── THEMING SECTION ─── */
+    .theming-section { background: var(--color-bg); }
+    .theming-demo {
+      margin-top: 2.5rem;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.5rem; align-items: start;
+    }
+    @media (max-width: 640px) { .theming-demo { grid-template-columns: 1fr; } }
+    .theming-demo__card {
+      background: rgba(17,19,20,0.8); border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl); padding: 1.5rem;
+      backdrop-filter: blur(8px);
+    }
+    .theming-demo__title {
+      font-family: var(--font-mono); font-size: var(--text-sm); font-weight: 700;
+      color: var(--color-primary); margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .theming-demo__palette {
+      display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1rem;
+    }
+    .palette-swatch {
+      width: 28px; height: 28px; border-radius: var(--radius-md);
+      transition: transform var(--transition-interactive);
+    }
+    .palette-swatch:hover { transform: scale(1.2); }
+    .theming-demo__desc { font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.7; }
+    .theming-demo__cmd {
+      margin-top: 1rem; font-family: var(--font-mono); font-size: var(--text-xs);
+      background: rgba(13,14,15,0.9); border: 1px solid var(--color-border);
+      border-radius: var(--radius-md); padding: 0.6rem 0.85rem;
+      color: var(--color-text-muted);
+    }
+    .theming-demo__cmd .t-prompt { color: var(--color-primary); }
+    .theming-badge {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      font-family: var(--font-mono); font-size: var(--text-xs);
+      color: var(--color-purple); background: var(--color-purple-dim);
+      border: 1px solid rgba(168,85,247,0.25); border-radius: var(--radius-full);
+      padding: 0.15rem 0.6rem; margin-bottom: 0.85rem;
+    }
+
+    /* ─── KEYBINDS SECTION ─── */
+    .keybinds-section { background: rgba(17,19,20,0.6); }
+    .keybinds-tabs {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; margin-bottom: 1.5rem;
+    }
+    .keybind-tab {
+      font-family: var(--font-mono); font-size: var(--text-xs);
+      color: var(--color-text-muted); background: rgba(13,14,15,0.8);
+      border: 1px solid var(--color-border); border-radius: var(--radius-md);
+      padding: 0.35rem 0.85rem; cursor: pointer;
+      transition: all var(--transition-interactive);
+    }
+    .keybind-tab:hover, .keybind-tab.active {
+      color: var(--color-primary); border-color: rgba(57,211,83,0.4);
+      background: var(--color-primary-highlight);
+      box-shadow: var(--shadow-glow-sm);
+    }
+    .keybind-panel { display: none; }
+    .keybind-panel.active { display: block; }
+    .keybind-table {
+      width: 100%; border-collapse: collapse;
+      font-family: var(--font-mono); font-size: var(--text-xs);
+    }
+    .keybind-table tr {
+      border-bottom: 1px solid var(--color-divider);
+      transition: background var(--transition-fast);
+    }
+    .keybind-table tr:hover { background: rgba(57,211,83,0.04); }
+    .keybind-table tr:last-child { border-bottom: none; }
+    .keybind-table td { padding: 0.6rem 0.5rem; vertical-align: middle; }
+    .keybind-table td:first-child { width: 42%; }
+    .kbd {
+      display: inline-flex; align-items: center; gap: 0.2rem;
+    }
+    .kbd-key {
+      display: inline-block;
+      background: var(--color-surface-offset); border: 1px solid var(--color-border);
+      border-bottom: 2px solid var(--color-border-hover);
+      border-radius: var(--radius-sm); padding: 0.1rem 0.45rem;
+      font-family: var(--font-mono); font-size: var(--text-xs);
+      color: var(--color-cyan); white-space: nowrap;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.4);
+    }
+    .kbd-sep { color: var(--color-text-faint); font-size: 0.65rem; }
+    .keybind-action { color: var(--color-text-muted); line-height: 1.5; }
+
     /* ─── SCREENSHOTS ─── */
     .screenshots-section { background: var(--color-bg); }
     .preview-grid {
@@ -479,11 +553,7 @@
       will-change: transform; filter: brightness(0.82) saturate(0.9);
       cursor: zoom-in;
     }
-    .preview-card:hover {
-      border-color: var(--color-primary);
-      box-shadow: var(--shadow-glow-neon);
-      transform: translateY(-4px) scale(1.01);
-    }
+    .preview-card:hover { border-color: var(--color-primary); box-shadow: var(--shadow-glow-neon); transform: translateY(-4px) scale(1.01); }
     .preview-card:hover img { transform: scale(1.07); filter: brightness(1) saturate(1.1); }
     .preview-label {
       position: absolute; bottom: 0; left: 0; right: 0;
@@ -518,7 +588,21 @@
 
     /* ─── INSTALL ─── */
     .install-section { background: var(--color-surface); }
-    .install-steps { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.5rem; counter-reset: steps; }
+    .install-tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; }
+    .install-tab {
+      font-family: var(--font-mono); font-size: var(--text-xs);
+      color: var(--color-text-muted); background: rgba(13,14,15,0.8);
+      border: 1px solid var(--color-border); border-radius: var(--radius-md);
+      padding: 0.35rem 0.85rem; cursor: pointer;
+      transition: all var(--transition-interactive);
+    }
+    .install-tab:hover, .install-tab.active {
+      color: var(--color-primary); border-color: rgba(57,211,83,0.4);
+      background: var(--color-primary-highlight); box-shadow: var(--shadow-glow-sm);
+    }
+    .install-panel { display: none; }
+    .install-panel.active { display: flex; flex-direction: column; gap: 1.5rem; }
+    .install-steps { display: flex; flex-direction: column; gap: 1.5rem; counter-reset: steps; }
     .install-step { display: grid; grid-template-columns: 44px 1fr; gap: 1rem; align-items: start; }
     .install-step__num {
       counter-increment: steps;
@@ -532,6 +616,28 @@
     .install-step__num::before { content: counter(steps, decimal-leading-zero); }
     .install-step__content { padding-top: 0.4rem; }
     .install-step__title { font-family: var(--font-mono); font-size: var(--text-sm); font-weight: 600; color: var(--color-text); margin-bottom: 0.6rem; }
+    .install-note {
+      padding: 0.85rem 1rem; background: rgba(168,85,247,0.08);
+      border: 1px solid rgba(168,85,247,0.2); border-radius: var(--radius-lg);
+      font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.7;
+      font-family: var(--font-mono);
+    }
+    .install-note strong { color: var(--color-purple); }
+    .flags-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
+      gap: 0.6rem;
+    }
+    .flag-item {
+      background: rgba(13,14,15,0.8); border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg); padding: 0.75rem 1rem;
+      transition: border-color var(--transition-interactive);
+    }
+    .flag-item:hover { border-color: rgba(57,211,83,0.3); }
+    .flag-item__key {
+      font-family: var(--font-mono); font-size: var(--text-xs);
+      color: var(--color-warning); margin-bottom: 0.3rem;
+    }
+    .flag-item__desc { font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.5; }
 
     .code-block {
       background: rgba(13,14,15,0.9); border: 1px solid var(--color-border);
@@ -572,17 +678,12 @@
       .install-step__num { display: none; }
     }
 
-    /* ─── PARTICLES CANVAS ─── */
-    #particles {
-      position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.45;
-    }
-
+    #particles { position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.45; }
     .reveal-item { opacity: 0; transform: translateY(16px); }
   </style>
 </head>
 <body>
   <canvas id="particles" aria-hidden="true"></canvas>
-
   <a href="#main" class="skip-link">Skip to content</a>
 
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
@@ -609,6 +710,8 @@
       <ul class="nav__links" role="list">
         <li><a href="#stack">stack</a></li>
         <li><a href="#features">features</a></li>
+        <li><a href="#theming">theming</a></li>
+        <li><a href="#keybinds">keybinds</a></li>
         <li><a href="#preview">preview</a></li>
         <li><a href="#install">install</a></li>
         <li>
@@ -622,9 +725,11 @@
         <i data-lucide="menu" style="width:20px;height:20px;"></i>
       </button>
     </div>
-    <div class="nav__mobile-links" id="mobileLinks" aria-hidden="true">
+    <div class="nav__mobile-links" id="mobileLinks">
       <a href="#stack">// stack</a>
       <a href="#features">// features</a>
+      <a href="#theming">// theming</a>
+      <a href="#keybinds">// keybinds</a>
       <a href="#preview">// preview</a>
       <a href="#install">// install</a>
       <a href="https://github.com/Cybersnake223/Hypr" target="_blank" rel="noopener noreferrer">// github &rarr;</a>
@@ -632,6 +737,7 @@
   </nav>
 
   <main id="main">
+    <!-- ─── HERO ─── -->
     <section class="hero">
       <div class="container hero__inner">
         <div class="hero__eyebrow">
@@ -660,41 +766,44 @@
           </a>
         </div>
 
+        <!-- Updated terminal: shows install.sh as primary path -->
         <div class="hero__terminal" role="img" aria-label="Installation preview terminal">
           <div class="hero__terminal-bar">
             <span class="terminal-dot terminal-dot--red"></span>
             <span class="terminal-dot terminal-dot--yellow"></span>
             <span class="terminal-dot terminal-dot--green"></span>
-            <span class="terminal-title">bash &mdash; ~/Hypr</span>
+            <span class="terminal-title">zsh &mdash; ~/Hypr</span>
           </div>
           <div class="hero__terminal-body" aria-hidden="true">
             <div><span class="t-prompt">&#10095; </span><span class="t-cmd">git clone https://github.com/Cybersnake223/Hypr</span></div>
-            <div><span class="t-out">Cloning into <span class="t-str">'Hypr'</span>...</span></div>
-            <div><span class="t-out">remote: Enumerating objects: done.</span></div>
-            <div style="margin-top:4px"><span class="t-prompt">&#10095; </span><span class="t-cmd">cp -r .config/* $HOME/.config</span></div>
-            <div><span class="t-out">Copying config files...</span></div>
-            <div style="margin-top:4px"><span class="t-prompt">&#10095; </span><span class="t-cmd">cp -r .local/bin/scripts $HOME/.local/bin</span></div>
-            <div><span class="t-comment"># Add scripts to PATH and enjoy</span></div>
+            <div><span class="t-out">Cloning into <span class="t-str">'Hypr'</span>... done.</span></div>
+            <div style="margin-top:4px"><span class="t-prompt">&#10095; </span><span class="t-cmd">cd Hypr &amp;&amp; chmod +x install.sh</span></div>
+            <div style="margin-top:4px"><span class="t-prompt">&#10095; </span><span class="t-cmd">./install.sh <span class="t-flag">--dry-run</span></span></div>
+            <div><span class="t-out">&#10003; dry-run mode &mdash; no changes will be made</span></div>
+            <div><span class="t-out">&#10003; all ecosystem packages found</span></div>
+            <div style="margin-top:4px"><span class="t-prompt">&#10095; </span><span class="t-cmd">./install.sh <span class="t-flag">--select</span></span></div>
+            <div><span class="t-comment"># interactive module picker — choose what to install</span></div>
             <div style="margin-top:4px"><span class="t-prompt">&#10095; </span><span class="t-cursor"></span></div>
           </div>
         </div>
 
+        <!-- Updated stat bar with real numbers -->
         <div class="stat-bar">
           <div class="stat-item">
-            <div class="stat-item__value">Wayland</div>
-            <div class="stat-item__label">display protocol</div>
+            <div class="stat-item__value">437+</div>
+            <div class="stat-item__label">github stars</div>
           </div>
           <div class="stat-item">
-            <div class="stat-item__value">Laptop-first</div>
-            <div class="stat-item__label">design focus</div>
+            <div class="stat-item__value">13</div>
+            <div class="stat-item__label">forks</div>
           </div>
           <div class="stat-item">
-            <div class="stat-item__value">Scripts</div>
-            <div class="stat-item__label">custom automation</div>
+            <div class="stat-item__value">18</div>
+            <div class="stat-item__label">topics tagged</div>
           </div>
           <div class="stat-item">
             <div class="stat-item__value">MIT</div>
-            <div class="stat-item__label">open source license</div>
+            <div class="stat-item__label">open source</div>
           </div>
         </div>
       </div>
@@ -702,70 +811,83 @@
 
     <hr class="divider"/>
 
+    <!-- ─── STACK ─── -->
     <section class="components-section" id="stack">
       <div class="container">
         <p class="section-label">// stack</p>
         <h2 class="section-title">Software Stack</h2>
         <p class="section-desc">Every component is handpicked for speed, aesthetics, and keyboard-first operation.</p>
         <div class="components-grid">
-          <div class="component-card reveal-item">
+          <div class="component-card reveal-item" data-delay="0">
             <div class="component-card__icon"><i data-lucide="layout-dashboard" style="width:28px;height:28px;"></i></div>
             <div class="component-card__name">Hyprland</div>
             <div class="component-card__role">Wayland compositor</div>
             <span class="component-card__pkg">&#127804; compositor</span>
           </div>
-          <div class="component-card reveal-item">
+          <div class="component-card reveal-item" data-delay="1">
             <div class="component-card__icon"><i data-lucide="minus-square" style="width:28px;height:28px;"></i></div>
             <div class="component-card__name">Waybar</div>
             <div class="component-card__role">Status bar</div>
             <span class="component-card__pkg">&#10024; bar</span>
           </div>
-          <div class="component-card reveal-item">
+          <div class="component-card reveal-item" data-delay="2">
             <div class="component-card__icon"><i data-lucide="terminal-square" style="width:28px;height:28px;"></i></div>
-            <div class="component-card__name">Foot Terminal</div>
-            <div class="component-card__role">Wayland-native terminal</div>
+            <div class="component-card__name">Kitty</div>
+            <div class="component-card__role">GPU-accelerated terminal</div>
             <span class="component-card__pkg">&#128009; terminal</span>
           </div>
-          <div class="component-card reveal-item">
+          <div class="component-card reveal-item" data-delay="3">
             <div class="component-card__icon"><i data-lucide="code-2" style="width:28px;height:28px;"></i></div>
             <div class="component-card__name">Neovim</div>
             <div class="component-card__role">Text editor</div>
             <span class="component-card__pkg">&#129695; editor</span>
           </div>
-          <div class="component-card reveal-item">
+          <div class="component-card reveal-item" data-delay="4">
             <div class="component-card__icon"><i data-lucide="folder-open" style="width:28px;height:28px;"></i></div>
-            <div class="component-card__name">Thunar</div>
+            <div class="component-card__name">Nautilus</div>
             <div class="component-card__role">GUI File Manager</div>
             <span class="component-card__pkg">&#128166; file manager</span>
           </div>
-          <div class="component-card reveal-item">
+          <div class="component-card reveal-item" data-delay="5">
             <div class="component-card__icon"><i data-lucide="terminal-square" style="width:28px;height:28px;"></i></div>
             <div class="component-card__name">Yazi</div>
-            <div class="component-card__role">CLI File Manager</div>
+            <div class="component-card__role">TUI File Manager</div>
             <span class="component-card__pkg">&#128450;&#65039; tui manager</span>
           </div>
-          <div class="component-card reveal-item">
+          <div class="component-card reveal-item" data-delay="6">
             <div class="component-card__icon"><i data-lucide="search" style="width:28px;height:28px;"></i></div>
-            <div class="component-card__name">Rofi / Wofi</div>
-            <div class="component-card__role">App launcher</div>
+            <div class="component-card__name">Rofi (lbonn fork)</div>
+            <div class="component-card__role">Wayland app launcher</div>
             <span class="component-card__pkg">&#128640; launcher</span>
           </div>
-          <div class="component-card reveal-item">
+          <div class="component-card reveal-item" data-delay="7">
             <div class="component-card__icon"><i data-lucide="monitor" style="width:28px;height:28px;"></i></div>
             <div class="component-card__name">Zen Browser</div>
-            <div class="component-card__role">Web Browser</div>
+            <div class="component-card__role">Privacy-first browser</div>
             <span class="component-card__pkg">&#127760; browser</span>
           </div>
-          <div class="component-card reveal-item">
-            <div class="component-card__icon"><i data-lucide="list" style="width:28px;height:28px;"></i></div>
-            <div class="component-card__name">Eza</div>
-            <div class="component-card__role">Modern ls replacement</div>
-            <span class="component-card__pkg">ls alternative</span>
+          <div class="component-card reveal-item" data-delay="8">
+            <div class="component-card__icon"><i data-lucide="palette" style="width:28px;height:28px;"></i></div>
+            <div class="component-card__name">Matugen</div>
+            <div class="component-card__role">Material You dynamic theming</div>
+            <span class="component-card__pkg">&#127775; theming</span>
           </div>
-          <div class="component-card reveal-item">
+          <div class="component-card reveal-item" data-delay="9">
+            <div class="component-card__icon"><i data-lucide="music" style="width:28px;height:28px;"></i></div>
+            <div class="component-card__name">cmus + Cava</div>
+            <div class="component-card__role">Music player + visualizer</div>
+            <span class="component-card__pkg">&#127925; audio</span>
+          </div>
+          <div class="component-card reveal-item" data-delay="10">
+            <div class="component-card__icon"><i data-lucide="list" style="width:28px;height:28px;"></i></div>
+            <div class="component-card__name">Eza + Bat + Fd</div>
+            <div class="component-card__role">Modern CLI replacements</div>
+            <span class="component-card__pkg">ls/cat/find alternatives</span>
+          </div>
+          <div class="component-card reveal-item" data-delay="11">
             <div class="component-card__icon"><i data-lucide="image" style="width:28px;height:28px;"></i></div>
             <div class="component-card__name">Custom Scripts</div>
-            <div class="component-card__role">Wallpaper switcher, yt-dlp &amp; more</div>
+            <div class="component-card__role">Wallpaper switcher, ytdla &amp; more</div>
             <span class="component-card__pkg">&#127916; automation</span>
           </div>
         </div>
@@ -774,43 +896,52 @@
 
     <hr class="divider"/>
 
+    <!-- ─── FEATURES ─── -->
     <section class="features-section" id="features">
       <div class="container">
         <p class="section-label">// features</p>
         <h2 class="section-title">What's Included</h2>
         <p class="section-desc">More than just config files &mdash; a complete, opinionated workflow for daily Arch Linux use.</p>
         <div class="features-list">
-          <div class="feature-item reveal-item">
+          <div class="feature-item reveal-item" data-delay="0">
             <i data-lucide="check" class="feature-item__check" style="width:15px;height:15px;"></i>
-            <p class="feature-item__text"><strong>Keyboard-driven layout</strong> &mdash; Navigate workspaces and windows entirely without a mouse</p>
+            <p class="feature-item__text"><strong>Keyboard-driven layout</strong> &mdash; Navigate workspaces and windows entirely without a mouse using ALT as the modifier</p>
           </div>
-          <div class="feature-item reveal-item">
+          <div class="feature-item reveal-item" data-delay="1">
             <i data-lucide="check" class="feature-item__check" style="width:15px;height:15px;"></i>
-            <p class="feature-item__text"><strong>Wallpaper switcher</strong> &mdash; Keyboard shortcut scripts to cycle wallpapers on the fly</p>
+            <p class="feature-item__text"><strong>Dynamic theming via Matugen</strong> &mdash; Wallpaper-driven Material You palettes applied to every app automatically</p>
           </div>
-          <div class="feature-item reveal-item">
+          <div class="feature-item reveal-item" data-delay="2">
             <i data-lucide="check" class="feature-item__check" style="width:15px;height:15px;"></i>
-            <p class="feature-item__text"><strong>yt-dlp integration</strong> &mdash; Download videos and audio from platforms via custom scripts</p>
+            <p class="feature-item__text"><strong>Smart installer with flags</strong> &mdash; <code style="font-family:var(--font-mono);font-size:0.85em;color:var(--color-cyan)">--dry-run</code>, <code style="font-family:var(--font-mono);font-size:0.85em;color:var(--color-cyan)">--select</code>, <code style="font-family:var(--font-mono);font-size:0.85em;color:var(--color-cyan)">--uninstall</code> and timestamped backups</p>
           </div>
-          <div class="feature-item reveal-item">
+          <div class="feature-item reveal-item" data-delay="3">
             <i data-lucide="check" class="feature-item__check" style="width:15px;height:15px;"></i>
-            <p class="feature-item__text"><strong>Laptop-optimized</strong> &mdash; Battery, brightness, and touchpad gestures tuned out of the box</p>
+            <p class="feature-item__text"><strong>Laptop-optimized</strong> &mdash; auto-cpufreq, battery module, brightness and touchpad gestures tuned out of the box</p>
           </div>
-          <div class="feature-item reveal-item">
+          <div class="feature-item reveal-item" data-delay="4">
             <i data-lucide="check" class="feature-item__check" style="width:15px;height:15px;"></i>
-            <p class="feature-item__text"><strong>Waybar config</strong> &mdash; Clean, minimal status bar with workspaces, clock, and system tray</p>
+            <p class="feature-item__text"><strong>yt-dlp + aria2 integration</strong> &mdash; Download videos, audio, and manage downloads via custom scripts</p>
           </div>
-          <div class="feature-item reveal-item">
+          <div class="feature-item reveal-item" data-delay="5">
             <i data-lucide="check" class="feature-item__check" style="width:15px;height:15px;"></i>
-            <p class="feature-item__text"><strong>Fd + Eza aliases</strong> &mdash; Fast, modern CLI utilities pre-configured with sensible defaults</p>
+            <p class="feature-item__text"><strong>AirPods + Bluetooth TUI</strong> &mdash; Dedicated menus for Bluetooth devices and AirPods management</p>
           </div>
-          <div class="feature-item reveal-item">
+          <div class="feature-item reveal-item" data-delay="6">
             <i data-lucide="check" class="feature-item__check" style="width:15px;height:15px;"></i>
-            <p class="feature-item__text"><strong>GTK themes</strong> &mdash; <code style="font-family:var(--font-mono);font-size:0.85em;color:var(--color-cyan)">.themes</code> directory included for consistent app theming</p>
+            <p class="feature-item__text"><strong>Waybar config</strong> &mdash; Clean, minimal status bar with workspaces, clock, battery, and system tray</p>
           </div>
-          <div class="feature-item reveal-item">
+          <div class="feature-item reveal-item" data-delay="7">
             <i data-lucide="check" class="feature-item__check" style="width:15px;height:15px;"></i>
-            <p class="feature-item__text"><strong>Works on desktops too</strong> &mdash; Primarily laptop-focused but fully desktop-compatible</p>
+            <p class="feature-item__text"><strong>GTK + Qt themes</strong> &mdash; <code style="font-family:var(--font-mono);font-size:0.85em;color:var(--color-cyan)">.themes</code> directory included for consistent GUI app theming</p>
+          </div>
+          <div class="feature-item reveal-item" data-delay="8">
+            <i data-lucide="check" class="feature-item__check" style="width:15px;height:15px;"></i>
+            <p class="feature-item__text"><strong>Clipboard + emoji pickers</strong> &mdash; cliphist history and rofiemoji bound to quick shortcuts</p>
+          </div>
+          <div class="feature-item reveal-item" data-delay="9">
+            <i data-lucide="check" class="feature-item__check" style="width:15px;height:15px;"></i>
+            <p class="feature-item__text"><strong>Works on desktops too</strong> &mdash; Primarily laptop-focused but fully desktop-compatible with minor config tweaks</p>
           </div>
         </div>
       </div>
@@ -818,35 +949,222 @@
 
     <hr class="divider"/>
 
+    <!-- ─── THEMING ─── (NEW SECTION) -->
+    <section class="theming-section" id="theming">
+      <div class="container">
+        <p class="section-label">// theming</p>
+        <h2 class="section-title">Dynamic Color System</h2>
+        <p class="section-desc">Powered by <strong style="color:var(--color-text)">Matugen</strong> &mdash; a Material You color extraction engine that derives a full palette from your active wallpaper and recolors every component automatically.</p>
+        <div class="theming-demo">
+          <div class="theming-demo__card reveal-item" data-delay="0">
+            <div class="theming-badge">
+              <i data-lucide="sparkles" style="width:11px;height:11px;"></i>
+              Material You
+            </div>
+            <div class="theming-demo__title">
+              <i data-lucide="palette" style="width:16px;height:16px;"></i>
+              How It Works
+            </div>
+            <p class="theming-demo__desc">
+              Set a wallpaper with <code style="color:var(--color-cyan);font-family:var(--font-mono)">aww</code>, then run <code style="color:var(--color-cyan);font-family:var(--font-mono)">matugen image</code> on it.
+              Matugen reads the dominant colors, generates a full Material You token set, and writes them into
+              Waybar, Rofi, Mako, Hyprlock, GTK apps, and the terminal &mdash; all in one command.
+            </p>
+            <div class="theming-demo__cmd">
+              <span class="t-prompt">$ </span>aww set ~/walls/forest.jpg<br>
+              <span class="t-prompt">$ </span>matugen image ~/walls/forest.jpg
+            </div>
+          </div>
+          <div class="theming-demo__card reveal-item" data-delay="1">
+            <div class="theming-demo__title">
+              <i data-lucide="layers" style="width:16px;height:16px;"></i>
+              Themed Components
+            </div>
+            <div style="display:flex;flex-direction:column;gap:0.6rem;margin-top:0.5rem;">
+              <div class="feature-item" style="padding:0.6rem 0.85rem;">
+                <i data-lucide="check" class="feature-item__check" style="width:13px;height:13px;"></i>
+                <span class="feature-item__text">Waybar status bar</span>
+              </div>
+              <div class="feature-item" style="padding:0.6rem 0.85rem;">
+                <i data-lucide="check" class="feature-item__check" style="width:13px;height:13px;"></i>
+                <span class="feature-item__text">Rofi app launcher</span>
+              </div>
+              <div class="feature-item" style="padding:0.6rem 0.85rem;">
+                <i data-lucide="check" class="feature-item__check" style="width:13px;height:13px;"></i>
+                <span class="feature-item__text">Mako notifications</span>
+              </div>
+              <div class="feature-item" style="padding:0.6rem 0.85rem;">
+                <i data-lucide="check" class="feature-item__check" style="width:13px;height:13px;"></i>
+                <span class="feature-item__text">Hyprlock lock screen</span>
+              </div>
+              <div class="feature-item" style="padding:0.6rem 0.85rem;">
+                <i data-lucide="check" class="feature-item__check" style="width:13px;height:13px;"></i>
+                <span class="feature-item__text">GTK apps + terminal</span>
+              </div>
+            </div>
+            <p class="theming-demo__desc" style="margin-top:0.85rem;">
+              Templates live in <code style="color:var(--color-cyan);font-family:var(--font-mono)">.config/matugen/</code> &mdash; edit them to customize per-app color mapping.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider"/>
+
+    <!-- ─── KEYBINDS ─── (NEW SECTION) -->
+    <section class="keybinds-section" id="keybinds">
+      <div class="container">
+        <p class="section-label">// keybinds</p>
+        <h2 class="section-title">Keyboard Shortcuts</h2>
+        <p class="section-desc">All binds use <kbd class="kbd-key">ALT</kbd> as the primary modifier. Zero mouse required.</p>
+        <div class="keybinds-tabs" role="tablist">
+          <button class="keybind-tab active" data-panel="kb-system" role="tab" aria-selected="true">System</button>
+          <button class="keybind-tab" data-panel="kb-apps" role="tab" aria-selected="false">Apps</button>
+          <button class="keybind-tab" data-panel="kb-web" role="tab" aria-selected="false">Web</button>
+          <button class="keybind-tab" data-panel="kb-windows" role="tab" aria-selected="false">Windows</button>
+          <button class="keybind-tab" data-panel="kb-workspaces" role="tab" aria-selected="false">Workspaces</button>
+        </div>
+
+        <div class="keybind-panel active" id="kb-system" role="tabpanel">
+          <table class="keybind-table">
+            <tbody>
+              <tr><td><span class="kbd"><span class="kbd-key">F1</span></span></td><td class="keybind-action">Toggle mute (speakers)</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">F2</span></span></td><td class="keybind-action">Volume down 10%</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">F3</span></span></td><td class="keybind-action">Volume up 10%</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">F4</span></span></td><td class="keybind-action">Toggle mute (microphone)</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">F7</span></span></td><td class="keybind-action">Toggle Wi-Fi</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">F9</span></span></td><td class="keybind-action">Lock screen (Hyprlock)</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">F11</span></span></td><td class="keybind-action">Brightness down 10%</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">F12</span></span></td><td class="keybind-action">Brightness up 10%</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">Print</span></span></td><td class="keybind-action">Screenshot</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="keybind-panel" id="kb-apps" role="tabpanel">
+          <table class="keybind-table">
+            <tbody>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">Enter</span></span></td><td class="keybind-action">Terminal (Kitty)</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">D</span></span></td><td class="keybind-action">App launcher (Rofi)</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">R</span></span></td><td class="keybind-action">File manager TUI (Yazi)</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">N</span></span></td><td class="keybind-action">Text editor (Neovim)</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">M</span></span></td><td class="keybind-action">Music player (cmus)</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">H</span></span></td><td class="keybind-action">System monitor (btop)</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">L</span></span></td><td class="keybind-action">AirPods TUI</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">B</span></span></td><td class="keybind-action">Bluetooth menu</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">W</span></span></td><td class="keybind-action">Change wallpaper</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">V</span></span></td><td class="keybind-action">Clipboard history (cliphist)</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">E</span></span></td><td class="keybind-action">Emoji picker (rofiemoji)</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">X</span></span></td><td class="keybind-action">Power menu</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">Y</span></span></td><td class="keybind-action">YouTube downloader (ytdla)</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT SHIFT</span><span class="kbd-sep">+</span><span class="kbd-key">K</span></span></td><td class="keybind-action">System cleaner</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT SHIFT</span><span class="kbd-sep">+</span><span class="kbd-key">S</span></span></td><td class="keybind-action">Universal snip (QuickShell)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="keybind-panel" id="kb-web" role="tabpanel">
+          <table class="keybind-table">
+            <tbody>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT SHIFT</span><span class="kbd-sep">+</span><span class="kbd-key">B</span></span></td><td class="keybind-action">Browser (Zen)</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT SHIFT</span><span class="kbd-sep">+</span><span class="kbd-key">I</span></span></td><td class="keybind-action">Incognito (Zen private)</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">G</span></span></td><td class="keybind-action">GitHub profile</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT SHIFT</span><span class="kbd-sep">+</span><span class="kbd-key">Y</span></span></td><td class="keybind-action">YouTube</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT SHIFT</span><span class="kbd-sep">+</span><span class="kbd-key">G</span></span></td><td class="keybind-action">Gemini</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT SHIFT</span><span class="kbd-sep">+</span><span class="kbd-key">W</span></span></td><td class="keybind-action">Wallhaven</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT SHIFT</span><span class="kbd-sep">+</span><span class="kbd-key">R</span></span></td><td class="keybind-action">Reddit</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="keybind-panel" id="kb-windows" role="tabpanel">
+          <table class="keybind-table">
+            <tbody>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">Q</span></span></td><td class="keybind-action">Close active window</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">F</span></span></td><td class="keybind-action">Toggle fullscreen</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">P</span></span></td><td class="keybind-action">Toggle floating</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">J</span></span></td><td class="keybind-action">Toggle split</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">↑↓←→</span></span></td><td class="keybind-action">Move focus</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT SHIFT</span><span class="kbd-sep">+</span><span class="kbd-key">↑↓←→</span></span></td><td class="keybind-action">Swap window</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT CTRL</span><span class="kbd-sep">+</span><span class="kbd-key">↑↓←→</span></span></td><td class="keybind-action">Resize window</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">LMB drag</span></span></td><td class="keybind-action">Move window</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">RMB drag</span></span></td><td class="keybind-action">Resize window</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="keybind-panel" id="kb-workspaces" role="tabpanel">
+          <table class="keybind-table">
+            <tbody>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">1–0</span></span></td><td class="keybind-action">Switch to workspace 1–10</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT SHIFT</span><span class="kbd-sep">+</span><span class="kbd-key">1–0</span></span></td><td class="keybind-action">Move window to workspace 1–10</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">Scroll ↑</span></span></td><td class="keybind-action">Next workspace</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">Scroll ↓</span></span></td><td class="keybind-action">Previous workspace</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT</span><span class="kbd-sep">+</span><span class="kbd-key">`</span></span></td><td class="keybind-action">Toggle scratchpad</td></tr>
+              <tr><td><span class="kbd"><span class="kbd-key">ALT SHIFT</span><span class="kbd-sep">+</span><span class="kbd-key">`</span></span></td><td class="keybind-action">Move window to scratchpad</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider"/>
+
+    <!-- ─── PREVIEW ─── -->
     <section class="screenshots-section" id="preview">
       <div class="container">
         <p class="section-label">// preview</p>
         <h2 class="section-title">Layout Preview</h2>
         <p class="section-desc">Screenshots from the Vicious Viper setup. Click any image to enlarge.</p>
         <div class="preview-grid">
-          <div class="preview-card reveal-item">
+          <div class="preview-card reveal-item" data-delay="0">
+            <img src="assets/asset1.png" alt="Vicious Viper desktop overview" loading="lazy">
+            <span class="preview-label">desktop overview</span>
+          </div>
+          <div class="preview-card reveal-item" data-delay="1">
             <img src="assets/asset4.png" alt="Hyprland workspace with Waybar and terminals" loading="lazy">
             <span class="preview-label">workspace &mdash; waybar</span>
           </div>
-          <div class="preview-card reveal-item">
-            <img src="assets/asset1.png" alt="Yazi file manager in Wayland" loading="lazy">
+          <div class="preview-card reveal-item" data-delay="2">
+            <img src="assets/asset2.png" alt="Rofi app launcher" loading="lazy">
+            <span class="preview-label">rofi launcher</span>
+          </div>
+          <div class="preview-card reveal-item" data-delay="3">
+            <img src="assets/asset3.png" alt="Yazi file manager in Wayland" loading="lazy">
             <span class="preview-label">yazi &mdash; tui file manager</span>
           </div>
-          <div class="preview-card reveal-item">
-            <img src="assets/asset10.png" alt="Lock Screen" loading="lazy">
-            <span class="preview-label">lock screen</span>
+          <div class="preview-card reveal-item" data-delay="4">
+            <img src="assets/asset5.png" alt="Neovim editor" loading="lazy">
+            <span class="preview-label">neovim</span>
           </div>
-          <div class="preview-card reveal-item">
+          <div class="preview-card reveal-item" data-delay="5">
+            <img src="assets/asset6.png" alt="Neovim Data Analysis Setup" loading="lazy">
+            <span class="preview-label">neovim &mdash; data analysis</span>
+          </div>
+          <div class="preview-card reveal-item" data-delay="6">
+            <img src="assets/asset7.png" alt="btop system monitor" loading="lazy">
+            <span class="preview-label">btop &mdash; system monitor</span>
+          </div>
+          <div class="preview-card reveal-item" data-delay="7">
+            <img src="assets/asset8.png" alt="cmus music player with cava visualizer" loading="lazy">
+            <span class="preview-label">cmus + cava</span>
+          </div>
+          <div class="preview-card reveal-item" data-delay="8">
+            <img src="assets/asset9.png" alt="Zen Browser" loading="lazy">
+            <span class="preview-label">zen browser</span>
+          </div>
+          <div class="preview-card reveal-item" data-delay="9">
+            <img src="assets/asset10.png" alt="Hyprlock lock screen" loading="lazy">
+            <span class="preview-label">hyprlock &mdash; lock screen</span>
+          </div>
+          <div class="preview-card reveal-item" data-delay="10">
             <img src="assets/asset11.png" alt="Login Manager" loading="lazy">
             <span class="preview-label">login manager</span>
           </div>
-          <div class="preview-card reveal-item">
-            <img src="assets/asset5.png" alt="Neovim" loading="lazy">
-            <span class="preview-label">neovim</span>
-          </div>
-          <div class="preview-card reveal-item">
-            <img src="assets/asset6.png" alt="Neovim Data Analysis Setup" loading="lazy">
-            <span class="preview-label">neovim &mdash; data analysis</span>
+          <div class="preview-card reveal-item" data-delay="11">
+            <img src="assets/asset12.png" alt="Power menu" loading="lazy">
+            <span class="preview-label">power menu</span>
           </div>
         </div>
       </div>
@@ -854,61 +1172,157 @@
 
     <hr class="divider"/>
 
+    <!-- ─── INSTALL ─── -->
     <section class="install-section" id="install">
       <div class="container">
         <p class="section-label">// install</p>
         <h2 class="section-title">Installation</h2>
-        <p class="section-desc">Make sure to add the scripts folder to your PATH, otherwise the setup won't work as intended.</p>
-        <div class="install-steps">
+        <p class="section-desc">Run <code style="font-family:var(--font-mono);color:var(--color-cyan)">--dry-run</code> first to preview every action before committing. Your existing configs are backed up automatically.</p>
 
-          <div class="install-step reveal-item">
-            <div class="install-step__num"></div>
-            <div class="install-step__content">
-              <p class="install-step__title">Clone the repository</p>
-              <div class="code-block">
-                <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy command">copy</button>
-                <div><span class="t-prompt">$ </span><span>git clone https://github.com/Cybersnake223/Hypr</span></div>
-                <div><span class="t-prompt">$ </span><span>cd Hypr</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="install-step reveal-item">
-            <div class="install-step__num"></div>
-            <div class="install-step__content">
-              <p class="install-step__title">Copy config files</p>
-              <div class="code-block">
-                <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy command">copy</button>
-                <div><span class="t-prompt">$ </span><span>cp -r .config/* $HOME/.config</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="install-step reveal-item">
-            <div class="install-step__num"></div>
-            <div class="install-step__content">
-              <p class="install-step__title">Install scripts &amp; add to PATH</p>
-              <div class="code-block">
-                <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy command">copy</button>
-                <div><span class="t-prompt">$ </span><span>cp -r .local/bin/scripts $HOME/.local/bin</span></div>
-                <div><span class="t-comment"># Add to ~/.bashrc or ~/.zshrc:</span></div>
-                <div><span class="t-prompt">$ </span><span>export PATH="$HOME/.local/bin/scripts:$PATH"</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="install-step reveal-item">
-            <div class="install-step__num"></div>
-            <div class="install-step__content">
-              <p class="install-step__title">Copy GTK themes (optional)</p>
-              <div class="code-block">
-                <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy command">copy</button>
-                <div><span class="t-prompt">$ </span><span>cp -r .themes $HOME/.themes</span></div>
-              </div>
-            </div>
-          </div>
-
+        <div class="install-tabs">
+          <button class="install-tab active" data-panel="install-quick">Quick Install</button>
+          <button class="install-tab" data-panel="install-manual">Manual</button>
+          <button class="install-tab" data-panel="install-flags">Flags</button>
         </div>
+
+        <!-- Quick Install panel -->
+        <div class="install-panel active" id="install-quick">
+          <div class="install-note">
+            <strong>Recommended:</strong> Always run <code style="color:var(--color-cyan);font-family:var(--font-mono)">--dry-run</code> first.
+            The installer backs up every file it overwrites to <code style="color:var(--color-cyan);font-family:var(--font-mono)">~/.local/share/hypr-dotfiles-backups/&lt;timestamp&gt;/</code>.
+            Use <code style="color:var(--color-cyan);font-family:var(--font-mono)">--uninstall</code> to restore originals precisely.
+          </div>
+          <div class="install-steps">
+            <div class="install-step reveal-item" data-delay="0">
+              <div class="install-step__num"></div>
+              <div class="install-step__content">
+                <p class="install-step__title">Clone the repository</p>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy command">copy</button>
+                  <div><span class="t-prompt">$ </span><span>git clone https://github.com/Cybersnake223/Hypr</span></div>
+                  <div><span class="t-prompt">$ </span><span>cd Hypr &amp;&amp; chmod +x install.sh</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="install-step reveal-item" data-delay="1">
+              <div class="install-step__num"></div>
+              <div class="install-step__content">
+                <p class="install-step__title">Preview changes (recommended)</p>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy command">copy</button>
+                  <div><span class="t-prompt">$ </span><span>./install.sh <span class="t-flag">--dry-run</span></span></div>
+                </div>
+              </div>
+            </div>
+            <div class="install-step reveal-item" data-delay="2">
+              <div class="install-step__num"></div>
+              <div class="install-step__content">
+                <p class="install-step__title">Run the installer</p>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy command">copy</button>
+                  <div><span class="t-comment"># Interactive module picker:</span></div>
+                  <div><span class="t-prompt">$ </span><span>./install.sh <span class="t-flag">--select</span></span></div>
+                  <div style="margin-top:4px"><span class="t-comment"># Or install everything non-interactively:</span></div>
+                  <div><span class="t-prompt">$ </span><span>./install.sh <span class="t-flag">--yes</span></span></div>
+                </div>
+              </div>
+            </div>
+            <div class="install-step reveal-item" data-delay="3">
+              <div class="install-step__num"></div>
+              <div class="install-step__content">
+                <p class="install-step__title">Undo if needed</p>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy command">copy</button>
+                  <div><span class="t-prompt">$ </span><span>./install.sh <span class="t-flag">--uninstall</span></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Manual panel -->
+        <div class="install-panel" id="install-manual">
+          <div class="install-steps">
+            <div class="install-step reveal-item" data-delay="0">
+              <div class="install-step__num"></div>
+              <div class="install-step__content">
+                <p class="install-step__title">Copy config files</p>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy command">copy</button>
+                  <div><span class="t-prompt">$ </span><span>cp -r .config/* $HOME/.config</span></div>
+                  <div><span class="t-prompt">$ </span><span>cp -r .local/bin/scripts $HOME/.local/bin</span></div>
+                  <div><span class="t-prompt">$ </span><span>cp -r .icons $HOME/.icons</span></div>
+                  <div><span class="t-prompt">$ </span><span>cp -r .themes $HOME/.themes</span></div>
+                  <div><span class="t-prompt">$ </span><span>cp -r .fonts $HOME/.fonts</span></div>
+                  <div><span class="t-prompt">$ </span><span>cp .Xresources .gtkrc-2.0 $HOME/</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="install-step reveal-item" data-delay="1">
+              <div class="install-step__num"></div>
+              <div class="install-step__content">
+                <p class="install-step__title">Mark scripts executable &amp; rebuild font cache</p>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy command">copy</button>
+                  <div><span class="t-prompt">$ </span><span>find $HOME/.local/bin/scripts -type f -exec chmod +x {} +</span></div>
+                  <div><span class="t-prompt">$ </span><span>fc-cache -f</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="install-step reveal-item" data-delay="2">
+              <div class="install-step__num"></div>
+              <div class="install-step__content">
+                <p class="install-step__title">Add scripts to PATH</p>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy command">copy</button>
+                  <div><span class="t-comment"># zsh / bash:</span></div>
+                  <div><span class="t-prompt">$ </span><span>echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc</span></div>
+                  <div style="margin-top:4px"><span class="t-comment"># fish:</span></div>
+                  <div><span class="t-prompt">$ </span><span>fish_add_path $HOME/.local/bin</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flags panel -->
+        <div class="install-panel" id="install-flags">
+          <div class="flags-grid">
+            <div class="flag-item reveal-item" data-delay="0">
+              <div class="flag-item__key">--dry-run</div>
+              <div class="flag-item__desc">Preview every action — zero changes made. Run this first.</div>
+            </div>
+            <div class="flag-item reveal-item" data-delay="1">
+              <div class="flag-item__key">--select</div>
+              <div class="flag-item__desc">Interactive TUI to toggle which modules to install.</div>
+            </div>
+            <div class="flag-item reveal-item" data-delay="2">
+              <div class="flag-item__key">--yes</div>
+              <div class="flag-item__desc">Non-interactive, auto-confirm all prompts.</div>
+            </div>
+            <div class="flag-item reveal-item" data-delay="3">
+              <div class="flag-item__key">--uninstall</div>
+              <div class="flag-item__desc">Restore originals from the most recent backup precisely.</div>
+            </div>
+            <div class="flag-item reveal-item" data-delay="4">
+              <div class="flag-item__key">--list-backups</div>
+              <div class="flag-item__desc">Show all backups with timestamps, file counts, and sizes.</div>
+            </div>
+            <div class="flag-item reveal-item" data-delay="5">
+              <div class="flag-item__key">--skip-deps</div>
+              <div class="flag-item__desc">Skip the ecosystem dependency check (faster re-installs).</div>
+            </div>
+            <div class="flag-item reveal-item" data-delay="6">
+              <div class="flag-item__key">--no-backup</div>
+              <div class="flag-item__desc">Skip backup step. Dangerous — disables --uninstall.</div>
+            </div>
+            <div class="flag-item reveal-item" data-delay="7">
+              <div class="flag-item__key">-h / --help</div>
+              <div class="flag-item__desc">Show usage and all available options.</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   </main>
@@ -961,52 +1375,30 @@
       const COUNT = 55;
       const GREEN = '57,211,83';
       const CYAN = '79,195,212';
-
-      function resize() {
-        W = canvas.width = window.innerWidth;
-        H = canvas.height = window.innerHeight;
-      }
-
+      function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
       function mkParticle() {
-        return {
-          x: Math.random() * W,
-          y: Math.random() * H,
-          r: Math.random() * 1.5 + 0.3,
-          vx: (Math.random() - 0.5) * 0.3,
-          vy: (Math.random() - 0.5) * 0.3,
-          color: Math.random() > 0.6 ? CYAN : GREEN,
-          alpha: Math.random() * 0.5 + 0.1
-        };
+        return { x: Math.random()*W, y: Math.random()*H, r: Math.random()*1.5+0.3,
+          vx: (Math.random()-0.5)*0.3, vy: (Math.random()-0.5)*0.3,
+          color: Math.random()>0.6?CYAN:GREEN, alpha: Math.random()*0.5+0.1 };
       }
-
       resize();
-      for (let i = 0; i < COUNT; i++) particles.push(mkParticle());
+      for(let i=0;i<COUNT;i++) particles.push(mkParticle());
       window.addEventListener('resize', resize);
-
       function draw() {
-        ctx.clearRect(0, 0, W, H);
+        ctx.clearRect(0,0,W,H);
         particles.forEach(p => {
-          p.x += p.vx; p.y += p.vy;
-          if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
-          if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(${p.color},${p.alpha})`;
-          ctx.fill();
+          p.x+=p.vx; p.y+=p.vy;
+          if(p.x<0)p.x=W; if(p.x>W)p.x=0; if(p.y<0)p.y=H; if(p.y>H)p.y=0;
+          ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+          ctx.fillStyle=`rgba(${p.color},${p.alpha})`; ctx.fill();
         });
-        // Draw faint connecting lines
-        for (let i = 0; i < particles.length; i++) {
-          for (let j = i + 1; j < particles.length; j++) {
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
-            const dist = Math.sqrt(dx*dx + dy*dy);
-            if (dist < 110) {
-              ctx.beginPath();
-              ctx.moveTo(particles[i].x, particles[i].y);
-              ctx.lineTo(particles[j].x, particles[j].y);
-              ctx.strokeStyle = `rgba(${GREEN},${0.06 * (1 - dist/110)})`;
-              ctx.lineWidth = 0.5;
-              ctx.stroke();
+        for(let i=0;i<particles.length;i++) {
+          for(let j=i+1;j<particles.length;j++) {
+            const dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y;
+            const dist=Math.sqrt(dx*dx+dy*dy);
+            if(dist<110) {
+              ctx.beginPath(); ctx.moveTo(particles[i].x,particles[i].y); ctx.lineTo(particles[j].x,particles[j].y);
+              ctx.strokeStyle=`rgba(${GREEN},${0.06*(1-dist/110)})`; ctx.lineWidth=0.5; ctx.stroke();
             }
           }
         }
@@ -1015,107 +1407,139 @@
       draw();
     })();
 
+    // Scroll: toTop + nav opaque
     (function(){
-      const btn = document.getElementById('toTop'), nav = document.querySelector('.nav');
-      let t = false;
-      window.addEventListener('scroll', () => {
-        if(t) return; t = true;
-        requestAnimationFrame(() => {
-          const y = window.scrollY;
-          btn.classList.toggle('visible', y > 400);
-          nav.classList.toggle('opaque', y > 30);
-          t = false;
+      const btn=document.getElementById('toTop'), nav=document.querySelector('.nav');
+      let t=false;
+      window.addEventListener('scroll',()=>{
+        if(t)return;t=true;
+        requestAnimationFrame(()=>{
+          const y=window.scrollY;
+          btn.classList.toggle('visible',y>400);
+          nav.classList.toggle('opaque',y>30);
+          t=false;
         });
-      }, { passive: true });
-      btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      },{passive:true});
+      btn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
     })();
 
+    // Mobile nav — fixed aria-hidden
     (function(){
-      const toggle = document.getElementById('mobileToggle');
-      const links = document.getElementById('mobileLinks');
-      toggle.addEventListener('click', () => {
-        const open = links.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', open);
-        links.setAttribute('aria-hidden', !open);
+      const toggle=document.getElementById('mobileToggle');
+      const links=document.getElementById('mobileLinks');
+      toggle.addEventListener('click',()=>{
+        const open=links.classList.toggle('open');
+        toggle.setAttribute('aria-expanded',open);
+        links.setAttribute('aria-hidden',!open);  // false when open
       });
-      links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
         links.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-        links.setAttribute('aria-hidden', 'true');
+        toggle.setAttribute('aria-expanded','false');
+        links.setAttribute('aria-hidden','true');
       }));
     })();
 
+    // Scroll-spy nav
     (function(){
-      const links = document.querySelectorAll('.nav__links a:not(.nav__cta)');
-      const sections = document.querySelectorAll('section[id]');
-      const spy = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if(e.isIntersecting) {
-            links.forEach(a => a.classList.remove('active'));
-            const active = document.querySelector(`.nav__links a[href="#${e.target.id}"]`);
-            if(active) active.classList.add('active');
+      const navLinks=document.querySelectorAll('.nav__links a:not(.nav__cta)');
+      const sections=document.querySelectorAll('section[id]');
+      const spy=new IntersectionObserver(entries=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){
+            navLinks.forEach(a=>a.classList.remove('active'));
+            const active=document.querySelector(`.nav__links a[href="#${e.target.id}"]`);
+            if(active)active.classList.add('active');
           }
         });
-      }, { rootMargin: '-35% 0px -60% 0px' });
-      sections.forEach(s => spy.observe(s));
+      },{rootMargin:'-35% 0px -60% 0px'});
+      sections.forEach(s=>spy.observe(s));
     })();
 
+    // Reveal animations — uses data-delay for deterministic stagger
     (function(){
-      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const els = document.querySelectorAll('.reveal-item');
-      if(prefersReduced) { els.forEach(el => { el.style.opacity='1'; el.style.transform='none'; }); return; }
-      const io = new IntersectionObserver(entries => {
-        entries.forEach((e, i) => {
-          if(e.isIntersecting) {
-            e.target.style.transition = `opacity 0.5s ease ${i * 0.05}s, transform 0.5s cubic-bezier(0.16,1,0.3,1) ${i * 0.05}s`;
-            e.target.style.opacity = '1';
-            e.target.style.transform = 'translateY(0)';
+      const prefersReduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const els=document.querySelectorAll('.reveal-item');
+      if(prefersReduced){els.forEach(el=>{el.style.opacity='1';el.style.transform='none';});return;}
+      const io=new IntersectionObserver(entries=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){
+            const delay=(parseInt(e.target.dataset.delay||0)*0.05);
+            e.target.style.transition=`opacity 0.5s ease ${delay}s, transform 0.5s cubic-bezier(0.16,1,0.3,1) ${delay}s`;
+            e.target.style.opacity='1';
+            e.target.style.transform='translateY(0)';
             io.unobserve(e.target);
           }
         });
-      }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
-      els.forEach(el => io.observe(el));
+      },{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+      els.forEach(el=>io.observe(el));
     })();
 
-    function copyCode(btn) {
-      const block = btn.closest('.code-block');
-      const lines = block.querySelectorAll('div');
-      let text = '';
-      lines.forEach(line => {
-        const prompt = line.querySelector('.t-prompt');
-        const comment = line.querySelector('.t-comment');
-        if(prompt) text += line.textContent.replace(prompt.textContent, '').trim() + '\n';
-        else if(!comment) { const t = line.textContent.trim(); if(t) text += t + '\n'; }
+    // Generic tab switcher (keybinds + install)
+    (function(){
+      document.querySelectorAll('.keybind-tab, .install-tab').forEach(tab=>{
+        tab.addEventListener('click',()=>{
+          const panelId=tab.dataset.panel;
+          const group=tab.closest('section, .install-section');
+          // deactivate siblings
+          tab.parentElement.querySelectorAll('button').forEach(t=>{
+            t.classList.remove('active');
+            t.setAttribute('aria-selected','false');
+          });
+          // hide all panels in scope
+          group.querySelectorAll('.keybind-panel, .install-panel').forEach(p=>p.classList.remove('active'));
+          // activate
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected','true');
+          const panel=document.getElementById(panelId);
+          if(panel){
+            panel.classList.add('active');
+            // re-trigger reveal for newly visible items
+            panel.querySelectorAll('.reveal-item').forEach(el=>{
+              if(el.style.opacity!=='1'){
+                const delay=(parseInt(el.dataset.delay||0)*0.05);
+                el.style.transition=`opacity 0.4s ease ${delay}s, transform 0.4s cubic-bezier(0.16,1,0.3,1) ${delay}s`;
+                el.style.opacity='1'; el.style.transform='translateY(0)';
+              }
+            });
+          }
+        });
       });
-      navigator.clipboard.writeText(text.trim()).then(() => {
-        btn.textContent = 'copied!';
-        btn.classList.add('copied');
-        setTimeout(() => { btn.textContent = 'copy'; btn.classList.remove('copied'); }, 1800);
+    })();
+
+    // Copy code
+    function copyCode(btn) {
+      const block=btn.closest('.code-block');
+      const lines=block.querySelectorAll('div');
+      let text='';
+      lines.forEach(line=>{
+        const prompt=line.querySelector('.t-prompt');
+        const comment=line.querySelector('.t-comment');
+        if(prompt)text+=line.textContent.replace(prompt.textContent,'').trim()+"\n";
+        else if(!comment){const t=line.textContent.trim();if(t)text+=t+"\n";}
+      });
+      navigator.clipboard.writeText(text.trim()).then(()=>{
+        btn.textContent='copied!'; btn.classList.add('copied');
+        setTimeout(()=>{btn.textContent='copy';btn.classList.remove('copied');},1800);
       });
     }
 
+    // Lightbox
     (function(){
-      const lightbox = document.getElementById('lightbox');
-      const lbImg = document.getElementById('lightboxImg');
-      const lbClose = document.getElementById('lightboxClose');
-
-      document.querySelectorAll('.preview-card img').forEach(img => {
-        img.addEventListener('click', () => {
-          lbImg.src = img.src;
-          lbImg.alt = img.alt;
+      const lightbox=document.getElementById('lightbox');
+      const lbImg=document.getElementById('lightboxImg');
+      const lbClose=document.getElementById('lightboxClose');
+      document.querySelectorAll('.preview-card img').forEach(img=>{
+        img.addEventListener('click',()=>{
+          lbImg.src=img.src; lbImg.alt=img.alt;
           lightbox.classList.add('open');
-          document.body.style.overflow = 'hidden';
+          document.body.style.overflow='hidden';
           lbClose.focus();
         });
       });
-
-      function closeLightbox() {
-        lightbox.classList.remove('open');
-        document.body.style.overflow = '';
-      }
-      lbClose.addEventListener('click', closeLightbox);
-      lightbox.addEventListener('click', e => { if(e.target === lightbox) closeLightbox(); });
-      document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLightbox(); });
+      function closeLightbox(){lightbox.classList.remove('open');document.body.style.overflow='';}
+      lbClose.addEventListener('click',closeLightbox);
+      lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLightbox();});
+      document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
     })();
   </script>
 </body>
