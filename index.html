@@ -136,7 +136,7 @@
     hr.div { border:none; height:1px; max-width:1020px; margin:0 auto; background:linear-gradient(90deg,transparent,var(--border2) 25%,var(--border2) 75%,transparent); }
     .projects-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); border-radius:var(--r-lg); overflow:hidden; border:1px solid var(--border); }
     @media (max-width:720px) { .projects-grid { grid-template-columns:1fr; } }
-    .project-card { background:var(--bg1); padding:1.8rem; display:flex; flex-direction:column; gap:0.75rem; transition:background 200ms, border-left-color 200ms; border-left:2px solid transparent; }
+    .project-card { background:var(--bg1); padding:1.8rem; display:flex; flex-direction:column; gap:0.75rem; transition:background 200ms, border-left-color 200ms; border-left:2px solid transparent; position:relative; }
     .project-card:hover { background:var(--bg2); border-left-color:var(--teal); }
     .project-card.featured { grid-column:1/-1; padding:2.2rem 2.4rem; }
     .project-card.featured .project-desc { max-width:640px; }
@@ -208,7 +208,6 @@
     .gh-stat-dot { width:5px; height:5px; border-radius:50%; flex-shrink:0; }
     .gh-stat-lbl { font-family:var(--mono); font-size:var(--t-xs); color:var(--faint); letter-spacing:0.1em; text-transform:uppercase; }
     .gh-stat-body { display:flex; align-items:center; justify-content:center; padding:0.85rem; min-height:165px; position:relative; background:var(--bg2); overflow:hidden; }
-    .gh-stat-body::before { content:''; position:absolute; inset:0; background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.04) 50%,transparent 100%); background-size:200% 100%; animation:shimmer 1.6s ease infinite; }
     .gh-stat-body img { width:100%; display:block; border-radius:3px; position:relative; z-index:1; }
     .gh-stat-card.span2 .gh-stat-body { min-height:140px; }
     .gh-cta { text-align:center; margin-top:2rem; }
@@ -702,6 +701,132 @@
     }
 
 
+    /* ===== NEW EYE CANDY #26–31 ===== */
+
+    /* 26. Glitch effect on hero h1 em */
+    h1 em {
+      position: relative;
+      display: inline-block;
+    }
+    h1 em::before, h1 em::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      font-style: italic;
+      font-weight: 300;
+      background: inherit;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      opacity: 0;
+      pointer-events: none;
+    }
+    h1 em.glitching::before {
+      color: var(--gold);
+      -webkit-background-clip: unset;
+      background-clip: unset;
+      background: none;
+      clip-path: polygon(0 15%, 100% 15%, 100% 38%, 0 38%);
+      transform: translate(-4px, 0);
+      animation: glitchSlice1 0.45s steps(2) forwards;
+      opacity: 1;
+    }
+    h1 em.glitching::after {
+      color: var(--teal);
+      -webkit-background-clip: unset;
+      background-clip: unset;
+      background: none;
+      clip-path: polygon(0 62%, 100% 62%, 100% 82%, 0 82%);
+      transform: translate(4px, 0);
+      animation: glitchSlice2 0.45s steps(2) 0.04s forwards;
+      opacity: 1;
+    }
+    @keyframes glitchSlice1 {
+      0%   { opacity:1; transform:translate(-4px,0) skewX(-2deg); }
+      40%  { opacity:1; transform:translate(3px,0) skewX(1deg); }
+      100% { opacity:0; transform:translate(0,0); }
+    }
+    @keyframes glitchSlice2 {
+      0%   { opacity:1; transform:translate(4px,0) skewX(2deg); }
+      40%  { opacity:1; transform:translate(-2px,0) skewX(-1deg); }
+      100% { opacity:0; transform:translate(0,0); }
+    }
+
+    /* 27. Rotating border beam on project cards (hover) */
+    @property --beam-angle { syntax:'<angle>'; initial-value:0deg; inherits:false; }
+    .project-card {
+      --beam-angle: 0deg;
+    }
+    .project-card::after {
+      content:'';
+      position:absolute;
+      inset:-1px;
+      border-radius: var(--r-md);
+      padding:1px;
+      background: conic-gradient(from var(--beam-angle), transparent 65%, var(--teal) 80%, var(--gold) 88%, transparent 95%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity:0;
+      transition: opacity 300ms;
+      pointer-events:none;
+    }
+    .project-card.featured::after {
+      background: conic-gradient(from var(--beam-angle), transparent 65%, var(--gold) 80%, var(--teal) 88%, transparent 95%);
+    }
+    .project-card:hover::after {
+      opacity:1;
+      animation: beamSpin 2s linear infinite;
+    }
+    @keyframes beamSpin { to { --beam-angle: 360deg; } }
+
+    /* 28. Scanline sweep on terminal body */
+    .term-body {
+      position: relative;
+      overflow: hidden;
+    }
+    .term-body::after {
+      content:'';
+      position:absolute;
+      top:-60%;
+      left:0; right:0;
+      height:50%;
+      background: linear-gradient(transparent, rgba(62,207,207,0.035), transparent);
+      animation: scanline 4s linear infinite;
+      pointer-events:none;
+      z-index:2;
+    }
+    @keyframes scanline {
+      0%   { top:-60%; }
+      100% { top:130%; }
+    }
+
+    /* 29. Nav scramble — no extra CSS needed, handled in JS */
+
+    /* 30. Skill tag stagger entrance */
+    .ctag.stagger-hidden {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    .ctag.stagger-in {
+      animation: tagStagger 0.4s cubic-bezier(0.22,1,0.36,1) forwards;
+    }
+    @keyframes tagStagger {
+      to { opacity:1; transform:translateY(0); }
+    }
+
+    /* 31. IST clock — monospace teal inline */
+    #ist-clock {
+      font-family: var(--mono);
+      font-size: var(--t-xs);
+      color: var(--teal);
+      opacity: 0.85;
+      letter-spacing: 0.05em;
+      display: block;
+      margin-top: 0.2rem;
+    }
+
     /* View Transitions API */
     @view-transition { navigation: auto; }
     ::view-transition-old(root) {
@@ -761,7 +886,7 @@
     <span class="hero-tag-line" aria-hidden="true"></span>
     Open to internships &amp; collabs
   </div>
-  <h1>Hi, I&#8217;m<br><em>Abhishek</em></h1>
+  <h1>Hi, I&#8217;m<br><em data-text="Abhishek">Abhishek</em></h1>
   <div class="hero-handle"><span class="at">@cybersnake223</span> &middot; New Delhi, India</div>
   <p class="hero-tagline">
     <strong>Linux systems developer &amp; DevOps engineer</strong> &mdash; building elegant infrastructure from the terminal up, and ricing it for fun.
@@ -925,7 +1050,7 @@
           <span class="info-icon">📍</span>
           <div>
             <div class="info-label">Location</div>
-            <div class="info-value">New Delhi, India<br><small>Open to remote</small></div>
+            <div class="info-value">New Delhi, India<br><small>Open to remote</small><span id="ist-clock" aria-live="polite" aria-label="Current time in India"></span></div>
           </div>
         </div>
         <div class="info-row">
@@ -1032,8 +1157,8 @@
         </span>
       </div>
       <div class="gh-counters">
-        <div class="gh-counter"><span class="gh-counter-val" data-target="6">6</span><span class="gh-counter-lbl">Repos</span></div>
-        <div class="gh-counter"><span class="gh-counter-val" data-target="2">2</span><span class="gh-counter-lbl">Years</span></div>
+        <div class="gh-counter"><span class="gh-counter-val" data-target="6">0</span><span class="gh-counter-lbl">Repos</span></div>
+        <div class="gh-counter"><span class="gh-counter-val" data-target="2">0</span><span class="gh-counter-lbl">Years</span></div>
       </div>
     </div>
   </div>
@@ -1158,9 +1283,10 @@
 
   /* ===== LIVE GITHUB API COUNTERS ===== */
   (function(){
-    const CACHE_KEY = 'gh_data', CACHE_TTL = 3600000; // 1hr cache
-    const repoEl  = document.querySelector('.gh-counter-val[data-target="6"]');
-    const yearEl  = document.querySelector('.gh-counter-val[data-target="2"]');
+    const CACHE_KEY = 'gh_data', CACHE_TTL = 3600000;
+    const counters = document.querySelectorAll('.gh-counter');
+    const repoEl = [...counters].find(c => c.querySelector('.gh-counter-lbl')?.textContent.trim() === 'Repos')?.querySelector('.gh-counter-val');
+    const yearEl = [...counters].find(c => c.querySelector('.gh-counter-lbl')?.textContent.trim() === 'Years')?.querySelector('.gh-counter-val');
     if(!repoEl) return;
 
     function animateCount(el, target){
@@ -1175,7 +1301,6 @@
     }
 
     async function loadGitHubData(){
-      // Check sessionStorage cache first
       try {
         const cached = sessionStorage.getItem(CACHE_KEY);
         if(cached){
@@ -1183,7 +1308,6 @@
           if(Date.now() - ts < CACHE_TTL) return data;
         }
       } catch(e){}
-
       const res = await fetch('https://api.github.com/users/Cybersnake223');
       if(!res.ok) throw new Error('GitHub API error');
       const data = await res.json();
@@ -1198,22 +1322,13 @@
         try {
           const data = await loadGitHubData();
           const repos = data.public_repos || 6;
-          // Calculate years on GitHub
           const joined = new Date(data.created_at);
-          const years  = Math.floor((Date.now() - joined) / (1000*60*60*24*365)) || 2;
-          // Update data-target so animation uses real numbers
-          repoEl.dataset.target = repos;
-          if(yearEl) yearEl.dataset.target = years;
+          const years = Math.max(1, Math.floor((Date.now() - joined) / (1000*60*60*24*365.25)));
           animateCount(repoEl, repos);
           if(yearEl) animateCount(yearEl, years);
-          // Also update bio if available
           const bioEl = document.querySelector('.gh-bio');
           if(bioEl && data.bio) bioEl.textContent = data.bio;
-          // Update followers count if element exists
-          const followEl = document.querySelector('.gh-followers');
-          if(followEl) followEl.textContent = data.followers;
         } catch(err){
-          // Fallback: animate with hardcoded values
           animateCount(repoEl, 6);
           if(yearEl) animateCount(yearEl, 2);
         }
@@ -1566,6 +1681,93 @@
     });
   })();
 
-</script>
+  /* ===== 26. GLITCH ON HERO NAME ===== */
+  (function(){
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const em = document.querySelector('h1 em');
+    if(!em) return;
+    let glitchTimer = null;
+    function triggerGlitch(){
+      if(em.classList.contains('glitching')) return;
+      em.classList.add('glitching');
+      setTimeout(()=> em.classList.remove('glitching'), 480);
+    }
+    em.addEventListener('mouseenter', triggerGlitch);
+    // Also auto-glitch once on load after a delay, for visitors who don't hover
+    setTimeout(triggerGlitch, 2200);
+  })();
+
+  /* ===== 29. NAV LINK TEXT SCRAMBLE ===== */
+  (function(){
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if(window.matchMedia('(pointer: coarse)').matches) return;
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz@#$%&*';
+    document.querySelectorAll('.nav-links a:not(.nav-cta)').forEach(link => {
+      const orig = link.textContent.trim();
+      let timer = null;
+      link.addEventListener('mouseenter', () => {
+        let iter = 0;
+        clearInterval(timer);
+        timer = setInterval(() => {
+          link.textContent = orig.split('').map((c, i) => {
+            if(c === ' ') return ' ';
+            if(i < iter) return orig[i];
+            return chars[Math.floor(Math.random() * chars.length)];
+          }).join('');
+          iter += 0.6;
+          if(iter >= orig.length){
+            link.textContent = orig;
+            clearInterval(timer);
+          }
+        }, 28);
+      });
+      link.addEventListener('mouseleave', () => {
+        clearInterval(timer);
+        link.textContent = orig;
+      });
+    });
+  })();
+
+  /* ===== 30. SKILL TAG STAGGER ENTRANCE ===== */
+  (function(){
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const clusters = document.querySelectorAll('.cluster-tags');
+    clusters.forEach(cluster => {
+      const tags = cluster.querySelectorAll('.ctag');
+      tags.forEach(t => t.classList.add('stagger-hidden'));
+    });
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(!entry.isIntersecting) return;
+        io.unobserve(entry.target);
+        const tags = entry.target.querySelectorAll('.ctag');
+        tags.forEach((tag, i) => {
+          setTimeout(() => {
+            tag.classList.remove('stagger-hidden');
+            tag.classList.add('stagger-in');
+          }, i * 60);
+        });
+      });
+    }, { threshold: 0.2 });
+    clusters.forEach(c => io.observe(c));
+  })();
+
+  /* ===== 31. IST LIVE CLOCK ===== */
+  (function(){
+    const el = document.getElementById('ist-clock');
+    if(!el) return;
+    function tick(){
+      const now = new Date();
+      const ist = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+      const h = String(ist.getHours()).padStart(2,'0');
+      const m = String(ist.getMinutes()).padStart(2,'0');
+      const s = String(ist.getSeconds()).padStart(2,'0');
+      el.textContent = h + ':' + m + ':' + s + ' IST';
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+
+
 </body>
 </html>
