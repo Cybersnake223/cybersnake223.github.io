@@ -209,6 +209,8 @@
     .gh-stat-lbl { font-family:var(--mono); font-size:var(--t-xs); color:var(--faint); letter-spacing:0.1em; text-transform:uppercase; }
     .gh-stat-body { display:flex; align-items:center; justify-content:center; padding:0.85rem; min-height:165px; position:relative; background:var(--bg2); overflow:hidden; }
     .gh-stat-body img { width:100%; display:block; border-radius:3px; position:relative; z-index:1; }
+    .gh-stat-fallback { display:none; font-family:var(--mono); font-size:var(--t-xs); color:var(--faint); text-align:center; padding:1rem; position:absolute; }
+    .gh-stat-body img.error + .gh-stat-fallback { display:block; }
     .gh-stat-card.span2 .gh-stat-body { min-height:140px; }
     .gh-cta { text-align:center; margin-top:2rem; }
     .contact-wrap { max-width:660px; margin:0 auto; text-align:center; }
@@ -1162,19 +1164,19 @@
   <div class="gh-stats-grid reveal rd1">
     <div class="gh-stat-card">
       <div class="gh-stat-header"><span class="gh-stat-dot" style="background:var(--teal);"></span><span class="gh-stat-lbl">GitHub Stats</span></div>
-      <div class="gh-stat-body"><img src="https://github-readme-stats.vercel.app/api?username=Cybersnake223&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0c1220&title_color=3ecfcf&icon_color=c9a84c&text_color=7a90b2&rank_icon=github" alt="GitHub stats" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.closest('.gh-stat-card').style.display='none'"></div>
+      <div class="gh-stat-body"><img src="https://github-readme-stats.vercel.app/api?username=Cybersnake223&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0c1220&title_color=3ecfcf&icon_color=c9a84c&text_color=7a90b2" alt="GitHub stats" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.handleStatsError(this)"><div class="gh-stat-fallback" aria-hidden="true">Failed to load</div></div>
     </div>
     <div class="gh-stat-card">
       <div class="gh-stat-header"><span class="gh-stat-dot" style="background:var(--gold);"></span><span class="gh-stat-lbl">Top Languages</span></div>
-      <div class="gh-stat-body"><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Cybersnake223&layout=compact&theme=tokyonight&hide_border=true&bg_color=0c1220&title_color=3ecfcf&text_color=7a90b2&langs_count=6" alt="Top languages" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.closest('.gh-stat-card').style.display='none'"></div>
+      <div class="gh-stat-body"><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Cybersnake223&layout=compact&theme=tokyonight&hide_border=true&bg_color=0c1220&title_color=3ecfcf&text_color=7a90b2&langs_count=6" alt="Top languages" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.handleStatsError(this)"><div class="gh-stat-fallback" aria-hidden="true">Failed to load</div></div>
     </div>
     <div class="gh-stat-card span2">
       <div class="gh-stat-header"><span class="gh-stat-dot" style="background:var(--teal);"></span><span class="gh-stat-lbl">Contribution Streak</span></div>
-      <div class="gh-stat-body"><img src="https://streak-stats.demolab.com?user=Cybersnake223&theme=tokyonight-duo&hide_border=true&background=0c1220&ring=3ecfcf&fire=c9a84c&currStreakLabel=3ecfcf" alt="GitHub streak" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.closest('.gh-stat-card').style.display='none'"></div>
+      <div class="gh-stat-body"><img src="https://streak-stats.demolab.com?user=Cybersnake223&theme=tokyonight-duo&hide_border=true&background=0c1220&ring=3ecfcf&fire=c9a84c&currStreakLabel=3ecfcf&dates=7a90b2&sideNums=3ecfcf&sideLabels=7a90b2" alt="GitHub streak" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.handleStatsError(this)"><div class="gh-stat-fallback" aria-hidden="true">Failed to load</div></div>
     </div>
     <div class="gh-stat-card span2">
       <div class="gh-stat-header"><span class="gh-stat-dot" style="background:#4ade80;"></span><span class="gh-stat-lbl">Activity Graph</span></div>
-      <div class="gh-stat-body" style="min-height:130px;"><img src="https://github-readme-activity-graph.vercel.app/graph?username=Cybersnake223&theme=tokyo-night&hide_border=true&bg_color=0c1220&color=3ecfcf&line=3ecfcf&point=c9a84c&area=true&area_color=3ecfcf" alt="GitHub activity graph" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.closest('.gh-stat-card').style.display='none'"></div>
+      <div class="gh-stat-body" style="min-height:130px;"><img src="https://github-readme-activity-graph.vercel.app/graph?username=Cybersnake223&theme=react-dark&hide_border=true&bg_color=0c1220&color=3ecfcf&line=3ecfcf&point=c9a84c&area=true&area_color=3ecfcf" alt="GitHub activity graph" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.handleStatsError(this)"><div class="gh-stat-fallback" aria-hidden="true">Failed to load</div></div>
     </div>
   </div>
   <div class="gh-cta reveal rd2">
@@ -1414,8 +1416,22 @@
     });
   })();
 
+  /* GitHub stats card error handling */
+  window.handleStatsError = function(img) {
+    img.classList.add('error');
+    // Retry once after 3s if the image wasn't already retried
+    if(!img.dataset.retried) {
+      img.dataset.retried = '1';
+      setTimeout(() => {
+        const src = img.src;
+        img.src = '';
+        img.src = src;
+      }, 3000);
+    }
+  };
   document.querySelectorAll('.gh-stat-body img').forEach(img => {
-    if(img.complete) img.classList.add('loaded');
+    if(img.complete && img.naturalWidth > 0) img.classList.add('loaded');
+    else if(img.complete && img.naturalWidth === 0) window.handleStatsError(img);
   });
 
   /* Cursor glow */
