@@ -71,6 +71,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Stack</a></li>
     <li><a href="#github">GitHub</a></li>
+    <li><a href="#snake">Snake</a></li>
     <li><a href="#contact" class="nav-cta">Contact &#8599;</a></li>
   </ul>
   <button id="themeToggle" aria-label="Toggle light/dark theme" title="Toggle theme">
@@ -389,10 +390,59 @@
 </section>
 
 <hr class="div">
+<section class="section" id="snake" aria-label="Snake Game">
+  <div class="reveal" style="text-align:center;margin-bottom:2rem;">
+    <span class="sec-label" style="display:block;margin-bottom:0.6rem;">// 05 &mdash; snake workflow</span>
+    <h2 style="margin-bottom:0;">Terminal <em>snake</em></h2>
+  </div>
+  <div class="snake-container reveal rd1">
+    <div class="snake-bar">
+      <span class="term-dot red"></span>
+      <span class="term-dot yellow"></span>
+      <span class="term-dot green"></span>
+      <span class="snake-title">snake@cybersnake223 ~ $ snake</span>
+    </div>
+    <div class="snake-body">
+      <canvas id="snakeCanvas" width="400" height="400"></canvas>
+      <div class="snake-overlay" id="snakeOverlay">
+        <div class="snake-overlay-content">
+          <div class="snake-overlay-icon">💀</div>
+          <div class="snake-overlay-title">GAME OVER</div>
+          <div class="snake-overlay-score">Score: <span id="snakeFinalScore">0</span></div>
+          <div class="snake-overlay-hint">Press <span class="snake-key">Enter</span> to restart</div>
+        </div>
+      </div>
+      <div class="snake-hud">
+        <span class="snake-hud-item">
+          <span class="snake-hud-lbl">Score</span>
+          <span class="snake-hud-val" id="snakeScore">0</span>
+        </span>
+        <span class="snake-hud-item">
+          <span class="snake-hud-lbl">High</span>
+          <span class="snake-hud-val" id="snakeHigh">0</span>
+        </span>
+        <span class="snake-hud-item">
+          <span class="snake-hud-lbl">Speed</span>
+          <span class="snake-hud-val" id="snakeSpeed">1</span>
+        </span>
+      </div>
+      <div class="snake-controls">
+        <span class="snake-ctrl-key">&uarr;</span>
+        <div class="snake-ctrl-row">
+          <span class="snake-ctrl-key">&larr;</span>
+          <span class="snake-ctrl-key">&darr;</span>
+          <span class="snake-ctrl-key">&rarr;</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
 <section class="section" id="contact" aria-label="Contact">
   <div class="contact-wrap">
     <div class="reveal" style="text-align:center;margin-bottom:2.5rem;">
-      <span class="sec-label" style="display:block;margin-bottom:0.6rem;">// 05 &mdash; contact</span>
+      <span class="sec-label" style="display:block;margin-bottom:0.6rem;">// 06 &mdash; contact</span>
       <h2 style="margin-bottom:0;">Let&#8217;s <em>work</em> together</h2>
     </div>
     <div class="contact-card reveal rd1">
