@@ -35,6 +35,7 @@ Personal portfolio — a static site deployed on GitHub Pages. Zero frameworks, 
 - `manifest.json` for PWA installability
 - `sitemap.xml` + `robots.txt` for search indexing
 - Sub-page: [Vicious Viper](https://cybersnake223.github.io/vicious-viper/) — event-driven Hyprland dotfiles showcase
+- [Terminal Snake](https://cybersnake223.github.io/#snake) — playable snake game embedded in the portfolio with canvas rendering, swipe support, and high-score persistence
 
 ## Project Structure
 
