@@ -274,14 +274,13 @@ document.querySelectorAll('.gh-stat-body img').forEach(img => {
   updateBar();
 })();
 
-/* ===== TERMINAL TYPEWRITER with pause on hover/focus ===== */
+/* ===== TERMINAL TYPEWRITER ===== */
 (function(){
   if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const cmdEl = document.getElementById('termCmd');
   const curEl = document.getElementById('termCursor');
   const outEl = document.getElementById('termOutput');
-  const termEl = document.querySelector('.hero-terminal');
-  if(!cmdEl || !outEl || !termEl) return;
+  if(!cmdEl || !outEl) return;
 
   const sequences = [
     { cmd:'neofetch --off', out:[
@@ -308,25 +307,7 @@ document.querySelectorAll('.gh-stat-body img').forEach(img => {
   ];
 
   let seq = 0;
-  let paused = false;
-  let termTimer = null;
-
-  function clearTimer() {
-    if(termTimer) { clearTimeout(termTimer); termTimer = null; }
-  }
-
-  function schedule(fn, delay) {
-    clearTimer();
-    if(paused) return;
-    termTimer = setTimeout(() => {
-      termTimer = null;
-      if(paused) return;
-      fn();
-    }, delay);
-  }
-
   function runSequence(){
-    if(paused) return;
     const s = sequences[seq % sequences.length];
     seq++;
     let i = 0;
@@ -334,31 +315,27 @@ document.querySelectorAll('.gh-stat-body img').forEach(img => {
     outEl.innerHTML = '';
     curEl.style.display = 'inline-block';
     function typeChar(){
-      if(paused) return;
       if(i <= s.cmd.length){
         cmdEl.textContent = s.cmd.slice(0,i);
         i++;
-        schedule(typeChar, 45 + Math.random()*25);
+        setTimeout(typeChar, 45 + Math.random()*25);
       } else {
         curEl.style.display = 'none';
         let oi = 0;
         function showLine(){
-          if(paused) return;
           if(oi < s.out.length){
             const d = document.createElement('div');
             d.className = 'term-out';
             d.innerHTML = s.out[oi];
             outEl.appendChild(d);
             oi++;
-            schedule(showLine, 80);
+            setTimeout(showLine, 80);
           } else {
-            schedule(() => {
-              if(paused) return;
+            setTimeout(()=>{
               outEl.style.transition = 'opacity 0.4s';
               outEl.style.opacity = '0';
               cmdEl.style.opacity = '0';
-              schedule(() => {
-                if(paused) return;
+              setTimeout(()=>{
                 outEl.innerHTML = '';
                 outEl.style.opacity = '1';
                 cmdEl.style.opacity = '1';
@@ -367,28 +344,12 @@ document.querySelectorAll('.gh-stat-body img').forEach(img => {
             }, 2800);
           }
         }
-        schedule(showLine, 180);
+        setTimeout(showLine, 180);
       }
     }
     typeChar();
   }
-
-  schedule(runSequence, 1200);
-
-  function pauseTerminal() {
-    paused = true;
-    clearTimer();
-  }
-
-  function resumeTerminal() {
-    paused = false;
-    runSequence();
-  }
-
-  termEl.addEventListener('mouseenter', pauseTerminal);
-  termEl.addEventListener('mouseleave', resumeTerminal);
-  termEl.addEventListener('focusin', pauseTerminal);
-  termEl.addEventListener('focusout', resumeTerminal);
+  setTimeout(runSequence, 1200);
 })();
 
 /* ===== THEME TOGGLE (with prefers-color-scheme + View Transitions) ===== */
@@ -534,29 +495,6 @@ document.querySelectorAll('.gh-stat-body img').forEach(img => {
   }
   tick();
   setInterval(tick, 1000);
-})();
-
-/* ===== SECTION NAV DOTS ===== */
-(function(){
-  const dots = document.querySelectorAll('.section-dot');
-  if(!dots.length) return;
-  const sections = [...dots].map(d => document.getElementById(d.getAttribute('href').slice(1))).filter(Boolean);
-  if(!sections.length) return;
-
-  const spy = new IntersectionObserver(entries => {
-    let maxRatio = 0, activeId = null;
-    entries.forEach(e => {
-      if(e.isIntersecting && e.intersectionRatio > maxRatio) {
-        maxRatio = e.intersectionRatio;
-        activeId = e.target.id;
-      }
-    });
-    if(activeId) {
-      dots.forEach(d => d.classList.toggle('active', d.getAttribute('href') === '#' + activeId));
-    }
-  }, { threshold: [0.2, 0.4, 0.6], rootMargin: '-10% 0px -20% 0px' });
-
-  sections.forEach(s => spy.observe(s));
 })();
 
 /* ===== SERVICE WORKER REGISTRATION ===== */
