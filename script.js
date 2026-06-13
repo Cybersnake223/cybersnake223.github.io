@@ -97,6 +97,31 @@ document.getElementById('year').textContent = new Date().getFullYear();
   sections.forEach(s => spy.observe(s));
 })();
 
+/* ===== SIDE SECTION NAVIGATION DOTS ===== */
+(function(){
+  const dots = document.querySelectorAll('.section-nav-dot');
+  const sections = document.querySelectorAll('section[id]');
+  if(!dots.length || !sections.length) return;
+  dots.forEach(dot => {
+    dot.addEventListener('click', e => {
+      e.preventDefault();
+      const id = dot.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if(target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+  const spy = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting) {
+        dots.forEach(d => d.classList.remove('active'));
+        const active = document.querySelector(`.section-nav-dot[href="#${e.target.id}"]`);
+        if(active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => spy.observe(s));
+})();
+
 /* ===== MOBILE NAV with keyboard trap + Escape ===== */
 (function(){
   const toggle = document.getElementById('navToggle');
@@ -160,6 +185,8 @@ document.getElementById('year').textContent = new Date().getFullYear();
 /* GitHub stats card error handling */
 window.handleStatsError = function(img) {
   img.classList.add('error');
+  const body = img.closest('.gh-stat-body');
+  if(body) body.classList.add('loaded');
   if(!img.dataset.retried) {
     img.dataset.retried = '1';
     setTimeout(() => {
@@ -170,7 +197,7 @@ window.handleStatsError = function(img) {
   }
 };
 document.querySelectorAll('.gh-stat-body img').forEach(img => {
-  if(img.complete && img.naturalWidth > 0) img.classList.add('loaded');
+  if(img.complete && img.naturalWidth > 0) { img.classList.add('loaded'); img.parentElement.classList.add('loaded'); }
   else if(img.complete && img.naturalWidth === 0) window.handleStatsError(img);
 });
 
@@ -391,7 +418,41 @@ document.querySelectorAll('.gh-stat-body img').forEach(img => {
   });
 })();
 
-/* ===== CONTACT FORM ===== */
+/* ===== CONTACT FORM INLINE VALIDATION ===== */
+(function(){
+  const fields = [
+    { el: document.getElementById('fname'), msg: document.getElementById('fnameMsg') },
+    { el: document.getElementById('femail'), msg: document.getElementById('femailMsg') },
+    { el: document.getElementById('fmsg'), msg: document.getElementById('fmsgMsg') },
+  ].filter(f => f.el && f.msg);
+  fields.forEach(({el, msg}) => {
+    el.addEventListener('input', () => {
+      const valid = el.checkValidity();
+      el.classList.toggle('valid', valid);
+      el.classList.toggle('invalid', !valid && el.value.length > 0);
+      if(!el.value.length) {
+        msg.textContent = '';
+        msg.className = 'form-msg';
+        el.className = el.className.replace(/\b(valid|invalid)\b/g, '').trim();
+      } else if(valid) {
+        msg.textContent = '\u2713';
+        msg.className = 'form-msg valid';
+      } else {
+        msg.textContent = el.validationMessage || 'Invalid';
+        msg.className = 'form-msg invalid';
+      }
+    });
+    el.addEventListener('blur', () => {
+      if(!el.value.length) {
+        msg.textContent = '';
+        msg.className = 'form-msg';
+        el.className = el.className.replace(/\b(valid|invalid)\b/g, '').trim();
+      }
+    });
+  });
+})();
+
+/* ===== CONTACT FORM SUBMIT ===== */
 (function(){
   const form = document.getElementById('contactForm');
   const status = document.getElementById('formStatus');
