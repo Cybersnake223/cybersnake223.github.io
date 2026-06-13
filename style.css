@@ -77,7 +77,7 @@
     .hero-tag { display:flex; align-items:center; justify-content:center; gap:0.6rem; font-family:var(--mono); font-size:var(--t-xs); letter-spacing:0.16em; text-transform:uppercase; color:var(--teal); opacity:0.85; margin-bottom:1.5rem; animation:fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) both; }
     .hero-tag-line { width:28px; height:1px; background:currentColor; opacity:0.5; flex-shrink:0; }
     .status-dot { width:6px; height:6px; border-radius:50%; background:#4ade80; flex-shrink:0; }
-    h1 { font-family:var(--serif); font-size:var(--t-3xl); font-weight:700; line-height:1.0; letter-spacing:-0.03em; color:var(--text); margin-bottom:0.2em; animation:fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.07s both; }
+    h1 { font-family:var(--serif); font-size:var(--t-3xl); font-weight:700; line-height:1.1; letter-spacing:-0.03em; color:var(--text); margin-bottom:0.2em; animation:fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.07s both; }
     h1 em { font-style:italic; font-weight:300; color:transparent; -webkit-text-stroke:1.5px rgba(62,207,207,0.65); paint-order:stroke fill; }
     .hero-handle { font-family:var(--mono); font-size:var(--t-sm); color:var(--faint); margin-bottom:1.6rem; animation:fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.13s both; }
     .hero-handle .at { color:var(--teal); opacity:0.8; }
@@ -701,7 +701,7 @@
     html.light {
       --bg:#e1e6ef; --bg1:#d6dce8; --bg2:#ccd3e2; --bg3:#bfc7d8;
       --border:rgba(0,0,0,0.14); --border2:rgba(0,0,0,0.22);
-      --text:#0b1422; --muted:#2f405e; --faint:#4a5f7e;
+      --text:#0b1422; --muted:#2f405e; --faint:#3a4d6b;
       --teal:#0d6666; --teal2:rgba(13,102,102,0.10); --teal3:rgba(13,102,102,0.22);
       --gold:#6b4b12; --gold2:rgba(107,75,18,0.10);
       --sh-sm:0 1px 4px rgba(0,0,0,0.12); --sh-md:0 4px 20px rgba(0,0,0,0.16); --sh-lg:0 12px 48px rgba(0,0,0,0.2);

@@ -507,6 +507,7 @@ document.querySelectorAll('.gh-stat-body img').forEach(img => {
       wrap.appendChild(dot);
     }
     tag.appendChild(wrap);
+    tag.setAttribute('aria-label', tag.textContent.trim().replace(/\s+/g, ' ') + ' — proficiency ' + val + ' out of 5');
   });
 })();
 
