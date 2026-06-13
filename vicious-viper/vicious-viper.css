@@ -185,6 +185,24 @@
       background: rgba(62,207,207,0.08);
     }
 
+    .nav-right {
+      display: flex; align-items: center; gap: 0.4rem;
+      margin-left: auto;
+    }
+    .theme-toggle {
+      background: none; border: 1px solid var(--border);
+      border-radius: 8px; cursor: pointer;
+      padding: 0.3rem 0.5rem; color: var(--muted);
+      display: flex; align-items: center;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+      flex-shrink: 0;
+    }
+    .theme-toggle:hover {
+      color: var(--primary);
+      border-color: var(--border-strong);
+      background: rgba(62,207,207,0.08);
+    }
+
     .hero {
       overflow: hidden;
       backdrop-filter: blur(20px);
@@ -441,6 +459,14 @@
     .prompt {
       color: var(--primary);
     }
+
+    .term-line { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+    .term-cursor {
+      display: inline-block; width: 7px; height: 14px;
+      background: var(--primary); vertical-align: middle;
+      animation: blink 1s step-end infinite; margin-left: 2px;
+    }
+    @keyframes blink { 0%,100%{opacity:1}50%{opacity:0} }
 
     .section {
       padding: 6rem 0;
@@ -1018,3 +1044,34 @@
       .feature-card, .arch-card, .metric, .shot, .explorer { border: 1px solid ButtonText; }
       .nav-cta { border: 1px solid ButtonText; }
     }
+
+    /* Light theme (syncs with main portfolio) */
+    html.light {
+      --bg: #e1e6ef;
+      --surface: #d6dce8;
+      --surface-2: #ccd3e2;
+      --surface-3: #bfc7d8;
+      --border: rgba(0,0,0,0.14);
+      --border-strong: rgba(13,102,102,0.22);
+      --text: #0b1422;
+      --muted: #2f405e;
+      --faint: #3a4d6b;
+      --primary: #0d6666;
+      --cyan: #0d9999;
+      --gold: #6b4b12;
+      --shadow: 0 0 0 1px rgba(13,102,102,0.08), 0 12px 40px rgba(0,0,0,0.12);
+      --glow: 0 0 20px rgba(13,102,102,0.10), 0 0 60px rgba(13,102,102,0.03);
+    }
+    html.light body::before { opacity: 0.25; }
+    html.light .nav { background: rgba(230,234,243,0.85); }
+    html.light .feature-card { background: rgba(230,234,243,0.7); }
+    html.light .terminal { background: rgba(230,234,243,0.82); }
+    html.light .explorer { background: rgba(230,234,243,0.68); }
+    html.light .stat { background: rgba(230,234,243,0.72); }
+    html.light .explorer-search { background: var(--surface); color: var(--text); }
+    html.light .explorer-item { background: var(--surface); }
+    html.light .faq-item { background: var(--surface); }
+    html.light .shot::before {
+      background: linear-gradient(90deg, var(--surface) 0%, var(--surface-2) 50%, var(--surface) 100%);
+    }
+    html.light .theme-toggle:hover { background: rgba(13,102,102,0.08); }
