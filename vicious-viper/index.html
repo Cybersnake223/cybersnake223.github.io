@@ -38,11 +38,7 @@
     content="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset1.png"
   />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet"></noscript>
-
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
   <link rel="stylesheet" href="vicious-viper.css">
 </head>
 <body>
@@ -69,6 +65,7 @@
         <li><a href="#metrics">Metrics</a></li>
         <li><a href="#showcase">Showcase</a></li>
         <li><a href="#configs">Configs</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="https://github.com/Cybersnake223/Hypr" class="nav-cta">GitHub</a></li>
       </ul>
     </div>
@@ -617,6 +614,44 @@
     </div>
   </section>
 
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-label">FAQ</div>
+        <h2 class="section-title">Common Questions</h2>
+      </div>
+
+      <div class="faq-list">
+
+        <details class="faq-item">
+          <summary>Does it work with NVIDIA GPUs?</summary>
+          <p>Yes. Vicious Viper includes NVIDIA compatibility checks in its installer and provides pre-configured environment variables for Hyprland on proprietary drivers.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I use it without Hyprland?</summary>
+          <p>No. The ecosystem is deeply integrated with Hyprland's event system. Some scripts and themes may work on other Wayland compositors, but the automation pipeline requires Hyprland.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Does it work on desktop or only laptops?</summary>
+          <p>Both. The default profile is laptop-tuned, but the full profile and desktop profiles work on multi-monitor desktop setups including ultra-wide configurations.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How do I update installed modules?</summary>
+          <p>Re-run <code>./install.sh --select</code> to redeploy specific modules. Existing dotfiles are timestamped and backed up automatically before any override.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I contribute or fork?</summary>
+          <p>Absolutely. The project is MIT licensed. Pull requests, issue reports, and forks are welcome. Check the GitHub repository for contribution guidelines.</p>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
   </main>
 
   <footer>
@@ -690,6 +725,16 @@
           item.style.display = item.textContent.toLowerCase().includes(q) ? '' : 'none';
         });
       });
+    })();
+
+    /* Live GitHub stats */
+    (function(){
+      const starEl = document.querySelector('.hero-stats .stat:first-child strong');
+      if(!starEl) return;
+      fetch('https://api.github.com/repos/Cybersnake223/Hypr')
+        .then(r => r.ok ? r.json() : Promise.reject())
+        .then(d => { starEl.textContent = d.stargazers_count + '+'; })
+        .catch(() => {});
     })();
   </script>
 

@@ -1,37 +1,35 @@
-    @media (prefers-reduced-motion: no-preference) {
-      @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
-      }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
 
-      @keyframes pulseGlow {
-        0%, 100% {
-          box-shadow:
-            0 0 20px rgba(57,211,83,0.18),
-            0 0 60px rgba(57,211,83,0.08);
-        }
-        50% {
-          box-shadow:
-            0 0 40px rgba(57,211,83,0.28),
-            0 0 120px rgba(57,211,83,0.14);
-        }
+    @keyframes pulseGlow {
+      0%, 100% {
+        box-shadow:
+          0 0 20px rgba(57,211,83,0.18),
+          0 0 60px rgba(57,211,83,0.08);
       }
+      50% {
+        box-shadow:
+          0 0 40px rgba(57,211,83,0.28),
+          0 0 120px rgba(57,211,83,0.14);
+      }
+    }
 
-      @keyframes gradientShift {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-      }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-      @keyframes scanline {
-        0% { transform: translateY(-100%); }
-        100% { transform: translateY(100vh); }
-      }
+    @keyframes scanline {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100vh); }
+    }
 
-      @keyframes rotateOrb {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-      }
+    @keyframes rotateOrb {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
     :root {
       --bg: #090b0c;
@@ -112,11 +110,6 @@
       opacity: 0.45;
       filter: blur(0.2px);
       z-index: -1;
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      body::before {
-        animation: gradientShift 18s ease infinite;
-      }
     }
 
     a {
@@ -234,11 +227,6 @@
       );
       pointer-events: none;
     }
-    @media (prefers-reduced-motion: no-preference) {
-      .hero::before {
-        animation: rotateOrb 24s linear infinite;
-      }
-    }
 
     .skip-link {
       position: absolute; top: -999px; left: 1rem; z-index: 9999;
@@ -268,11 +256,6 @@
         rgba(57,211,83,0.05),
         transparent
       );
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      .scanline::before {
-        animation: scanline 8s linear infinite;
-      }
     }
 
     .noise {
@@ -322,11 +305,6 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    @media (prefers-reduced-motion: no-preference) {
-      .gradient {
-        animation: gradientShift 8s ease infinite;
-      }
-    }
 
     .hero p {
       max-width: 60ch;
@@ -356,11 +334,6 @@
       background: var(--primary);
       color: #08110a;
       box-shadow: var(--glow);
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      .btn-primary {
-        animation: pulseGlow 4s ease infinite;
-      }
     }
 
     .btn-primary:hover {
@@ -441,11 +414,6 @@
       border-radius: 24px;
       box-shadow: var(--shadow);
       overflow: hidden;
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      .terminal {
-        animation: float 6s ease-in-out infinite;
-      }
     }
 
     .terminal-top {
@@ -752,6 +720,63 @@
       color: var(--primary);
     }
 
+    .faq-list {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: 0.2s ease;
+    }
+
+    .faq-item:hover {
+      border-color: var(--border-strong);
+    }
+
+    .faq-item summary {
+      padding: 1.2rem 1.5rem;
+      font-family: var(--mono);
+      font-weight: 600;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::after {
+      content: "+";
+      font-size: 1.2rem;
+      color: var(--primary);
+      transition: transform 0.2s ease;
+    }
+
+    .faq-item[open] summary::after {
+      content: "−";
+    }
+
+    .faq-item p {
+      padding: 0 1.5rem 1.2rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .faq-item code {
+      font-family: var(--mono);
+      color: var(--primary);
+      font-size: 0.9em;
+    }
+
     .tag {
       font-family: var(--mono);
       color: var(--cyan);
@@ -873,6 +898,15 @@
       .hero-stats {
         grid-template-columns: 1fr;
       }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      body::before { animation: gradientShift 18s ease infinite; }
+      .hero::before { animation: rotateOrb 24s linear infinite; }
+      .scanline::before { animation: scanline 8s linear infinite; }
+      .gradient { animation: gradientShift 8s ease infinite; }
+      .btn-primary { animation: pulseGlow 4s ease infinite; }
+      .terminal { animation: float 6s ease-in-out infinite; }
     }
 
     @media (prefers-reduced-motion: reduce) {
