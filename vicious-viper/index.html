@@ -38,7 +38,7 @@
     content="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset1.png"
   />
 
-  <link rel="preload" as="image" href="assets/asset4.png" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/asset4.webp" fetchpriority="high" type="image/webp">
   <link rel="stylesheet" href="assets/fonts/fonts.css">
   <link rel="stylesheet" href="vicious-viper.css">
 </head>
@@ -165,7 +165,7 @@
 
   <section class="section" id="architecture">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal rd1">
         <div class="section-label">Architecture</div>
         <h2 class="section-title">Automation Pipeline</h2>
         <p class="section-desc">
@@ -175,7 +175,7 @@
         </p>
       </div>
 
-      <div class="architecture">
+      <div class="architecture reveal rd2">
         <div class="arch-card">
           <h3>Wallpaper Event</h3>
           <p>Wallpaper switch triggers automation pipeline.</p>
@@ -206,7 +206,7 @@
 
   <section class="section" id="features">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal rd1">
         <div class="section-label">Features</div>
         <h2 class="section-title">Workflow-Oriented Design</h2>
         <p class="section-desc">
@@ -215,7 +215,7 @@
         </p>
       </div>
 
-      <div class="grid-3">
+      <div class="grid-3 reveal rd2">
 
         <div class="feature-card">
           <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="8" y="8" width="8" height="8"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>
@@ -277,7 +277,7 @@
 
   <section class="section" id="metrics">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal rd1">
         <div class="section-label">Metrics</div>
         <h2 class="section-title">Runtime Performance</h2>
         <p class="section-desc">
@@ -285,7 +285,7 @@
         </p>
       </div>
 
-      <div class="metrics">
+      <div class="metrics reveal rd2">
         <div class="metric">
           <h3>780MB</h3>
           <p>Idle Session RAM</p>
@@ -306,12 +306,13 @@
           <p>Hyprland Startup</p>
         </div>
       </div>
+      <p class="metrics-note">Measured on Lenovo IdeaPad Slim 5 · AMD Ryzen 5 · 16GB RAM · Arch Linux</p>
     </div>
   </section>
 
   <section class="section" id="showcase">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal rd1">
         <div class="section-label">Showcase</div>
         <h2 class="section-title">Interactive Desktop Environment</h2>
         <p class="section-desc">
@@ -320,7 +321,7 @@
         </p>
       </div>
 
-      <div class="showcase-grid">
+      <div class="showcase-grid reveal rd2">
 
         <div class="shot">
           <img
@@ -342,12 +343,12 @@
         </div>
 
         <div class="shot">
-          <img
+          <picture><source srcset="assets/asset4.webp" type="image/webp"><source srcset="assets/asset4.png" type="image/png"><img
             loading="lazy"
             decoding="async"
             src="assets/asset4.png"
             alt="Rofi Launcher"
-          />
+          /></picture>
 
           <div class="shot-overlay">
             <h3>Launcher & Workflow Layer</h3>
@@ -361,12 +362,12 @@
         </div>
 
         <div class="shot">
-          <img
+          <picture><source srcset="assets/asset5.webp" type="image/webp"><source srcset="assets/asset5.png" type="image/png"><img
             loading="lazy"
             decoding="async"
             src="assets/asset5.png"
             alt="Notification System"
-          />
+          /></picture>
 
           <div class="shot-overlay">
             <h3>Notification & OSD Pipeline</h3>
@@ -380,12 +381,12 @@
         </div>
 
         <div class="shot">
-          <img
+          <picture><source srcset="assets/asset6.webp" type="image/webp"><source srcset="assets/asset6.png" type="image/png"><img
             loading="lazy"
             decoding="async"
             src="assets/asset6.png"
             alt="Lockscreen Preview"
-          />
+          /></picture>
 
           <div class="shot-overlay">
             <h3>Hyprlock Experience</h3>
@@ -399,12 +400,12 @@
         </div>
 
         <div class="shot">
-          <img
+          <picture><source srcset="assets/asset1.webp" type="image/webp"><source srcset="assets/asset1.png" type="image/png"><img
             loading="lazy"
             decoding="async"
             src="assets/asset1.png"
             alt="Desktop Preview"
-          />
+          /></picture>
 
           <div class="shot-overlay">
             <h3>Dynamic Workspace UI</h3>
@@ -442,7 +443,7 @@
 
   <section class="section" id="install">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal rd1">
         <div class="section-label">Installation</div>
         <h2 class="section-title">Modular Deployment System</h2>
         <p class="section-desc">
@@ -549,7 +550,7 @@
 
   <section class="section" id="configs">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal rd1">
         <div class="section-label">Config Explorer</div>
         <h2 class="section-title">Searchable Configuration Map</h2>
         <p class="section-desc">
@@ -558,7 +559,7 @@
         </p>
       </div>
 
-      <div class="explorer">
+      <div class="explorer reveal rd2">
         <div class="explorer-top">
           <input
             class="explorer-search"
@@ -618,12 +619,12 @@
 
   <section class="section" id="faq">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal rd1">
         <div class="section-label">FAQ</div>
         <h2 class="section-title">Common Questions</h2>
       </div>
 
-      <div class="faq-list">
+      <div class="faq-list reveal rd2">
 
         <details class="faq-item">
           <summary>Does it work with NVIDIA GPUs?</summary>
@@ -677,6 +678,16 @@
   <div id="toTop" role="button" tabindex="0" aria-label="Back to top">&#8593;</div>
 
   <script>
+    /* Section reveal on scroll */
+    (function(){
+      if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      document.documentElement.classList.add('js-animate');
+      const io = new IntersectionObserver(entries=>{
+        entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+      }, { threshold:0.07, rootMargin:'0px 0px -40px 0px' });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    })();
+
     (function(){
       /* Mobile nav */
       const toggle = document.getElementById('navToggle');
