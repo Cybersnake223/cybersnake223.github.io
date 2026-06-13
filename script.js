@@ -510,6 +510,81 @@ document.querySelectorAll('.gh-stat-body img').forEach(img => {
   setInterval(tick, 1000);
 })();
 
+/* ===== KEYBOARD SHORTCUTS ===== */
+(function(){
+  const map = { p:'projects', c:'contact', h:'hero', a:'about', s:'skills', g:'github' };
+  let buf = '', timer = null;
+  let helpOverlay = null;
+
+  function showHelp(){
+    if(helpOverlay) { dismissHelp(); return; }
+    helpOverlay = document.createElement('div');
+    helpOverlay.id = 'kb-help';
+    Object.assign(helpOverlay.style, {
+      position:'fixed', inset:'0', zIndex:'10000',
+      display:'flex', alignItems:'center', justifyContent:'center',
+      background:'rgba(0,0,0,0.65)', backdropFilter:'blur(4px)',
+      fontFamily:'var(--mono)', fontSize:'var(--t-sm)'
+    });
+    const box = document.createElement('div');
+    Object.assign(box.style, {
+      background:'var(--bg2)', border:'1px solid var(--border2)',
+      borderRadius:'var(--r-lg)', padding:'2rem 2.5rem',
+      maxWidth:'420px', width:'90%', boxShadow:'var(--sh-lg)'
+    });
+    box.innerHTML =
+      '<div style="font-family:var(--serif);font-size:var(--t-lg);color:var(--teal);margin-bottom:1.2rem">Keyboard Shortcuts</div>' +
+      '<div style="display:grid;grid-template-columns:auto 1fr;gap:0.6rem 1.2rem;align-items:center">' +
+        mapKeys().join('') +
+      '</div>' +
+      '<div style="margin-top:1.2rem;color:var(--faint);font-size:var(--t-xs)">Press <kbd>?</kbd> or <kbd>Esc</kbd> to close</div>';
+    helpOverlay.appendChild(box);
+    helpOverlay.addEventListener('click', e => { if(e.target === helpOverlay) dismissHelp(); });
+    document.addEventListener('keydown', escHelp);
+    document.body.appendChild(helpOverlay);
+  }
+
+  function mapKeys(){
+    return Object.entries(map).map(([k,v]) =>
+      '<kbd style="background:var(--bg3);padding:2px 8px;border-radius:4px;font:inherit">g ' + k + '</kbd>' +
+      '<span style="color:var(--text)">' + v.charAt(0).toUpperCase() + v.slice(1) + '</span>'
+    );
+  }
+
+  function escHelp(e){ if(e.key === 'Escape') dismissHelp(); }
+  function dismissHelp(){
+    if(!helpOverlay) return;
+    helpOverlay.remove(); helpOverlay = null;
+    document.removeEventListener('keydown', escHelp);
+  }
+
+  document.addEventListener('keydown', e => {
+    if(e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) return;
+
+    if(e.key === '?' && !e.ctrlKey && !e.metaKey && !e.altKey){
+      e.preventDefault();
+      showHelp();
+      return;
+    }
+    if(helpOverlay) return;
+
+    if(e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey){
+      clearTimeout(timer);
+      buf += e.key.toLowerCase();
+      timer = setTimeout(() => { buf = ''; }, 800);
+      if(buf.length >= 3) buf = buf.slice(-3);
+      if(buf.length === 2 && buf[0] === 'g'){
+        const id = map[buf[1]];
+        if(id){
+          buf = '';
+          const el = document.getElementById(id);
+          if(el) el.scrollIntoView({ behavior:'smooth' });
+        }
+      }
+    }
+  });
+})();
+
 /* ===== SERVICE WORKER REGISTRATION ===== */
 if('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

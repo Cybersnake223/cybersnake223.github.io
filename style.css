@@ -787,6 +787,15 @@
       margin-top: 0.2rem;
     }
 
+    /* Keyboard shortcuts help overlay */
+    #kb-help kbd {
+      background: var(--bg3);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font: inherit;
+      text-align: center;
+    }
+
     /* View Transitions API */
     @view-transition { navigation: auto; }
     ::view-transition-old(root) {
