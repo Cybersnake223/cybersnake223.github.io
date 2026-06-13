@@ -1062,12 +1062,20 @@
       --shadow: 0 0 0 1px rgba(13,102,102,0.08), 0 12px 40px rgba(0,0,0,0.12);
       --glow: 0 0 20px rgba(13,102,102,0.10), 0 0 60px rgba(13,102,102,0.03);
     }
-    html.light body::before { opacity: 0.25; }
+    html.light body::before { opacity: 0.15; }
     html.light .nav { background: rgba(230,234,243,0.85); }
+    html.light .hero { background: linear-gradient(145deg, rgba(0,0,0,0.02), rgba(0,0,0,0.01)); }
+    html.light .hero::before { opacity: 0.35; }
+    html.light .hero::after { opacity: 0.3; }
+    html.light .noise { opacity: 0.04; }
     html.light .feature-card { background: rgba(230,234,243,0.7); }
     html.light .terminal { background: rgba(230,234,243,0.82); }
+    html.light .terminal-top { background: rgba(0,0,0,0.03); }
     html.light .explorer { background: rgba(230,234,243,0.68); }
+    html.light .explorer-top { background: rgba(0,0,0,0.03); }
     html.light .stat { background: rgba(230,234,243,0.72); }
+    html.light .arch-card { background: linear-gradient(to bottom, rgba(13,102,102,0.06), rgba(0,0,0,0.02)); }
+    html.light .btn-secondary { background: linear-gradient(145deg, rgba(0,0,0,0.03), rgba(0,0,0,0.01)); }
     html.light .explorer-search { background: var(--surface); color: var(--text); }
     html.light .explorer-item { background: var(--surface); }
     html.light .faq-item { background: var(--surface); }
@@ -1075,3 +1083,23 @@
       background: linear-gradient(90deg, var(--surface) 0%, var(--surface-2) 50%, var(--surface) 100%);
     }
     html.light .theme-toggle:hover { background: rgba(13,102,102,0.08); }
+    html.light .term-out { color: var(--muted); }
+    html.light .hero-subtitle { opacity: 0.5; }
+    html.light .eyebrow { background: rgba(13,102,102,0.06); }
+    html.light .btn-primary { animation: none; }
+    html.light .nav-links a:hover { color: var(--primary); }
+    html.light .footer-inner p { color: var(--muted); }
+    html.light .arch-card::after { color: var(--primary); }
+    html.light .tag { color: var(--cyan); }
+    html.light .faq-item code { color: var(--primary); }
+    html.light .section-label { color: var(--primary); }
+    html.light .gradient {
+      background: linear-gradient(135deg, var(--primary), var(--cyan));
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    html.light .hero-status .status-primary { color: var(--primary); }
+    html.light .hero-status .status-cyan { color: var(--cyan); }
+    html.light .hero-status .status-gold { color: var(--gold); }
+    html.light .feature-card svg { color: var(--primary); }
+    html.light .nav-cta { background: rgba(13,102,102,0.08); }
