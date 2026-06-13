@@ -177,10 +177,15 @@
     .gh-stat-card.span2 .gh-stat-body { min-height:140px; }
     .gh-cta { text-align:center; margin-top:2rem; }
     .contact-wrap { max-width:660px; margin:0 auto; text-align:center; }
+    .contact-heading { text-align:center; margin-bottom:2.5rem; }
+    .contact-heading .sec-label { display:block; margin-bottom:0.6rem; }
+    .contact-heading h2 { margin-bottom:0; }
     .contact-card { background:var(--bg1); border:1px solid var(--border); border-radius:var(--r-xl); padding:2.8rem 2.5rem; box-shadow:var(--sh-md); position:relative; overflow:hidden; }
+    @media (max-width:540px) { .contact-card { padding:1.8rem 1.2rem; } }
     .contact-card::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,rgba(201,168,76,0.45),transparent); }
     .contact-card p { font-size:var(--t-sm); color:var(--muted); line-height:1.8; margin-bottom:1.8rem; max-width:48ch; margin-left:auto; margin-right:auto; }
-    .contact-btns { display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap; margin-bottom:1.8rem; }
+    .contact-form-sep { border:none; height:1px; background:var(--border); margin:1.6rem 0; }
+    .contact-btns { display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap; margin-bottom:1.2rem; }
     .socials { display:flex; justify-content:center; gap:0.5rem; flex-wrap:wrap; }
     .social-link { display:flex; align-items:center; gap:0.38rem; padding:0.4rem 0.85rem; border-radius:var(--r-sm); background:var(--bg3); border:1px solid var(--border); color:var(--muted); text-decoration:none; font-size:var(--t-xs); font-weight:500; }
     .social-link:hover { transform:translateY(-2px); color:var(--teal); border-color:var(--teal3); }
@@ -609,9 +614,9 @@
       box-shadow: 0 0 0 3px rgba(62,207,207,0.1);
     }
     .form-input::placeholder, .form-textarea::placeholder { color: var(--faint); }
-    .form-textarea { min-height: 100px; line-height: 1.65; }
+    .form-textarea { min-height: 120px; line-height: 1.65; }
     .form-submit {
-      align-self: center;
+      align-self: flex-start;
       background: linear-gradient(135deg, var(--teal), #2db8b8);
       color: #08121e; font-weight: 600; font-family: var(--sans);
       font-size: var(--t-sm); border: none; cursor: pointer;
