@@ -1,10 +1,10 @@
-const CACHE = 'portfolio-v2';
+const CACHE = 'portfolio-v1';
 
 const PRECACHE = [
   '/',
   '/index.html',
-  '/style.min.css',
-  '/script.min.js',
+  '/style.css',
+  '/script.js',
   '/404.html',
   '/manifest.json',
   '/resume.pdf',
@@ -12,7 +12,7 @@ const PRECACHE = [
   '/robots.txt',
   '/vicious-viper/',
   '/vicious-viper/index.html',
-  '/vicious-viper/vicious-viper.min.css',
+  '/vicious-viper/vicious-viper.css',
 ];
 
 self.addEventListener('install', event => {
