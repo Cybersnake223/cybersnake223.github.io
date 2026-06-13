@@ -51,6 +51,9 @@ cybersnake223.github.io/
 ├── sitemap.xml              # For search engines
 ├── robots.txt
 ├── google25f06b01202c5f94.html  # Google Search Console verification
+├── output/                      # Generated contribution snake SVGs (from GitHub Actions)
+├── .github/workflows/
+│   └── snake.yml                # Daily workflow to generate contribution snake
 └── vicious-viper/
     ├── index.html           # Hyprland dotfiles showcase page
     └── vicious-viper.css    # Vicious Viper styles
