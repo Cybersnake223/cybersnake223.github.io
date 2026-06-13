@@ -54,8 +54,8 @@ Personal portfolio — a static site deployed on GitHub Pages. Zero frameworks, 
 ```
 cybersnake223.github.io/
 ├── index.html               # Main portfolio page
-├── style.css                # All styles (886 lines)
-├── script.js                # All JavaScript (559 lines)
+├── style.css                # All styles
+├── script.js                # All JavaScript
 ├── sw.js                    # Service worker (offline PWA)
 ├── 404.html                 # Custom 404 page
 ├── resume.pdf               # CV (linked from the portfolio)
