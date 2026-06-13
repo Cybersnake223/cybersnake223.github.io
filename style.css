@@ -76,7 +76,7 @@
     .hero::after { content:''; position:absolute; pointer-events:none; bottom:10%; right:5%; width:35%; height:40%; background:radial-gradient(ellipse,rgba(201,168,76,0.025) 0%,transparent 70%); filter:blur(60px); }
     .hero-tag { display:flex; align-items:center; justify-content:center; gap:0.6rem; font-family:var(--mono); font-size:var(--t-xs); letter-spacing:0.16em; text-transform:uppercase; color:var(--teal); opacity:0.85; margin-bottom:1.5rem; animation:fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) both; }
     .hero-tag-line { width:28px; height:1px; background:currentColor; opacity:0.5; flex-shrink:0; }
-    .status-dot { width:6px; height:6px; border-radius:50%; background:#4ade80; flex-shrink:0; box-shadow:0 0 0 0 rgba(74,222,128,0.5); animation:pulse-dot 2.5s ease infinite; }
+    .status-dot { width:6px; height:6px; border-radius:50%; background:#4ade80; flex-shrink:0; }
     h1 { font-family:var(--serif); font-size:var(--t-3xl); font-weight:700; line-height:1.0; letter-spacing:-0.03em; color:var(--text); margin-bottom:0.2em; animation:fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.07s both; }
     h1 em { font-style:italic; font-weight:300; color:transparent; -webkit-text-stroke:1.5px rgba(62,207,207,0.65); paint-order:stroke fill; }
     .hero-handle { font-family:var(--mono); font-size:var(--t-sm); color:var(--faint); margin-bottom:1.6rem; animation:fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.13s both; }
@@ -144,7 +144,7 @@
     .info-value { font-size:var(--t-sm); color:var(--text); font-weight:400; line-height:1.45; }
     .info-value small { color:var(--faint); }
     .avail-badge { display:inline-flex; align-items:center; gap:0.4rem; background:rgba(74,222,128,0.07); border:1px solid rgba(74,222,128,0.2); color:#4ade80; font-size:var(--t-xs); font-family:var(--mono); padding:0.2rem 0.6rem; border-radius:999px; margin-top:0.2rem; }
-    .avail-dot { width:5px; height:5px; border-radius:50%; background:#4ade80; flex-shrink:0; animation:pulse-dot 2.5s ease infinite; }
+    .avail-dot { width:5px; height:5px; border-radius:50%; background:#4ade80; flex-shrink:0; }
     .skills-clusters { display:flex; flex-direction:column; gap:2rem; }
     .cluster-label { font-family:var(--mono); font-size:var(--t-xs); letter-spacing:0.14em; text-transform:uppercase; color:var(--faint); margin-bottom:0.75rem; }
     .cluster-tags { display:flex; flex-wrap:wrap; gap:0.45rem; }
@@ -207,7 +207,6 @@
     footer:hover .footer-easter { color:var(--faint); letter-spacing:0.05em; }
     @keyframes fadeUp { from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);} }
     @keyframes blink { 0%,100%{opacity:1}50%{opacity:0} }
-    @keyframes pulse-dot { 0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,0.45);}50%{box-shadow:0 0 0 5px rgba(74,222,128,0);} }
     @keyframes shimmer { 0%{background-position:-200% 0;}100%{background-position:200% 0;} }
     .svg-defs { display:none; }
 
@@ -320,14 +319,12 @@
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      animation: shimmerText 6s linear infinite;
     }
 
     /* 6. Primary button — animated gradient fill */
     .btn-primary {
       background: linear-gradient(135deg, var(--teal) 0%, #2db8b8 50%, #4adecc 100%);
       background-size: 200% 200%;
-      animation: btnGradient 3s ease infinite;
       box-shadow: 0 2px 12px rgba(62,207,207,0.18);
       position: relative;
       overflow: hidden;
@@ -342,6 +339,7 @@
     .btn-primary:hover {
       transform: translateY(-3px);
       box-shadow: 0 8px 32px rgba(62,207,207,0.45);
+      animation: btnGradient 3s ease infinite;
     }
     @keyframes btnGradient {
       0%,100% { background-position: 0% 50%; }
@@ -468,11 +466,6 @@
     hr.div {
       background: linear-gradient(90deg, transparent, var(--teal3) 25%, var(--gold2) 50%, var(--teal3) 75%, transparent);
       background-size: 200% auto;
-      animation: shimmerHr 5s linear infinite;
-    }
-    @keyframes shimmerHr {
-      0%   { background-position: -200% center; }
-      100% { background-position: 200% center; }
     }
 
     /* 18. Sec-label — glowing dot prefix */
@@ -480,7 +473,6 @@
       content: '\25B8 ';
       color: var(--teal);
       opacity: 0.8;
-      animation: blink 2s step-end infinite;
     }
 
     /* 19. Nav links — underline slide-in effect */
@@ -515,18 +507,12 @@
     /* 23. Availability badge — green glow pulse */
     .avail-badge {
       box-shadow: 0 0 0 0 rgba(74,222,128,0);
-      animation: availPulse 3s ease infinite;
-    }
-    @keyframes availPulse {
-      0%,100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
-      50%      { box-shadow: 0 0 12px rgba(74,222,128,0.2); }
     }
 
     /* 24. Project featured badge — gold shimmer */
     .project-featured-badge {
       background: linear-gradient(90deg, var(--gold2), rgba(201,168,76,0.25), var(--gold2));
       background-size: 200% auto;
-      animation: shimmerText 3s linear infinite;
     }
 
     
@@ -706,7 +692,6 @@
     .nav-status-dot {
       width: 5px; height: 5px; border-radius: 50%;
       background: #4ade80;
-      animation: pulse-dot 2.5s ease infinite;
     }
     @media (max-width: 640px) {
       .nav-status-text { display: none; }
