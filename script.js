@@ -493,6 +493,23 @@ document.querySelectorAll('.gh-stat-body img').forEach(img => {
   });
 })();
 
+/* ===== SKILL PROFICIENCY DOTS ===== */
+(function(){
+  document.querySelectorAll('.ctag[data-proficiency]').forEach(tag => {
+    const val = parseInt(tag.dataset.proficiency, 10);
+    if(val < 1 || val > 5) return;
+    const wrap = document.createElement('span');
+    wrap.className = 'prof-dots';
+    wrap.setAttribute('aria-hidden', 'true');
+    for(let i = 0; i < 5; i++) {
+      const dot = document.createElement('span');
+      dot.className = 'prof-dot' + (i < val ? ' on' : ' off');
+      wrap.appendChild(dot);
+    }
+    tag.appendChild(wrap);
+  });
+})();
+
 /* ===== 30. SKILL TAG STAGGER ENTRANCE ===== */
 (function(){
   if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
