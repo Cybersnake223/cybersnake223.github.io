@@ -642,7 +642,7 @@
     .form-submit:disabled .form-submit-spinner { display:inline-block; animation:formSpin 0.6s linear infinite; }
     @keyframes formSpin { to { transform:rotate(360deg); } }
     .form-submit {
-      align-self: flex-start;
+      align-self: center;
       background: linear-gradient(135deg, var(--teal), #2db8b8);
       color: #08121e; font-weight: 600; font-family: var(--sans);
       font-size: var(--t-sm); border: none; cursor: pointer;
