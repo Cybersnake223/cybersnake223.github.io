@@ -33,26 +33,29 @@ Personal portfolio — a static site deployed on GitHub Pages. Zero frameworks, 
 - Nav link text scramble effect on hover
 - 3D tilt + magnetic pull on project cards and buttons
 - Cursor glow effect (desktop only)
-- Skill tag stagger entrance with tooltip descriptions
+- Skill tag stagger entrance with tooltip descriptions and proficiency dots
 - Live IST clock in the about section
 - Page entrance animation (`<main>` fades in on load)
 - Availability status indicator in the nav bar
 - Structured data (JSON-LD) + full Open Graph / Twitter Card meta
 - GoatCounter analytics (no cookies, GDPR-friendly)
 - Offline support via service worker with cache-first asset strategy
-- Custom 404 page
+- Custom 404 page with glitch animation
 - `manifest.json` for PWA installability
 - `sitemap.xml` + `robots.txt` for search indexing
 - Sub-page: [Vicious Viper](https://cybersnake223.github.io/vicious-viper/) — event-driven Hyprland dotfiles showcase
 - Contribution snake — animated snake devouring GitHub activity squares, generated daily via `Platane/snk` GitHub Action
+- **Project case study** — featured Hypr dotfiles card includes a feature checklist with icons (Waybar, Yazi, Foot, rofi, PipeWire, custom scripts)
+- **Consolidated project cards** — companion repos (mkgit/mkgit-gh, matugen/matugen-themes) merged into unified cards with dual source links
+- **Loading spinner** — contact form submit button shows a CSS spinner while sending, replacing the send icon
 
 ## Project Structure
 
 ```
 cybersnake223.github.io/
 ├── index.html               # Main portfolio page
-├── style.css                # All styles (846 lines)
-├── script.js                # All JavaScript (505 lines)
+├── style.css                # All styles (886 lines)
+├── script.js                # All JavaScript (559 lines)
 ├── sw.js                    # Service worker (offline PWA)
 ├── 404.html                 # Custom 404 page
 ├── resume.pdf               # CV (linked from the portfolio)
