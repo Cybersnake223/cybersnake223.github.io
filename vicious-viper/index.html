@@ -38,6 +38,7 @@
     content="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset1.png"
   />
 
+  <link rel="preload" as="image" href="assets/asset4.png" fetchpriority="high">
   <link rel="stylesheet" href="assets/fonts/fonts.css">
   <link rel="stylesheet" href="vicious-viper.css">
 </head>
@@ -610,6 +611,7 @@
           </div>
 
         </div>
+        <p class="explorer-empty">No matching configs found</p>
       </div>
     </div>
   </section>
@@ -625,27 +627,27 @@
 
         <details class="faq-item">
           <summary>Does it work with NVIDIA GPUs?</summary>
-          <p>Yes. Vicious Viper includes NVIDIA compatibility checks in its installer and provides pre-configured environment variables for Hyprland on proprietary drivers.</p>
+          <div class="faq-content"><p>Yes. Vicious Viper includes NVIDIA compatibility checks in its installer and provides pre-configured environment variables for Hyprland on proprietary drivers.</p></div>
         </details>
 
         <details class="faq-item">
           <summary>Can I use it without Hyprland?</summary>
-          <p>No. The ecosystem is deeply integrated with Hyprland's event system. Some scripts and themes may work on other Wayland compositors, but the automation pipeline requires Hyprland.</p>
+          <div class="faq-content"><p>No. The ecosystem is deeply integrated with Hyprland's event system. Some scripts and themes may work on other Wayland compositors, but the automation pipeline requires Hyprland.</p></div>
         </details>
 
         <details class="faq-item">
           <summary>Does it work on desktop or only laptops?</summary>
-          <p>Both. The default profile is laptop-tuned, but the full profile and desktop profiles work on multi-monitor desktop setups including ultra-wide configurations.</p>
+          <div class="faq-content"><p>Both. The default profile is laptop-tuned, but the full profile and desktop profiles work on multi-monitor desktop setups including ultra-wide configurations.</p></div>
         </details>
 
         <details class="faq-item">
           <summary>How do I update installed modules?</summary>
-          <p>Re-run <code>./install.sh --select</code> to redeploy specific modules. Existing dotfiles are timestamped and backed up automatically before any override.</p>
+          <div class="faq-content"><p>Re-run <code>./install.sh --select</code> to redeploy specific modules. Existing dotfiles are timestamped and backed up automatically before any override.</p></div>
         </details>
 
         <details class="faq-item">
           <summary>Can I contribute or fork?</summary>
-          <p>Absolutely. The project is MIT licensed. Pull requests, issue reports, and forks are welcome. Check the GitHub repository for contribution guidelines.</p>
+          <div class="faq-content"><p>Absolutely. The project is MIT licensed. Pull requests, issue reports, and forks are welcome. Check the GitHub repository for contribution guidelines.</p></div>
         </details>
 
       </div>
@@ -672,69 +674,93 @@
     </div>
   </footer>
 
+  <div id="toTop" role="button" tabindex="0" aria-label="Back to top">&#8593;</div>
+
   <script>
-    /* Mobile nav */
     (function(){
+      /* Mobile nav */
       const toggle = document.getElementById('navToggle');
       const links  = document.getElementById('navLinks');
-      if(!toggle || !links) return;
-      function openMenu(){
-        links.classList.add('open');
-        toggle.classList.add('open');
-        toggle.setAttribute('aria-expanded', 'true');
-        const first = links.querySelector('a');
-        if(first) setTimeout(()=> first.focus(), 50);
-      }
-      function closeMenu(){
-        links.classList.remove('open');
-        toggle.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.focus();
-      }
-      toggle.addEventListener('click', ()=>{
-        links.classList.contains('open') ? closeMenu() : openMenu();
-      });
-      links.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-      document.addEventListener('keydown', e=>{
-        if(!links.classList.contains('open')) return;
-        if(e.key === 'Escape'){ closeMenu(); return; }
-        if(e.key === 'Tab'){
-          const focusable = [...links.querySelectorAll('a')];
-          const first = focusable[0], last = focusable[focusable.length-1];
-          if(e.shiftKey){
-            if(document.activeElement === first){ e.preventDefault(); last.focus(); }
-          } else {
-            if(document.activeElement === last){ e.preventDefault(); toggle.focus(); }
-          }
+      if(toggle && links){
+        function openMenu(){
+          links.classList.add('open');
+          toggle.classList.add('open');
+          toggle.setAttribute('aria-expanded', 'true');
+          const first = links.querySelector('a');
+          if(first) setTimeout(()=> first.focus(), 50);
         }
-      });
-      document.addEventListener('click', e=>{
-        if(links.classList.contains('open') && !links.contains(e.target) && e.target !== toggle){
-          closeMenu();
+        function closeMenu(){
+          links.classList.remove('open');
+          toggle.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.focus();
         }
-      });
-    })();
-
-    /* Explorer search */
-    (function(){
-      const search = document.querySelector('.explorer-search');
-      if(!search) return;
-      search.addEventListener('input', function(){
-        const q = this.value.toLowerCase();
-        document.querySelectorAll('.explorer-item').forEach(item => {
-          item.style.display = item.textContent.toLowerCase().includes(q) ? '' : 'none';
+        toggle.addEventListener('click', ()=>{
+          links.classList.contains('open') ? closeMenu() : openMenu();
         });
-      });
-    })();
+        links.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+        document.addEventListener('keydown', e=>{
+          if(!links.classList.contains('open')) return;
+          if(e.key === 'Escape'){ closeMenu(); return; }
+          if(e.key === 'Tab'){
+            const focusable = [...links.querySelectorAll('a')];
+            const first = focusable[0], last = focusable[focusable.length-1];
+            if(e.shiftKey){
+              if(document.activeElement === first){ e.preventDefault(); last.focus(); }
+            } else {
+              if(document.activeElement === last){ e.preventDefault(); toggle.focus(); }
+            }
+          }
+        });
+        document.addEventListener('click', e=>{
+          if(links.classList.contains('open') && !links.contains(e.target) && e.target !== toggle){
+            closeMenu();
+          }
+        });
+      }
 
-    /* Live GitHub stats */
-    (function(){
-      const starEl = document.querySelector('.hero-stats .stat:first-child strong');
-      if(!starEl) return;
-      fetch('https://api.github.com/repos/Cybersnake223/Hypr')
-        .then(r => r.ok ? r.json() : Promise.reject())
-        .then(d => { starEl.textContent = d.stargazers_count + '+'; })
-        .catch(() => {});
+      /* Explorer search with no-results state */
+      const search = document.querySelector('.explorer-search');
+      const emptyMsg = document.querySelector('.explorer-empty');
+      if(search){
+        search.addEventListener('input', function(){
+          const q = this.value.toLowerCase();
+          let visible = 0;
+          document.querySelectorAll('.explorer-item').forEach(item => {
+            const match = item.textContent.toLowerCase().includes(q);
+            item.style.display = match ? '' : 'none';
+            if(match) visible++;
+          });
+          if(emptyMsg) emptyMsg.style.display = visible ? 'none' : '';
+        });
+      }
+
+      /* Live GitHub stats with fallback */
+      (function(){
+        const starEl = document.querySelector('.hero-stats .stat:first-child strong');
+        if(!starEl) return;
+        const fallback = starEl.textContent;
+        fetch('https://api.github.com/repos/Cybersnake223/Hypr', { signal: AbortSignal.timeout(5000) })
+          .then(r => r.ok ? r.json() : Promise.reject())
+          .then(d => { starEl.textContent = d.stargazers_count + '+'; })
+          .catch(() => { starEl.textContent = fallback; });
+      })();
+
+      /* Back-to-top */
+      const toTop = document.getElementById('toTop');
+      if(toTop){
+        const hero = document.querySelector('.hero');
+        const check = () => {
+          const heroBottom = hero ? hero.offsetTop + hero.offsetHeight : window.innerHeight;
+          toTop.classList.toggle('visible', window.scrollY > heroBottom);
+        };
+        window.addEventListener('scroll', check, { passive: true });
+        check();
+        toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        toTop.addEventListener('keydown', e => {
+          if(e.key === 'Enter' || e.key === ' ') window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
     })();
   </script>
 
