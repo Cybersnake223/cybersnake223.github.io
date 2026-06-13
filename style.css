@@ -829,33 +829,6 @@
     @keyframes vtFadeOut { from{opacity:1;} to{opacity:0;} }
     @keyframes vtFadeIn  { from{opacity:0;} to{opacity:1;} }
 
-    /* Side Section Navigation Dots */
-    .section-nav {
-      position: fixed; right: 1.25rem; top: 50%; transform: translateY(-50%);
-      z-index: 150; display: flex; flex-direction: column; gap: 0.65rem;
-      pointer-events: none;
-    }
-    .section-nav-dot {
-      display: block; width: 10px; height: 10px; border-radius: 50%;
-      background: var(--border2); border: 1.5px solid transparent;
-      transition: background 250ms, border-color 250ms, transform 250ms cubic-bezier(0.22,1,0.36,1);
-      pointer-events: all; position: relative;
-    }
-    .section-nav-dot span {
-      position:absolute; inset:-4px; border-radius:50%;
-    }
-    .section-nav-dot:hover {
-      transform: scale(1.35);
-      background: var(--teal3);
-    }
-    .section-nav-dot.active {
-      background: var(--teal);
-      border-color: var(--teal3);
-      transform: scale(1.2);
-      box-shadow: 0 0 8px rgba(62,207,207,0.4);
-    }
-    @media (max-width: 720px) { .section-nav { display:none; } }
-
     /* Snake Contribution Activity */
     .snake-activity {
       max-width: 940px;

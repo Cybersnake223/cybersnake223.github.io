@@ -97,31 +97,6 @@ document.getElementById('year').textContent = new Date().getFullYear();
   sections.forEach(s => spy.observe(s));
 })();
 
-/* ===== SIDE SECTION NAVIGATION DOTS ===== */
-(function(){
-  const dots = document.querySelectorAll('.section-nav-dot');
-  const sections = document.querySelectorAll('section[id]');
-  if(!dots.length || !sections.length) return;
-  dots.forEach(dot => {
-    dot.addEventListener('click', e => {
-      e.preventDefault();
-      const id = dot.getAttribute('href').slice(1);
-      const target = document.getElementById(id);
-      if(target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  });
-  const spy = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if(e.isIntersecting) {
-        dots.forEach(d => d.classList.remove('active'));
-        const active = document.querySelector(`.section-nav-dot[href="#${e.target.id}"]`);
-        if(active) active.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-40% 0px -55% 0px' });
-  sections.forEach(s => spy.observe(s));
-})();
-
 /* ===== MOBILE NAV with keyboard trap + Escape ===== */
 (function(){
   const toggle = document.getElementById('navToggle');
