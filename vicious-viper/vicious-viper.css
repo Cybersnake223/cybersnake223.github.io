@@ -82,8 +82,10 @@
       outline-offset: 3px;
     }
 
-    html {
-      scroll-behavior: smooth;
+    @media (prefers-reduced-motion: no-preference) {
+      html {
+        scroll-behavior: smooth;
+      }
     }
 
     [id] {
@@ -131,6 +133,9 @@
       width: min(var(--container), calc(100% - 2rem));
       margin-inline: auto;
     }
+
+    .mb-2 { margin-bottom: 2rem; }
+    .mt-2 { margin-top: 2rem; }
 
     .nav {
       position: sticky;
@@ -313,7 +318,6 @@
     }
 
     .gradient {
-      background-size: 200% 200%;
       background: linear-gradient(135deg, var(--primary), var(--cyan));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -373,6 +377,36 @@
         );
       backdrop-filter: blur(18px);
     }
+
+    .btn svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    .hero-subtitle {
+      display: block;
+      opacity: 0.7;
+      font-size: 0.22em;
+      letter-spacing: 0.35em;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .hero-status {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      margin-bottom: 1rem;
+      width: 100%;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 0.82rem;
+    }
+
+    .status-primary { color: var(--primary); }
+    .status-cyan { color: var(--cyan); }
+    .status-purple { color: var(--purple); }
 
     .hero-stats {
       display: grid;
@@ -569,9 +603,11 @@
       box-shadow: var(--glow);
     }
 
-    .feature-card i {
+    .feature-card svg {
       color: var(--primary);
       margin-bottom: 1rem;
+      width: 24px;
+      height: 24px;
     }
 
     .feature-card h3 {
@@ -711,6 +747,11 @@
       font-size: 0.9rem;
     }
 
+    .explorer-top strong {
+      font-family: var(--mono);
+      color: var(--primary);
+    }
+
     .tag {
       font-family: var(--mono);
       color: var(--cyan);
@@ -773,6 +814,18 @@
     .nav-toggle.open span:nth-child(2) { opacity: 0; }
     .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
+    @media (max-width: 900px) {
+      .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .architecture {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     @media (max-width: 720px) {
       .nav-toggle {
         display: flex;
@@ -811,6 +864,12 @@
         padding-top: 5rem;
       }
 
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+      .architecture {
+        grid-template-columns: 1fr;
+      }
       .hero-stats {
         grid-template-columns: 1fr;
       }
