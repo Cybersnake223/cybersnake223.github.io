@@ -676,11 +676,24 @@
       --gold:#9a6e1c; --gold2:rgba(154,110,28,0.1);
       --sh-sm:0 1px 4px rgba(0,0,0,0.1); --sh-md:0 4px 20px rgba(0,0,0,0.12); --sh-lg:0 12px 48px rgba(0,0,0,0.15);
     }
-    html.light body::before { opacity: 0.008; }
-    html.light body::after { opacity: 0.5; }
+    html.light body::before { opacity: 0.006; }
+    html.light body::after { opacity: 0.35; }
     html.light nav { background: rgba(244,246,251,0.88); }
     html.light nav.scrolled { background: rgba(244,246,251,0.98); }
+    html.light .nav-links { background: rgba(244,246,251,0.98); }
     html.light .hero-terminal { background: rgba(244,246,251,0.92); }
+    html.light .hero::before {
+      background: radial-gradient(ellipse,rgba(26,153,153,0.04) 0%,transparent 70%);
+    }
+    html.light .hero::after {
+      background: radial-gradient(ellipse,rgba(154,110,28,0.02) 0%,transparent 70%);
+    }
+    html.light .contact-card::before {
+      background: linear-gradient(90deg,transparent,rgba(154,110,28,0.25),transparent);
+    }
+    html.light .snake-activity {
+      background: rgba(244,246,251,0.92);
+    }
     html.light h1 em {
       background: linear-gradient(120deg, transparent 0%, var(--teal) 40%, var(--gold) 70%, transparent 100%);
       background-size: 200% auto;
@@ -830,7 +843,4 @@
       border-radius: 3px;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-    }
-    html.light .snake-activity {
-      background: rgba(244,246,251,0.92);
     }
