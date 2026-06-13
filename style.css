@@ -669,12 +669,12 @@
 
     /* Light theme overrides */
     html.light {
-      --bg:#f4f6fb; --bg1:#edf0f7; --bg2:#e4e9f2; --bg3:#d8dff0;
-      --border:rgba(0,0,0,0.08); --border2:rgba(0,0,0,0.15);
-      --text:#0f1b2d; --muted:#4a5a7a; --faint:#6a7f9a;
-      --teal:#1a9999; --teal2:rgba(26,153,153,0.1); --teal3:rgba(26,153,153,0.25);
-      --gold:#9a6e1c; --gold2:rgba(154,110,28,0.1);
-      --sh-sm:0 1px 4px rgba(0,0,0,0.1); --sh-md:0 4px 20px rgba(0,0,0,0.12); --sh-lg:0 12px 48px rgba(0,0,0,0.15);
+      --bg:#dce1ec; --bg1:#d3d9e6; --bg2:#c8cfdf; --bg3:#bac3d6;
+      --border:rgba(0,0,0,0.12); --border2:rgba(0,0,0,0.2);
+      --text:#0b1422; --muted:#3a4a6a; --faint:#5a6f8f;
+      --teal:#158080; --teal2:rgba(21,128,128,0.1); --teal3:rgba(21,128,128,0.22);
+      --gold:#8a6218; --gold2:rgba(138,98,24,0.1);
+      --sh-sm:0 1px 4px rgba(0,0,0,0.12); --sh-md:0 4px 20px rgba(0,0,0,0.16); --sh-lg:0 12px 48px rgba(0,0,0,0.2);
     }
     html.light body::before { opacity: 0.006; }
     html.light body::after { opacity: 0.35; }
