@@ -4,6 +4,8 @@ Personal portfolio — a static site deployed on GitHub Pages. Zero frameworks, 
 
 **Live:** [cybersnake223.github.io](https://cybersnake223.github.io)
 
+[![Pages Deployment](https://github.com/Cybersnake223/cybersnake223.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Cybersnake223/cybersnake223.github.io/actions/workflows/pages/pages-build-deployment)
+
 ---
 
 ## Stack
@@ -22,14 +24,22 @@ Personal portfolio — a static site deployed on GitHub Pages. Zero frameworks, 
 
 ## Features
 
-- Fully responsive — mobile nav with hamburger toggle
+- Fully responsive — mobile nav with hamburger toggle and keyboard trap
 - Dark / light theme with OS preference detection and View Transitions API
 - Scroll-driven reveal animations respecting `prefers-reduced-motion`
-- Typewriter terminal widget in the hero
-- Scroll progress bar
+- Typewriter terminal widget in the hero cycling through neofetch, docker ps, and uptime
+- Scroll progress bar at the top of the viewport
+- Live GitHub API counters (repos, account age) with animated counting
+- Nav link text scramble effect on hover
+- 3D tilt + magnetic pull on project cards and buttons
+- Cursor glow effect (desktop only)
+- Skill tag stagger entrance with tooltip descriptions
+- Live IST clock in the about section
+- Page entrance animation (`<main>` fades in on load)
+- Availability status indicator in the nav bar
 - Structured data (JSON-LD) + full Open Graph / Twitter Card meta
 - GoatCounter analytics (no cookies, GDPR-friendly)
-- Offline support via service worker
+- Offline support via service worker with cache-first asset strategy
 - Custom 404 page
 - `manifest.json` for PWA installability
 - `sitemap.xml` + `robots.txt` for search indexing
@@ -41,8 +51,8 @@ Personal portfolio — a static site deployed on GitHub Pages. Zero frameworks, 
 ```
 cybersnake223.github.io/
 ├── index.html               # Main portfolio page
-├── style.css                # All styles
-├── script.js                # All JavaScript
+├── style.css                # All styles (846 lines)
+├── script.js                # All JavaScript (505 lines)
 ├── sw.js                    # Service worker (offline PWA)
 ├── 404.html                 # Custom 404 page
 ├── resume.pdf               # CV (linked from the portfolio)
@@ -72,6 +82,8 @@ npx serve .
 Then open `http://localhost:8080`.
 
 ## Design Decisions
+
+**CSS custom properties** — all colors, spacing, and shadows are driven by `--*` variables in `:root`, with a full light theme override under `html.light`. One-source-of-truth theming without a preprocessor.
 
 **External CSS/JS** — styles and scripts are separate files so browsers cache them independently. No bundler, no preprocessor, no framework.
 
