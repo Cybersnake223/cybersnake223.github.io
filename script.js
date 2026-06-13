@@ -71,7 +71,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
         animateCount(repoEl, repos);
         if(yearEl) animateCount(yearEl, years);
         const bioEl = document.querySelector('.gh-bio');
-        if(bioEl && data.bio) bioEl.textContent = data.bio;
+        if(bioEl && data.bio && data.bio.trim()) bioEl.textContent = data.bio;
       } catch(err){
         animateCount(repoEl, 6);
         if(yearEl) animateCount(yearEl, 2);

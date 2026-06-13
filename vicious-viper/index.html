@@ -27,22 +27,21 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet"></noscript>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap"
-    rel="stylesheet"
-  />
-
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/lucide@0.468.0" defer></script>
 
   <link rel="stylesheet" href="vicious-viper.css">
 </head>
 <body>
 
+  <a class="skip-link" href="#architecture">Skip to main content</a>
+
   <div class="noise"></div>
   <div class="scanline"></div>
 
-  <nav class="nav">
+  <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="container nav-inner">
       <a href="#" class="logo">
         <span class="logo-dot"></span>
@@ -558,6 +557,7 @@
             class="explorer-search"
             type="text"
             placeholder="Search configs, scripts, modules..."
+            aria-label="Search configuration files"
           />
         </div>
 

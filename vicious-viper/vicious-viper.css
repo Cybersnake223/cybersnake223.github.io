@@ -234,6 +234,15 @@
       }
     }
 
+    .skip-link {
+      position: absolute; top: -999px; left: 1rem; z-index: 9999;
+      background: var(--primary); color: #08110a;
+      padding: 0.5rem 1rem; border-radius: 8px;
+      font-weight: 600; font-size: 0.85rem;
+      font-family: var(--body); text-decoration: none;
+    }
+    .skip-link:focus { top: 1rem; }
+
     .scanline {
       position: fixed;
       inset: 0;
