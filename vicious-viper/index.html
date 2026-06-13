@@ -49,7 +49,10 @@
         Vicious Viper
       </a>
 
-      <ul class="nav-links">
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
         <li><a href="https://cybersnake223.github.io" style="color:var(--muted);">&larr; Portfolio</a></li>
         <li><a href="#architecture">Architecture</a></li>
         <li><a href="#features">Features</a></li>
@@ -625,6 +628,61 @@
 
   <script>
     lucide.createIcons();
+
+    /* Mobile nav */
+    (function(){
+      const toggle = document.getElementById('navToggle');
+      const links  = document.getElementById('navLinks');
+      if(!toggle || !links) return;
+      function openMenu(){
+        links.classList.add('open');
+        toggle.classList.add('open');
+        toggle.setAttribute('aria-expanded', 'true');
+        const first = links.querySelector('a');
+        if(first) setTimeout(()=> first.focus(), 50);
+      }
+      function closeMenu(){
+        links.classList.remove('open');
+        toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.focus();
+      }
+      toggle.addEventListener('click', ()=>{
+        links.classList.contains('open') ? closeMenu() : openMenu();
+      });
+      links.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+      document.addEventListener('keydown', e=>{
+        if(!links.classList.contains('open')) return;
+        if(e.key === 'Escape'){ closeMenu(); return; }
+        if(e.key === 'Tab'){
+          const focusable = [...links.querySelectorAll('a')];
+          const first = focusable[0], last = focusable[focusable.length-1];
+          if(e.shiftKey){
+            if(document.activeElement === first){ e.preventDefault(); last.focus(); }
+          } else {
+            if(document.activeElement === last){ e.preventDefault(); toggle.focus(); }
+          }
+        }
+      });
+      document.addEventListener('click', e=>{
+        if(links.classList.contains('open') && !links.contains(e.target) && e.target !== toggle){
+          closeMenu();
+        }
+      });
+    })();
+
+    /* Explorer search */
+    (function(){
+      const search = document.querySelector('.explorer-search');
+      if(!search) return;
+      search.addEventListener('input', function(){
+        const q = this.value.toLowerCase();
+        document.querySelectorAll('.explorer-item').forEach(item => {
+          item.style.display = item.textContent.toLowerCase().includes(q) ? '' : 'none';
+        });
+      });
+    })();
+
     if('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js').catch(() => {});
