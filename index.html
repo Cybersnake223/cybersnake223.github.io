@@ -71,7 +71,6 @@
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Stack</a></li>
     <li><a href="#github">GitHub</a></li>
-    <li><a href="#snake">Snake</a></li>
     <li><a href="#contact" class="nav-cta">Contact &#8599;</a></li>
   </ul>
   <button id="themeToggle" aria-label="Toggle light/dark theme" title="Toggle theme">
@@ -390,50 +389,28 @@
 </section>
 
 <hr class="div">
-<section class="section" id="snake" aria-label="Snake Game">
-  <div class="reveal" style="text-align:center;margin-bottom:2rem;">
-    <span class="sec-label" style="display:block;margin-bottom:0.6rem;">// 05 &mdash; snake workflow</span>
-    <h2 style="margin-bottom:0;">Terminal <em>snake</em></h2>
+<section class="section" id="activity" aria-label="Activity Snake">
+  <div class="reveal">
+    <span class="sec-label">// 05 &mdash; activity snake</span>
+    <h2>Contribution <em>snake</em></h2>
   </div>
-  <div class="snake-container reveal rd1">
-    <div class="snake-bar">
+  <div class="snake-activity reveal rd1">
+    <div class="snake-activity-bar">
       <span class="term-dot red"></span>
       <span class="term-dot yellow"></span>
       <span class="term-dot green"></span>
-      <span class="snake-title">snake@cybersnake223 ~ $ snake</span>
+      <span class="snake-activity-title">snake@cybersnake223 ~ $ ./activity-snake.sh</span>
     </div>
-    <div class="snake-body">
-      <canvas id="snakeCanvas" width="400" height="400"></canvas>
-      <div class="snake-overlay" id="snakeOverlay">
-        <div class="snake-overlay-content">
-          <div class="snake-overlay-icon">💀</div>
-          <div class="snake-overlay-title">GAME OVER</div>
-          <div class="snake-overlay-score">Score: <span id="snakeFinalScore">0</span></div>
-          <div class="snake-overlay-hint">Press <span class="snake-key">Enter</span> to restart</div>
-        </div>
-      </div>
-      <div class="snake-hud">
-        <span class="snake-hud-item">
-          <span class="snake-hud-lbl">Score</span>
-          <span class="snake-hud-val" id="snakeScore">0</span>
-        </span>
-        <span class="snake-hud-item">
-          <span class="snake-hud-lbl">High</span>
-          <span class="snake-hud-val" id="snakeHigh">0</span>
-        </span>
-        <span class="snake-hud-item">
-          <span class="snake-hud-lbl">Speed</span>
-          <span class="snake-hud-val" id="snakeSpeed">1</span>
-        </span>
-      </div>
-      <div class="snake-controls">
-        <span class="snake-ctrl-key">&uarr;</span>
-        <div class="snake-ctrl-row">
-          <span class="snake-ctrl-key">&larr;</span>
-          <span class="snake-ctrl-key">&darr;</span>
-          <span class="snake-ctrl-key">&rarr;</span>
-        </div>
-      </div>
+    <div class="snake-activity-body">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Cybersnake223/cybersnake223.github.io/output/github-contribution-grid-snake-dark.svg">
+        <img src="https://raw.githubusercontent.com/Cybersnake223/cybersnake223.github.io/output/github-contribution-grid-snake.svg" alt="GitHub contribution snake animation" loading="lazy">
+      </picture>
+    </div>
+    <div class="snake-activity-footer">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      Generated daily by <a href="https://github.com/Platane/snk" target="_blank" rel="noopener noreferrer">Platane/snk</a>
+      <span class="snake-activity-badge">GitHub Actions</span>
     </div>
   </div>
 </section>
