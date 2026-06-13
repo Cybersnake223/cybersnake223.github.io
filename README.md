@@ -25,7 +25,6 @@ Personal portfolio — a static site deployed on GitHub Pages. Zero frameworks, 
 - Fully responsive — mobile nav with hamburger toggle
 - Dark / light theme with OS preference detection and View Transitions API
 - Scroll-driven reveal animations respecting `prefers-reduced-motion`
-- Animated starfield canvas background
 - Typewriter terminal widget in the hero
 - Scroll progress bar
 - Structured data (JSON-LD) + full Open Graph / Twitter Card meta

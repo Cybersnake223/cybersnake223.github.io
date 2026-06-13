@@ -179,6 +179,7 @@
       color: var(--muted);
       transition: 0.2s ease;
     }
+    .nav-links .back-link { color: var(--faint); }
 
     .nav-links a:hover {
       color: var(--primary);
@@ -820,4 +821,10 @@
         animation-duration: 0.01ms !important;
         transition-duration: 0.01ms !important;
       }
+    }
+
+    @media (forced-colors: active) {
+      .btn-primary { background: Highlight; color: HighlightText; }
+      .feature-card, .arch-card, .metric, .shot, .explorer { border: 1px solid ButtonText; }
+      .nav-cta { border: 1px solid ButtonText; }
     }
