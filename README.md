@@ -11,8 +11,9 @@ Personal portfolio — a static site deployed on GitHub Pages. Zero frameworks, 
 | Thing | Choice |
 |---|---|
 | Markup | HTML5 |
-| Styling | CSS3 (external `style.css`) |
-| Scripting | Vanilla JS (external `script.js`) |
+| Styling | CSS3 (external `style.min.css`) |
+| Scripting | Vanilla JS (external `script.min.js`) |
+| Minification | `make` — csso-cli for CSS, terser for JS |
 | Fonts | JetBrains Mono · Fraunces · Inter (via Google Fonts) |
 | Analytics | [GoatCounter](https://www.goatcounter.com/) — privacy-friendly, no cookies |
 | Contact form | Formspree |
@@ -31,6 +32,7 @@ Personal portfolio — a static site deployed on GitHub Pages. Zero frameworks, 
 - Structured data (JSON-LD) + full Open Graph / Twitter Card meta
 - GoatCounter analytics (no cookies, GDPR-friendly)
 - Offline support via service worker
+- Keyboard shortcuts: <code>g p</code> projects · <code>g c</code> contact · <code>g h</code> home · <code>?</code> help
 - Custom 404 page
 - `manifest.json` for PWA installability
 - `sitemap.xml` + `robots.txt` for search indexing
@@ -41,10 +43,13 @@ Personal portfolio — a static site deployed on GitHub Pages. Zero frameworks, 
 ```
 cybersnake223.github.io/
 ├── index.html               # Main portfolio page
-├── 404.html                 # Custom 404 page
-├── style.css                # All styles
-├── script.js                # All JavaScript
+├── style.css                # Source (edit this)
+├── style.min.css            # Minified (referenced from HTML)
+├── script.js                # Source (edit this)
+├── script.min.js            # Minified (referenced from HTML)
 ├── sw.js                    # Service worker (offline PWA)
+├── 404.html                 # Custom 404 page
+├── Makefile                 # Build: `make` minifies CSS & JS
 ├── resume.pdf               # CV (linked from the portfolio)
 ├── manifest.json            # PWA manifest
 ├── sitemap.xml              # For search engines
@@ -52,7 +57,8 @@ cybersnake223.github.io/
 ├── google25f06b01202c5f94.html  # Google Search Console verification
 └── vicious-viper/
     ├── index.html           # Hyprland dotfiles showcase page
-    └── vicious-viper.css    # Vicious Viper styles
+    ├── vicious-viper.css    # Source (edit this)
+    └── vicious-viper.min.css # Minified (referenced from HTML)
 ```
 
 ## Running Locally
@@ -70,7 +76,7 @@ Then open `http://localhost:8080`.
 
 ## Design Decisions
 
-**No build system** — CSS and JS are external files but there's no bundler, preprocessor, or framework. Keeps deployment trivial and dependencies at zero.
+**Minimal build** — a `Makefile` minifies CSS (csso-cli) and JS (terser). No bundler, no preprocessor, no framework. Run `make` after editing source files; the HTML references the minified output.
 
 **Service worker** — enables offline access and PWA installability. Uses a network-first strategy for HTML (always fresh) and cache-first for assets (fast from cache).
 
