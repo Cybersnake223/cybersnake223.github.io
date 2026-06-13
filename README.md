@@ -1,6 +1,6 @@
 # cybersnake223.github.io
 
-Personal portfolio — a single-file static site deployed on GitHub Pages.
+Personal portfolio — a static site deployed on GitHub Pages. Zero frameworks, zero build steps.
 
 **Live:** [cybersnake223.github.io](https://cybersnake223.github.io)
 
@@ -8,15 +8,17 @@ Personal portfolio — a single-file static site deployed on GitHub Pages.
 
 ## Stack
 
-Built with zero dependencies, zero build steps, zero frameworks. Just HTML, CSS, and vanilla JS in a single `index.html`.
-
 | Thing | Choice |
 |---|---|
+| Markup | HTML5 |
+| Styling | CSS3 (external `style.css`) |
+| Scripting | Vanilla JS (external `script.js`) |
 | Fonts | JetBrains Mono · Fraunces · Inter (via Google Fonts) |
 | Analytics | [GoatCounter](https://www.goatcounter.com/) — privacy-friendly, no cookies |
 | Contact form | Formspree |
 | GitHub stats | github-readme-stats · streak-stats · activity-graph |
 | Hosting | GitHub Pages |
+| PWA | Service worker + manifest.json for offline support |
 
 ## Features
 
@@ -28,34 +30,39 @@ Built with zero dependencies, zero build steps, zero frameworks. Just HTML, CSS,
 - Scroll progress bar
 - Structured data (JSON-LD) + full Open Graph / Twitter Card meta
 - GoatCounter analytics (no cookies, GDPR-friendly)
+- Offline support via service worker
+- Custom 404 page
 - `manifest.json` for PWA installability
 - `sitemap.xml` + `robots.txt` for search indexing
+- Sub-page: [Vicious Viper](https://cybersnake223.github.io/vicious-viper/) — event-driven Hyprland dotfiles showcase
 
 ## Project Structure
 
 ```
 cybersnake223.github.io/
-├── index.html              # Everything — markup, styles, scripts
-├── resume.pdf              # CV (linked from the portfolio)
-├── manifest.json           # PWA manifest
-├── sitemap.xml             # For search engines
+├── index.html               # Main portfolio page
+├── style.css                # All styles
+├── script.js                # All JavaScript
+├── sw.js                    # Service worker (offline PWA)
+├── 404.html                 # Custom 404 page
+├── resume.pdf               # CV (linked from the portfolio)
+├── manifest.json            # PWA manifest
+├── sitemap.xml              # For search engines
 ├── robots.txt
-├── vicious-viper/          # Hyprland dotfiles showcase page
-└── google25f06b01202c5f94.html  # Google Search Console verification
+├── google25f06b01202c5f94.html  # Google Search Console verification
+└── vicious-viper/
+    ├── index.html           # Hyprland dotfiles showcase page
+    └── vicious-viper.css    # Vicious Viper styles
 ```
 
 ## Running Locally
-
-No build step required. Just open the file:
 
 ```bash
 git clone https://github.com/Cybersnake223/cybersnake223.github.io
 cd cybersnake223.github.io
 
-# Option 1 — Python (usually pre-installed)
 python3 -m http.server 8080
-
-# Option 2 — Node
+# or
 npx serve .
 ```
 
@@ -63,13 +70,13 @@ Then open `http://localhost:8080`.
 
 ## Design Decisions
 
-**Single file** — the entire site is one `index.html`. For a portfolio this size, a build system would add complexity with no real benefit. Easier to version, easier to deploy, loads fast.
+**External CSS/JS** — styles and scripts are separate files so browsers cache them independently. No bundler, no preprocessor, no framework.
 
-**No JS framework** — vanilla JS handles scroll animations, the terminal widget, theme toggling, and nav. The total JS is ~200 lines, all inlined.
+**Service worker** — enables offline access and PWA installability. Uses network-first for HTML (always fresh) and cache-first for assets (fast from cache).
 
-**GoatCounter over GA** — I don't want to track visitors with cookies or sell data to Google. GoatCounter gives me pageview counts with no privacy cost.
+**GoatCounter over GA** — pageview counts with no cookies and no privacy cost.
 
-**JetBrains Mono + Fraunces** — monospace for the terminal/code aesthetic, a serif for display headings to add contrast and character. Deliberately avoiding the Inter-only look.
+**JetBrains Mono + Fraunces** — monospace for the terminal/code aesthetic, serif for display headings to add contrast.
 
 ## License
 
