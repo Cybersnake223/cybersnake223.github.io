@@ -426,7 +426,20 @@ document.querySelectorAll('.gh-stat-body img').forEach(img => {
   });
 })();
 
-/* ===== NAV LINK TEXT SCRAMBLE ===== */
+/* ===== 26. GLITCH ON HERO NAME (hover only — no auto-trigger on load) ===== */
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const em = document.querySelector('h1 em');
+  if(!em) return;
+  function triggerGlitch(){
+    if(em.classList.contains('glitching')) return;
+    em.classList.add('glitching');
+    setTimeout(()=> em.classList.remove('glitching'), 480);
+  }
+  em.addEventListener('mouseenter', triggerGlitch);
+})();
+
+/* ===== 29. NAV LINK TEXT SCRAMBLE ===== */
 (function(){
   if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if(window.matchMedia('(pointer: coarse)').matches) return;

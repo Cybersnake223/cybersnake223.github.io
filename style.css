@@ -663,6 +663,56 @@
 
     /* ===== NEW EYE CANDY #26–31 ===== */
 
+    /* 26. Glitch effect on hero h1 em */
+    h1 em {
+      position: relative;
+      display: inline-block;
+    }
+    h1 em::before, h1 em::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      font-style: italic;
+      font-weight: 300;
+      background: inherit;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      opacity: 0;
+      pointer-events: none;
+    }
+    h1 em.glitching::before {
+      color: var(--gold);
+      -webkit-background-clip: unset;
+      background-clip: unset;
+      background: none;
+      clip-path: polygon(0 15%, 100% 15%, 100% 38%, 0 38%);
+      transform: translate(-4px, 0);
+      animation: glitchSlice1 0.45s steps(2) forwards;
+      opacity: 1;
+    }
+    h1 em.glitching::after {
+      color: var(--teal);
+      -webkit-background-clip: unset;
+      background-clip: unset;
+      background: none;
+      clip-path: polygon(0 62%, 100% 62%, 100% 82%, 0 82%);
+      transform: translate(4px, 0);
+      animation: glitchSlice2 0.45s steps(2) 0.04s forwards;
+      opacity: 1;
+    }
+    @keyframes glitchSlice1 {
+      0%   { opacity:1; transform:translate(-4px,0) skewX(-2deg); }
+      40%  { opacity:1; transform:translate(3px,0) skewX(1deg); }
+      100% { opacity:0; transform:translate(0,0); }
+    }
+    @keyframes glitchSlice2 {
+      0%   { opacity:1; transform:translate(4px,0) skewX(2deg); }
+      40%  { opacity:1; transform:translate(-2px,0) skewX(-1deg); }
+      100% { opacity:0; transform:translate(0,0); }
+    }
+
     /* 27. Rotating border beam on project cards (hover) */
     @property --beam-angle { syntax:'<angle>'; initial-value:0deg; inherits:false; }
     .project-card {
