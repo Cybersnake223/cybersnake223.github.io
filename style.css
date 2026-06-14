@@ -54,7 +54,7 @@
     .nav-cta { margin-left:0.5rem; background:var(--teal2) !important; border:1px solid var(--teal3) !important; color:var(--teal) !important; }
     .nav-cta:hover { background:rgba(62,207,207,0.2) !important; color:var(--text) !important; }
     .nav-toggle { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
-    .nav-toggle span { display:block; width:20px; height:1.5px; background:var(--muted); border-radius:2px; transition:transform 0.3s, opacity 0.3s; }
+    .nav-toggle span { display:block; width:20px; height:1.5px; background:var(--muted); border-radius:2px; transition:transform 0.25s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s; }
     .nav-toggle.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
     .nav-toggle.open span:nth-child(2) { opacity:0; }
     .nav-toggle.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
@@ -78,7 +78,7 @@
     .hero-tag-line { width:28px; height:1px; background:currentColor; opacity:0.5; flex-shrink:0; }
     .status-dot { width:6px; height:6px; border-radius:50%; background:#4ade80; flex-shrink:0; }
     h1 { font-family:var(--serif); font-size:var(--t-3xl); font-weight:700; line-height:1.1; letter-spacing:-0.03em; color:var(--text); margin-bottom:0.2em; animation:fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.07s both; }
-    h1 em { font-style:italic; font-weight:300; color:transparent; -webkit-text-stroke:1.5px rgba(62,207,207,0.65); paint-order:stroke fill; }
+    h1 em { font-style:italic; font-weight:300; -webkit-text-stroke:0px; }
     .hero-handle { font-family:var(--mono); font-size:var(--t-sm); color:var(--faint); margin-bottom:1.6rem; animation:fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.13s both; }
     .hero-handle .at { color:var(--teal); opacity:0.8; }
     .hero-tagline { font-size:var(--t-lg); font-weight:400; color:var(--muted); max-width:52ch; line-height:1.75; margin-bottom:2.5rem; animation:fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.18s both; margin-left:auto; margin-right:auto; }
@@ -99,18 +99,18 @@
     hr.div { border:none; height:1px; max-width:1020px; margin:0 auto; background:linear-gradient(90deg,transparent,var(--border2) 25%,var(--border2) 75%,transparent); }
     .projects-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); border-radius:var(--r-lg); overflow:hidden; border:1px solid var(--border); }
     @media (max-width:720px) { .projects-grid { grid-template-columns:1fr; } }
-    .project-card { background:var(--bg1); padding:1.8rem; display:flex; flex-direction:column; gap:0.75rem; border-left:2px solid transparent; position:relative; }
-    .project-card:hover { background:var(--bg2); border-left-color:var(--teal); }
+    .project-card { background:var(--bg1); padding:1.8rem; display:flex; flex-direction:column; gap:0.75rem; border-left:2px solid transparent; position:relative; transition:background 220ms, border-left-color 220ms, transform 220ms cubic-bezier(0.22,1,0.36,1), box-shadow 220ms; }
+    .project-card:hover { background:var(--bg2); border-left-color:var(--teal); transform:translateY(-2px); box-shadow:0 4px 24px rgba(0,0,0,0.3), 0 0 0 1px var(--border); }
+    .project-card.featured:hover { border-left-color:var(--gold); box-shadow:0 4px 24px rgba(0,0,0,0.3), 0 0 0 1px rgba(201,168,76,0.15); }
     .project-card:focus-within {
       outline: 2px solid var(--teal); outline-offset: 2px;
-      transform: translateY(-2px) translateX(1px);
-      box-shadow: -4px 8px 32px rgba(62,207,207,0.1), var(--sh-md);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 24px rgba(62,207,207,0.1), var(--sh-md);
       border-left-color: var(--teal);
     }
     .project-card.featured { grid-column:1/-1; padding:2.2rem 2.4rem; }
     .project-card.featured .project-desc { max-width:640px; }
-    .project-card.featured:hover { border-left-color:var(--gold); }
-    .project-card-more { background:var(--bg1); padding:1.8rem; min-height:160px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.5rem; text-decoration:none; text-align:center; transition:background 200ms; border-left:2px solid transparent; }
+    .project-card-more { background:var(--bg1); padding:1.8rem; min-height:160px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.5rem; text-decoration:none; text-align:center; transition:background 200ms, border-color 200ms; border-left:2px solid transparent; }
     .project-card-more.span2 { grid-column:1/-1; }
     .project-card-more:hover { background:var(--bg2); border-left-color:var(--faint); }
     .project-header { display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; }
@@ -150,11 +150,14 @@
     .info-value small { color:var(--faint); }
     .avail-badge { display:inline-flex; align-items:center; gap:0.4rem; background:rgba(74,222,128,0.07); border:1px solid rgba(74,222,128,0.2); color:#4ade80; font-size:var(--t-xs); font-family:var(--mono); padding:0.2rem 0.6rem; border-radius:999px; margin-top:0.2rem; }
     .avail-dot { width:5px; height:5px; border-radius:50%; background:#4ade80; flex-shrink:0; }
-    .skills-clusters { display:flex; flex-direction:column; gap:2rem; }
-    .cluster-label { font-family:var(--mono); font-size:var(--t-xs); letter-spacing:0.14em; text-transform:uppercase; color:var(--faint); margin-bottom:0.75rem; }
+    .skills-clusters { display:flex; flex-direction:column; gap:1.25rem; }
+    .skill-cluster { background:var(--bg1); border:1px solid var(--border); border-radius:var(--r-lg); padding:1.25rem 1.5rem; transition:border-color 200ms; }
+    .skill-cluster:hover { border-color:var(--border2); }
+    .cluster-label { font-family:var(--mono); font-size:var(--t-xs); letter-spacing:0.14em; text-transform:uppercase; color:var(--faint); margin-bottom:0.75rem; display:flex; align-items:center; gap:0.5rem; }
+    .cluster-label::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,var(--border2),transparent); }
     .cluster-tags { display:flex; flex-wrap:wrap; gap:0.45rem; }
-    .ctag { font-family:var(--mono); font-size:var(--t-xs); padding:0.3rem 0.7rem; border-radius:var(--r-sm); border:1px solid var(--border); color:var(--muted); background:var(--bg2); transition:border-color 180ms, color 180ms, background 180ms; }
-    .ctag:hover { border-color:var(--border2); color:var(--text); }
+    .ctag { font-family:var(--mono); font-size:var(--t-xs); padding:0.3rem 0.7rem; border-radius:var(--r-sm); border:1px solid var(--border); color:var(--muted); background:var(--bg2); transition:border-color 180ms, color 180ms, background 180ms, transform 150ms, box-shadow 200ms; cursor:default; }
+    .ctag:hover { border-color:var(--border2); color:var(--text); transform:translateY(-1px); }
     .ctag.hi { color:var(--text); border-color:var(--border2); background:var(--bg3); }
     .ctag.teal { color:var(--teal); border-color:var(--teal3); background:var(--teal2); }
     .ctag.gold { color:var(--gold); border-color:rgba(201,168,76,0.25); background:var(--gold2); }
@@ -174,8 +177,8 @@
     .gh-meta { display:flex; gap:1rem; flex-wrap:wrap; }
     .gh-meta-item { display:flex; align-items:center; gap:0.3rem; font-size:var(--t-xs); color:var(--faint); font-family:var(--mono); }
     .gh-counters { display:flex; gap:0.65rem; flex-wrap:wrap; margin-top:0.85rem; }
-    .gh-counter { display:flex; flex-direction:column; align-items:center; background:var(--bg3); border:1px solid var(--border); border-radius:var(--r-sm); padding:0.4rem 0.9rem; min-width:54px; transition:border-color 180ms; }
-    .gh-counter:hover { border-color:var(--teal3); }
+    .gh-counter { display:flex; flex-direction:column; align-items:center; background:var(--bg3); border:1px solid var(--border); border-radius:var(--r-sm); padding:0.4rem 0.9rem; min-width:54px; transition:border-color 200ms, background 200ms, box-shadow 200ms, transform 150ms; }
+    .gh-counter:hover { border-color:var(--teal3); background:var(--teal2); box-shadow:0 4px 16px rgba(62,207,207,0.2); transform:translateY(-2px); }
     .gh-counter-val { font-family:var(--mono); font-size:0.95rem; font-weight:700; color:var(--teal); }
     .gh-counter-lbl { font-size:var(--t-xs); font-family:var(--mono); color:var(--faint); text-transform:uppercase; letter-spacing:0.08em; margin-top:0.1rem; }
     .gh-stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.85rem; margin-bottom:0.85rem; }
@@ -208,8 +211,8 @@
     footer { position:relative; z-index:10; text-align:center; padding:1.5rem 2rem 2.5rem; font-family:var(--mono); font-size:var(--t-xs); color:var(--faint); border-top:1px solid var(--border); }
     footer a { color:var(--teal); text-decoration:none; opacity:0.75; }
     footer a:hover { opacity:1; }
-    .footer-easter { display:inline-block; margin-top:0.45rem; font-size:var(--t-xs); color:transparent; transition:color 0.5s, letter-spacing 0.5s; letter-spacing:-0.5em; cursor:default; user-select:none; }
-    footer:hover .footer-easter { color:var(--faint); letter-spacing:0.05em; }
+    .footer-easter { display:inline-block; margin-top:0.45rem; font-size:var(--t-xs); color:var(--bg3); transition:color 0.5s, opacity 0.5s; cursor:default; user-select:none; opacity:0.4; }
+    footer:hover .footer-easter { color:var(--faint); opacity:1; }
     @keyframes fadeUp { from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);} }
     @keyframes blink { 0%,100%{opacity:1}50%{opacity:0} }
     @keyframes shimmer { 0%{background-position:-200% 0;}100%{background-position:200% 0;} }
@@ -326,44 +329,13 @@
       color: transparent;
     }
 
-    /* 6. Primary button — animated gradient fill */
+    /* 6. Primary button — clean hover lift */
     .btn-primary {
-      background: linear-gradient(135deg, var(--teal) 0%, #2db8b8 50%, #4adecc 100%);
-      background-size: 200% 200%;
       box-shadow: 0 2px 12px rgba(62,207,207,0.18);
-      position: relative;
-      overflow: hidden;
     }
-    .btn-primary::after {
-      content:''; position:absolute; inset:0;
-      background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.18) 50%, transparent 60%);
-      transform: translateX(-100%);
-      transition: transform 0.5s ease;
-    }
-    .btn-primary:hover::after { transform: translateX(100%); }
     .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 32px rgba(62,207,207,0.45);
-      animation: btnGradient 3s ease infinite;
-    }
-    @keyframes btnGradient {
-      0%,100% { background-position: 0% 50%; }
-      50%      { background-position: 100% 50%; }
-    }
-
-    /* 7. Project cards — glowing teal left border on hover + lift */
-    .project-card {
-      transition: background 220ms, border-left-color 220ms, transform 220ms cubic-bezier(0.22,1,0.36,1), box-shadow 220ms;
-    }
-    .project-card:hover {
-      transform: translateY(-3px) translateX(2px);
-      box-shadow: -4px 8px 32px rgba(62,207,207,0.1), var(--sh-md);
-      border-left-color: var(--teal);
-    }
-    .project-card.featured:hover {
-      transform: translateY(-3px) translateX(2px);
-      box-shadow: -4px 8px 32px rgba(201,168,76,0.12), var(--sh-md);
-      border-left-color: var(--gold);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(62,207,207,0.35);
     }
 
     /* 8. Project name — teal glow on card hover */
@@ -378,9 +350,6 @@
     }
 
     /* 9. Skill tags — glowing hover state */
-    .ctag {
-      transition: border-color 200ms, color 200ms, background 200ms, transform 150ms, box-shadow 200ms;
-    }
     .ctag:hover {
       transform: translateY(-2px) scale(1.04);
       box-shadow: 0 4px 12px rgba(62,207,207,0.15);
@@ -411,27 +380,19 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* 12. GitHub counter cards glow on hover */
-    .gh-counter:hover {
-      border-color: var(--teal3);
-      background: var(--teal2);
-      box-shadow: 0 4px 16px rgba(62,207,207,0.2);
-    }
-    .gh-counter { transition: border-color 200ms, background 200ms, box-shadow 200ms, transform 150ms; }
-    .gh-counter:hover { transform: translateY(-2px); }
-
     /* 13. Section headings — subtle left accent line */
     h2 {
       position: relative;
-      padding-left: 1rem;
+      padding-left: 0.85rem;
     }
     h2::before {
       content: '';
       position: absolute;
-      left: 0; top: 0.1em; bottom: 0.1em;
-      width: 3px;
-      background: linear-gradient(180deg, var(--teal), transparent);
-      border-radius: 2px;
+      left: 0; top: 0.15em; bottom: 0.15em;
+      width: 2px;
+      background: linear-gradient(180deg, var(--teal), var(--teal3), transparent);
+      border-radius: 1px;
+      opacity: 0.8;
     }
 
     /* 14. Contact card — animated top gradient border */
@@ -453,18 +414,6 @@
     .social-link:hover {
       transform: translateY(-3px);
       box-shadow: 0 6px 20px rgba(62,207,207,0.2);
-    }
-
-    /* 16. Footer easter egg — rainbow reveal */
-    .footer-easter { transition: color 0.6s, letter-spacing 0.6s; }
-    footer:hover .footer-easter {
-      background: linear-gradient(90deg, var(--teal), var(--gold), var(--teal));
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: shimmerText 3s linear infinite;
-      letter-spacing: 0.06em;
     }
 
     /* 17. Divider lines — animated shimmer */
@@ -625,14 +574,14 @@
       background: var(--bg2); border: 1px solid var(--border);
       border-radius: var(--r-sm); color: var(--text);
       font-family: var(--sans); font-size: var(--t-sm);
-      padding: 0.6rem 0.85rem;
+      padding: 0.65rem 0.9rem;
       transition: border-color 200ms, box-shadow 200ms;
       outline: none; resize: none;
       -webkit-appearance: none;
     }
     .form-input:focus, .form-textarea:focus {
-      border-color: var(--teal3);
-      box-shadow: 0 0 0 3px rgba(62,207,207,0.1);
+      border-color: var(--teal);
+      box-shadow: 0 0 0 2px rgba(62,207,207,0.15);
     }
     .form-input::placeholder, .form-textarea::placeholder { color: var(--faint); }
     .form-textarea { min-height: 120px; line-height: 1.65; }
@@ -643,7 +592,7 @@
     @keyframes formSpin { to { transform:rotate(360deg); } }
     .form-submit {
       margin: 0 auto;
-      background: linear-gradient(135deg, var(--teal), #2db8b8);
+      background: var(--teal);
       color: #08121e; font-weight: 600; font-family: var(--sans);
       font-size: var(--t-sm); border: none; cursor: pointer;
       padding: 0.65rem 2rem; border-radius: var(--r-sm);
@@ -741,36 +690,6 @@
     }
 
 
-    /* ===== NEW EYE CANDY #26–31 ===== */
-
-    /* 27. Rotating border beam on project cards (hover) */
-    @property --beam-angle { syntax:'<angle>'; initial-value:0deg; inherits:false; }
-    .project-card {
-      --beam-angle: 0deg;
-    }
-    .project-card::after {
-      content:'';
-      position:absolute;
-      inset:-1px;
-      border-radius: var(--r-md);
-      padding:1px;
-      background: conic-gradient(from var(--beam-angle), transparent 65%, var(--teal) 80%, var(--gold) 88%, transparent 95%);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      opacity:0;
-      transition: opacity 300ms;
-      pointer-events:none;
-    }
-    .project-card.featured::after {
-      background: conic-gradient(from var(--beam-angle), transparent 65%, var(--gold) 80%, var(--teal) 88%, transparent 95%);
-    }
-    .project-card:hover::after {
-      opacity:1;
-      animation: beamSpin 2s linear infinite;
-    }
-    @keyframes beamSpin { to { --beam-angle: 360deg; } }
-
     /* 28. Scanline sweep on terminal body */
     .term-body {
       position: relative;
@@ -792,9 +711,7 @@
       100% { top:130%; }
     }
 
-    /* 29. Nav scramble — no extra CSS needed, handled in JS */
-
-    /* 30. Skill tag stagger entrance */
+    /* Skill tag stagger entrance */
     .ctag.stagger-hidden {
       opacity: 0;
       transform: translateY(10px);
@@ -806,7 +723,7 @@
       to { opacity:1; transform:translateY(0); }
     }
 
-    /* 31. IST clock — monospace teal inline */
+    /* IST clock — monospace teal inline */
     #ist-clock {
       font-family: var(--mono);
       font-size: var(--t-xs);
