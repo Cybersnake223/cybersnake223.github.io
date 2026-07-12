@@ -7,7 +7,6 @@ const PRECACHE = [
   '/script.js',
   '/404.html',
   '/manifest.json',
-  '/resume.pdf',
   '/sitemap.xml',
   '/robots.txt',
   '/vicious-viper/',

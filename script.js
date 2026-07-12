@@ -82,6 +82,53 @@ document.getElementById('year').textContent = new Date().getFullYear();
   io.observe(repoEl);
 })();
 
+/* ===== LIVE PROJECT STAR COUNTS ===== */
+(function(){
+  const starEls = document.querySelectorAll('.proj-star');
+  if(!starEls.length) return;
+  const map = {};
+  starEls.forEach(el => {
+    const r = el.getAttribute('data-repo');
+    if(r) map[r] = el.querySelector('.proj-star-count');
+  });
+
+  const CACHE_KEY = 'gh_stars', CACHE_TTL = 3600000;
+  function animateCount(el, target){
+    const dur = 900, start = performance.now();
+    function step(now){
+      const p = Math.min((now - start) / dur, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.floor(ease * target);
+      if(p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  async function load(){
+    try {
+      const cached = sessionStorage.getItem(CACHE_KEY);
+      if(cached){ const {data, ts} = JSON.parse(cached); if(Date.now() - ts < CACHE_TTL) return data; }
+    } catch(e){}
+    const res = await fetch('https://api.github.com/users/Cybersnake223/repos?per_page=100');
+    if(!res.ok) throw new Error('GitHub API error');
+    const data = await res.json();
+    try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({data, ts: Date.now()})); } catch(e){}
+    return data;
+  }
+
+  load().then(repos => {
+    if(!Array.isArray(repos)) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    repos.forEach(r => {
+      const el = map[r.full_name];
+      if(el && typeof r.stargazers_count === 'number'){
+        if(reduce) el.textContent = r.stargazers_count;
+        else animateCount(el, r.stargazers_count);
+      }
+    });
+  }).catch(()=>{ /* keep default 0 on failure */ });
+})();
+
 (function(){
   const links = document.querySelectorAll('.nav-links a[href^="#"]:not(.nav-cta)');
   const sections = document.querySelectorAll('section[id]');
@@ -157,20 +204,113 @@ document.getElementById('year').textContent = new Date().getFullYear();
   });
 })();
 
-/* GitHub stats card error handling */
-window.handleStatsError = function(img) {
-  img.classList.add('error');
+/* ===== GITHUB STATS — self-rendered on-brand fallback ===== */
+async function ghApi(path){
+  const res = await fetch('https://api.github.com' + path);
+  if(!res.ok) throw new Error('GitHub API error');
+  return res.json();
+}
+
+function ghCardLabel(img){
+  const card = img.closest('.gh-stat-card');
+  return card ? (card.querySelector('.gh-stat-lbl')?.textContent.trim() || '') : '';
+}
+
+function showFallback(img, html){
   const body = img.closest('.gh-stat-body');
+  const fb = body ? body.querySelector('.gh-stat-fallback') : null;
+  img.classList.add('error');
   if(body) body.classList.add('loaded');
-  if(!img.dataset.retried) {
-    img.dataset.retried = '1';
-    setTimeout(() => {
-      const src = img.src;
-      img.src = '';
-      img.src = src;
-    }, 3000);
+  if(fb){ fb.innerHTML = html; fb.classList.add('rendered'); fb.style.display = 'flex'; }
+}
+
+const LANG_COLORS = { Shell:'#89e051', HTML:'#e34c26', CSS:'#563d7c', Rust:'#dea584', Lua:'#019733', JavaScript:'#f1e05a', Python:'#3572A5', TypeScript:'#3178c6', Dockerfile:'#384d54', C:'#555555', 'C++':'#f34b7d' };
+
+function renderStatsFallback(data){
+  const followers = data.followers ?? 0, following = data.following ?? 0, repos = data.public_repos ?? 0;
+  const years = Math.max(1, Math.floor((Date.now() - new Date(data.created_at)) / (1000*60*60*24*365.25)));
+  const cell = (v,l)=>`<div class="fb-stat"><span class="fb-stat-val">${v}</span><span class="fb-stat-lbl">${l}</span></div>`;
+  return `<div class="fb-stats">${cell(repos,'Repos')}${cell(followers,'Followers')}${cell(following,'Following')}${cell(years,'Years')}</div>`;
+}
+
+function renderLangsFallback(repos){
+  const totals = {};
+  repos.forEach(r => { if(r.language) totals[r.language] = (totals[r.language]||0) + 1; });
+  const entries = Object.entries(totals).sort((a,b)=>b[1]-a[1]).slice(0,6);
+  const max = entries.length ? entries[0][1] : 1;
+  return `<div class="fb-langs">${entries.map(([name,count])=>{
+    const pct = Math.max(12, Math.round((count/max)*100));
+    const c = LANG_COLORS[name] || '#3ecfcf';
+    return `<div class="fb-lang"><span class="fb-lang-name">${name}</span><span class="fb-lang-bar"><span style="width:${pct}%;background:${c}"></span></span><span class="fb-lang-count">${count}</span></div>`;
+  }).join('')}</div>`;
+}
+
+function computeStreak(contrib){
+  const days = (contrib.contributions || []).filter(d=>d.date).sort((a,b)=>a.date.localeCompare(b.date));
+  if(!days.length) return null;
+  let longest = 0, cur = 0, prev = null;
+  const next = (a,b)=>{ const d1 = new Date(a+'T00:00:00'); const d2 = new Date(b+'T00:00:00'); return (d2 - d1) === 86400000; };
+  days.forEach(d=>{
+    if(d.count > 0){ cur = (prev && next(prev, d.date)) ? cur+1 : 1; longest = Math.max(longest, cur); }
+    else cur = 0;
+    prev = d.date;
+  });
+  let curStreak = 0;
+  for(let i = days.length-1; i >= 0; i--){ if(days[i].count > 0) curStreak++; else break; }
+  return { longest, curStreak };
+}
+
+function renderHeatmap(contrib){
+  const days = (contrib.contributions || []).filter(d=>d.date);
+  if(!days.length) return '<div class="fb-empty">No contribution data</div>';
+  const weeks = [];
+  for(let i = 0; i < days.length; i += 7) weeks.push(days.slice(i, i+7));
+  const lvlColor = ['#16202e','#0e3b3b','#146b6b','#1f9a9a','#3ecfcf'];
+  const cell = 9, gap = 3, w = weeks.length*(cell+gap), h = 7*(cell+gap);
+  let rects = '';
+  weeks.forEach((wk,wi)=> wk.forEach((d,di)=>{
+    const lvl = Math.max(0, Math.min(4, d.level||0));
+    const x = wi*(cell+gap), y = di*(cell+gap);
+    rects += `<rect x="${x}" y="${y}" width="${cell}" height="${cell}" rx="2" fill="${lvlColor[lvl]}"></rect>`;
+  }));
+  const total = contrib.total?.lastYear ?? days.reduce((s,d)=>s+(d.count||0),0);
+  return `<div class="fb-heat"><svg viewBox="0 0 ${w} ${h}" width="100%" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Contribution heatmap">${rects}</svg><div class="fb-heat-total">${total} contributions in the last year</div></div>`;
+}
+
+window.handleStatsError = function(img){
+  if(img.dataset.fallback) return;
+  img.dataset.fallback = '1';
+  const label = ghCardLabel(img);
+
+  if(label === 'Top Languages'){
+    try {
+      const cached = JSON.parse(sessionStorage.getItem('gh_stars') || '{}');
+      if(Array.isArray(cached.data)){ showFallback(img, renderLangsFallback(cached.data)); return; }
+    } catch(e){}
+    ghApi('/users/Cybersnake223/repos?per_page=100').then(repos=>showFallback(img, renderLangsFallback(repos))).catch(()=>showFallback(img,'<div class="fb-empty">Unavailable</div>'));
+    return;
   }
+  if(label === 'GitHub Stats'){
+    ghApi('/users/Cybersnake223').then(data=>showFallback(img, renderStatsFallback(data))).catch(()=>showFallback(img,'<div class="fb-empty">Unavailable</div>'));
+    return;
+  }
+  if(label === 'Activity Graph'){
+    const yr = new Date().getFullYear();
+    fetch(`https://github-contributions-api.jogruber.de/v4/Cybersnake223?y=${yr}`).then(r=>r.ok?r.json():Promise.reject()).then(d=>showFallback(img, renderHeatmap(d))).catch(()=>showFallback(img,'<div class="fb-empty">Activity unavailable</div>'));
+    return;
+  }
+  if(label === 'Contribution Streak'){
+    const yr = new Date().getFullYear();
+    fetch(`https://github-contributions-api.jogruber.de/v4/Cybersnake223?y=${yr}`).then(r=>r.ok?r.json():Promise.reject()).then(d=>{
+      const s = computeStreak(d);
+      if(!s) return showFallback(img,'<div class="fb-empty">No data</div>');
+      showFallback(img, `<div class="fb-stats"><div class="fb-stat"><span class="fb-stat-val">${s.curStreak}</span><span class="fb-stat-lbl">Current</span></div><div class="fb-stat"><span class="fb-stat-val">${s.longest}</span><span class="fb-stat-lbl">Longest</span></div></div>`);
+    }).catch(()=>showFallback(img,'<div class="fb-empty">Unavailable</div>'));
+    return;
+  }
+  showFallback(img, '<div class="fb-empty">Failed to load</div>');
 };
+
 document.querySelectorAll('.gh-stat-body img').forEach(img => {
   if(img.complete && img.naturalWidth > 0) { img.classList.add('loaded'); img.parentElement.classList.add('loaded'); }
   else if(img.complete && img.naturalWidth === 0) window.handleStatsError(img);
