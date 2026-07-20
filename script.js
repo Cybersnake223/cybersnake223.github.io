@@ -422,7 +422,8 @@ document.querySelectorAll('.gh-stat-body img').forEach(img => {
   const cmdEl = document.getElementById('termCmd');
   const curEl = document.getElementById('termCursor');
   const outEl = document.getElementById('termOutput');
-  if(!cmdEl || !outEl) return;
+  const termWrap = document.querySelector('.hero-terminal');
+  if(!cmdEl || !outEl || !termWrap) return;
 
   const sequences = [
     { cmd:'neofetch --off', out:[
@@ -449,7 +450,18 @@ document.querySelectorAll('.gh-stat-body img').forEach(img => {
   ];
 
   let seq = 0;
+  let paused = false;
+  let seqTimer = null;
+
+  termWrap.addEventListener('mouseenter', ()=>{ paused = true; });
+  termWrap.addEventListener('mouseleave', ()=>{
+    paused = false;
+    runSequence();
+  });
+
   function runSequence(){
+    if(paused) return;
+    if(seqTimer) { clearTimeout(seqTimer); seqTimer = null; }
     const s = sequences[seq % sequences.length];
     seq++;
     let i = 0;
@@ -457,27 +469,29 @@ document.querySelectorAll('.gh-stat-body img').forEach(img => {
     outEl.innerHTML = '';
     curEl.style.display = 'inline-block';
     function typeChar(){
+      if(paused) return;
       if(i <= s.cmd.length){
         cmdEl.textContent = s.cmd.slice(0,i);
         i++;
-        setTimeout(typeChar, 45 + Math.random()*25);
+        seqTimer = setTimeout(typeChar, 45 + Math.random()*25);
       } else {
         curEl.style.display = 'none';
         let oi = 0;
         function showLine(){
+          if(paused) return;
           if(oi < s.out.length){
             const d = document.createElement('div');
             d.className = 'term-out';
             d.innerHTML = s.out[oi];
             outEl.appendChild(d);
             oi++;
-            setTimeout(showLine, 80);
+            seqTimer = setTimeout(showLine, 80);
           } else {
-            setTimeout(()=>{
+            seqTimer = setTimeout(()=>{
               outEl.style.transition = 'opacity 0.4s';
               outEl.style.opacity = '0';
               cmdEl.style.opacity = '0';
-              setTimeout(()=>{
+              seqTimer = setTimeout(()=>{
                 outEl.innerHTML = '';
                 outEl.style.opacity = '1';
                 cmdEl.style.opacity = '1';
@@ -486,7 +500,7 @@ document.querySelectorAll('.gh-stat-body img').forEach(img => {
             }, 2800);
           }
         }
-        setTimeout(showLine, 180);
+        seqTimer = setTimeout(showLine, 180);
       }
     }
     typeChar();
