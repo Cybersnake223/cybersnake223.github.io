@@ -693,6 +693,7 @@ document.querySelectorAll('.gh-stat-body img').forEach(img => {
 (function(){
   const el = document.getElementById('ist-clock');
   if(!el) return;
+  let clockInterval = null;
   function tick(){
     const now = new Date();
     const ist = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
@@ -702,7 +703,18 @@ document.querySelectorAll('.gh-stat-body img').forEach(img => {
     el.textContent = h + ':' + m + ':' + s + ' IST';
   }
   tick();
-  setInterval(tick, 1000);
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        tick();
+        clockInterval = setInterval(tick, 1000);
+      } else {
+        clearInterval(clockInterval);
+        clockInterval = null;
+      }
+    });
+  }, { threshold: 0 });
+  io.observe(el);
 })();
 
 /* ===== SERVICE WORKER REGISTRATION ===== */

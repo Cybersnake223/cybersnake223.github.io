@@ -1,4 +1,4 @@
-const CACHE = 'portfolio-v1';
+const CACHE = 'portfolio-' + new Date().toISOString().slice(0,10);
 
 const PRECACHE = [
   '/',
