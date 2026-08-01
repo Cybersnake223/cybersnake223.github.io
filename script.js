@@ -22,7 +22,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
   const io = new IntersectionObserver(entries=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
   }, { threshold:0.07, rootMargin:'0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  document.querySelectorAll('.reveal, .reveal-heading, .reveal-content').forEach(el => io.observe(el));
 })();
 
 /* ===== LIVE GITHUB API COUNTERS ===== */
@@ -319,6 +319,7 @@ document.querySelectorAll('.gh-stat-body img').forEach(img => {
 /* Cursor glow */
 (function(){
   if(window.matchMedia('(pointer: coarse)').matches) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const c = document.createElement('div');
   c.id = 'cursor-glow';
   Object.assign(c.style, {
@@ -333,9 +334,11 @@ document.querySelectorAll('.gh-stat-body img').forEach(img => {
   });
   document.body.appendChild(c);
   let mx=window.innerWidth/2, my=window.innerHeight/2, cx=mx, cy=my, raf=null;
-  document.addEventListener('mousemove', e=>{ mx=e.clientX; my=e.clientY; c.style.opacity='1'; }, {passive:true});
-  document.addEventListener('mouseleave', ()=>{ c.style.opacity='0'; });
+  let visible = false;
+  document.addEventListener('mousemove', e=>{ mx=e.clientX; my=e.clientY; if(!visible){visible=true;c.style.opacity='1';} }, {passive:true});
+  document.addEventListener('mouseleave', ()=>{ visible=false; c.style.opacity='0'; });
   function loop(){
+    if(!visible){ raf=requestAnimationFrame(loop); return; }
     cx += (mx-cx)*0.12;
     cy += (my-cy)*0.12;
     c.style.left = cx+'px';
@@ -451,16 +454,25 @@ document.querySelectorAll('.gh-stat-body img').forEach(img => {
 
   let seq = 0;
   let paused = false;
+  let offscreen = false;
   let seqTimer = null;
 
   termWrap.addEventListener('mouseenter', ()=>{ paused = true; });
   termWrap.addEventListener('mouseleave', ()=>{
     paused = false;
-    runSequence();
+    if(!offscreen) runSequence();
   });
 
+  const heroIO = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      offscreen = !e.isIntersecting;
+      if(!offscreen && !paused) runSequence();
+    });
+  }, { threshold: 0 });
+  heroIO.observe(termWrap);
+
   function runSequence(){
-    if(paused) return;
+    if(paused || offscreen) return;
     if(seqTimer) { clearTimeout(seqTimer); seqTimer = null; }
     const s = sequences[seq % sequences.length];
     seq++;
@@ -469,7 +481,7 @@ document.querySelectorAll('.gh-stat-body img').forEach(img => {
     outEl.innerHTML = '';
     curEl.style.display = 'inline-block';
     function typeChar(){
-      if(paused) return;
+      if(paused || offscreen) return;
       if(i <= s.cmd.length){
         cmdEl.textContent = s.cmd.slice(0,i);
         i++;
@@ -478,7 +490,7 @@ document.querySelectorAll('.gh-stat-body img').forEach(img => {
         curEl.style.display = 'none';
         let oi = 0;
         function showLine(){
-          if(paused) return;
+          if(paused || offscreen) return;
           if(oi < s.out.length){
             const d = document.createElement('div');
             d.className = 'term-out';
@@ -520,11 +532,26 @@ document.querySelectorAll('.gh-stat-body img').forEach(img => {
   const osPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
   let light = saved ? saved === 'light' : osPrefersLight;
 
+  function swapStatsImages(){
+    const imgs = document.querySelectorAll('.gh-stat-body img[data-dark][data-light]');
+    imgs.forEach(img => {
+      const url = light ? img.dataset.light : img.dataset.dark;
+      if(img.src !== url){
+        img.classList.remove('loaded');
+        img.parentElement.classList.remove('loaded');
+        img.src = url;
+      }
+    });
+  }
+
   function applyTheme(){
     document.documentElement.classList.toggle('light', light);
     icon.innerHTML = light ? sunSvg : moonSvg;
     btn.setAttribute('aria-label', light ? 'Switch to dark theme' : 'Switch to light theme');
     localStorage.setItem('theme', light ? 'light' : 'dark');
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if(meta) meta.content = light ? '#e3e8f1' : '#080c14';
+    swapStatsImages();
   }
 
   function toggleWithTransition(){
@@ -586,12 +613,21 @@ document.querySelectorAll('.gh-stat-body img').forEach(img => {
   const form = document.getElementById('contactForm');
   const status = document.getElementById('formStatus');
   if(!form || !status) return;
+
+  function isHoneypotFilled(){
+    const hp = form.querySelector('#website');
+    return hp && hp.value.length > 0;
+  }
+
   form.addEventListener('submit', async e=>{
     e.preventDefault();
+    if(isHoneypotFilled()) return;
+
     const btn = form.querySelector('.form-submit');
     btn.disabled = true;
     btn.style.opacity = '0.7';
     status.textContent = 'Sending\u2026';
+    status.style.color = '';
     try {
       const res = await fetch(form.action, {
         method:'POST',
@@ -599,7 +635,7 @@ document.querySelectorAll('.gh-stat-body img').forEach(img => {
         headers:{ 'Accept':'application/json' }
       });
       if(res.ok){
-        status.textContent = '\u2713 Message sent! I\'ll reply soon.';
+        status.innerHTML = '<span class="form-success-anim"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10" class="success-circle"/><polyline points="8 12 11 15 16 9" class="success-check"/></svg></span> Message sent! I\'ll reply soon.';
         status.style.color = '#4ade80';
         form.reset();
       } else {
@@ -662,6 +698,13 @@ document.querySelectorAll('.gh-stat-body img').forEach(img => {
     }
     tag.appendChild(wrap);
     tag.setAttribute('aria-label', tag.textContent.trim().replace(/\s+/g, ' ') + ' — proficiency ' + val + ' out of 5');
+  });
+})();
+
+/* ===== TOOLTIP ACCESSIBILITY: data-tip → title ===== */
+(function(){
+  document.querySelectorAll('[data-tip]').forEach(el => {
+    if(!el.getAttribute('title')) el.setAttribute('title', el.dataset.tip);
   });
 })();
 

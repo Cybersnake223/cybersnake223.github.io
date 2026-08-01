@@ -22,9 +22,9 @@
   <meta property="og:title" content="Abhishek — Linux Developer &amp; DevOps Engineer">
   <meta property="og:description"
     content="Linux systems developer crafting elegant infrastructure from the terminal up.">
-  <meta property="og:image" content="https://github.com/Cybersnake223.png">
-  <meta property="og:image:width" content="264">
-  <meta property="og:image:height" content="264">
+  <meta property="og:image" content="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset1.png">
+  <meta property="og:image:width" content="800">
+  <meta property="og:image:height" content="450">
   <meta property="og:url" content="https://cybersnake223.github.io">
   <meta property="og:locale" content="en_IN">
   <meta property="og:site_name" content="Abhishek Aryan">
@@ -33,17 +33,16 @@
   <meta name="twitter:title" content="Abhishek — Linux Developer &amp; DevOps Engineer">
   <meta name="twitter:description"
     content="Linux systems developer crafting elegant infrastructure from the terminal up.">
-  <meta name="twitter:image" content="https://github.com/Cybersnake223.png">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset1.png">
   <meta name="twitter:creator" content="@cybersnake223">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Person","name":"Abhishek Aryan","url":"https://cybersnake223.github.io","image":"https://github.com/Cybersnake223.png","email":"nemesisjr111@gmail.com","description":"Linux systems developer and DevOps engineer based in New Delhi, India. Passionate about open-source software, self-hosted infrastructure, and Arch Linux.","sameAs":["https://github.com/Cybersnake223"],"jobTitle":"Linux Developer & DevOps Engineer","knowsAbout":["Linux","Docker","Bash","Hyprland","Metabase","Apache Superset","DevOps","Wayland","Self-hosted Infrastructure","CachyOS"],"address":{"@type":"PostalAddress","addressLocality":"New Delhi","addressCountry":"IN"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Computer Science Program, New Delhi"}}
+  {"@context":"https://schema.org","@type":"Person","name":"Abhishek Aryan","url":"https://cybersnake223.github.io","image":"https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset1.png","email":"nemesisjr111@gmail.com","description":"Linux systems developer and DevOps engineer based in New Delhi, India. Passionate about open-source software, self-hosted infrastructure, and Arch Linux.","sameAs":["https://github.com/Cybersnake223"],"jobTitle":"Linux Developer & DevOps Engineer","knowsAbout":["Linux","Docker","Bash","Hyprland","Metabase","Apache Superset","DevOps","Wayland","Self-hosted Infrastructure","CachyOS"],"address":{"@type":"PostalAddress","addressLocality":"New Delhi","addressCountry":"IN"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Computer Science Program, New Delhi"}}
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
-  <link rel="preconnect" href="https://github-readme-stats.vercel.app">
-  <link rel="preconnect" href="https://streak-stats.demolab.com">
-  <link rel="preconnect" href="https://github-contributions-api.jogruber.de" crossorigin>
+  <link rel="dns-prefetch" href="https://github-stats-extended.vercel.app">
+  <link rel="dns-prefetch" href="https://streak-stats.demolab.com">
+  <link rel="dns-prefetch" href="https://github-contributions-api.jogruber.de">
   <link rel="dns-prefetch" href="https://api.github.com">
   <link rel="preload"
     href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap"
@@ -162,6 +161,7 @@
       </div>
 
       <div class="hero-terminal" role="region" aria-label="Terminal demo">
+        <div class="sr-only" id="termSummary">Interactive terminal showing: neofetch system info (CachyOS Linux, Hyprland, Bash, Foot, Neovim), docker container status (metabase, superset, mariadb, nginx-proxy all running), system uptime, and project directory listing.</div>
         <div class="term-bar">
           <span class="term-dot red"></span>
           <span class="term-dot yellow"></span>
@@ -172,6 +172,7 @@
           <div class="term-line"><span class="term-prompt">❯</span><span class="term-cmd" id="termCmd"></span><span
               class="term-cursor" id="termCursor"></span></div>
           <div id="termOutput"></div>
+        </div>
       </div>
     </section>
 
@@ -192,7 +193,7 @@
               </svg>
               <span class="project-name">Hypr &mdash; Vicious Viper Dotfiles</span>
             </div>
-            <div style="display:flex;align-items:center;gap:0.5rem;flex-shrink:0;">
+            <div class="project-badge-row">
               <span class="project-featured-badge">Featured</span>
               <div class="project-links">
                 <a href="https://cybersnake223.github.io/vicious-viper/" target="_blank" rel="noopener noreferrer"
@@ -213,6 +214,12 @@
           <p class="project-desc">A complete Hyprland desktop environment built over months of iteration on Arch Linux /
             CachyOS. A production-ready Wayland-native workflow with a cohesive dark theme, custom keybinds, and
             automation.</p>
+          <div class="project-screenshot">
+            <picture>
+              <source srcset="vicious-viper/assets/asset1.webp" type="image/webp">
+              <img src="vicious-viper/assets/asset1.png" alt="Hyprland desktop setup showing Waybar, Foot terminal, and rofi launcher with a cohesive dark theme" width="800" height="450" loading="lazy" decoding="async">
+            </picture>
+          </div>
           <div class="project-features">
             <div class="project-feature"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2.5" aria-hidden="true">
@@ -406,10 +413,10 @@
         </div>
         <a href="https://github.com/Cybersnake223" target="_blank" rel="me noopener noreferrer"
           class="project-card-more span2 reveal rd1">
-          <svg width="20" height="20" style="color:var(--faint);" aria-hidden="true">
+          <svg width="20" height="20" aria-hidden="true">
             <use href="#ico-gh" />
           </svg>
-          <span style="font-family:var(--mono);font-size:var(--t-xs);color:var(--faint);">More on GitHub &rarr;</span>
+          <span>More on GitHub &rarr;</span>
         </a>
       </div>
     </section>
@@ -469,8 +476,7 @@
               <span class="info-icon">📄</span>
               <div>
                 <div class="info-label">Résumé</div>
-                <div class="info-value"><a href="/resume.pdf" download
-                    style="color:var(--teal);text-decoration:none;font-size:var(--t-xs);font-family:var(--mono);">Download
+                <div class="info-value"><a href="/resume.pdf" download class="resume-link">Download
                     PDF &darr;</a></div>
               </div>
             </div>
@@ -590,7 +596,9 @@
             <div class="gh-stat-skeleton" aria-hidden="true">
               <div class="gh-stat-skeleton-inner"></div>
             </div>            <img
-              src="https://github-readme-stats.vercel.app/api?username=Cybersnake223&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0c1220&title_color=3ecfcf&icon_color=c9a84c&text_color=7a90b2"
+              src="https://github-stats-extended.vercel.app/api?username=Cybersnake223&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0c1220&title_color=3ecfcf&icon_color=c9a84c&text_color=7a90b2"
+              data-dark="https://github-stats-extended.vercel.app/api?username=Cybersnake223&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0c1220&title_color=3ecfcf&icon_color=c9a84c&text_color=7a90b2"
+              data-light="https://github-stats-extended.vercel.app/api?username=Cybersnake223&show_icons=true&theme=default&hide_border=true&bg_color=d8deea&title_color=0a6e6e&icon_color=7a5410&text_color=28395a"
               alt="GitHub stats" width="495" height="195" loading="lazy" decoding="async"
               onload="this.parentElement.classList.add('loaded');this.classList.add('loaded')"
               onerror="handleStatsError(this)">
@@ -604,7 +612,9 @@
             <div class="gh-stat-skeleton" aria-hidden="true">
               <div class="gh-stat-skeleton-inner"></div>
             </div>            <img
-              src="https://github-readme-stats.vercel.app/api/top-langs/?username=Cybersnake223&layout=compact&theme=tokyonight&hide_border=true&bg_color=0c1220&title_color=3ecfcf&text_color=7a90b2&langs_count=6"
+              src="https://github-stats-extended.vercel.app/api/top-langs/?username=Cybersnake223&layout=compact&theme=tokyonight&hide_border=true&bg_color=0c1220&title_color=3ecfcf&text_color=7a90b2&langs_count=6"
+              data-dark="https://github-stats-extended.vercel.app/api/top-langs/?username=Cybersnake223&layout=compact&theme=tokyonight&hide_border=true&bg_color=0c1220&title_color=3ecfcf&text_color=7a90b2&langs_count=6"
+              data-light="https://github-stats-extended.vercel.app/api/top-langs/?username=Cybersnake223&layout=compact&theme=default&hide_border=true&bg_color=d8deea&title_color=0a6e6e&text_color=28395a&langs_count=6"
               alt="Top languages" width="495" height="195" loading="lazy" decoding="async"
               onload="this.parentElement.classList.add('loaded');this.classList.add('loaded')"
               onerror="handleStatsError(this)">
@@ -619,6 +629,8 @@
               <div class="gh-stat-skeleton-inner"></div>
             </div>            <img
               src="https://streak-stats.demolab.com?user=Cybersnake223&theme=tokyonight-duo&hide_border=true&background=0c1220&ring=3ecfcf&fire=c9a84c&currStreakLabel=3ecfcf&dates=7a90b2&sideNums=3ecfcf&sideLabels=7a90b2"
+              data-dark="https://streak-stats.demolab.com?user=Cybersnake223&theme=tokyonight-duo&hide_border=true&background=0c1220&ring=3ecfcf&fire=c9a84c&currStreakLabel=3ecfcf&dates=7a90b2&sideNums=3ecfcf&sideLabels=7a90b2"
+              data-light="https://streak-stats.demolab.com?user=Cybersnake223&theme=default&hide_border=true&background=d8deea&ring=0a6e6e&fire=7a5410&currStreakLabel=0a6e6e&dates=28395a&sideNums=0a6e6e&sideLabels=28395a"
               alt="GitHub streak" width="495" height="195" loading="lazy" decoding="async"
               onload="this.parentElement.classList.add('loaded');this.classList.add('loaded')"
               onerror="handleStatsError(this)">
@@ -628,11 +640,13 @@
         <div class="gh-stat-card span2">
           <div class="gh-stat-header"><span class="gh-stat-dot" style="background:#4ade80;"></span><span
               class="gh-stat-lbl">Activity Graph</span></div>
-          <div class="gh-stat-body" style="min-height:130px;">
+          <div class="gh-stat-body stat-body-tall">
             <div class="gh-stat-skeleton" aria-hidden="true">
               <div class="gh-stat-skeleton-inner"></div>
             </div>            <img
               src="https://github-readme-activity-graph.vercel.app/graph?username=Cybersnake223&theme=react-dark&hide_border=true&bg_color=0c1220&color=3ecfcf&line=3ecfcf&point=c9a84c&area=true&area_color=3ecfcf"
+              data-dark="https://github-readme-activity-graph.vercel.app/graph?username=Cybersnake223&theme=react-dark&hide_border=true&bg_color=0c1220&color=3ecfcf&line=3ecfcf&point=c9a84c&area=true&area_color=3ecfcf"
+              data-light="https://github-readme-activity-graph.vercel.app/graph?username=Cybersnake223&theme=default&hide_border=true&bg_color=d8deea&color=0a6e6e&line=0a6e6e&point=7a5410&area=true&area_color=0a6e6e"
               alt="GitHub activity graph" width="495" height="195" loading="lazy" decoding="async"
               onload="this.parentElement.classList.add('loaded');this.classList.add('loaded')"
               onerror="handleStatsError(this)">
@@ -695,6 +709,10 @@
           <p>Open to opportunities and open-source collaborations. Whether you want to talk Linux, DevOps, or geek
             out about Wayland compositors &mdash; my inbox is open.</p>
           <form class="contact-form" id="contactForm" action="https://formspree.io/f/xpwzovgj" method="POST" novalidate>
+            <div class="form-hp" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;pointer-events:none;">
+              <label for="website">Leave this empty</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
             <div class="form-row">
               <div class="form-field">
                 <label class="form-label" for="fname">Name</label>
@@ -773,7 +791,7 @@
     <a href="https://github.com/Cybersnake223" target="_blank" rel="me noopener noreferrer">@cybersnake223</a>
     <span> &nbsp;&middot;&nbsp; New Delhi, India &nbsp;&middot;&nbsp; [<span id="year"></span>]</span>
     <br>
-    <span class="footer-easter">// btw i use arch &nbsp;&middot;&nbsp; neovim &gt; everything &nbsp;&middot;&nbsp; nix
+    <span class="footer-easter" aria-hidden="true">// btw i use arch &nbsp;&middot;&nbsp; neovim &gt; everything &nbsp;&middot;&nbsp; nix
       is watching</span>
   </footer>
 
@@ -782,7 +800,7 @@
     <style>
       .gh-stat-body img { opacity: 1 !important; }
       .gh-stat-skeleton { display: none !important; }
-      .reveal { opacity: 1 !important; transform: none !important; }
+      .reveal, .reveal-heading, .reveal-content { opacity: 1 !important; transform: none !important; }
     </style>
   </noscript>
 </body>
