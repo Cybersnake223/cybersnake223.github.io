@@ -18,7 +18,7 @@ Personal portfolio — a static site deployed on GitHub Pages. Zero frameworks, 
 | Fonts | JetBrains Mono · Fraunces · Inter (via Google Fonts) |
 | Analytics | [GoatCounter](https://www.goatcounter.com/) — privacy-friendly, no cookies |
 | Contact form | Formspree |
-| GitHub stats | github-readme-stats · streak-stats · activity-graph |
+| GitHub stats | github-stats-extended · streak-stats · activity-graph |
 | Hosting | GitHub Pages |
 | PWA | Service worker + manifest.json for offline support |
 
@@ -48,6 +48,11 @@ Personal portfolio — a static site deployed on GitHub Pages. Zero frameworks, 
 - **Project case study** — featured Hypr dotfiles card includes a feature checklist with icons (Waybar, Yazi, Foot, rofi, PipeWire, custom scripts)
 - **Consolidated project cards** — companion repos (mkgit/mkgit-gh, matugen/matugen-themes) merged into unified cards with dual source links
 - **Loading spinner** — contact form submit button shows a CSS spinner while sending, replacing the send icon
+- **Theme-aware stats images** — GitHub stats swap between dark and light variants on theme toggle
+- **Contact form success animation** — animated SVG checkmark on successful submission
+- **IntersectionObserver animations** — terminal typewriter and cursor glow pause when off-screen
+- **Accessible terminal output** — visually-hidden summary for screen readers
+- **Dynamic theme-color** — meta tag updates with theme preference
 
 ## Project Structure
 
@@ -62,13 +67,17 @@ cybersnake223.github.io/
 ├── manifest.json            # PWA manifest
 ├── sitemap.xml              # For search engines
 ├── robots.txt
+├── .gitignore               # Excludes .opencode/ directory
 ├── google25f06b01202c5f94.html  # Google Search Console verification
 ├── output/                      # Generated contribution snake SVGs (from GitHub Actions)
 ├── .github/workflows/
 │   └── snake.yml                # Daily workflow to generate contribution snake
 └── vicious-viper/
     ├── index.html           # Hyprland dotfiles showcase page
-    └── vicious-viper.css    # Vicious Viper styles
+    ├── vicious-viper.css    # Vicious Viper styles
+    └── assets/
+        ├── asset1.webp      # Desktop screenshot (WebP)
+        └── asset1.png       # Desktop screenshot (PNG fallback)
 ```
 
 ## Running Locally
