@@ -70,6 +70,8 @@ document.getElementById('year').textContent = new Date().getFullYear();
         const years = Math.max(1, Math.floor((Date.now() - joined) / (1000*60*60*24*365.25)));
         animateCount(repoEl, repos);
         if(yearEl) animateCount(yearEl, years);
+        const heroRepo = document.getElementById('heroRepos');
+        if(heroRepo) heroRepo.textContent = repos;
         const bioEl = document.querySelector('.gh-bio');
         if(bioEl && data.bio && data.bio.trim()) bioEl.textContent = data.bio;
       } catch(err){
@@ -649,6 +651,43 @@ document.querySelectorAll('.gh-stat-body img').forEach(img => {
       btn.style.opacity = '1';
       setTimeout(()=>{ status.textContent=''; status.style.color=''; }, 5000);
     }
+  });
+})();
+
+/* ===== PROJECT CATEGORY FILTERS ===== */
+(function(){
+  const chips = document.querySelectorAll('.filter-chip');
+  const cards = document.querySelectorAll('.project-card');
+  if(!chips.length || !cards.length) return;
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const filter = chip.dataset.filter;
+      cards.forEach(card => {
+        const show = filter === 'all' || card.dataset.cat === filter;
+        card.hidden = !show;
+      });
+    });
+  });
+})();
+
+/* ===== FEATURED PROJECT GALLERY ===== */
+(function(){
+  const main = document.getElementById('galleryMain');
+  const thumbs = document.querySelectorAll('.gallery-thumb');
+  if(!main || !thumbs.length) return;
+  thumbs.forEach(t => {
+    t.addEventListener('click', () => {
+      thumbs.forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      if(main.src === t.dataset.src) return;
+      main.style.opacity = '0';
+      setTimeout(() => {
+        main.src = t.dataset.src;
+        main.onload = () => { main.style.opacity = '1'; };
+      }, 150);
+    });
   });
 })();
 

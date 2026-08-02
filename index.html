@@ -160,6 +160,12 @@
         </a>
       </div>
 
+      <div class="hero-stats" aria-label="Quick stats">
+        <span class="hero-stat"><span class="hero-stat-val" id="heroRepos">6</span> public repos</span>
+        <span class="hero-stat"><span class="hero-stat-val">Arch</span> daily driver</span>
+        <span class="hero-stat"><span class="hero-stat-val">IST</span> New Delhi</span>
+      </div>
+
       <div class="hero-terminal" role="region" aria-label="Terminal demo">
         <div class="sr-only" id="termSummary">Interactive terminal showing: neofetch system info (CachyOS Linux, Hyprland, Bash, Foot, Neovim), docker container status (metabase, superset, mariadb, nginx-proxy all running), system uptime, and project directory listing.</div>
         <div class="term-bar">
@@ -174,6 +180,13 @@
           <div id="termOutput"></div>
         </div>
       </div>
+
+      <div class="scroll-cue" aria-hidden="true">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+        scroll
+      </div>
     </section>
 
     <hr class="div">
@@ -182,8 +195,15 @@
         <span class="sec-label">// 01 &mdash; projects</span>
         <h2>Things I&#8217;ve <em>built</em></h2>
       </div>
+      <div class="project-filters" role="group" aria-label="Filter projects">
+        <button class="filter-chip active" data-filter="all" type="button">All</button>
+        <button class="filter-chip" data-filter="dotfiles" type="button">Dotfiles</button>
+        <button class="filter-chip" data-filter="cli" type="button">CLI</button>
+        <button class="filter-chip" data-filter="neovim" type="button">Neovim</button>
+        <button class="filter-chip" data-filter="portfolio" type="button">Portfolio</button>
+      </div>
       <div class="projects-grid">
-        <div class="project-card featured reveal rd1" style="--accent:#89e051;">
+        <div class="project-card featured reveal rd1" style="--accent:#89e051;" data-cat="dotfiles">
           <div class="project-header">
             <div class="project-title-wrap">
               <svg class="project-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -216,8 +236,22 @@
             automation.</p>
           <div class="project-screenshot">
             <picture>
-              <img src="vicious-viper/assets/asset1.png" alt="Hyprland desktop setup showing Waybar, Foot terminal, and rofi launcher with a cohesive dark theme" width="800" height="450" loading="lazy" decoding="async">
+              <img id="galleryMain" src="vicious-viper/assets/asset1.png" alt="Hyprland desktop setup showing Waybar, Foot terminal, and rofi launcher with a cohesive dark theme" width="800" height="450" loading="lazy" decoding="async">
             </picture>
+          </div>
+          <div class="gallery-thumbs" role="group" aria-label="Screenshot gallery">
+            <button class="gallery-thumb active" type="button" data-src="vicious-viper/assets/asset1.png" aria-label="Show screenshot 1">
+              <img src="vicious-viper/assets/asset1.png" alt="" width="800" height="450" loading="lazy" decoding="async">
+            </button>
+            <button class="gallery-thumb" type="button" data-src="vicious-viper/assets/asset4.png" aria-label="Show screenshot 2">
+              <img src="vicious-viper/assets/asset4.png" alt="" width="800" height="450" loading="lazy" decoding="async">
+            </button>
+            <button class="gallery-thumb" type="button" data-src="vicious-viper/assets/asset5.png" aria-label="Show screenshot 3">
+              <img src="vicious-viper/assets/asset5.png" alt="" width="800" height="450" loading="lazy" decoding="async">
+            </button>
+            <button class="gallery-thumb" type="button" data-src="vicious-viper/assets/asset6.png" aria-label="Show screenshot 4">
+              <img src="vicious-viper/assets/asset6.png" alt="" width="800" height="450" loading="lazy" decoding="async">
+            </button>
           </div>
           <div class="project-features">
             <div class="project-feature"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"
@@ -257,7 +291,7 @@
             <span class="proj-tag">MIT</span>
           </div>
         </div>
-        <div class="project-card reveal rd2" style="--accent:#e34c26;">
+        <div class="project-card reveal rd2" style="--accent:#e34c26;" data-cat="portfolio">
           <div class="project-header">
             <div class="project-title-wrap">
               <svg class="project-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -279,6 +313,26 @@
           <p class="project-desc">This very portfolio &mdash; a zero-framework, zero-build static site deployed on
             GitHub Pages. Dark/light theme, terminal aesthetic, live GitHub counters, and privacy-friendly analytics.
           </p>
+          <div class="project-screenshot">
+            <div class="shot-browser" aria-hidden="true">
+              <div class="term-bar">
+                <span class="term-dot red"></span>
+                <span class="term-dot yellow"></span>
+                <span class="term-dot green"></span>
+                <span class="term-title">cybersnake223.github.io</span>
+              </div>
+              <div class="shot-browser-body">
+                <div class="sb-nav"><span class="sb-logo">AB ~/cybersnake223<span class="sb-caret">&#9656;</span></span><span
+                    class="sb-links">Projects &middot; About &middot; Stack &middot; GitHub &middot; <span class="sb-cta">Contact
+                      &#8599;</span></span></div>
+                <div class="sb-hero">
+                  <div class="sb-tag">Open to opportunities &amp; collabs</div>
+                  <div class="sb-h">Hi, I&#8217;m <em>Abhishek</em></div>
+                  <div class="sb-sub">Linux systems developer &mdash; building elegant infrastructure from the terminal up.</div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="project-footer">
             <span class="proj-star" data-repo="Cybersnake223/cybersnake223.github.io" title="GitHub stars">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9.6l6.6-.9z"/></svg>
@@ -290,7 +344,7 @@
             <span class="proj-tag">pages</span>
           </div>
         </div>
-        <div class="project-card reveal rd3" style="--accent:#89e051;">
+        <div class="project-card reveal rd3" style="--accent:#89e051;" data-cat="cli">
           <div class="project-header">
             <div class="project-title-wrap">
               <svg class="project-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -321,6 +375,23 @@
             first commit in one command. <strong>mkgit-gh</strong> extends the workflow with <strong>gh</strong> CLI
             integration for authenticated creation, fork management, and streamlined project setup.
           </p>
+          <div class="project-screenshot">
+            <div class="shot-term" aria-hidden="true">
+              <div class="term-bar">
+                <span class="term-dot red"></span>
+                <span class="term-dot yellow"></span>
+                <span class="term-dot green"></span>
+                <span class="term-title">bash &mdash; abhishek@cachyos</span>
+              </div>
+              <div class="shot-body">
+                <div><span class="st-prompt">❯</span> mkgit my-repo</div>
+                <div class="st-ok">&#10003; Created github.com/Cybersnake223/my-repo</div>
+                <div class="st-ok">&#10003; README.md initialized</div>
+                <div class="st-ok">&#10003; Pushed initial commit (main)</div>
+                <div><span class="st-prompt">❯</span><span class="st-cursor" aria-hidden="true"></span></div>
+              </div>
+            </div>
+          </div>
           <div class="project-footer">
             <span class="proj-star" data-repo="Cybersnake223/mkgit" title="GitHub stars">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9.6l6.6-.9z"/></svg>
@@ -334,7 +405,7 @@
             <span class="proj-tag">MIT</span>
           </div>
         </div>
-        <div class="project-card reveal rd4" style="--accent:#dea584;">
+        <div class="project-card reveal rd4" style="--accent:#dea584;" data-cat="cli">
           <div class="project-header">
             <div class="project-title-wrap">
               <svg class="project-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -364,6 +435,12 @@
             Generates cohesive color palettes from wallpaper images. The companion <strong>matugen-themes</strong> repo
             provides CSS, JSON, and config templates demonstrating integration into various applications and workflows.
           </p>
+          <div class="project-screenshot">
+            <picture>
+              <img src="assets/matugen-palette.gif" alt="matugen generating a cohesive color palette from a wallpaper image"
+                width="1000" height="300" loading="lazy" decoding="async">
+            </picture>
+          </div>
           <div class="project-footer">
             <span class="proj-star" data-repo="Cybersnake223/matugen" title="GitHub stars">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9.6l6.6-.9z"/></svg>
@@ -377,7 +454,7 @@
             <span class="proj-tag">GPL-2.0</span>
           </div>
         </div>
-        <div class="project-card reveal rd5" style="--accent:#019733;">
+        <div class="project-card reveal rd5" style="--accent:#019733;" data-cat="neovim">
           <div class="project-header">
             <div class="project-title-wrap">
               <svg class="project-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -399,6 +476,12 @@
           <p class="project-desc">Personal Neovim config tuned for data science and everyday development. Features
             Molten (Jupyter notebooks), nvim-dbee for SQL, Snacks picker &amp; ecosystem, Neogit, Quarto, and a curated
             LSP setup via Mason.</p>
+          <div class="project-screenshot">
+            <picture>
+              <img src="assets/nvim-shot.jpeg" alt="Neovim editor with the custom dark theme from the Hyprland setup"
+                width="1920" height="1080" loading="lazy" decoding="async">
+            </picture>
+          </div>
           <div class="project-footer">
             <span class="proj-star" data-repo="Cybersnake223/nvim" title="GitHub stars">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.8l1.2-6.6L2.5 9.6l6.6-.9z"/></svg>
@@ -820,6 +903,7 @@
   </main>
 
   <footer>
+    <div class="footer-prompt" aria-hidden="true"><span class="term-prompt">&#10095;</span> exit 0</div>
     <span>built with 🐧 &amp; vim motions &nbsp;&middot;&nbsp; </span>
     <a href="https://github.com/Cybersnake223" target="_blank" rel="me noopener noreferrer">@cybersnake223</a>
     <span> &nbsp;&middot;&nbsp; New Delhi, India &nbsp;&middot;&nbsp; [<span id="year"></span>]</span>
