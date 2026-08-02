@@ -67,7 +67,6 @@ cybersnake223.github.io/
 ├── manifest.json            # PWA manifest
 ├── sitemap.xml              # For search engines
 ├── robots.txt
-├── .gitignore               # Excludes .opencode/ directory
 ├── google25f06b01202c5f94.html  # Google Search Console verification
 ├── output/                      # Generated contribution snake SVGs (from GitHub Actions)
 ├── .github/workflows/
