@@ -1,4 +1,4 @@
-const CACHE = 'portfolio-' + new Date().toISOString().slice(0,10);
+const CACHE = 'portfolio-2'; // bump to force cache bust on deploy
 
 const PRECACHE = [
   '/',
