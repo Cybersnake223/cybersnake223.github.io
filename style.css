@@ -233,7 +233,7 @@
     .gh-stat-header { padding:0.55rem 0.9rem; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:0.45rem; background:rgba(255,255,255,0.02); }
     .gh-stat-dot { width:5px; height:5px; border-radius:50%; flex-shrink:0; }
     .gh-stat-lbl { font-family:var(--mono); font-size:var(--t-xs); color:var(--faint); letter-spacing:0.1em; text-transform:uppercase; }
-    .gh-stat-body { display:flex; align-items:center; justify-content:center; padding:0.85rem; min-height:165px; position:relative; background:var(--bg2); overflow:hidden; }
+    .gh-stat-body { display:flex; align-items:center; justify-content:center; padding:0; min-height:165px; position:relative; background:var(--bg2); overflow:hidden; }
     .gh-stat-body img { width:100%; display:block; border-radius:3px; position:relative; z-index:1; }
     .gh-stat-fallback { display:none; font-family:var(--mono); font-size:var(--t-xs); color:var(--faint); text-align:center; padding:1rem; position:absolute; }
     .gh-stat-body img.error + .gh-stat-fallback { display:block; }
@@ -255,7 +255,7 @@
     .fb-heat svg { width:100%; height:auto; display:block; }
     .fb-heat-total { font-family:var(--mono); font-size:var(--t-xs); color:var(--faint); text-align:center; margin-top:0.5rem; }
     .fb-empty { font-family:var(--mono); font-size:var(--t-xs); color:var(--faint); padding:0.5rem; }
-    .gh-stat-card.span2 .gh-stat-body { min-height:190px; padding:0; }
+    .gh-stat-card.span2 .gh-stat-body { min-height:190px; }
     .gh-stat-card.span2 .gh-stat-body img { width:100%; object-fit:contain; }
     .gh-cta { text-align:center; margin-top:2rem; }
     .gh-cta .btn-primary {
