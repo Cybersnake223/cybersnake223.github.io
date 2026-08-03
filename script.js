@@ -21,7 +21,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
   document.documentElement.classList.add('js-animate');
   const io = new IntersectionObserver(entries=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
-  }, { threshold:0.07, rootMargin:'0px 0px -40px 0px' });
+  }, { threshold:0.07, rootMargin:'0px 0px -60px 0px' });
   document.querySelectorAll('.reveal, .reveal-heading, .reveal-content').forEach(el => io.observe(el));
 })();
 
@@ -510,7 +510,7 @@ document.querySelectorAll('.gh-stat-body img').forEach(img => {
                 outEl.style.opacity = '1';
                 cmdEl.style.opacity = '1';
                 runSequence();
-              }, 500);
+              }, 500 + Math.random() * 400);
             }, 2800);
           }
         }
