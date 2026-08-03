@@ -255,7 +255,8 @@
     .fb-heat svg { width:100%; height:auto; display:block; }
     .fb-heat-total { font-family:var(--mono); font-size:var(--t-xs); color:var(--faint); text-align:center; margin-top:0.5rem; }
     .fb-empty { font-family:var(--mono); font-size:var(--t-xs); color:var(--faint); padding:0.5rem; }
-    .gh-stat-card.span2 .gh-stat-body { min-height:190px; }
+    .gh-stat-card.span2 .gh-stat-body { min-height:190px; padding:0; }
+    .gh-stat-card.span2 .gh-stat-body img { width:100%; object-fit:contain; }
     .gh-cta { text-align:center; margin-top:2rem; }
     .gh-cta .btn-primary {
       position: relative;
