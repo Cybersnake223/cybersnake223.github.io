@@ -280,7 +280,17 @@ function renderHeatmap(contrib){
 }
 
 window.handleStatsError = function(img){
+  if(img.dataset.retrying) return;
   if(img.dataset.fallback) return;
+  if(!img.dataset.retryCount) img.dataset.retryCount = '0';
+  const retries = parseInt(img.dataset.retryCount);
+  if(retries < 2){
+    img.dataset.retryCount = String(retries + 1);
+    img.dataset.retrying = '1';
+    const src = img.src;
+    setTimeout(()=>{ img.src = ''; setTimeout(()=>{ img.src = src; img.dataset.retrying = ''; }, 50); }, 2000 * (retries + 1));
+    return;
+  }
   img.dataset.fallback = '1';
   const label = ghCardLabel(img);
 

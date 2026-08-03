@@ -194,13 +194,13 @@
     .avail-badge { display:inline-flex; align-items:center; gap:0.4rem; background:rgba(74,222,128,0.07); border:1px solid rgba(74,222,128,0.2); color:#4ade80; font-size:var(--t-xs); font-family:var(--mono); padding:0.2rem 0.6rem; border-radius:999px; margin-top:0.2rem; }
     .avail-dot { width:5px; height:5px; border-radius:50%; background:#4ade80; flex-shrink:0; }
     .skills-clusters { display:flex; flex-direction:column; gap:1.25rem; }
-    .skill-cluster { background:var(--bg1); border:1px solid var(--border); border-radius:var(--r-lg); padding:1.25rem 1.5rem; transition:border-color 200ms; }
-    .skill-cluster:hover { border-color:var(--border2); }
+    .skill-cluster { background:var(--bg1); border:1px solid var(--border); border-left:3px solid transparent; border-radius:var(--r-lg); padding:1.25rem 1.5rem; transition:border-color 200ms, border-left-color 200ms; }
+    .skill-cluster:hover { border-color:var(--border2); border-left-color:var(--teal); }
     .cluster-label { font-family:var(--mono); font-size:var(--t-xs); letter-spacing:0.14em; text-transform:uppercase; color:var(--faint); margin-bottom:0.75rem; display:flex; align-items:center; gap:0.5rem; }
     .cluster-label::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,var(--border2),transparent); }
     .cluster-tags { display:flex; flex-wrap:wrap; gap:0.45rem; }
     .ctag { font-family:var(--mono); font-size:var(--t-xs); padding:0.3rem 0.7rem; border-radius:var(--r-sm); border:1px solid var(--border); color:var(--muted); background:var(--bg2); transition:border-color 180ms, color 180ms, background 180ms, transform 150ms, box-shadow 200ms; cursor:default; }
-    .ctag:hover { border-color:var(--border2); color:var(--text); transform:translateY(-1px); box-shadow:0 3px 10px rgba(62,207,207,0.12); }
+    /* .ctag:hover defined below with glow */
     .ctag.hi { color:var(--text); border-color:var(--border2); background:var(--bg3); }
     .ctag.teal { color:var(--teal); border-color:var(--teal3); background:var(--teal2); }
     .ctag.gold { color:var(--gold); border-color:rgba(201,168,76,0.25); background:var(--gold2); }
@@ -257,6 +257,23 @@
     .fb-empty { font-family:var(--mono); font-size:var(--t-xs); color:var(--faint); padding:0.5rem; }
     .gh-stat-card.span2 .gh-stat-body { min-height:140px; }
     .gh-cta { text-align:center; margin-top:2rem; }
+    .gh-cta .btn-primary {
+      position: relative;
+      background: var(--teal);
+      border: 2px solid transparent;
+      background-clip: padding-box;
+    }
+    .gh-cta .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      background: linear-gradient(135deg, var(--teal), var(--gold), var(--teal));
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 300ms;
+    }
+    .gh-cta .btn-primary:hover::before { opacity: 1; }
     .contact-wrap { max-width:660px; margin:0 auto; text-align:center; }
     .contact-heading { text-align:center; margin-bottom:2.5rem; }
     .contact-heading .sec-label { display:block; margin-bottom:0.6rem; }
@@ -507,6 +524,7 @@
       transform: translateY(-3px);
       box-shadow: 0 6px 20px rgba(62,207,207,0.2);
     }
+    .social-link:hover svg { color: var(--teal); }
 
     /* 17. Divider lines — animated shimmer */
     hr.div {
@@ -584,6 +602,11 @@
       overflow: hidden;
       backdrop-filter: blur(10px);
       animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.4s both;
+      transition: border-color 300ms, box-shadow 300ms;
+    }
+    .hero-terminal:hover {
+      border-color: var(--teal3);
+      box-shadow: var(--sh-lg), 0 0 50px rgba(62,207,207,0.15);
     }
     .term-bar {
       display: flex; align-items: center; gap: 0.45rem;
@@ -744,6 +767,11 @@
     .nav-status-dot {
       width: 5px; height: 5px; border-radius: 50%;
       background: #4ade80;
+      animation: statusPulse 2s ease-in-out infinite;
+    }
+    @keyframes statusPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(74,222,128,0.5); }
+      50% { box-shadow: 0 0 0 4px rgba(74,222,128,0); }
     }
     @media (max-width: 640px) {
       .nav-status-text { display: none; }
