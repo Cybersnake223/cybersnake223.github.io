@@ -4,676 +4,1116 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Vicious Viper — Event-Driven Hyprland Ecosystem</title>
+  <title>Vicious Viper — Vicious Viper Dotfiles</title>
 
-  <meta
-    name="description"
-    content="Vicious Viper is an event-driven Hyprland ecosystem for Arch Linux featuring dynamic Material You theming, automation-first workflows, modular installation, and a keyboard-centric UI."
-  />
-
-  <meta name="theme-color" content="#3ecfcf" />
+  <meta name="description" content="A wallpaper-synced Hyprland rice for Arch Linux. Material You theming · Automated backups · Modular installer · Clean daily workflow." />
+  <meta name="theme-color" content="#A024F7" />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://cybersnake223.github.io/vicious-viper/" />
   <link rel="icon" href="../icon.svg" />
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Vicious Viper — Event-Driven Hyprland Ecosystem" />
-  <meta name="twitter:description" content="An event-driven Hyprland ecosystem for Arch Linux featuring dynamic Material You theming, automation-first workflows, and modular installation." />
-  <meta name="twitter:image" content="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset1.jpeg" />
-  <meta name="twitter:creator" content="@cybersnake223" />
-
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Vicious Viper","url":"https://cybersnake223.github.io/vicious-viper/","operatingSystem":"Arch Linux","applicationCategory":"Desktop Environment","description":"Event-driven Hyprland ecosystem with dynamic Material You theming and automation-first workflows.","author":{"@type":"Person","name":"Abhishek Aryan","url":"https://cybersnake223.github.io"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
-  </script>
-
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Vicious Viper" />
-  <meta
-    property="og:description"
-    content="An event-driven Hyprland ecosystem for Arch Linux."
-  />
-  <meta
-    property="og:image"
-    content="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset1.jpeg"
-  />
+  <meta property="og:description" content="A wallpaper-synced Hyprland rice for Arch Linux. Material You theming · Automated backups · Modular installer." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset1.jpeg" />
 
-  <link rel="preload" as="image" href="assets/asset4.png" fetchpriority="high" type="image/png">
-  <link rel="preload" as="image" href="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset1.jpeg" type="image/jpeg">
-  <link rel="preload" as="image" href="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset2.jpeg" type="image/jpeg">
-  <link rel="preload" as="image" href="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset3.jpeg" type="image/jpeg">
-  <link rel="stylesheet" href="assets/fonts/fonts.css">
-  <link rel="stylesheet" href="vicious-viper.css">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Vicious Viper" />
+  <meta name="twitter:description" content="A wallpaper-synced Hyprland rice for Arch Linux." />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset1.jpeg" />
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Vicious Viper","url":"https://cybersnake223.github.io/vicious-viper/","operatingSystem":"Arch Linux","applicationCategory":"Desktop Environment","description":"A wallpaper-synced Hyprland rice for Arch Linux with Material You theming, automated backups, and modular installer.","author":{"@type":"Person","name":"Cybersnake","url":"https://github.com/Cybersnake223"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+
+  <link rel="preload" as="image" href="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/cslogo.jpeg" type="image/jpeg" />
+  <link rel="stylesheet" href="vicious-viper.css" />
 </head>
 <body>
 
-  <a class="skip-link" href="#main">Skip to main content</a>
+  <a class="sr-only" href="#main">Skip to main content</a>
 
-  <div class="noise" aria-hidden="true"></div>
-  <div class="scanline" aria-hidden="true"></div>
   <div id="scroll-progress" aria-hidden="true"></div>
 
   <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="container nav-inner">
       <a href="#" class="logo">
-        <span class="logo-dot"></span>
+        <img src="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/cslogo.jpeg" alt="Vicious Viper Logo" width="28" height="28" />
         Vicious Viper
       </a>
 
       <div class="nav-right">
         <button id="vvThemeToggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
-          <svg id="vvThemeIcon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg id="vvThemeIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         </button>
 
         <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
+
         <ul class="nav-links" id="navLinks">
-        <li><a href="https://cybersnake223.github.io" class="back-link">&larr; Portfolio</a></li>
-        <li><a href="#architecture">Architecture</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#metrics">Metrics</a></li>
-        <li><a href="#showcase">Showcase</a></li>
-        <li><a href="#configs">Configs</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="https://github.com/Cybersnake223/Hypr" class="nav-cta">GitHub</a></li>
-      </ul>
+          <li><a href="https://cybersnake223.github.io" class="back-link">&larr; Portfolio</a></li>
+          <li><a href="#preview">🖼 Preview</a></li>
+          <li><a href="#features">✨ Features</a></li>
+          <li><a href="#stack">🧩 Stack</a></li>
+          <li><a href="#installation">⚡ Install</a></li>
+          <li><a href="#keybinds">⌨️ Keybinds</a></li>
+          <li><a href="#theming">🎨 Theming</a></li>
+          <li><a href="https://github.com/Cybersnake223/Hypr" class="nav-cta">GitHub</a></li>
+        </ul>
       </div>
     </div>
   </nav>
 
   <main id="main">
 
+  <!-- ════════════════ HERO ════════════════ -->
   <header class="hero">
-    <div class="container hero-grid">
+    <div class="wave-header" aria-hidden="true">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="https://capsule-render.vercel.app/api?type=waving&color=6D2E8F&height=100&section=header" />
+        <img src="https://capsule-render.vercel.app/api?type=waving&color=A024F7&height=100&section=header" alt="" />
+      </picture>
+    </div>
+    <div class="container">
 
-      <div>
-        <div class="eyebrow">
-          <span class="logo-dot"></span>
-          Arch Linux · Hyprland · Wayland
-        </div>
+      <img class="logo-hero" src="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/cslogo.jpeg" alt="Vicious Viper Logo" width="120" height="120" />
 
-        <h1>
-          <span class="hero-subtitle">SYSTEM INITIALIZED</span>
-          Event-Driven<br />
-          <span class="gradient">Hyprland</span><br />
-          Ecosystem
-        </h1>
+      <h1>Vicious Viper</h1>
 
-        <p>
-          Vicious Viper is a modular Hyprland ecosystem engineered for laptop-first workflows.
-          Dynamic Material You theming, automation-driven tooling, event-based scripting,
-          and performance-oriented UX — designed for daily Arch Linux usage.
-        </p>
-
-        <div class="hero-actions">
-          <div class="hero-status">
-            <span class="status-primary">●</span> LIVE THEME SYNC
-            <span class="status-cyan">●</span> EVENT HOOKS
-            <span class="status-gold">●</span> LOW LATENCY
-          </div>
-          <a class="btn btn-primary" href="https://github.com/Cybersnake223/Hypr">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-            View Repository
-          </a>
-
-          <a class="btn btn-secondary" href="#architecture">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="8" height="8" rx="2"/><rect x="14" y="2" width="8" height="8" rx="2"/><rect x="8" y="14" width="8" height="8" rx="2"/><path d="M10 6h4M6 10v2a2 2 0 002 2h2"/></svg>
-            Explore Architecture
-          </a>
-        </div>
-
-        <div class="hero-stats">
-          <div class="stat">
-            <strong>437+</strong>
-            <span>GitHub Stars</span>
-          </div>
-
-          <div class="stat">
-            <strong>780MB</strong>
-            <span>Idle RAM</span>
-          </div>
-
-          <div class="stat">
-            <strong>0.2%</strong>
-            <span>Waybar CPU</span>
-          </div>
-
-          <div class="stat">
-            <strong>MIT</strong>
-            <span>Open Source</span>
-          </div>
-        </div>
+      <div class="badges">
+        <a href="https://archlinux.org/"><img src="https://img.shields.io/badge/OS-Arch_Linux-A024F7?style=for-the-badge&logo=archlinux&logoColor=white" alt="Arch Linux" /></a>
+        <a href="https://hyprland.org/"><img src="https://img.shields.io/badge/WM-Hyprland-A024F7?style=for-the-badge&logo=wayland&logoColor=white" alt="Hyprland" /></a>
+        <a href="https://zsh.sourceforge.io/"><img src="https://img.shields.io/badge/Shell-Zsh-A024F7?style=for-the-badge&logo=zsh&logoColor=white" alt="Zsh" /></a>
+        <a href="https://neovim.io/"><img src="https://img.shields.io/badge/Editor-Neovim-A024F7?style=for-the-badge&logo=neovim&logoColor=white" alt="Neovim" /></a>
+        <a href="https://zen-browser.app/"><img src="https://img.shields.io/badge/Browser-Zen-A024F7?style=for-the-badge&logo=firefox&logoColor=white" alt="Zen Browser" /></a>
       </div>
 
-      <div class="terminal">
-        <div class="terminal-top">
-          <div class="dot red"></div>
-          <div class="dot yellow"></div>
-          <div class="dot green"></div>
-        </div>
-
-        <div class="terminal-body" id="vvTermBody">
-          <div class="term-line"><span class="prompt">❯</span> <span id="vvTermCmd"></span><span class="term-cursor" id="vvTermCursor"></span></div>
-          <div id="vvTermOutput"></div>
-          <div class="sr-only" id="vvTermSummary">Terminal demo cycling through: git clone repository, interactive installer with module selection, and matugen dynamic theming commands with live output.</div>
-        </div>
+      <div class="badges">
+        <a href="https://github.com/Cybersnake223/Hypr/commits/main"><img src="https://img.shields.io/github/last-commit/Cybersnake223/Hypr/main?style=for-the-badge&label=last%20commit&color=A024F7" alt="Last commit" /></a>
+        <a href="https://github.com/Cybersnake223/Hypr/stargazers"><img src="https://img.shields.io/github/stars/Cybersnake223/Hypr?style=for-the-badge&color=A024F7" alt="Stars" /></a>
+        <a href="https://github.com/Cybersnake223/Hypr/network/members"><img src="https://img.shields.io/github/forks/Cybersnake223/Hypr?style=for-the-badge&color=A024F7" alt="Forks" /></a>
+        <a href="https://github.com/Cybersnake223/Hypr/issues"><img src="https://img.shields.io/github/issues/Cybersnake223/Hypr?style=for-the-badge&color=A024F7" alt="Issues" /></a>
+        <a href="https://github.com/Cybersnake223/Hypr/blob/main/LICENSE"><img src="https://img.shields.io/github/license/Cybersnake223/Hypr?style=for-the-badge&color=A024F7" alt="License" /></a>
+        <a href="https://github.com/Cybersnake223/Hypr"><img src="https://img.shields.io/github/repo-size/Cybersnake223/Hypr?style=for-the-badge&label=size&color=A024F7" alt="Repo size" /></a>
       </div>
+
+      <p class="hero-desc">A wallpaper-synced Hyprland rice for Arch Linux.<br/>Material You theming · Automated backups · Modular installer · Clean daily workflow.</p>
+
+      <details class="toc">
+        <summary>Table of Contents</summary>
+        <div class="toc-content">
+          <a href="#preview">🖼 Preview</a> · <a href="#features">✨ Features</a> · <a href="#stack">🧩 Stack</a> · <a href="#neovim">📝 Neovim</a><br/>
+          <a href="#prerequisites">📦 Prerequisites</a> · <a href="#installation">⚡ Installation</a> · <a href="#post-install">🚀 Post-Install</a><br/>
+          <a href="#file-layout">📂 Layout</a> · <a href="#installer-flags">🚩 Flags</a> · <a href="#keybinds">⌨️ Keybinds</a><br/>
+          <a href="#theming">🎨 Theming</a> · <a href="#quickshell">🎛 Quickshell</a> · <a href="#zen">🌐 Zen</a><br/>
+          <a href="#updating">🔄 Updating</a> · <a href="#troubleshooting">🔧 Troubleshoot</a> · <a href="#security">🔐 Security</a> · <a href="#contributing">🤝 Contributing</a> · <a href="#license">📄 License</a>
+        </div>
+      </details>
 
     </div>
   </header>
 
-  <section class="section" id="architecture">
+
+
+  <!-- ════════════════ PREVIEW ════════════════ -->
+  <section class="section" id="preview">
     <div class="container">
-      <div class="section-head reveal rd1">
-        <div class="section-label">Architecture</div>
-        <h2 class="section-title">Automation Pipeline</h2>
-        <p class="section-desc">
-          Vicious Viper is designed around event-driven automation.
-          Wallpaper changes, audio updates, workspace events, and system state transitions
-          propagate through lightweight scripts and dynamic reload hooks.
-        </p>
+
+      <h2>🖼 Preview</h2>
+
+      <div class="screenshot-grid">
+        <img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset1.jpeg" alt="Desktop Preview" />
+        <img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset10.jpeg" alt="Desktop Preview" />
+        <img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset11.jpeg" alt="Desktop Preview" />
+        <img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset12.jpeg" alt="Desktop Preview" />
+        <img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset2.jpeg" alt="Desktop Preview" />
+        <img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset3.jpeg" alt="Desktop Preview" />
+        <img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset4.jpeg" alt="Desktop Preview" />
+        <img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset5.jpeg" alt="Desktop Preview" />
+        <img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset6.jpeg" alt="Desktop Preview" />
+        <img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset7.jpeg" alt="Desktop Preview" />
+        <img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset8.jpeg" alt="Desktop Preview" />
+        <img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset9.jpeg" alt="Desktop Preview" />
       </div>
 
-      <div class="architecture reveal rd2">
-        <div class="arch-card">
-          <h3>Wallpaper Event</h3>
-          <p>Wallpaper switch triggers automation pipeline.</p>
-        </div>
-
-        <div class="arch-card">
-          <h3>Matugen</h3>
-          <p>Extracts Material You palettes and generates templates.</p>
-        </div>
-
-        <div class="arch-card">
-          <h3>Template Engine</h3>
-          <p>Updates Waybar, Rofi, Mako, GTK and terminal themes.</p>
-        </div>
-
-        <div class="arch-card">
-          <h3>Reload Hooks</h3>
-          <p>Reloads components without restarting the session.</p>
-        </div>
-
-        <div class="arch-card">
-          <h3>Live UI Sync</h3>
-          <p>Entire desktop updates dynamically in real time.</p>
-        </div>
-      </div>
     </div>
   </section>
 
+
+
+  <!-- ════════════════ FEATURES ════════════════ -->
   <section class="section" id="features">
     <div class="container">
-      <div class="section-head reveal rd1">
-        <div class="section-label">Features</div>
-        <h2 class="section-title">Workflow-Oriented Design</h2>
-        <p class="section-desc">
-          More than aesthetic dotfiles — Vicious Viper focuses on operational workflows,
-          dynamic theming, automation tooling, and low-friction keyboard-first UX.
-        </p>
+
+      <h2>✨ Features</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="text-align:center">🔮</th>
+              <th style="text-align:center">💾</th>
+              <th style="text-align:center">🎛</th>
+              <th style="text-align:center">🪄</th>
+              <th style="text-align:center">🐚</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Material You theming</strong> — Matugen derives a full palette from your wallpaper and applies it to every component</td>
+              <td><strong>Safe installer</strong> — every file that would be overwritten is backed up to a timestamped directory first</td>
+              <td><strong>Modular installs</strong> — choose exactly which modules to deploy: configs, scripts, icons, themes, fonts, dotfiles</td>
+              <td><strong>Dry-run mode</strong> — preview every single action without touching a single file</td>
+              <td><strong>Shell-aware PATH patching</strong> — detects Zsh, Bash, Fish, Ksh, and falls back to POSIX <code>.profile</code></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
-      <div class="grid-3 reveal rd2">
-
-        <div class="feature-card rd1">
-          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="8" y="8" width="8" height="8"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>
-          <h3>Performance Tuned</h3>
-          <p>
-            Lightweight Waybar modules, efficient shell scripts,
-            laptop-focused power management, and low idle overhead.
-          </p>
-        </div>
-
-        <div class="feature-card rd2">
-          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="7" fill="currentColor" opacity="0.2"/><circle cx="8" cy="8" r="1.5" fill="currentColor"/><circle cx="16" cy="8" r="1.5" fill="currentColor"/><circle cx="12" cy="16" r="1.5" fill="currentColor"/></svg>
-          <h3>Dynamic Theming</h3>
-          <p>
-            Material You color extraction via Matugen with synchronized GTK,
-            terminal, notifications, lockscreen and Waybar styling.
-          </p>
-        </div>
-
-        <div class="feature-card rd3">
-          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
-          <h3>Automation Ecosystem</h3>
-          <p>
-            Custom scripts for wallpaper management, media downloads,
-            Bluetooth workflows, notifications, and system automation.
-          </p>
-        </div>
-
-        <div class="feature-card rd4">
-          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="6" y1="8" x2="6" y2="8"/><line x1="10" y1="8" x2="10" y2="8"/><line x1="14" y1="8" x2="14" y2="8"/><line x1="18" y1="8" x2="18" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-          <h3>Keyboard-Centric UX</h3>
-          <p>
-            ALT-based navigation model optimized for workspace switching,
-            launchers, clipboard workflows, and rapid task execution.
-          </p>
-        </div>
-
-        <div class="feature-card rd5">
-          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12M12 2L3 7v10l9 5 9-5V7l-9-5z"/><path d="M3 7l9 5 9-5"/></svg>
-          <h3>Modular Installer</h3>
-          <p>
-            Dry-run validation, selective installs, timestamped backups,
-            uninstall routines, and profile-aware deployment.
-          </p>
-        </div>
-
-        <div class="feature-card rd6">
-          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          <h3>Multi-Environment Ready</h3>
-          <p>
-            Designed for laptops first, but validated for desktop usage,
-            multi-monitor setups, NVIDIA systems, and Arch derivatives.
-          </p>
-        </div>
-
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="text-align:center">↩️</th>
+              <th style="text-align:center">🔤</th>
+              <th style="text-align:center">🌐</th>
+              <th style="text-align:center">📜</th>
+              <th style="text-align:center">🎨</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>One-command undo</strong> — restore all your originals with <code>./install.sh --uninstall</code></td>
+              <td><strong>Bundled fonts</strong> — JetBrains Mono Nerd, Font Awesome, Icomoon Feather, Nerd Symbols — installed and cached</td>
+              <td><strong>Zen Browser CSS</strong> — custom <code>userChrome.css</code> and <code>userContent.css</code> tuned to match the Viper aesthetic</td>
+              <td><strong>33 custom scripts</strong> — automatically marked executable and patched into <code>PATH</code></td>
+              <td><strong>Live theming</strong> — change wallpaper, run matugen, everything recolors instantly</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+
     </div>
   </section>
 
-  <section class="section" id="metrics">
+
+
+  <!-- ════════════════ STACK ════════════════ -->
+  <section class="section" id="stack">
     <div class="container">
-      <div class="section-head reveal rd1">
-        <div class="section-label">Metrics</div>
-        <h2 class="section-title">Runtime Performance</h2>
-        <p class="section-desc">
-          Real-world runtime characteristics collected from daily laptop usage.
-        </p>
+
+      <h2>🧩 Stack</h2>
+
+      <div class="badge-grid">
+        <a href="https://archlinux.org/"><img src="https://img.shields.io/badge/Arch_Linux-181717?style=for-the-badge&logo=archlinux&logoColor=white" alt="Arch Linux" /></a>
+        <a href="https://hyprland.org/"><img src="https://img.shields.io/badge/Hyprland-181717?style=for-the-badge&logo=hyprland&logoColor=white" alt="Hyprland" /></a>
+      </div>
+      <div class="badge-grid">
+        <a href="https://github.com/Alexays/Waybar"><img src="https://img.shields.io/badge/Waybar-181717?style=for-the-badge&logo=waybar&logoColor=white" alt="Waybar" /></a>
+        <a href="https://github.com/Quickshell/Quickshell"><img src="https://img.shields.io/badge/Quickshell-181717?style=for-the-badge&logo=quickshell&logoColor=white" alt="Quickshell" /></a>
+        <a href="https://github.com/emersion/mako"><img src="https://img.shields.io/badge/Mako-181717?style=for-the-badge&logo=mako&logoColor=white" alt="Mako" /></a>
+        <a href="https://github.com/lbonn/rofi"><img src="https://img.shields.io/badge/Rofi-181717?style=for-the-badge&logo=rofi&logoColor=white" alt="Rofi" /></a>
+      </div>
+      <div class="badge-grid">
+        <a href="https://sw.kovidgoyal.net/kitty/"><img src="https://img.shields.io/badge/Kitty-181717?style=for-the-badge&logo=kitty&logoColor=white" alt="Kitty" /></a>
+        <a href="https://codeberg.org/dnkl/foot"><img src="https://img.shields.io/badge/Foot-181717?style=for-the-badge&logo=foot&logoColor=white" alt="Foot" /></a>
+        <a href="https://zsh.sourceforge.io/"><img src="https://img.shields.io/badge/Zsh-181717?style=for-the-badge&logo=zsh&logoColor=white" alt="Zsh" /></a>
+        <a href="https://starship.rs/"><img src="https://img.shields.io/badge/Starship-181717?style=for-the-badge&logo=starship&logoColor=white" alt="Starship" /></a>
+      </div>
+      <div class="badge-grid">
+        <a href="https://zen-browser.app/"><img src="https://img.shields.io/badge/Zen_Browser-181717?style=for-the-badge&logo=zen-browser&logoColor=white" alt="Zen Browser" /></a>
+        <a href="https://gitlab.gnome.org/GNOME/nautilus"><img src="https://img.shields.io/badge/Nautilus-181717?style=for-the-badge&logo=nautilus&logoColor=white" alt="Nautilus" /></a>
+        <a href="https://yazi-rs.github.io/"><img src="https://img.shields.io/badge/Yazi-181717?style=for-the-badge&logo=yazi&logoColor=white" alt="Yazi" /></a>
+        <a href="https://neovim.io/"><img src="https://img.shields.io/badge/Neovim-181717?style=for-the-badge&logo=neovim&logoColor=white" alt="Neovim" /></a>
+      </div>
+      <div class="badge-grid">
+        <a href="https://cmus.github.io/"><img src="https://img.shields.io/badge/cmus-181717?style=for-the-badge&logo=cmus&logoColor=white" alt="cmus" /></a>
+        <a href="https://github.com/karlstav/cava"><img src="https://img.shields.io/badge/Cava-181717?style=for-the-badge&logo=cava&logoColor=white" alt="Cava" /></a>
+        <a href="https://mpv.io/"><img src="https://img.shields.io/badge/mpv-181717?style=for-the-badge&logo=mpv&logoColor=white" alt="mpv" /></a>
+        <a href="https://github.com/aristocratos/btop"><img src="https://img.shields.io/badge/btop-181717?style=for-the-badge&logo=btop&logoColor=white" alt="btop" /></a>
+        <a href="https://aria2.github.io/"><img src="https://img.shields.io/badge/aria2-181717?style=for-the-badge&logo=aria2&logoColor=white" alt="aria2" /></a>
+        <a href="https://github.com/fastfetch-cli/fastfetch"><img src="https://img.shields.io/badge/Fastfetch-181717?style=for-the-badge&logo=fastfetch&logoColor=white" alt="Fastfetch" /></a>
+      </div>
+      <div class="badge-grid">
+        <a href="https://github.com/InioX/matugen"><img src="https://img.shields.io/badge/Matugen-181717?style=for-the-badge&logo=matugen&logoColor=white" alt="Matugen" /></a>
+        <a href="https://github.com/InioX/awww"><img src="https://img.shields.io/badge/awww-181717?style=for-the-badge&logo=awww&logoColor=white" alt="awww" /></a>
+        <a href="https://github.com/InioX/hyprwat"><img src="https://img.shields.io/badge/hyprwat-181717?style=for-the-badge&logo=hyprwat&logoColor=white" alt="hyprwat" /></a>
       </div>
 
-      <div class="metrics reveal rd2">
-        <div class="metric">
-          <h3>780MB</h3>
-          <p>Idle Session RAM</p>
-        </div>
-
-        <div class="metric">
-          <h3>0.2%</h3>
-          <p>Waybar CPU Usage</p>
-        </div>
-
-        <div class="metric">
-          <h3>7.3s</h3>
-          <p>Cold Boot Time</p>
-        </div>
-
-        <div class="metric">
-          <h3>0.4s</h3>
-          <p>Hyprland Startup</p>
-        </div>
-      </div>
-      <p class="metrics-note">Measured on Lenovo IdeaPad Slim 5 · AMD Ryzen 5 · 16GB RAM · Arch Linux</p>
     </div>
   </section>
 
-  <section class="section" id="showcase">
+
+
+  <!-- ════════════════ NEOVIM ════════════════ -->
+  <section class="section" id="neovim">
     <div class="container">
-      <div class="section-head reveal rd1">
-        <div class="section-label">Showcase</div>
-        <h2 class="section-title">Interactive Desktop Environment</h2>
-        <p class="section-desc">
-          Screenshots are contextualized with actual workflow capabilities,
-          not just visual presentation.
-        </p>
+
+      <h2>📝 Neovim</h2>
+
+      <p>The Neovim config (<code>.config/nvim/</code>) is a modern Lua-based setup:</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Component</th><th>Tool</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Plugin manager</strong></td><td><a href="https://github.com/folke/lazy.nvim">lazy.nvim</a></td></tr>
+            <tr><td><strong>LSP</strong></td><td><a href="https://github.com/williamboman/mason.nvim">Mason</a> — auto-installs language servers</td></tr>
+            <tr><td><strong>Completion</strong></td><td><a href="https://github.com/Saghen/blink.cmp">blink.cmp</a></td></tr>
+            <tr><td><strong>Pickers</strong></td><td><a href="https://github.com/folke/snacks.nvim">snacks.nvim</a> — files, grep, buffers, explorer, terminal</td></tr>
+            <tr><td><strong>Treesitter</strong></td><td>Syntax highlighting and parsing</td></tr>
+          </tbody>
+        </table>
       </div>
 
-      <div class="showcase-grid reveal rd2">
+      <p>System dependencies (<code>--install-nvim-deps</code>): <code>wl-clipboard</code>, <code>python</code>, <code>imagemagick</code>, <code>luarocks</code>, <code>shellcheck</code>, <code>gcc</code>, <code>nodejs</code>, <code>npm</code>.</p>
 
-        <div class="shot" tabindex="0" role="img" aria-label="Adaptive Waybar System — Dynamic glassmorphism modules, workspace-aware styling, animated indicators, Material You color sync">
-          <picture><img
-            loading="lazy"
-            decoding="async"
-            src="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset3.jpeg"
-            alt="Waybar Preview"
-          /></picture>
-
-          <div class="shot-overlay">
-            <h3>Adaptive Waybar System</h3>
-            <ul>
-              <li>Dynamic glassmorphism modules</li>
-              <li>Workspace-aware styling</li>
-              <li>Animated indicators and telemetry</li>
-              <li>Material You color synchronization</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="shot" tabindex="0" role="img" aria-label="Launcher and Workflow Layer — Custom Rofi interface, blur-aware UI, keyboard-first control, wallpaper-reactive palette">
-          <picture><img
-            loading="lazy"
-            decoding="async"
-            src="assets/asset4.png"
-            alt="Rofi Launcher"
-          /></picture>
-
-          <div class="shot-overlay">
-            <h3>Launcher & Workflow Layer</h3>
-            <ul>
-              <li>Custom Rofi interface</li>
-              <li>Blur-aware UI composition</li>
-              <li>Keyboard-first application control</li>
-              <li>Wallpaper-reactive palette engine</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="shot" tabindex="0" role="img" aria-label="Notification and OSD Pipeline — Mako notification stack, custom audio and brightness OSD, event-triggered animations">
-          <picture><img
-            loading="lazy"
-            decoding="async"
-            src="assets/asset5.png"
-            alt="Notification System"
-          /></picture>
-
-          <div class="shot-overlay">
-            <h3>Notification & OSD Pipeline</h3>
-            <ul>
-              <li>Mako notification stack</li>
-              <li>Custom audio and brightness OSD</li>
-              <li>Event-triggered UI animations</li>
-              <li>Consistent Material You styling</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="shot" tabindex="0" role="img" aria-label="Hyprlock Experience — Blur-enhanced lockscreen, wallpaper-aware theming, minimal authentication interface">
-          <picture><img
-            loading="lazy"
-            decoding="async"
-            src="assets/asset6.png"
-            alt="Lockscreen Preview"
-          /></picture>
-
-          <div class="shot-overlay">
-            <h3>Hyprlock Experience</h3>
-            <ul>
-              <li>Blur-enhanced lockscreen</li>
-              <li>Wallpaper-aware theming</li>
-              <li>Minimal authentication interface</li>
-              <li>Integrated session styling</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="shot" tabindex="0" role="img" aria-label="Dynamic Workspace UI — Matugen-generated palette, glassmorphism Waybar, event-driven workspace indicators, Mako OSD">
-          <picture><img
-            loading="lazy"
-            decoding="async"
-            src="assets/asset1.png"
-            alt="Desktop Preview"
-          /></picture>
-
-          <div class="shot-overlay">
-            <h3>Dynamic Workspace UI</h3>
-            <ul>
-              <li>Matugen-generated palette</li>
-              <li>Glassmorphism Waybar styling</li>
-              <li>Event-driven workspace indicators</li>
-              <li>Mako OSD integration</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="shot" tabindex="0" role="img" aria-label="Developer Workflow — Neovim development stack, Yazi and CLI ecosystem, script-based automation, keyboard-first navigation">
-          <picture><img
-            loading="lazy"
-            decoding="async"
-            src="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/asset2.jpeg"
-            alt="Terminal Preview"
-          /></picture>
-
-          <div class="shot-overlay">
-            <h3>Developer Workflow</h3>
-            <ul>
-              <li>Neovim development stack</li>
-              <li>Yazi + CLI ecosystem</li>
-              <li>Script-based automation</li>
-              <li>Keyboard-first navigation</li>
-            </ul>
-          </div>
-        </div>
-
+      <div class="callout note">
+        <strong>Note:</strong> After first Neovim launch, run <code>:MasonInstallAll</code> to install LSP servers and formatters.
       </div>
+
     </div>
   </section>
 
-  <section class="section" id="install">
+
+
+  <!-- ════════════════ PREREQUISITES ════════════════ -->
+  <section class="section" id="prerequisites">
     <div class="container">
-      <div class="section-head reveal rd1">
-        <div class="section-label">Installation</div>
-        <h2 class="section-title">Modular Deployment System</h2>
-        <p class="section-desc">
-          Vicious Viper ships with a profile-aware installation pipeline featuring
-          dry-run validation, backup generation, selective module deployment,
-          and rollback-safe configuration management.
-        </p>
+
+      <h2>📦 Prerequisites</h2>
+
+      <div class="callout">
+        <strong>Important:</strong> The installer checks for these and warns about anything missing. It will not block installation unless core system utilities like <code>cp</code> or <code>find</code> are absent.
       </div>
 
-      <div class="terminal mb-2">
-        <div class="terminal-top">
-          <div class="dot red"></div>
-          <div class="dot yellow"></div>
-          <div class="dot green"></div>
-        </div>
-
-        <div class="terminal-body">
-          <div><span class="prompt">❯</span> sudo pacman -S git base-devel</div>
-          <div><span class="prompt">❯</span> git clone https://github.com/Cybersnake223/Hypr</div>
-          <div><span class="prompt">❯</span> cd Hypr</div>
-          <div><span class="prompt">❯</span> chmod +x install.sh</div>
-          <div><span class="prompt">❯</span> ./install.sh --dry-run</div>
-          <div>✔ validating dependencies...</div>
-          <div>✔ checking NVIDIA compatibility...</div>
-          <div>✔ backup paths initialized...</div>
-          <div><span class="prompt">❯</span> ./install.sh --select</div>
-        </div>
+      <div class="callout tip">
+        <strong>Tip:</strong> If you don't have an AUR helper, install <code>yay</code> first:
+        <pre><code>sudo pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay.git /tmp/yay
+cd /tmp/yay && makepkg -si</code></pre>
       </div>
 
-      <div class="grid-3">
+      <h3>Tested On</h3>
 
-        <div class="feature-card">
-          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-          <h3>Dry-Run Validation</h3>
-          <p>
-            Validate dependencies, packages, and system compatibility before
-            modifying the environment.
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 12 12 17 22 12"/><polyline points="2 17 12 22 22 17"/></svg>
-          <h3>Selective Installs</h3>
-          <p>
-            Deploy only the required modules including Waybar, Hyprland,
-            Rofi, Neovim, notifications, and automation scripts.
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
-          <h3>Automatic Backups</h3>
-          <p>
-            Existing dotfiles are timestamped and preserved before
-            deployment to ensure rollback safety.
-          </p>
-        </div>
-
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th style="text-align:center"></th><th></th></tr>
+          </thead>
+          <tbody>
+            <tr><td style="text-align:center">🖥 <strong>OS</strong></td><td>Arch Linux (latest)</td></tr>
+            <tr><td style="text-align:center">GPU</td><td>Intel / AMD / NVIDIA (all supported via Hyprland)</td></tr>
+            <tr><td style="text-align:center">🪟 <strong>Display</strong></td><td>Wayland (Hyprland)</td></tr>
+          </tbody>
+        </table>
       </div>
 
-      <div class="explorer mt-2">
-        <div class="explorer-top">
-          <strong>Supported Profiles</strong>
-        </div>
-
-        <div class="explorer-list">
-
-          <div class="explorer-item">
-            <div>
-              <strong>Minimal</strong>
-              <span>Hyprland + Waybar + essential workflow tooling.</span>
-            </div>
-            <div class="tag">lightweight</div>
-          </div>
-
-          <div class="explorer-item">
-            <div>
-              <strong>Full</strong>
-              <span>Complete Vicious Viper ecosystem with all automation modules.</span>
-            </div>
-            <div class="tag">recommended</div>
-          </div>
-
-          <div class="explorer-item">
-            <div>
-              <strong>Laptop</strong>
-              <span>Battery-aware optimizations and portable workflow tweaks.</span>
-            </div>
-            <div class="tag">mobile</div>
-          </div>
-
-          <div class="explorer-item">
-            <div>
-              <strong>Developer</strong>
-              <span>Enhanced Neovim stack, CLI tooling, and terminal workflows.</span>
-            </div>
-            <div class="tag">dev</div>
-          </div>
-
-        </div>
+      <div class="callout note">
+        <strong>Note:</strong> Zsh configs use <code>ZDOTDIR=$HOME/.config/zsh</code>. Set this before first launch:
+        <pre><code>echo 'export ZDOTDIR="$HOME/.config/zsh"' > ~/.zshenv</code></pre>
       </div>
+
+      <h3>Core packages</h3>
+
+      <pre><code>yay -S hyprland hyprlock hyprpaper waybar foot kitty zsh rofi mako \
+        matugen-bin awww-git btop yazi fastfetch neovim starship fontconfig \
+        cava cmus mpv nautilus zen-browser-bin aria2 advcpmv \
+        quickshell hyprwat</code></pre>
+
+      <h3>Supporting packages</h3>
+
+      <details>
+        <summary>Click to expand</summary>
+        <div>
+          <div class="table-wrap" style="border:none;border-radius:0;">
+            <table>
+              <thead>
+                <tr><th>Package</th><th>Purpose</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>xdg-desktop-portal-hyprland</code></td><td>Wayland portal — screenshare, file picker</td></tr>
+                <tr><td><code>polkit-gnome</code></td><td>GUI authentication agent</td></tr>
+                <tr><td><code>grim</code> + <code>slurp</code> + <code>wl-clipboard</code></td><td>Screenshot toolchain</td></tr>
+                <tr><td><code>brightnessctl</code></td><td>Brightness control</td></tr>
+                <tr><td><code>pavucontrol</code></td><td>Audio volume GUI</td></tr>
+                <tr><td><code>pipewire</code> + <code>pipewire-pulse</code> + <code>pipewire-alsa</code></td><td>Audio stack</td></tr>
+                <tr><td><code>wireplumber</code></td><td>PipeWire session manager</td></tr>
+                <tr><td><code>networkmanager</code></td><td>Networking</td></tr>
+                <tr><td><code>bluez</code> + <code>bluez-tools</code></td><td>Bluetooth</td></tr>
+                <tr><td><code>xorg-xwayland</code></td><td>X11 app compatibility</td></tr>
+                <tr><td><code>eza</code></td><td>Better <code>ls</code></td></tr>
+                <tr><td><code>fd</code></td><td>Better <code>find</code></td></tr>
+                <tr><td><code>bat</code></td><td>Better <code>cat</code></td></tr>
+                <tr><td><code>jq</code></td><td>JSON parsing (script dependency)</td></tr>
+                <tr><td><code>libnotify</code></td><td><code>notify-send</code> — desktop notifications</td></tr>
+                <tr><td><code>playerctl</code></td><td>Media controls (waybar / nowplaying)</td></tr>
+                <tr><td><code>bleachbit</code></td><td>System cleaner script dependency</td></tr>
+                <tr><td><code>neomutt</code></td><td>Terminal email client (<code>ALT + T</code>)</td></tr>
+                <tr><td><code>aerc</code></td><td>Terminal email client (bundled config)</td></tr>
+                <tr><td><code>localsend</code></td><td>Local file sharing (<code>ALT + S</code>)</td></tr>
+                <tr><td><code>nsxiv</code></td><td>Image viewer (used in scripts)</td></tr>
+                <tr><td><code>wiremix</code></td><td>Audio mixer (<code>ALT SHIFT + P</code>)</td></tr>
+                <tr><td><code>adw-gtk3</code> <em>(AUR)</em></td><td>GTK3 theme — referenced but not bundled</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <h3>Fonts</h3>
+
+      <p>The <code>.fonts/</code> directory is bundled and installed automatically:</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Directory</th><th>Contents</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>normal-fonts/</code></td><td>Comfortaa, IBM Plex Mono, JetBrainsMono, Iosevka</td></tr>
+            <tr><td><code>nerd-fonts/</code></td><td>JetBrains Mono Nerd, Fira Code Nerd, Hack Nerd, Iosevka</td></tr>
+            <tr><td><code>icon-fonts/</code></td><td>Material Icons, Icomoon Feather, Nerd Symbols, Typicons</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>To install manually:</p>
+
+      <pre><code>yay -S ttf-jetbrains-mono-nerd ttf-font-awesome nerd-fonts-symbols-only
+fc-cache -f</code></pre>
+
     </div>
   </section>
 
-  <section class="section" id="configs">
+
+
+  <!-- ════════════════ INSTALLATION ════════════════ -->
+  <section class="section" id="installation">
     <div class="container">
-      <div class="section-head reveal rd1">
-        <div class="section-label">Config Explorer</div>
-        <h2 class="section-title">Searchable Configuration Map</h2>
-        <p class="section-desc">
-          Treat the project like an ecosystem instead of a screenshot repository.
-          Expose major configs and scripts directly.
-        </p>
+
+      <h2>⚡ Installation</h2>
+
+      <div class="callout caution">
+        <strong>Caution:</strong> Run <code>--dry-run</code> first on an existing setup. The installer backs up every file it will overwrite, but you should always confirm what it touches before committing.
       </div>
 
-      <div class="explorer reveal rd2">
-        <div class="explorer-top">
-          <input
-            class="explorer-search"
-            type="text"
-            placeholder="Search configs, scripts, modules..."
-            aria-label="Search configuration files"
-          />
-        </div>
+      <h3>Quick start</h3>
 
-        <div class="explorer-list">
+      <pre><code>git clone https://github.com/Cybersnake223/Hypr
+cd Hypr
+chmod +x install.sh
+./install.sh --dry-run   # preview first
+./install.sh             # install when ready</code></pre>
 
-          <div class="explorer-item">
-            <div>
-              <strong>.config/hypr/hyprland.conf</strong>
-              <span>Core compositor configuration and workspace logic.</span>
-            </div>
-            <div class="tag">hyprland</div>
-          </div>
+      <h3>What happens during install</h3>
 
-          <div class="explorer-item">
-            <div>
-              <strong>.config/waybar/style.css</strong>
-              <span>Dynamic glassmorphism styling with Matugen tokens.</span>
-            </div>
-            <div class="tag">waybar</div>
-          </div>
-
-          <div class="explorer-item">
-            <div>
-              <strong>scripts/audio-osd.sh</strong>
-              <span>Mako-based volume and microphone OSD system.</span>
-            </div>
-            <div class="tag">automation</div>
-          </div>
-
-          <div class="explorer-item">
-            <div>
-              <strong>.config/rofi/config.rasi</strong>
-              <span>Launcher styling and workflow integration.</span>
-            </div>
-            <div class="tag">rofi</div>
-          </div>
-
-          <div class="explorer-item">
-            <div>
-              <strong>.config/matugen/templates</strong>
-              <span>Material You generation templates and sync pipeline.</span>
-            </div>
-            <div class="tag">matugen</div>
-          </div>
-
-        </div>
-        <p class="explorer-empty">No matching configs found</p>
+      <div class="installer-table">
+        <div class="installer-header">🟥 🟨 🟢 &nbsp; <code>install.sh</code></div>
+        <pre><code>[1] ✅  Verify core system utilities
+[2] 🔍  Check Hyprland ecosystem packages
+[3] 📦  Check Neovim system dependencies
+[4] 💾  Backup all files that will be overwritten
+[5] 📁  Copy selected modules into $HOME
+[6] 🔑  chmod +x all scripts
+[7] 🔤  Rebuild font cache (fc-cache -f)
+[8] 🛤  Detect shell, patch PATH
+[9] 📋  Print install summary + log path</code></pre>
       </div>
+
+      <p>Backups land here:</p>
+
+      <pre><code>~/.local/share/hypr-dotfiles-backups/&lt;YYYYMMDD-HHMMSS&gt;/</code></pre>
+
+      <div class="callout note">
+        <strong>Note:</strong> The base directory honors <code>$XDG_DATA_HOME</code> if set — e.g. <code>$XDG_DATA_HOME/hypr-dotfiles-backups/</code>.
+      </div>
+
+      <p>Each backup contains a <code>.manifest</code> of every installed path — used by <code>--uninstall</code> to restore precisely.</p>
+
+      <h3>Manual install (no script)</h3>
+
+      <p>The installer is just a Bash script — review it, then replicate manually:</p>
+
+      <div class="callout warning">
+        <strong>Warning:</strong> The manual steps below <strong>skip the home-path substitution</strong> the real installer performs (<code>/home/cybersnake/...</code> → <code>$HOME/...</code>). Prefer <code>./install.sh</code> unless you edit the configs yourself.
+      </div>
+
+      <pre><code>for dir in .config .icons .themes .fonts; do
+  [ -d "$dir" ] && cp -r "$dir" "$HOME/"
+done
+[ -d .local/bin/scripts ] && cp -r .local/bin/scripts "$HOME/.local/bin/"
+for f in .Xresources .gtkrc-2.0; do
+  [ -f "$f" ] && cp "$f" "$HOME/"
+done
+
+# Copy Quickshell QML configs separately
+[ -d .config/quickshell ] && cp -r .config/quickshell "$HOME/.config/"
+[ -d .config/matugen ] && cp -r .config/matugen "$HOME/.config/"
+[ -f .config/qt5ct/qt5ct.conf ] && mkdir -p "$HOME/.config/qt5ct" \
+  && cp .config/qt5ct/qt5ct.conf "$HOME/.config/qt5ct/"
+
+find "$HOME/.local/bin/scripts" -type f -exec chmod +x {} +
+fc-cache -f
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
+
+# Start Quickshell panels
+~/.config/hypr/scripts/qs_manager.sh &</code></pre>
+
     </div>
   </section>
 
-  <section class="section" id="faq">
+
+
+  <!-- ════════════════ POST-INSTALL ════════════════ -->
+  <section class="section" id="post-install">
     <div class="container">
-      <div class="section-head reveal rd1">
-        <div class="section-label">FAQ</div>
-        <h2 class="section-title">Common Questions</h2>
+
+      <h2>🚀 Post-Install</h2>
+
+      <p>After the installer finishes:</p>
+
+      <ol>
+        <li><strong>Enable system services</strong> (if this is a fresh Arch install):
+          <pre><code>systemctl --user enable --now pipewire pipewire-pulse wireplumber
+sudo systemctl enable --now bluetooth networkmanager</code></pre>
+        </li>
+        <li><strong>Set ZDOTDIR</strong> (if using Zsh with this config):
+          <pre><code>echo 'export ZDOTDIR="$HOME/.config/zsh"' > ~/.zshenv</code></pre>
+        </li>
+        <li><strong>Reload your shell</strong> or log out and back in.</li>
+        <li><strong>Start Hyprland</strong>: run <code>Hyprland</code> from a TTY or select it in your display manager.</li>
+        <li><strong>Run <code>:MasonInstallAll</code></strong> inside Neovim on first launch to install LSP servers and formatters.</li>
+      </ol>
+
+      <div class="callout tip">
+        <strong>Tip:</strong> The installer backs up everything it overwrites. If something goes wrong, run <code>./install.sh --uninstall</code> to restore your originals.
       </div>
 
-      <div class="faq-list reveal rd2">
-
-        <details class="faq-item">
-          <summary>Does it work with NVIDIA GPUs?</summary>
-          <div class="faq-content"><p>Yes. Vicious Viper includes NVIDIA compatibility checks in its installer and provides pre-configured environment variables for Hyprland on proprietary drivers.</p></div>
-        </details>
-
-        <details class="faq-item">
-          <summary>Can I use it without Hyprland?</summary>
-          <div class="faq-content"><p>No. The ecosystem is deeply integrated with Hyprland's event system. Some scripts and themes may work on other Wayland compositors, but the automation pipeline requires Hyprland.</p></div>
-        </details>
-
-        <details class="faq-item">
-          <summary>Does it work on desktop or only laptops?</summary>
-          <div class="faq-content"><p>Both. The default profile is laptop-tuned, but the full profile and desktop profiles work on multi-monitor desktop setups including ultra-wide configurations.</p></div>
-        </details>
-
-        <details class="faq-item">
-          <summary>How do I update installed modules?</summary>
-          <div class="faq-content"><p>Re-run <code>./install.sh --select</code> to redeploy specific modules. Existing dotfiles are timestamped and backed up automatically before any override.</p></div>
-        </details>
-
-        <details class="faq-item">
-          <summary>Can I contribute or fork?</summary>
-          <div class="faq-content"><p>Absolutely. The project is MIT licensed. Pull requests, issue reports, and forks are welcome. Check the GitHub repository for contribution guidelines.</p></div>
-        </details>
-
-      </div>
     </div>
   </section>
 
-  </main>
 
-  <footer>
-    <div class="container footer-inner">
-      <p>
-        Vicious Viper · Event-Driven Hyprland Ecosystem
-      </p>
 
-      <div class="hero-actions">
-        <a class="btn btn-secondary" href="https://github.com/Cybersnake223/Hypr">
-          GitHub
+  <!-- ════════════════ FILE LAYOUT ════════════════ -->
+  <section class="section" id="file-layout">
+    <div class="container">
+
+      <h2>📂 File Layout</h2>
+
+      <div class="file-tree"><code>$HOME
+├── .config/
+│   ├── hypr/             ← Hyprland (Lua config; hyprlock, hypridle, hyprpaper)
+│   ├── waybar/           ← Status bar
+│   ├── quickshell/       ← QML panels, launcher, OSD, lock screen
+│   ├── rofi/             ← App launcher
+│   ├── nvim/             ← Neovim (Lua, lazy.nvim)
+│   ├── zsh/              ← Zsh (uses $ZDOTDIR)
+│   ├── kitty/            ← Kitty terminal
+│   ├── foot/             ← Foot terminal
+│   ├── mako/             ← Notifications
+│   ├── yazi/             ← TUI file manager
+│   ├── mpv/              ← Media player
+│   ├── btop/             ← System monitor
+│   ├── matugen/          ← Matugen config + 28 color templates
+│   ├── fastfetch/        ← System info
+│   ├── starship.toml     ← Prompt
+│   ├── cava/             ← Audio visualizer
+│   ├── anyrun/           ← Alternative launcher (Rust)
+│   ├── bat/              ← Cat replacement
+│   ├── aerc/             ← Terminal email client (bundled config)
+│   ├── cmus/             ← Music player
+│   ├── environment.d/    ← Environment variables
+│   ├── fsh/              ← fast-syntax-highlighting theme (Zsh, via `fast-theme`)
+│   ├── gtk-2.0/          ← GTK2 theme
+│   ├── gtk-3.0/          ← GTK3 CSS (Matugen-recolored)
+│   ├── gtk-4.0/          ← GTK4 CSS (Matugen-recolored)
+│   ├── hyprwat/          ← Wallpaper picker GUI
+│   ├── Kvantum/          ← Qt theme engine
+│   ├── qt5ct/            ← Qt5 settings
+│   ├── qt6ct/            ← Qt6 settings
+│   ├── zen/              ← Zen Browser CSS
+│   ├── xsettingsd/       ← X settings daemon (GTK theming bridge)
+│   ├── yay/              ← AUR helper config
+│   └── ...
+├── .local/bin/scripts/   ← 33 custom shell scripts
+├── .fonts/               ← Bundled fonts
+├── .icons/               ← Icon theme
+├── .themes/              ← GTK/Qt themes
+├── .Xresources
+├── .gtkrc-2.0
+├── .zen/                 ← Zen Browser profile
+└── assets/               ← Screenshots and logo
+
+/etc/ (system-level — not installed, apply manually):
+├── auto-cpufreq.conf    ← CPU governor tuning
+├── pacman.conf          ← Pacman parallel downloads + eye candy
+└── pacman.d/</code></div>
+
+      <div class="callout warning">
+        <strong>Security notes:</strong> <code>etc/pacman.conf</code> sets <code>SigLevel = Optional TrustAll</code>, which disables package signature verification. <code>.config/environment.d/zen.conf</code> sets <code>MOZ_DISABLE_RDD_SANDBOX=1</code>, which disables Firefox's media-decoder sandbox.
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <!-- ════════════════ INSTALLER FLAGS ════════════════ -->
+  <section class="section" id="installer-flags">
+    <div class="container">
+
+      <h2>🚩 Installer Flags</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Flag</th><th>What it does</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>--dry-run</code></td><td>🔍 Preview every action — zero changes made</td></tr>
+            <tr><td><code>--yes</code></td><td>✅ Skip all confirmation prompts</td></tr>
+            <tr><td><code>--select</code></td><td>🎛 Interactively pick which modules to install</td></tr>
+            <tr><td><code>--no-backup</code></td><td>⚠️ Skip backup — also disables <code>--uninstall</code></td></tr>
+            <tr><td><code>--uninstall</code></td><td>↩️ Restore originals from the most recent backup</td></tr>
+            <tr><td><code>--list-backups</code></td><td>📋 Show all backups with timestamps and sizes</td></tr>
+            <tr><td><code>--install-deps</code></td><td>📦 Auto-install missing Hyprland ecosystem deps</td></tr>
+            <tr><td><code>--install-all-deps</code></td><td>📦 Ecosystem + supporting packages</td></tr>
+            <tr><td><code>--install-nvim-deps</code></td><td>📦 Auto-install Neovim system dependencies</td></tr>
+            <tr><td><code>--skip-deps</code></td><td>🚀 Skip the ecosystem dependency check</td></tr>
+            <tr><td><code>--version</code></td><td>ℹ️ Show version and exit</td></tr>
+            <tr><td><code>-h / --help</code></td><td>📖 Show usage</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <pre><code># Full install with all dependencies (recommended for first-timers)
+./install.sh --install-all-deps --yes
+
+# First-timer recommended flow (preview before committing)
+./install.sh --dry-run
+
+# Standard install
+./install.sh
+
+# Non-interactive (CI / scripted)
+./install.sh --yes --skip-deps
+
+# Pick only what you want
+./install.sh --select
+
+# Undo the last install
+./install.sh --uninstall
+
+# See all saved backups
+./install.sh --list-backups
+
+# Show installer version
+./install.sh --version</code></pre>
+
+      <div class="callout note">
+        <strong>Note:</strong> <code>--install-deps</code>, <code>--install-all-deps</code>, and <code>--install-nvim-deps</code> all install the Neovim system dependencies when the ecosystem dependency check is not skipped.
+      </div>
+
+      <h3><code>--select</code> module picker</h3>
+
+      <pre><code>[✓]  1  .config       Application configs (hypr, waybar, rofi, nvim, zsh…)
+[✓]  2  scripts       Custom scripts → ~/.local/bin/scripts
+[ ]  3  .icons        Icon theme
+[✓]  4  .themes       GTK/Qt themes
+[✓]  5  .fonts        Custom fonts (triggers fc-cache rebuild)
+[✓]  6  dotfiles      Root dotfiles (.Xresources, .gtkrc-2.0)</code></pre>
+
+      <p>Toggle a number, press Enter to confirm.</p>
+
+      <h3>Shell-aware PATH patching</h3>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Shell</th><th>Line added</th><th>File patched</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>zsh</code></td><td><code>path=(~/.local/bin $path)</code></td><td><code>~/.zshrc</code></td></tr>
+            <tr><td><code>bash</code></td><td><code>export PATH="$HOME/.local/bin:$PATH"</code></td><td><code>~/.bashrc</code></td></tr>
+            <tr><td><code>fish</code></td><td><code>fish_add_path $HOME/.local/bin</code></td><td><code>~/.config/fish/conf.d/hypr_path.fish</code></td></tr>
+            <tr><td><code>ksh / mksh</code></td><td><code>export PATH="$HOME/.local/bin:$PATH"</code></td><td><code>~/.kshrc</code></td></tr>
+            <tr><td>Other</td><td><code>export PATH="$HOME/.local/bin:$PATH"</code></td><td><code>~/.profile</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <!-- ════════════════ KEYBINDS ════════════════ -->
+  <section class="section" id="keybinds">
+    <div class="container">
+
+      <h2>⌨️ Keybinds</h2>
+
+      <div class="callout note">
+        <strong>Note:</strong> <code>ALT</code> is the primary modifier across the entire setup.
+      </div>
+
+      <details open>
+        <summary>🔧 System</summary>
+        <div>
+          <div class="table-wrap" style="border:none;border-radius:0;">
+            <table>
+              <thead><tr><th>Keybind</th><th>Action</th></tr></thead>
+              <tbody>
+                <tr><td><kbd>F1</kbd></td><td>Toggle mute (speakers)</td></tr>
+                <tr><td><kbd>F2</kbd> / <kbd>F3</kbd></td><td>Volume −/+ 10%</td></tr>
+                <tr><td><kbd>F4</kbd></td><td>Toggle mute (mic)</td></tr>
+                <tr><td><kbd>F7</kbd></td><td>Toggle Wi-Fi</td></tr>
+                <tr><td><kbd>F9</kbd></td><td>Lock screen</td></tr>
+                <tr><td><kbd>F11</kbd> / <kbd>F12</kbd></td><td>Brightness −/+ 10%</td></tr>
+                <tr><td><kbd>Print</kbd></td><td>Screenshot</td></tr>
+                <tr><td><kbd>SUPER</kbd> + <kbd>SHIFT</kbd> + <kbd>R</kbd></td><td>Reload Hyprland config</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <details open>
+        <summary>🚀 Apps &amp; Launchers</summary>
+        <div>
+          <div class="table-wrap" style="border:none;border-radius:0;">
+            <table>
+              <thead><tr><th>Keybind</th><th>Action</th></tr></thead>
+              <tbody>
+                <tr><td><kbd>ALT</kbd> + <kbd>Enter</kbd></td><td>Terminal (Kitty)</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>D</kbd></td><td>App launcher (Quickshell)</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>R</kbd></td><td>Yazi (TUI file manager)</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>N</kbd></td><td>Notifications panel</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>I</kbd></td><td>Toggle Dynamic Island</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>H</kbd></td><td>btop</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>T</kbd></td><td>neomutt (email)</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>E</kbd></td><td>Emoji picker</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>X</kbd></td><td>Power menu</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>B</kbd></td><td>Bluetooth menu</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>L</kbd></td><td>AirPods TUI</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>Y</kbd></td><td>YouTube downloader</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>V</kbd></td><td>Clipboard history</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>W</kbd></td><td>Change wallpaper</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>K</kbd></td><td>Kill window</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>C</kbd></td><td>Toggle calendar</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>T</kbd></td><td>Nautilus (GUI files)</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>X</kbd></td><td>Clear notifications</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>P</kbd></td><td>Audio mixer (wiremix)</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>V</kbd></td><td>Watch video</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>S</kbd></td><td>Universal snip (QuickShell)</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>K</kbd></td><td>System cleaner</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>D</kbd></td><td>aria2 downloader</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>C</kbd></td><td>Script editor</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>E</kbd></td><td>Config editor</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>N</kbd></td><td>Wi-Fi menu</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>🌐 Web shortcuts <em>(personal — edit before use)</em></summary>
+        <div>
+          <div class="callout note" style="margin:1rem;">
+            <strong>Note:</strong> These open personal bookmarks hardcoded in the Hyprland config. Edit them before adopting this setup — they're in <code>.config/hypr/modules/keybinds.lua</code>.
+          </div>
+          <div class="table-wrap" style="border:none;border-radius:0;">
+            <table>
+              <thead><tr><th>Keybind</th><th>Action</th></tr></thead>
+              <tbody>
+                <tr><td><kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>B</kbd></td><td>Zen Browser</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>I</kbd></td><td>Zen private window</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>G</kbd></td><td>GitHub</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>Y</kbd></td><td>YouTube</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>G</kbd></td><td>Perplexity</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>W</kbd></td><td>Wallhaven</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>O</kbd></td><td>ChatGPT</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>R</kbd></td><td>Reddit</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>🪟 Window management</summary>
+        <div>
+          <div class="table-wrap" style="border:none;border-radius:0;">
+            <table>
+              <thead><tr><th>Keybind</th><th>Action</th></tr></thead>
+              <tbody>
+                <tr><td><kbd>ALT</kbd> + <kbd>Q</kbd></td><td>Close window</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>F</kbd></td><td>Toggle fullscreen</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>P</kbd></td><td>Toggle floating</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>↑</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd></td><td>Move focus</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>↑</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd></td><td>Swap window</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>CTRL</kbd> + <kbd>↑</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd></td><td>Resize window</td></tr>
+                <tr><td><kbd>ALT</kbd> + LMB drag</td><td>Move window</td></tr>
+                <tr><td><kbd>ALT</kbd> + RMB drag</td><td>Resize window</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>🗂 Workspaces</summary>
+        <div>
+          <div class="table-wrap" style="border:none;border-radius:0;">
+            <table>
+              <thead><tr><th>Keybind</th><th>Action</th></tr></thead>
+              <tbody>
+                <tr><td><kbd>ALT</kbd> + <kbd>1–0</kbd></td><td>Switch to workspace 1–10</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>1–0</kbd></td><td>Move window to workspace 1–10</td></tr>
+                <tr><td><kbd>ALT</kbd> + Scroll up/down</td><td>Cycle workspaces</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>grave</kbd></td><td>Toggle scratchpad</td></tr>
+                <tr><td><kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>grave</kbd></td><td>Move window to scratchpad</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+
+
+  <!-- ════════════════ THEMING ════════════════ -->
+  <section class="section" id="theming">
+    <div class="container">
+
+      <h2>🎨 Theming</h2>
+
+      <p><em>Every color, everywhere — driven by your wallpaper.</em></p>
+
+      <div class="palette">
+        <img src="https://img.shields.io/badge/-191113?style=for-the-badge&color=191113" alt="background" />
+        <img src="https://img.shields.io/badge/-372e30?style=for-the-badge&color=372e30" alt="surface_container" />
+        <img src="https://img.shields.io/badge/-514347?style=for-the-badge&color=514347" alt="surface_variant" />
+        <img src="https://img.shields.io/badge/-deb9c3?style=for-the-badge&color=deb9c3" alt="secondary_container" />
+        <img src="https://img.shields.io/badge/-fdabc6?style=for-the-badge&color=fdabc6" alt="primary_container" />
+        <img src="https://img.shields.io/badge/-ffb0c9?style=for-the-badge&color=ffb0c9" alt="surface_tint" />
+        <img src="https://img.shields.io/badge/-ffebef?style=for-the-badge&color=ffebef" alt="primary" />
+        <img src="https://img.shields.io/badge/-ebb991?style=for-the-badge&color=ebb991" alt="tertiary_container" />
+        <img src="https://img.shields.io/badge/-d4267a?style=for-the-badge&color=d4267a" alt="source_color" />
+      </div>
+
+      <p>This setup uses <strong><a href="https://github.com/InioX/matugen">Matugen</a></strong> — a Material You color extraction engine. Change your wallpaper, run Matugen, and Waybar, Rofi, Mako, GTK apps, and the terminal all recolor automatically.</p>
+
+      <p>Use <strong><a href="https://github.com/InioX/hyprwat">hyprwat</a></strong> for a GUI wallpaper picker that triggers Matugen recolor on selection.</p>
+
+      <pre><code># Set wallpaper and regenerate palette
+aww set /path/to/wallpaper.jpg
+matugen image /path/to/wallpaper.jpg</code></pre>
+
+      <pre><code># Force a refresh from the cached wallpaper
+matugen image ~/.config/hypr/wallpaper/current.png</code></pre>
+
+      <div class="callout note">
+        <strong>Note:</strong> Matugen templates live in <code>.config/matugen/</code>. Edit them to control exactly how color tokens map to each app's config format.
+      </div>
+
+      <p>Templates are provided for these components:</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>App</th><th>App</th><th>App</th></tr></thead>
+          <tbody>
+            <tr><td>Waybar</td><td>Rofi</td><td>Hyprland</td></tr>
+            <tr><td>Mako</td><td>Anyrun</td><td>btop</td></tr>
+            <tr><td>Zathura</td><td>Yazi</td><td>GTK3</td></tr>
+            <tr><td>GTK4</td><td>Kvantum</td><td>hyprwat</td></tr>
+            <tr><td>Kitty</td><td>SwayNC</td><td>SwayOSD</td></tr>
+            <tr><td>Zen Browser</td><td>MPV</td><td>Cava</td></tr>
+            <tr><td>Neovim</td><td>Foot</td><td>qt5ct</td></tr>
+            <tr><td>qt6ct</td><td>Quickshell</td><td>Sway</td></tr>
+            <tr><td>aerc</td><td>opencode</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout note">
+        <strong>Note:</strong> SwayNC, SwayOSD, and Zathura templates are bundled, but those apps are <strong>not</strong> part of the default stack. Install them yourself if you want to use those templates.
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <!-- ════════════════ QUICKSHELL ════════════════ -->
+  <section class="section" id="quickshell">
+    <div class="container">
+
+      <h2>🎛 Quickshell Panels &amp; OSD</h2>
+
+      <p>This setup uses <strong><a href="https://github.com/Quickshell/Quickshell">Quickshell</a></strong> as the core UI framework, providing a QML-based desktop shell that powers several visual components:</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Component</th><th>Role</th></tr></thead>
+          <tbody>
+            <tr><td><strong>TopBar</strong></td><td>Desktop panel with workspaces, clock, tray</td></tr>
+            <tr><td><strong>DynamicIsland</strong></td><td>Notification-style OSD overlays</td></tr>
+            <tr><td><strong>App Launcher</strong></td><td>Application launcher (triggered via <code>ALT+D</code>)</td></tr>
+            <tr><td><strong>Lock Screen</strong></td><td>Screen lock with clock and media controls</td></tr>
+            <tr><td><strong>ClipboardViewer</strong></td><td>Clipboard history manager</td></tr>
+            <tr><td><strong>OSD</strong></td><td>Volume/brightness on-screen display</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Quickshell processes are auto-started by <code>qs_manager.sh</code> on Hyprland startup. The config files live under <code>.config/quickshell/</code>.</p>
+
+      <div class="callout note">
+        <strong>Note:</strong> Quickshell is in the official Arch repos (<code>quickshell</code>). The installer will check for it.
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <!-- ════════════════ ZEN ════════════════ -->
+  <section class="section" id="zen">
+    <div class="container">
+
+      <h2>🌐 Zen Browser</h2>
+
+      <p>Custom styling for <a href="https://zen-browser.app/">Zen Browser</a> is included under <code>.config/zen/</code> to match the Viper aesthetic.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>File</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td><code>.config/zen/chrome/userChrome.css</code></td><td>Browser chrome — sidebar, tab bar, toolbar</td></tr>
+            <tr><td><code>.config/zen/chrome/userContent.css</code></td><td>Internal pages — new tab, <code>about:</code> pages</td></tr>
+            <tr><td><code>.config/zen/chrome/zen-logo-mocha.svg</code></td><td>Custom logo asset</td></tr>
+            <tr><td><code>.config/zen/user.js</code></td><td>Browser preferences</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout">
+        <strong>Important:</strong> The installer copies <code>.config/zen/</code> to <code>~/.config/zen/</code>, but that location is inert — Zen Browser reads its styles from your <strong>profile</strong> directory. Apply it manually:
+      </div>
+
+      <pre><code>cp -r .config/zen/chrome "$HOME/.zen/chrome"</code></pre>
+
+      <p>Then enable custom CSS in <code>about:config</code>:</p>
+
+      <pre><code>toolkit.legacyUserProfileCustomizations.stylesheets = true</code></pre>
+
+      <p>Restart Zen. If your profile is not at <code>~/.zen/</code> (e.g. Flatpak installs use <code>~/.var/app/</code>), find the correct path via <code>about:support → Profile Directory</code>.</p>
+
+    </div>
+  </section>
+
+
+
+  <!-- ════════════════ UPDATING ════════════════ -->
+  <section class="section" id="updating">
+    <div class="container">
+
+      <h2>🔄 Updating</h2>
+
+      <pre><code>git pull
+./install.sh --dry-run   # preview what changed
+./install.sh             # apply</code></pre>
+
+      <p>Each run creates a fresh backup. To roll back after an update:</p>
+
+      <pre><code>./install.sh --uninstall      # restore most recent backup
+./install.sh --list-backups   # or inspect all available backups</code></pre>
+
+    </div>
+  </section>
+
+
+
+  <!-- ════════════════ TROUBLESHOOTING ════════════════ -->
+  <section class="section" id="troubleshooting">
+    <div class="container">
+
+      <h2>🔧 Troubleshooting</h2>
+
+      <details>
+        <summary>Waybar / Rofi / Mako not launching</summary>
+        <div>
+          <pre><code>./install.sh --dry-run
+which hyprland waybar rofi mako matugen kitty foot zsh</code></pre>
+        </div>
+      </details>
+
+      <details>
+        <summary>Scripts fail with <code>command not found</code></summary>
+        <div>
+          <pre><code># Zsh
+echo 'path=(~/.local/bin $path)' >> ~/.zshrc
+source ~/.zshrc
+
+# Bash / others
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc</code></pre>
+        </div>
+      </details>
+
+      <details>
+        <summary>GTK 2 theme broken after nwg-look</summary>
+        <div>
+          <pre><code>cp /path/to/Hypr/.gtkrc-2.0 ~/.gtkrc-2.0</code></pre>
+        </div>
+      </details>
+
+      <details>
+        <summary>Colors didn't update after wallpaper change</summary>
+        <div>
+          <pre><code>matugen image /path/to/your/wallpaper</code></pre>
+        </div>
+      </details>
+
+      <details>
+        <summary>Quickshell panels / launcher not showing</summary>
+        <div>
+          <pre><code># Check if quickshell is installed
+which quickshell
+
+# Verify qs_manager.sh is running
+pgrep -f "qs_manager" || ~/.config/hypr/scripts/qs_manager.sh
+
+# Check the install log for errors
+tail -30 /tmp/hypr-install-*.log 2>/dev/null</code></pre>
+          <p>Make sure <code>quickshell</code> is installed.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Icon glyphs showing as boxes</summary>
+        <div>
+          <pre><code>yay -S ttf-font-awesome nerd-fonts-symbols-only
+fc-cache -f</code></pre>
+        </div>
+      </details>
+
+      <details>
+        <summary>--uninstall says "No install manifest found"</summary>
+        <div>
+          <p>The installer was never run, or the backup directory was deleted. Restore files manually from the repo tree.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Screen sharing / portals not working</summary>
+        <div>
+          <pre><code># Make sure xdg-desktop-portal-hyprland is installed
+yay -S xdg-desktop-portal-hyprland
+
+# Restart the portal service
+systemctl --user restart xdg-desktop-portal-hyprland
+
+# Check service status
+systemctl --user status xdg-desktop-portal-hyprland</code></pre>
+        </div>
+      </details>
+
+      <details>
+        <summary>Something went wrong mid-install</summary>
+        <div>
+          <pre><code># Show the last 50 lines of the most recent install log
+tail -50 /tmp/hypr-install-*.log 2>/dev/null</code></pre>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+
+
+  <!-- ════════════════ SECURITY ════════════════ -->
+  <section class="section" id="security">
+    <div class="container">
+
+      <h2>🔐 Security</h2>
+
+      <p>Do <strong>not</strong> open a public GitHub issue for vulnerabilities. See <a href="https://github.com/Cybersnake223/Hypr/blob/main/SECURITY.md">SECURITY.md</a> for responsible disclosure.</p>
+
+    </div>
+  </section>
+
+
+
+  <!-- ════════════════ CONTRIBUTING ════════════════ -->
+  <section class="section" id="contributing">
+    <div class="container">
+
+      <h2>🤝 Contributing</h2>
+
+      <p>PRs are welcome for fixes, improvements, and documentation updates. Include screenshots when UI is affected.</p>
+
+      <h3>Getting Help</h3>
+
+      <p>Need help or have questions? Start a discussion:</p>
+
+      <ul>
+        <li><strong><a href="https://github.com/Cybersnake223/Hypr/discussions">GitHub Discussions</a></strong> — ask questions, share setups, get help</li>
+      </ul>
+
+      <p>For bugs and issues, use the <strong><a href="https://github.com/Cybersnake223/Hypr/issues">Issue Tracker</a></strong>.</p>
+
+    </div>
+  </section>
+
+
+
+  <!-- ════════════════ LICENSE ════════════════ -->
+  <section class="section" id="license">
+    <div class="container">
+
+      <h2>📄 License</h2>
+
+      <p>MIT — see <a href="https://github.com/Cybersnake223/Hypr/blob/main/LICENSE">LICENSE</a> for details.</p>
+
+    </div>
+  </section>
+
+
+  <!-- ════════════════ FOOTER ════════════════ -->
+
+
+  <!-- ════════════════ FOOTER ════════════════ -->
+  <footer class="footer">
+    <div class="container">
+
+      <div class="star-cta">
+        <a href="https://github.com/Cybersnake223/Hypr/stargazers">
+          <img src="https://img.shields.io/github/stars/Cybersnake223/Hypr?style=for-the-badge&color=A024F7" alt="GitHub Stars" />
         </a>
-
-        <a class="btn btn-secondary" href="https://cybersnake223.github.io">
-          Portfolio
-        </a>
+        <p>Enjoying Vicious Viper? Give it a star!</p>
       </div>
+
+      <img src="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/cslogo.jpeg" alt="Vicious Viper Logo" width="48" height="48" />
+
+      <p><em>Crafted with love by <a href="https://github.com/Cybersnake223"><strong>Cybersnake</strong></a></em></p>
+
+      <div class="wave-footer" aria-hidden="true">
+        <img src="https://capsule-render.vercel.app/api?type=waving&color=A024F7&height=100&section=footer" alt="" />
+      </div>
+
     </div>
   </footer>
+
+  </main>
 
   <div id="toTop" role="button" tabindex="0" aria-label="Back to top">&#8593;</div>
 
@@ -685,7 +1125,7 @@
       const io = new IntersectionObserver(entries=>{
         entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
       }, { threshold:0.07, rootMargin:'0px 0px -40px 0px' });
-      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+      document.querySelectorAll('.section').forEach(el => io.observe(el));
     })();
 
     /* Active nav section indicator */
@@ -712,245 +1152,93 @@
       sections.forEach(s => io.observe(s.el));
     })();
 
-    /* Metrics count-up animation */
+    /* Theme toggle */
     (function(){
-      if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      const metrics = document.querySelectorAll('.metric h3');
-      if(!metrics.length) return;
-      const targets = [];
-      metrics.forEach(el => {
-        const txt = el.textContent.trim();
-        const num = parseFloat(txt);
-        if(!isNaN(num)) {
-          const suffix = txt.replace(/[\d.]/g, '');
-          targets.push({ el, num, suffix });
-        }
-      });
-      const io = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if(!e.isIntersecting) return;
-          const t = targets.find(x => x.el === e.target);
-          if(!t || t.done) return;
-          t.done = true;
-          const duration = 1200;
-          const start = performance.now();
-          function easeOutExpo(x){ return x === 1 ? 1 : 1 - Math.pow(2, -10 * x); }
-          function tick(now){
-            const elapsed = now - start;
-            const progress = Math.min(elapsed / duration, 1);
-            const eased = easeOutExpo(progress);
-            const current = eased * t.num;
-            t.el.textContent = (t.num % 1 === 0 ? Math.round(current) : current.toFixed(1)) + t.suffix;
-            if(progress < 1) requestAnimationFrame(tick);
-          }
-          requestAnimationFrame(tick);
-        });
-      }, { threshold: 0.5 });
-      targets.forEach(t => io.observe(t.el));
-    })();
-
-    /* FAQ aria-expanded toggling */
-    (function(){
-      document.querySelectorAll('.faq-item').forEach(item => {
-        const summary = item.querySelector('summary');
-        if(!summary) return;
-        summary.setAttribute('aria-expanded', item.hasAttribute('open') ? 'true' : 'false');
-        item.addEventListener('toggle', () => {
-          summary.setAttribute('aria-expanded', item.hasAttribute('open') ? 'true' : 'false');
-        });
+      const btn = document.getElementById('vvThemeToggle');
+      const icon = document.getElementById('vvThemeIcon');
+      if(!btn) return;
+      const sun = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+      const moon = '<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>';
+      const saved = localStorage.getItem('theme');
+      const osPrefers = window.matchMedia('(prefers-color-scheme: light)').matches;
+      let light = saved ? saved === 'light' : osPrefers;
+      function apply(){
+        document.documentElement.classList.toggle('light', light);
+        icon.innerHTML = light ? sun : moon;
+        btn.setAttribute('aria-label', light ? 'Switch to dark theme' : 'Switch to light theme');
+      }
+      apply();
+      btn.addEventListener('click', ()=>{ light = !light; apply(); localStorage.setItem('theme', light ? 'light' : 'dark'); });
+      window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
+        if(!localStorage.getItem('theme')){ light = e.matches; apply(); }
       });
     })();
 
+    /* Mobile nav */
     (function(){
-      /* Theme toggle (syncs with main portfolio via localStorage) */
-      (function(){
-        const btn = document.getElementById('vvThemeToggle');
-        const icon = document.getElementById('vvThemeIcon');
-        if(!btn) return;
-        const moon = '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';
-        const sun  = '<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>';
-        const saved = localStorage.getItem('theme');
-        const osPrefers = window.matchMedia('(prefers-color-scheme: light)').matches;
-        let light = saved ? saved === 'light' : osPrefers;
-        function apply(){
-          document.documentElement.classList.toggle('light', light);
-          icon.innerHTML = light ? sun : moon;
-          btn.setAttribute('aria-label', light ? 'Switch to dark theme' : 'Switch to light theme');
-        }
-        apply();
-        btn.addEventListener('click', ()=>{ light = !light; apply(); localStorage.setItem('theme', light ? 'light' : 'dark'); });
-        window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
-          if(!localStorage.getItem('theme')){ light = e.matches; apply(); }
-        });
-      })();
-
-      /* Terminal typewriter */
-      (function(){
-        if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-        const cmdEl = document.getElementById('vvTermCmd');
-        const curEl = document.getElementById('vvTermCursor');
-        const outEl = document.getElementById('vvTermOutput');
-        if(!cmdEl || !outEl) return;
-        const sequences = [
-          { cmd:'git clone https://github.com/Cybersnake223/Hypr', out:[
-            '<span style="color:#4ade80;">\u2713</span> Cloning into \'Hypr\'...',
-            '<span style="color:#4ade80;">\u2713</span> remote: Enumerating objects: 437, done.'
-          ]},
-          { cmd:'cd Hypr && ./install.sh --select', out:[
-            '<span style="color:#3ecfcf;">\u25b6</span> interactive module installer',
-            '<span style="color:#3ecfcf;">\u25b6</span> matugen integration detected',
-            '<span style="color:#3ecfcf;">\u25b6</span> waybar event hooks enabled',
-            '<span style="color:#3ecfcf;">\u25b6</span> wallpaper automation active'
-          ]},
-          { cmd:'matugen image ~/walls/cyberpunk.png', out:[
-            '<span style="color:#c9a84c;">\u21b3</span> regenerating color templates...',
-            '<span style="color:#c9a84c;">\u21b3</span> reloading Waybar...',
-            '<span style="color:#c9a84c;">\u21b3</span> syncing GTK + Qt themes...',
-            '<span style="color:#c9a84c;">\u21b3</span> applying terminal palette...'
-          ]},
-        ];
-        let seq = 0;
-        function runSeq(){
-          const s = sequences[seq % sequences.length];
-          seq++;
-          let i = 0;
-          cmdEl.textContent = '';
-          outEl.innerHTML = '';
-          curEl.style.display = 'inline-block';
-          function typeChar(){
-            if(i <= s.cmd.length){
-              cmdEl.textContent = s.cmd.slice(0,i);
-              i++;
-              setTimeout(typeChar, 40 + Math.random()*25);
-            } else {
-              curEl.style.display = 'none';
-              let oi = 0;
-              function showLine(){
-                if(oi < s.out.length){
-                  const d = document.createElement('div');
-                  d.style.cssText = 'padding-left:1.1rem;color:var(--muted);font-size:0.88rem;line-height:2;';
-                  d.innerHTML = s.out[oi];
-                  outEl.appendChild(d);
-                  oi++;
-                  setTimeout(showLine, 90);
-                } else {
-                  setTimeout(()=>{
-                    outEl.style.transition = 'opacity 0.4s';
-                    outEl.style.opacity = '0';
-                    cmdEl.style.opacity = '0';
-                    setTimeout(()=>{
-                      outEl.innerHTML = '';
-                      outEl.style.opacity = '1';
-                      cmdEl.style.opacity = '1';
-                      runSeq();
-                    }, 500);
-                  }, 2500);
-                }
-              }
-              setTimeout(showLine, 200);
-            }
-          }
-          typeChar();
-        }
-        setTimeout(runSeq, 1000);
-      })();
-
-      /* Mobile nav */
       const toggle = document.getElementById('navToggle');
       const links  = document.getElementById('navLinks');
-      if(toggle && links){
-        function openMenu(){
-          links.classList.add('open');
-          toggle.classList.add('open');
-          toggle.setAttribute('aria-expanded', 'true');
-          const first = links.querySelector('a');
-          if(first) setTimeout(()=> first.focus(), 50);
-        }
-        function closeMenu(){
-          links.classList.remove('open');
-          toggle.classList.remove('open');
-          toggle.setAttribute('aria-expanded', 'false');
-          toggle.focus();
-        }
-        toggle.addEventListener('click', ()=>{
-          links.classList.contains('open') ? closeMenu() : openMenu();
-        });
-        links.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-        document.addEventListener('keydown', e=>{
-          if(!links.classList.contains('open')) return;
-          if(e.key === 'Escape'){ closeMenu(); return; }
-          if(e.key === 'Tab'){
-            const focusable = [...links.querySelectorAll('a')];
-            const first = focusable[0], last = focusable[focusable.length-1];
-            if(e.shiftKey){
-              if(document.activeElement === first){ e.preventDefault(); last.focus(); }
-            } else {
-              if(document.activeElement === last){ e.preventDefault(); toggle.focus(); }
-            }
-          }
-        });
-        document.addEventListener('click', e=>{
-          if(links.classList.contains('open') && !links.contains(e.target) && e.target !== toggle){
-            closeMenu();
-          }
-        });
+      if(!toggle || !links) return;
+      function openMenu(){
+        links.classList.add('open');
+        toggle.classList.add('open');
+        toggle.setAttribute('aria-expanded', 'true');
+        const first = links.querySelector('a');
+        if(first) setTimeout(()=> first.focus(), 50);
       }
-
-      /* Explorer search with no-results state */
-      const search = document.querySelector('.explorer-search');
-      const emptyMsg = document.querySelector('.explorer-empty');
-      if(search){
-        search.addEventListener('input', function(){
-          const q = this.value.toLowerCase();
-          let visible = 0;
-          document.querySelectorAll('.explorer-item').forEach(item => {
-            const match = item.textContent.toLowerCase().includes(q);
-            item.style.display = match ? '' : 'none';
-            if(match) visible++;
-          });
-          if(emptyMsg) emptyMsg.style.display = visible ? 'none' : '';
-        });
+      function closeMenu(){
+        links.classList.remove('open');
+        toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.focus();
       }
-
-      /* Live GitHub stats with fallback */
-      (function(){
-        const starEl = document.querySelector('.hero-stats .stat:first-child strong');
-        if(!starEl) return;
-        const fallback = starEl.textContent;
-        fetch('https://api.github.com/repos/Cybersnake223/Hypr', { signal: AbortSignal.timeout(5000) })
-          .then(r => r.ok ? r.json() : Promise.reject())
-          .then(d => { starEl.textContent = d.stargazers_count + '+'; })
-          .catch(() => { starEl.textContent = fallback; });
-      })();
-
-      /* Scroll progress bar */
-      (function(){
-        const bar = document.getElementById('scroll-progress');
-        if(!bar) return;
-        function update(){
-          const scrolled = window.scrollY;
-          const total = document.documentElement.scrollHeight - window.innerHeight;
-          bar.style.width = (total > 0 ? (scrolled/total)*100 : 0) + '%';
+      toggle.addEventListener('click', ()=>{
+        links.classList.contains('open') ? closeMenu() : openMenu();
+      });
+      links.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+      document.addEventListener('keydown', e=>{
+        if(!links.classList.contains('open')) return;
+        if(e.key === 'Escape'){ closeMenu(); return; }
+        if(e.key === 'Tab'){
+          const focusable = [...links.querySelectorAll('a')];
+          const first = focusable[0], last = focusable[focusable.length-1];
+          if(e.shiftKey){
+            if(document.activeElement === first){ e.preventDefault(); last.focus(); }
+          } else {
+            if(document.activeElement === last){ e.preventDefault(); toggle.focus(); }
+          }
         }
-        window.addEventListener('scroll', update, {passive:true});
-        update();
-      })();
+      });
+    })();
 
-      /* Back-to-top */
+    /* Scroll progress bar */
+    (function(){
+      const bar = document.getElementById('scroll-progress');
+      if(!bar) return;
+      function update(){
+        const scrolled = window.scrollY;
+        const total = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = (total > 0 ? (scrolled/total)*100 : 0) + '%';
+      }
+      window.addEventListener('scroll', update, {passive:true});
+      update();
+    })();
+
+    /* Back-to-top */
+    (function(){
       const toTop = document.getElementById('toTop');
-      if(toTop){
-        const hero = document.querySelector('.hero');
-        const check = () => {
-          const heroBottom = hero ? hero.offsetTop + hero.offsetHeight : window.innerHeight;
-          toTop.classList.toggle('visible', window.scrollY > heroBottom);
-        };
-        window.addEventListener('scroll', check, { passive: true });
-        check();
-        toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-        toTop.addEventListener('keydown', e => {
-          if(e.key === 'Enter' || e.key === ' ') window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-      }
+      if(!toTop) return;
+      const hero = document.querySelector('.hero');
+      const check = () => {
+        const heroBottom = hero ? hero.offsetTop + hero.offsetHeight : window.innerHeight;
+        toTop.classList.toggle('visible', window.scrollY > heroBottom);
+      };
+      window.addEventListener('scroll', check, { passive: true });
+      check();
+      toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      toTop.addEventListener('keydown', e => {
+        if(e.key === 'Enter' || e.key === ' ') window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
     })();
   </script>
 
