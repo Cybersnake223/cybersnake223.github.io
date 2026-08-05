@@ -80,7 +80,9 @@
     </div>
     <div class="container">
 
-      <img class="logo-hero" src="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/cslogo.jpeg" alt="Vicious Viper Logo" width="120" height="120" />
+      <div class="logo-wrap">
+        <img class="logo-hero" src="https://raw.githubusercontent.com/Cybersnake223/Hypr/main/assets/cslogo.jpeg" alt="Vicious Viper Logo" width="120" height="120" />
+      </div>
 
       <h1>Vicious Viper</h1>
 
@@ -1147,6 +1149,24 @@ tail -50 /tmp/hypr-install-*.log 2>/dev/null</code></pre>
         header.className = 'code-header';
         header.textContent = lang;
         pre.appendChild(header);
+      });
+    })();
+
+    /* Lightweight syntax highlighting */
+    (function(){
+      const tokenRe = /(#.*$)|("[^"]*"|'[^']*')|(\$[A-Z_][A-Z0-9_]*|\$[A-Za-z_]+)|\b(sudo|yay|pacman|git|cd|echo|export|source|rm|cp|mv|mkdir|chmod|fc-cache|systemctl|find|which|if|then|fi|else|for|in|do|done)\b/gm;
+      document.querySelectorAll('pre code').forEach(code => {
+        if(code.closest('.file-tree')) return;
+        const esc = code.textContent
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;');
+        code.innerHTML = esc.replace(tokenRe, (m, cm, str, var_, kw) => {
+          if(cm) return '<span class="tok-c">' + cm + '</span>';
+          if(str) return '<span class="tok-s">' + str + '</span>';
+          if(var_) return '<span class="tok-v">' + var_ + '</span>';
+          return '<span class="tok-k">' + kw + '</span>';
+        });
       });
     })();
 
