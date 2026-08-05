@@ -74,10 +74,26 @@ body {
 a {
   text-decoration: none;
   color: var(--primary-light);
+  background-image: linear-gradient(var(--primary-light), var(--primary-light));
+  background-size: 0% 1px;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s ease;
 }
 a:hover {
-  text-decoration: underline;
+  background-size: 100% 1px;
 }
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar { width: 12px; height: 12px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb {
+  background: rgba(160,36,247,0.35);
+  border-radius: 6px;
+  border: 3px solid var(--bg);
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(160,36,247,0.55); }
+* { scrollbar-width: thin; scrollbar-color: rgba(160,36,247,0.35) var(--bg); }
 
 img {
   max-width: 100%;
@@ -370,11 +386,19 @@ img {
 .callout {
   border-left: 3px solid var(--primary);
   background: rgba(160,36,247,0.06);
-  padding: 0.8rem 1rem;
+  padding: 0.8rem 1rem 0.8rem 2.4rem;
   border-radius: 0 var(--radius) var(--radius) 0;
   margin-bottom: 1rem;
   font-size: 0.92rem;
   color: var(--muted);
+  position: relative;
+}
+.callout::before {
+  content: "💡";
+  position: absolute;
+  left: 0.7rem;
+  top: 0.8rem;
+  font-size: 0.95rem;
 }
 .callout strong {
   color: var(--text);
@@ -383,18 +407,22 @@ img {
   border-left-color: #3fb950;
   background: rgba(63,185,80,0.06);
 }
+.callout.tip::before { content: "✅"; }
 .callout.caution {
   border-left-color: #d29922;
   background: rgba(210,153,34,0.06);
 }
+.callout.caution::before { content: "⚠️"; }
 .callout.warning {
   border-left-color: #f85149;
   background: rgba(248,81,73,0.06);
 }
+.callout.warning::before { content: "🔒"; }
 .callout.note {
   border-left-color: #58a6ff;
   background: rgba(88,166,255,0.06);
 }
+.callout.note::before { content: "📝"; }
 
 /* ── Tables ── */
 .table-wrap {
@@ -499,10 +527,12 @@ pre code {
   width: 100%;
   border-radius: 8px;
   border: 1px solid var(--border);
-  transition: transform 0.2s;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .screenshot-grid img:hover {
-  transform: scale(1.02);
+  transform: scale(1.03);
+  box-shadow: 0 6px 24px rgba(160,36,247,0.2);
 }
 
 /* ── Collapsible details ── */
@@ -571,6 +601,11 @@ details > pre {
 .feature-card p {
   margin: 0;
   font-size: 0.9rem;
+}
+.feature-card .feature-icon {
+  font-size: 1.6rem;
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
 /* ── Installer table ── */
@@ -653,12 +688,13 @@ details > pre {
   top: 0;
   left: 0;
   z-index: 9999;
-  height: 2px;
+  height: 3px;
   width: 0%;
   background: var(--primary);
   transition: width 0.1s linear;
   border-radius: 0 2px 2px 0;
   pointer-events: none;
+  box-shadow: 0 0 8px rgba(160,36,247,0.5);
 }
 
 /* ── Back to top ── */
@@ -778,6 +814,10 @@ details > pre {
 .reveal { opacity: 1; transform: none; transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
 .js-animate .reveal { opacity: 0; transform: translateY(24px); }
 .js-animate .reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+.reveal-d4 { transition-delay: 0.4s; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
