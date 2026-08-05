@@ -597,14 +597,8 @@ details > pre {
 
 /* ── File tree ── */
 .file-tree {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.2rem;
-  font-family: var(--mono);
   font-size: 0.82rem;
   line-height: 1.8;
-  overflow-x: auto;
   color: var(--muted);
   margin: 1rem 0;
 }
@@ -874,7 +868,6 @@ html.light .callout.note { background: rgba(88,166,255,0.08); }
 html.light pre { background: var(--surface-2); }
 html.light details summary { background: var(--surface-2); }
 html.light .installer-table { background: var(--surface); }
-html.light .file-tree { background: var(--surface-2); }
 html.light .toc { background: var(--surface); }
 html.light .theme-toggle:hover { background: rgba(160,36,247,0.08); }
 html.light .nav-links { background: rgba(255,255,255,0.98); }

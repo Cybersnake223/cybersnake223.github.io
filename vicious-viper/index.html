@@ -504,7 +504,7 @@ sudo systemctl enable --now bluetooth networkmanager</code></pre>
 
       <h2>📂 File Layout</h2>
 
-      <div class="file-tree"><code>$HOME
+      <pre class="file-tree">$HOME
 ├── .config/
 │   ├── hypr/             ← Hyprland (Lua config; hyprlock, hypridle, hyprpaper)
 │   ├── waybar/           ← Status bar
@@ -527,7 +527,7 @@ sudo systemctl enable --now bluetooth networkmanager</code></pre>
 │   ├── aerc/             ← Terminal email client (bundled config)
 │   ├── cmus/             ← Music player
 │   ├── environment.d/    ← Environment variables
-│   ├── fsh/              ← fast-syntax-highlighting theme (Zsh, via `fast-theme`)
+│   ├── fsh/              ← fast-syntax-highlighting theme (Zsh, via fast-theme)
 │   ├── gtk-2.0/          ← GTK2 theme
 │   ├── gtk-3.0/          ← GTK3 CSS (Matugen-recolored)
 │   ├── gtk-4.0/          ← GTK4 CSS (Matugen-recolored)
@@ -551,7 +551,7 @@ sudo systemctl enable --now bluetooth networkmanager</code></pre>
 /etc/ (system-level — not installed, apply manually):
 ├── auto-cpufreq.conf    ← CPU governor tuning
 ├── pacman.conf          ← Pacman parallel downloads + eye candy
-└── pacman.d/</code></div>
+└── pacman.d/</pre>
 
       <div class="callout warning">
         <strong>Security notes:</strong> <code>etc/pacman.conf</code> sets <code>SigLevel = Optional TrustAll</code>, which disables package signature verification. <code>.config/environment.d/zen.conf</code> sets <code>MOZ_DISABLE_RDD_SANDBOX=1</code>, which disables Firefox's media-decoder sandbox.
