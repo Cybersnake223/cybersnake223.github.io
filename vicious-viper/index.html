@@ -1117,7 +1117,44 @@ tail -50 /tmp/hypr-install-*.log 2>/dev/null</code></pre>
 
   <div id="toTop" role="button" tabindex="0" aria-label="Back to top">&#8593;</div>
 
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
+  <div class="lightbox-overlay" id="lightbox" role="dialog" aria-label="Image preview">
+    <button class="lightbox-close" aria-label="Close">&times;</button>
+    <img src="" alt="" />
+  </div>
+
   <script>
+    /* Code block language headers */
+    (function(){
+      document.querySelectorAll('pre').forEach(pre => {
+        const code = pre.querySelector('code');
+        if(!code) return;
+        const cls = [...code.classList].find(c => c.startsWith('language-'));
+        if(!cls) return;
+        const lang = cls.replace('language-', '');
+        const header = document.createElement('div');
+        header.className = 'code-header';
+        header.textContent = lang;
+        pre.appendChild(header);
+      });
+    })();
+
+    /* Anchor link click-to-copy */
+    (function(){
+      document.querySelectorAll('.section h2[id]').forEach(h2 => {
+        h2.style.cursor = 'pointer';
+        h2.addEventListener('click', () => {
+          const url = location.origin + location.pathname + '#' + h2.id;
+          navigator.clipboard.writeText(url).then(() => {
+            const orig = h2.textContent;
+            h2.textContent = 'Copied!';
+            setTimeout(() => h2.textContent = orig, 1200);
+          });
+        });
+      });
+    })();
+
     /* Section reveal on scroll */
     (function(){
       if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -1178,11 +1215,13 @@ tail -50 /tmp/hypr-install-*.log 2>/dev/null</code></pre>
     (function(){
       const toggle = document.getElementById('navToggle');
       const links  = document.getElementById('navLinks');
+      const overlay = document.getElementById('navOverlay');
       if(!toggle || !links) return;
       function openMenu(){
         links.classList.add('open');
         toggle.classList.add('open');
         toggle.setAttribute('aria-expanded', 'true');
+        if(overlay) overlay.classList.add('open');
         const first = links.querySelector('a');
         if(first) setTimeout(()=> first.focus(), 50);
       }
@@ -1190,11 +1229,13 @@ tail -50 /tmp/hypr-install-*.log 2>/dev/null</code></pre>
         links.classList.remove('open');
         toggle.classList.remove('open');
         toggle.setAttribute('aria-expanded', 'false');
+        if(overlay) overlay.classList.remove('open');
         toggle.focus();
       }
       toggle.addEventListener('click', ()=>{
         links.classList.contains('open') ? closeMenu() : openMenu();
       });
+      if(overlay) overlay.addEventListener('click', closeMenu);
       links.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
       document.addEventListener('keydown', e=>{
         if(!links.classList.contains('open')) return;
@@ -1238,6 +1279,34 @@ tail -50 /tmp/hypr-install-*.log 2>/dev/null</code></pre>
       toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
       toTop.addEventListener('keydown', e => {
         if(e.key === 'Enter' || e.key === ' ') window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+
+    /* Image lightbox */
+    (function(){
+      const overlay = document.getElementById('lightbox');
+      if(!overlay) return;
+      const img = overlay.querySelector('img');
+      const closeBtn = overlay.querySelector('.lightbox-close');
+      function open(src, alt){
+        img.src = src;
+        img.alt = alt || '';
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus();
+      }
+      function close(){
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+      closeBtn.addEventListener('click', close);
+      overlay.addEventListener('click', e => { if(e.target === overlay) close(); });
+      document.addEventListener('keydown', e => { if(e.key === 'Escape') close(); });
+
+      document.querySelectorAll('.screenshot-grid img, .section img').forEach(el => {
+        if(el.closest('.badges') || el.closest('.palette') || el.closest('.badge-grid') || el.closest('.star-cta') || el.closest('.wave-header') || el.closest('.wave-footer') || el.closest('.footer') || el.closest('.toc')) return;
+        el.style.cursor = 'zoom-in';
+        el.addEventListener('click', () => open(el.src, el.alt));
       });
     })();
   </script>

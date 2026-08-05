@@ -165,6 +165,11 @@ img {
   border-radius: 999px !important;
   background: rgba(160,36,247,0.1) !important;
   color: var(--primary-light) !important;
+  transition: box-shadow 0.2s, background 0.2s !important;
+}
+.nav-cta:hover {
+  box-shadow: 0 0 12px rgba(160,36,247,0.4);
+  background: rgba(160,36,247,0.2) !important;
 }
 
 .nav-right {
@@ -230,6 +235,12 @@ img {
   letter-spacing: -0.03em;
   margin-bottom: 1rem;
   line-height: 1.1;
+  background: linear-gradient(135deg, var(--primary-light), var(--accent), var(--primary));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 6s ease infinite;
 }
 
 .badges {
@@ -243,6 +254,11 @@ img {
 .badges img {
   height: 28px;
   display: inline-block;
+  transition: filter 0.2s, transform 0.2s;
+}
+.badges img:hover {
+  filter: drop-shadow(0 0 8px rgba(160,36,247,0.5));
+  transform: translateY(-2px);
 }
 
 .hero-desc {
@@ -299,6 +315,23 @@ img {
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.section h2[id]::after {
+  content: "#";
+  margin-left: 0.5rem;
+  color: var(--primary);
+  opacity: 0;
+  font-size: 0.8em;
+  transition: opacity 0.2s;
+  cursor: pointer;
+  text-decoration: none;
+}
+.section h2[id]:hover::after {
+  opacity: 0.6;
+}
+.section h2[id]::after:hover {
+  opacity: 1;
 }
 
 .section h3 {
@@ -415,6 +448,25 @@ pre {
   line-height: 1.7;
   color: var(--muted);
   margin-bottom: 1rem;
+  position: relative;
+}
+pre .code-header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.25rem 0.7rem;
+  font-family: var(--body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--faint);
+  background: var(--surface-2);
+  border-bottom-left-radius: 6px;
+  border-left: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  user-select: none;
+  pointer-events: none;
 }
 
 pre code {
@@ -505,11 +557,12 @@ details > pre {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.2rem;
-  transition: border-color 0.2s, transform 0.2s;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 .feature-card:hover {
   border-color: var(--border-strong);
   transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(160,36,247,0.15);
 }
 .feature-card h3 {
   margin: 0 0 0.5rem;
@@ -620,12 +673,12 @@ details > pre {
   bottom: 1.5rem;
   right: 1.5rem;
   z-index: 200;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  color: var(--muted);
+  background: var(--primary);
+  border: none;
+  color: #fff;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -634,7 +687,8 @@ details > pre {
   opacity: 0;
   pointer-events: none;
   transform: translateY(10px);
-  transition: opacity 0.3s, transform 0.3s, color 0.15s, border-color 0.15s;
+  transition: opacity 0.3s, transform 0.3s, box-shadow 0.2s;
+  box-shadow: 0 2px 12px rgba(160,36,247,0.3);
 }
 #toTop.visible {
   opacity: 1;
@@ -642,8 +696,11 @@ details > pre {
   transform: translateY(0);
 }
 #toTop:hover {
-  color: var(--primary-light);
-  border-color: var(--border-strong);
+  box-shadow: 0 4px 20px rgba(160,36,247,0.5);
+  transform: translateY(-2px);
+}
+#toTop.visible:hover {
+  transform: translateY(-2px);
 }
 
 /* ── Responsive ── */
@@ -657,28 +714,43 @@ details > pre {
   .nav-links {
     position: fixed;
     top: 0;
-    left: 0;
     right: 0;
-    background: rgba(13,17,23,0.98);
+    width: min(300px, 80vw);
+    height: 100vh;
+    background: var(--surface);
     backdrop-filter: blur(16px);
     flex-direction: column;
     gap: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-    border-bottom: 1px solid var(--border);
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-left: 1px solid var(--border);
     padding-top: 56px;
+    z-index: 250;
   }
   .nav-links.open {
-    max-height: 400px;
+    transform: translateX(0);
   }
   .nav-links li a {
     display: block;
-    padding: 0.8rem 1.5rem;
-    border-top: 1px solid var(--border);
+    padding: 0.9rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.95rem;
   }
   .nav-toggle {
     display: flex !important;
+  }
+  .nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 240;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .nav-overlay.open {
+    opacity: 1;
+    pointer-events: all;
   }
 }
 
@@ -709,8 +781,8 @@ details > pre {
   .gradient { animation: gradientShift 8s ease infinite; }
 }
 
-.reveal { opacity: 1; transform: none; transition: opacity 0.5s ease, transform 0.5s ease; }
-.js-animate .reveal { opacity: 0; transform: translateY(16px); }
+.reveal { opacity: 1; transform: none; transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+.js-animate .reveal { opacity: 0; transform: translateY(24px); }
 .js-animate .reveal.visible { opacity: 1; transform: translateY(0); }
 
 @media (prefers-reduced-motion: reduce) {
@@ -724,6 +796,56 @@ details > pre {
 @media (forced-colors: active) {
   .feature-card, .callout, details, .table-wrap, .installer-table { border: 1px solid ButtonText; }
   .nav-cta { border: 1px solid ButtonText; }
+}
+
+/* ── Lightbox ── */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+  cursor: zoom-out;
+}
+.lightbox-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+.lightbox-overlay img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 8px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  transform: scale(0.95);
+  transition: transform 0.25s;
+}
+.lightbox-overlay.open img {
+  transform: scale(1);
+}
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: none;
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.lightbox-close:hover {
+  background: rgba(255,255,255,0.2);
 }
 
 /* ── Light theme ── */
@@ -755,3 +877,6 @@ html.light .installer-table { background: var(--surface); }
 html.light .file-tree { background: var(--surface-2); }
 html.light .toc { background: var(--surface); }
 html.light .theme-toggle:hover { background: rgba(160,36,247,0.08); }
+html.light .nav-links { background: rgba(255,255,255,0.98); }
+html.light #toTop { background: var(--primary); color: #fff; }
+html.light pre .code-header { background: var(--surface-3); }
